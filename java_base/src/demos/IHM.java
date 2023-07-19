@@ -22,10 +22,12 @@ public class IHM {
         double taille = 1.72;
 
         System.out.printf("%s a %d ans et mesure %.2f mètres", nom, age, taille);
+        System.out.println();
+        System.out.println("Raccourci (snippet) : souf");
 
         // Caractères spéciaux
-        System.out.println("\n saut de ligne");
-        System.out.println("\t tabulation");
+        System.out.println("saut\nde ligne");
+        System.out.println("\ttabulation");
         System.out.println("Le backspace\befface un caractère");
 
 
@@ -66,9 +68,10 @@ public class IHM {
         System.out.println("Demander un caractère requiert d'utiliser charAt(0) afin de ne garder que le permier " +
                 "caractère saisi");
         char caractere = scanner.next().charAt(0);
+        System.out.println(caractere);
 
         // En bonne pratique, il faut fermer le scanner à la fin du programme.
-        // Un scanner fermé ne peut plus être réutilisé.
+        // Un scanner fermé ne peut plus être réutilisé !
         scanner.close();
     }
 }

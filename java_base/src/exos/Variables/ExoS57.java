@@ -12,7 +12,7 @@ public class ExoS57 {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Saisir la longueur d'un côté :");
+        System.out.println("Saisir la longueur du côté :");
         double cote = scanner.nextDouble();
 
         double perimetre = cote * 4;

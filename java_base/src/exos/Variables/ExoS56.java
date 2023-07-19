@@ -23,17 +23,21 @@ public class ExoS56 {
         System.out.println("En minuscule : " + chaine.toLowerCase());
         System.out.println("En majuscule : " + chaine.toUpperCase());
 
-        String[] tableau = chaine.split("");
+        String[] tableau = chaine.toLowerCase().split("");
         System.out.print("En tableau : " + tableau[0]);
         for (int i = 1; i < tableau.length; i++) {
             System.out.print(", " + tableau[i]);
         }
         System.out.println();
 
+        // Version plus simple, sans tableau :
+        System.out.println("Sans tableau : " + String.join(", ", chaine.toLowerCase().split("")));
+
+
         String[] capitale = chaine.split(" ");
-        System.out.print("Avec capitales : " + capitale[0].substring(0,1).toUpperCase() + capitale[0].substring(1).toLowerCase());
-        for (int i = 1; i < capitale.length; i++) {
-            System.out.print(" " + capitale[i].substring(0,1).toUpperCase() + capitale[i].substring(1).toLowerCase());
+        System.out.print("Avec capitales : ");
+        for (String mot : capitale) {
+            System.out.print(mot.substring(0,1).toUpperCase() + mot.substring(1).toLowerCase() + " ");
         }
 
         scanner.close();
