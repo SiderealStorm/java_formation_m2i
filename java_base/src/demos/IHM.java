@@ -65,8 +65,7 @@ public class IHM {
         System.out.println("Il faut aussi vider la mémoire tampon");
         scanner.nextLine();
 
-        System.out.println("Demander un caractère requiert d'utiliser charAt(0) afin de ne garder que le permier " +
-                "caractère saisi");
+        System.out.println("Demander un caractère requiert d'utiliser charAt(0) afin de ne garder que le permier caractère saisi");
         char caractere = scanner.next().charAt(0);
         System.out.println(caractere);
 
