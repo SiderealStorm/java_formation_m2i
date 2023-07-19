@@ -11,13 +11,16 @@ public class ExoS53 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        //  Déclarer plusieurs variables en une ligne :
+        int a, b, sommeCarres;
+
         System.out.println("Entrez un nombre entier a :");
-        int a = scanner.nextInt();
+        a = scanner.nextInt();
 
         System.out.println("Entrez un nombre entier b :");
-        int b = scanner.nextInt();
+        b = scanner.nextInt();
 
-        int sommeCarres = a*a + b*b;
+        sommeCarres = a*a + b*b;
         System.out.println("a² + b² = " + sommeCarres);
 
         scanner.close();
