@@ -1,10 +1,10 @@
 # java_formation_m2i
 
-Exercices et démonstrations Java, faits pendant la formation "Développeurs Java JEE" 2023 avec M2i formation Villeneuve d'Ascq.
+Exercices et démonstrations Java, faits pendant la formation "Développeurs Java JEE" commencée en Juillet 2023 avec M2i formation Villeneuve d'Ascq.
 
-Chaque fichier .java contient un main pour pouvoir être lancé individuellement.
+Chaque classe contient une fonction main pour qu'elle puisse être lancée individuellement.
 
-L'énoncé des exercices se trouve dans le fichier, au dessus de la classe.
+L'énoncé des exercices se trouve dans le fichier, au dessus de la déclaration de classe.
 
 ## [Bases](/java_base/)
 
