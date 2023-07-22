@@ -25,5 +25,6 @@ public class ExoS79 {
                 System.out.println("\tSous-partie " + i + "." + j);
             }
         }
+        scanner.close();
     }
 }

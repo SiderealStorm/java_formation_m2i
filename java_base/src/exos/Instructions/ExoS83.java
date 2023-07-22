@@ -43,5 +43,6 @@ public class ExoS83 {
         System.out.println("La note la plus haute est : " + noteMax);
         System.out.println("La note la plus basse est : " + noteMin);
         System.out.println("La moyenne des notes est : " + somme / nbNotes);
+        scanner.close();
     }
 }

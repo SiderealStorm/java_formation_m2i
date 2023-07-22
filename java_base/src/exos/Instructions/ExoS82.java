@@ -28,5 +28,6 @@ public class ExoS82 {
                 }
             }
         }
+        scanner.close();
     }
 }

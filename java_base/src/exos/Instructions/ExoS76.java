@@ -28,5 +28,6 @@ public class ExoS76 {
         } else {
             System.out.println("L'eau est à l'état gazeux");
         }
+        scanner.close();
     }
 }

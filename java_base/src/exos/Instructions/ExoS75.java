@@ -25,5 +25,6 @@ public class ExoS75 {
         } else {
             System.out.println(caractere + " est un caractère spécial");
         }
+        scanner.close();
     }
 }

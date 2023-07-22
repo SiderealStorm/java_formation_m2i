@@ -22,5 +22,6 @@ public class ExoS69 {
         } else {
             System.out.println("Le nombre est impair");
         }
+        scanner.close();
     }
 }

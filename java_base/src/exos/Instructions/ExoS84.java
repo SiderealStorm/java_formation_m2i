@@ -29,5 +29,6 @@ public class ExoS84 {
         } else {
             System.out.println(nombre + " est un nombre premier");
         }
+        scanner.close();
     }
 }

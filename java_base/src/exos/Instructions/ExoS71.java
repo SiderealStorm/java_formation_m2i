@@ -23,5 +23,6 @@ public class ExoS71 {
         } else {
             System.out.println("Le caractère est une consonne");
         }
+        scanner.close();
     }
 }

@@ -24,5 +24,6 @@ public class ExoS73 {
             case 2 -> System.out.println("Ce mois comporte 28 jours (ou 29 des fois)");
             default -> System.out.println("ERREUR : le nombre doit être entre 1 et 12");
         }
+        scanner.close();
     }
 }

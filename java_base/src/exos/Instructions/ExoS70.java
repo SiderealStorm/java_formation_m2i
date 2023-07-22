@@ -31,5 +31,6 @@ public class ExoS70 {
             max = nb3;
         }
         System.out.println("La valeur maximale est " + max);
+        scanner.close();
     }
 }

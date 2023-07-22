@@ -42,5 +42,6 @@ public class ExoS77 {
             System.out.println("Candidature acceptée");
         }
 
+        scanner.close();
     }
 }

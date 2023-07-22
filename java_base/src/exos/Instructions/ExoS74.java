@@ -23,5 +23,6 @@ public class ExoS74 {
         } else {
             System.out.println("L'année " + annee + " n'est pas bissextile");
         }
+        scanner.close();
     }
 }
