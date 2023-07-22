@@ -1,0 +1,33 @@
+package exos.Instructions;
+
+import java.util.Scanner;
+
+/*
+Exercice S84 : Nombres premiers
+1. Un nombre premier est un nombre divisible par 1 et par soit-même uniquement
+2. 1 n'est pas un nombre premier
+3. Écrire un programme qui permet de savoir si un nombre est premier
+ */
+public class ExoS84 {
+    public static void main(String[] args) {
+        int nombre;
+        boolean divisible = false;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Saisir un nombre entier :");
+        nombre = scanner.nextInt();
+
+        for (int i = 2 ; i < nombre ; i++) {
+            if (nombre % i == 0) {
+                divisible = true;
+                break;
+            }
+        }
+
+        if (divisible || nombre == 1) {
+            System.out.println(nombre + " n'est pas un nombre premier");
+        } else {
+            System.out.println(nombre + " est un nombre premier");
+        }
+    }
+}
