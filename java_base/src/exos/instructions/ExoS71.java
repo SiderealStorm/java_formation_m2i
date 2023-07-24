@@ -11,17 +11,21 @@ Exercice S71 : Voyelle ou consonne
 public class ExoS71 {
     public static void main(String[] args) {
         char caractere;
-        String voyelles = "aeiouyAEIOUY";
+        String voyelles = "aeiouyéèàùâêîôûäëïöü";
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Saisir une lettre");
-        caractere = scanner.next().charAt(0);
+        caractere = scanner.next().toLowerCase().charAt(0);
 
-        if (voyelles.contains(Character.toString(caractere))) {
-            System.out.println("Le caractère est une voyelle");
+        if (Character.isAlphabetic(caractere)) {
+            if (voyelles.contains(Character.toString(caractere))) {
+                System.out.println("Le caractère " + caractere + " est une voyelle");
+            } else {
+                System.out.println("Le caractère " + caractere + " est une consonne");
+            }
         } else {
-            System.out.println("Le caractère est une consonne");
+            System.out.println("Le caractère " + caractere + " n'est pas une lettre de l'alphabet");
         }
         scanner.close();
     }

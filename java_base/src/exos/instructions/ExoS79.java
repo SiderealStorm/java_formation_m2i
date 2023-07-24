@@ -19,10 +19,10 @@ public class ExoS79 {
         System.out.println("Entrez le nombre de sous-chapitres :");
         nbSousPart = scanner.nextInt();
 
-        for (int i = 1 ; i <= nbChap ; i++) {
-            System.out.println("Chapitre " + i);
-            for (int j = 1 ; j <= nbSousPart ; j++) {
-                System.out.println("\tSous-partie " + i + "." + j);
+        for (int numChap = 1 ; numChap <= nbChap ; numChap++) {
+            System.out.println("Chapitre " + numChap);
+            for (int numSousPart = 1 ; numSousPart <= nbSousPart ; numSousPart++) {
+                System.out.println("\tSous-partie " + numChap + "." + numSousPart);
             }
         }
         scanner.close();

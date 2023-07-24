@@ -10,8 +10,9 @@ L'énoncé des exercices se trouve dans le fichier, au dessus de la déclaration
 
 - [Démos](/java_base/src/demos/)
 - [Exercices](/java_base/src/exos/)
-    - [Variables](/java_base/src/exos/Variables/)
-    - [Instructions](/java_base/src/exos/Instructions/)
+    - [Variables](/java_base/src/exos/variables/)
+    - [Instructions](/java_base/src/exos/instructions/)
+    - [Tableaux](/java_base/src/exos/tableaux/)
 
 ## [Programmation Orientée Objet](/java_poo/) (à venir)
 
