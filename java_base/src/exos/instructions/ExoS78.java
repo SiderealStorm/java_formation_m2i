@@ -1,4 +1,4 @@
-package exos.Instructions;
+package exos.instructions;
 
 /*
 Exercice S78 : De 1 à 10

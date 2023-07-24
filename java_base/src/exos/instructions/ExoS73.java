@@ -1,4 +1,4 @@
-package exos.Instructions;
+package exos.instructions;
 
 import java.util.Scanner;
 

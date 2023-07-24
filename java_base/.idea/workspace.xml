@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f68388e9-932a-4cb4-99ac-e537e188153f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/Instructions/ExoS81.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/Instructions/ExoS81.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/Instructions/ExoS83.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/Instructions/ExoS83.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/Instructions/ExoS84.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/Instructions/ExoS84.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/Instructions/ExoS85.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/Instructions/ExoS85.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exos/Instructions/ExoS87.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/Instructions/ExoS87.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +55,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/exos/Instructions/ExoS87.java</url>
-          <line>23</line>
+          <line>22</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

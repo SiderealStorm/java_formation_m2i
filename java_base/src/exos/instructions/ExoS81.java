@@ -1,4 +1,4 @@
-package exos.Instructions;
+package exos.instructions;
 
 /*
 Exercice S81 : Population

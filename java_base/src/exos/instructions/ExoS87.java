@@ -1,4 +1,4 @@
-package exos.Instructions;
+package exos.instructions;
 
 import java.util.Scanner;
 
@@ -10,7 +10,6 @@ Exercice S87 : Nombre fort
  */
 public class ExoS87 {
     public static void main(String[] args) {
-        String saisie;
         String[] chiffres;
         int nombre;
         int somme = 0;

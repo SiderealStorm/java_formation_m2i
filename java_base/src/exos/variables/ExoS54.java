@@ -1,4 +1,4 @@
-package exos.Variables;
+package exos.variables;
 
 import java.util.Scanner;
 
