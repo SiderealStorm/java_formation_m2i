@@ -12,8 +12,9 @@ BONUS : saisie utilisateur
  */
 public class ExoS95 {
     public static void main(String[] args) {
-        int[] valSource, valAbsolue;
+        int[] valSource, valPositives;
         int nbValeurs;
+        int indice = 0;
         Scanner scanner = new Scanner(System.in);
 
         // Saisie du premier tableau :
@@ -21,24 +22,23 @@ public class ExoS95 {
         System.out.println("Combien voulez-vous saisir de valeurs ?");
         nbValeurs = scanner.nextInt();
         valSource = new int[nbValeurs];
-        valAbsolue = new int[nbValeurs];
+        valPositives = new int[nbValeurs];
 
-        for (int i = 0 ; i < valSource.length ; i++) {
+        for (int i = 0; i < valSource.length; i++) {
             System.out.println("Saisir la valeur n°" + (i + 1));
             valSource[i] = scanner.nextInt();
         }
 
         // Remplissage du deuxième tableau :
 
-        for (int i = 0 ; i < valSource.length ; i++) {
-            if (valSource[i] < 0) {
-                valAbsolue[i] = - valSource[i];
-            } else {
-                valAbsolue[i] = valSource[i];
+        for (int valeur : valSource) {
+            if (valeur > 0) {
+                valPositives[indice] = valeur;
+                indice++;
             }
-        }
 
+        }
         System.out.println("Valeurs source : " + Arrays.toString(valSource));
-        System.out.println("Valeurs absolues : " + Arrays.toString(valAbsolue));
+        System.out.println("Valeurs positives : " + Arrays.toString(valPositives));
     }
 }
