@@ -17,15 +17,15 @@ public class ExoS87 {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Saisir un nombre entier :");
-        saisie = scanner.nextLine();
-        chiffres = saisie.split("");
-        nombre = Integer.parseInt(saisie);
+        nombre = scanner.nextInt();
+        // La saisie est transformée en tableau de chiffres
+        chiffres = String.valueOf(nombre).split("");
 
-        for (int i = 0 ; i < saisie.length() ; i++) {
-            int chiffre = Integer.parseInt(chiffres[i]);
+        for (String caractere : chiffres) {
+            int chiffre = Integer.parseInt(caractere);
             int factorielle = 1;
 
-            for (int j = 1 ; j <= chiffre ; j++) {
+            for (int j = 1; j <= chiffre; j++) {
                 factorielle *= j;
             }
 

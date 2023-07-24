@@ -20,6 +20,7 @@ public class ExoS84 {
         for (int i = 2 ; i < nombre ; i++) {
             if (nombre % i == 0) {
                 divisible = true;
+                // Pas besoin de vérifier si le nombre est divisible pas plusieurs nombres, donc on arrête la boucle
                 break;
             }
         }

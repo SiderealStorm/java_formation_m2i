@@ -36,6 +36,7 @@ public class ExoS83 {
                 }
             } else {
                 System.out.println("Note invalide !");
+                // On décrémente i pour que l'utilisateur puisse retaper la note
                 i--;
             }
 

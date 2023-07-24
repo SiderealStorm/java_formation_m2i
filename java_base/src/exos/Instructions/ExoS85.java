@@ -18,18 +18,19 @@ public class ExoS85 {
         int nombre = new Random().nextInt(100) + 1;
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("=== Jeu du nombre à deviner ===");
         while (saisie != nombre) {
             System.out.println("Saisir un nombre entier :");
             saisie = scanner.nextInt();
             essais++;
             if (saisie < nombre) {
-                System.out.println("Le nombre est plus grand");
+                System.out.println("Le nombre à deviner est plus grand");
             } else if (saisie > nombre) {
-                System.out.println("Le nombre est plus petit");
+                System.out.println("Le nombre à deviner est plus petit");
             }
         }
 
-        System.out.println("Vous avez gagné en " + essais + " tentatives.");
+        System.out.println("Vous avez deviné le nombre en " + essais + " tentatives.");
         scanner.close();
     }
 }

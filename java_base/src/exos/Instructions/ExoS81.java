@@ -20,7 +20,8 @@ public class ExoS81 {
             annee++;
         }
 
-        System.out.printf("La population de Tourcoing dépassera les %d habitants en %d avec environ %.0f habitants", popFinale, annee, popActuelle);
+        // Séparateur de milliers : ajouter une virgule après le %
+        System.out.printf("La population de Tourcoing dépassera les %,d habitants en %d avec environ %,.0f habitants", popFinale, annee, popActuelle);
 
     }
 }
