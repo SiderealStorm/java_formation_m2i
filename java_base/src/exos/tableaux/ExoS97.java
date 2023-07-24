@@ -42,6 +42,7 @@ public class ExoS97 {
             for (int i = 0; i < tableau1.length; i++) {
                 if (tableau1[i] != tableau2[i]) {
                     sontEgaux = false;
+                    break;
                 }
             }
         } else {

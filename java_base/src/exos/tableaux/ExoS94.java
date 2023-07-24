@@ -13,7 +13,7 @@ public class ExoS94 {
 
         for (int i = 0 ; i < tableau.length ; i++) {
             System.out.print(tableau[i]);
-            if ((i + 1) % 10 == 0) {
+            if (i % 10 == 9) {
                 System.out.println();
             } else {
                 System.out.print(", ");
