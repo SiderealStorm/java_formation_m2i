@@ -1,5 +1,7 @@
 package org.example.exos.exo1;
 
+import javax.swing.plaf.basic.BasicFormattedTextFieldUI;
+
 public class Chaise {
 
     public int nbPieds;
@@ -18,7 +20,7 @@ public class Chaise {
 
     @Override
     public String toString() {
-        return "Chaise " + couleur + " en " + materiau + " avec " + nbPieds + " pieds";
+        return "Chaise " + couleur + " en " + materiau + " avec " + nbPieds + " pieds à " + prix + " €";
     }
 
 }
