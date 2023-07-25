@@ -1,0 +1,6 @@
+Téléchargement : maven.apache.org
+Le téléchargement et l'installation sont automatiques sur IntelliJ
+
+Télécharger des librairies : mvnrepository.com
+Pour ajouter une librairie à un projet, il suffit d'ajouter sa déclaration dépendance dans le pom.xml, entre balises <dependencies>
+Il faut ensuite recharger le projet pour ajouter les nouvelles dépendances : clic droit > Maven > Reload project.
