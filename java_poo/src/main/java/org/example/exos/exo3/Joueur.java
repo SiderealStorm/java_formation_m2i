@@ -8,7 +8,7 @@ public class Joueur {
 
     public Joueur() {}
 
-    // Les valeurs de niveau et expérience sont mises par défaut
+    // Les valeurs de niveau et expérience sont mises par défaut pour tout nouveau joueur
     public Joueur(String nom) {
         this.nom = nom;
         this.niveau = 1;
@@ -32,7 +32,7 @@ public class Joueur {
         return experience;
     }
 
-    // Pas de setters pour le niveau et l'expérience car leur valeurs ne changent qu'en cas de quête
+    // Pas de setters pour le niveau et l'expérience car leur valeur ne changent qu'en cas de quête
 
     @Override
     public String toString() {
@@ -42,11 +42,13 @@ public class Joueur {
     public void effectuerUneQuete() {
         this.experience += 15;
         System.out.println("Quête accomplie ! " + nom + " gagne 15 xp (Total : " + experience + " xp)");
+        // On peut aussi appelerla méthode à chaque fois, et vérifier la condition dans la méthode
         if (this.experience >= 100) {
             monterDeNiveau();
         }
     }
 
+    // La méthode est privée car on ne devrait pas pouvoir l'appeler depuis le main
     private void monterDeNiveau() {
         this.experience -= 100;
         this.niveau += 1;

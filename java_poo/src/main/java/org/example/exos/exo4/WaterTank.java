@@ -6,7 +6,7 @@ public class WaterTank {
     private int maxCapacity;
     private double level;
 
-    public static double totalVolume;
+    private static double totalVolume;
 
     public WaterTank() {}
 
@@ -19,16 +19,8 @@ public class WaterTank {
         return netWeight;
     }
 
-    public void setNetWeight(double netWeight) {
-        this.netWeight = netWeight;
-    }
-
     public int getMaxCapacity() {
         return maxCapacity;
-    }
-
-    public void setMaxCapacity(int maxCapacity) {
-        this.maxCapacity = maxCapacity;
     }
 
     public double getLevel() {
@@ -39,9 +31,20 @@ public class WaterTank {
         this.level = level;
     }
 
+    public static double getTotalVolume() {
+        return totalVolume;
+    }
+
+    // On ne permet pas de changer le poids à vide, la capacité maximum et le volume total, donc pas de setters
+
+    // On ajoute un calcul du poids de la cuve :
+    public double getWeight() {
+        return this.netWeight + this.level;
+    }
+
     @Override
     public String toString() {
-        return "Citerne : " + level + "/" + maxCapacity + " L ; poids à vide : " + netWeight + " kg";
+        return "Citerne : " + level + "/" + maxCapacity + " L ; poids à vide : " + netWeight + " kg ; poids total : " + getWeight() + " kg";
     }
 
     public void fill(double volume) {

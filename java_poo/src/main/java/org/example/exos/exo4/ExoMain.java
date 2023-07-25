@@ -12,31 +12,31 @@ Exercice S25 : WaterTank
 public class ExoMain {
     public static void main(String[] args) {
 
-        WaterTank wt1 = new WaterTank(20, 200);
+        WaterTank tank1 = new WaterTank(20, 200);
 
         System.out.println("Ajout de 160 L dans la citerne 1 :");
-        wt1.fill(160);
-        System.out.println(wt1);
+        tank1.fill(160);
+        System.out.println(tank1);
         System.out.println("Ajout de 160 L dans la citerne 1 :");
-        wt1.fill(160);
-        System.out.println(wt1);
-        System.out.println("Volume total en stock : " + WaterTank.totalVolume);
+        tank1.fill(160);
+        System.out.println(tank1);
+        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume());
 
-        WaterTank wt2 = new WaterTank(15, 150);
+        WaterTank tank2 = new WaterTank(15, 150);
 
         System.out.println("Ajout de 100 L dans la citerne 2 :");
-        wt2.fill(100);
-        System.out.println(wt2);
-        System.out.println("Volume total en stock : " + WaterTank.totalVolume);
+        tank2.fill(100);
+        System.out.println(tank2);
+        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume());
 
         System.out.println("Retrait de 60 L de la citerne 2 :");
-        wt2.empty(60);
-        System.out.println(wt2);
-        System.out.println("Volume total en stock : " + WaterTank.totalVolume);
+        tank2.empty(60);
+        System.out.println(tank2);
+        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume());
 
         System.out.println("Retrait de 60 L de la citerne 2 :");
-        wt2.empty(60);
-        System.out.println(wt2);
-        System.out.println("Volume total en stock : " + WaterTank.totalVolume);
+        tank2.empty(60);
+        System.out.println(tank2);
+        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume());
     }
 }
