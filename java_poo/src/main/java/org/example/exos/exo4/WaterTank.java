@@ -6,7 +6,7 @@ public class WaterTank {
     private int maxCapacity;
     private double level;
 
-    private static double totalVolume;
+    public static double totalVolume;
 
     public WaterTank() {}
 
@@ -49,9 +49,8 @@ public class WaterTank {
            level += volume;
            totalVolume += volume;
         } else {
-            double realVolume = volume - maxCapacity - level;
-            System.out.println("La cuve est pleine, " + (volume - realVolume) + " L d'eau n'ont pas pû être ajoutés");
-            totalVolume += realVolume;
+            System.out.println("La cuve est pleine, " + (maxCapacity - volume) + " L d'eau n'ont pas pû être ajoutés");
+            totalVolume += maxCapacity - level;
             level = maxCapacity;
         }
     }
