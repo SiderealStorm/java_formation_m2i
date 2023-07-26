@@ -77,7 +77,7 @@ public class Voiture {
         return puissance / 7.;
     }
 
-    // Redéfinir la méthode toString() avec le décorateur "Override"
+    // Redéfinir la méthode toString() avec l'annotation "Override"
     @Override
     public String toString() {
         return "Détails de la voiture :\n" + "couleur : " + couleur + ", carburant : " + carburant + " litres, puissance : " + puissance + " chevaux, marque : " + marque + ", nombre de portes : " + nbPortes + ".";
