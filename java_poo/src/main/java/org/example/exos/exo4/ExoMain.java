@@ -20,23 +20,26 @@ public class ExoMain {
         System.out.println("Ajout de 160 L dans la citerne 1 :");
         tank1.fill(160);
         System.out.println(tank1);
-        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume());
+        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume() + " L");
+        System.out.println();
 
         WaterTank tank2 = new WaterTank(15, 150);
 
         System.out.println("Ajout de 100 L dans la citerne 2 :");
         tank2.fill(100);
         System.out.println(tank2);
-        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume());
+        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume() + " L");
+        System.out.println();
 
         System.out.println("Retrait de 60 L de la citerne 2 :");
         tank2.empty(60);
         System.out.println(tank2);
-        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume());
+        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume() + " L");
+        System.out.println();
 
         System.out.println("Retrait de 60 L de la citerne 2 :");
         tank2.empty(60);
         System.out.println(tank2);
-        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume());
+        System.out.println("Volume total en stock : " + WaterTank.getTotalVolume() + " L");
     }
 }
