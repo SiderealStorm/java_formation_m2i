@@ -1,5 +1,7 @@
 package org.example.exos.bonus;
 
+import java.util.Scanner;
+
 /*
 Exercice bonus : jeu du Pendu
 1. Réaliser un jeu du pendu en créant une classe Pendu qui possédera au minimum comme attributs : le masque, le nombre d’essais ainsi que le mot à trouver.
@@ -11,11 +13,27 @@ Cette classe aura comme méthodes : TestChar(), TestWin() et GenerateMask().
  */
 public class MainPendu {
     public static void main(String[] args) {
-        // Test de la liste de mots
-        int compeur = 1;
-        while (RandomWord.testList()) {
-            System.out.println(compeur + ". " + RandomWord.chooseWord());
-            compeur++;
+
+//        // Boucle du jeu ?
+//        int compteur = 1;
+//        while (RandomWord.testList()) {
+//            System.out.println(compteur + ". " + RandomWord.chooseWord());
+//            compteur++;
+//        }
+
+        Scanner scanner = new Scanner(System.in);
+
+        Pendu test = new Pendu(RandomWord.chooseWord(), 10);
+        System.out.println(test.getTries());
+        System.out.println(test.getWord());
+        System.out.println(test.getMask());
+        System.out.println(test.displayMask());
+
+        while (true) {
+            System.out.println("Lettre à tester : ");
+            test.setLetter(scanner.next().toUpperCase().charAt(0));
+            test.testLetter();
+            System.out.println(test.getMask());
         }
     }
 }

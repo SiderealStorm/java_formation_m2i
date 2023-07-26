@@ -69,13 +69,9 @@ public class RandomWord {
     public static String chooseWord() {
         int index;
         String word;
-
-//        do {
-            index = (new Random()).nextInt(0, wordsList.size());
-            word = wordsList.get(index);
-//        } while (usedWords.contains(word)); // = tant que le mot choisi est dans la liste des mots déjà utilisés
-
-//        usedWords.add(word);
+        index = (new Random()).nextInt(0, wordsList.size());
+        word = wordsList.get(index);
+        // Quand un mot est utilisé, on l'enlève de la liste
         wordsList.remove(index);
         return word;
     }
