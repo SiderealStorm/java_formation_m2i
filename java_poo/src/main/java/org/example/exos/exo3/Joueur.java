@@ -42,7 +42,7 @@ public class Joueur {
     public void effectuerUneQuete() {
         this.experience += 15;
         System.out.println("Quête accomplie ! " + nom + " gagne 15 xp (Total : " + experience + " xp)");
-        // On peut aussi appelerla méthode à chaque fois, et vérifier la condition dans la méthode
+        // On peut aussi appeler la méthode à chaque fois, et vérifier la condition dans la méthode
         if (this.experience >= 100) {
             monterDeNiveau();
         }
