@@ -48,6 +48,10 @@ public class Pendu {
         this.letter = letter;
     }
 
+    public ArrayList<Character> getTestedLetters() {
+        return testedLetters;
+    }
+
     // Méthodes
 
     public void play() {
@@ -63,19 +67,19 @@ public class Pendu {
     }
 
     public void inputLetter() {
-        System.out.println("Lettre à tester :");
-        letter = scanner.next().charAt(0);
+        System.out.println("Lettre à tester (sans accent) :");
+        letter = scanner.next().toUpperCase().charAt(0);
     }
 
     public void testLetter() {
         if (!testedLetters.contains(letter)) {
+            testedLetters.add(letter);
             for (char element : word) {
                 if (element == letter) {
                     changeMask();
                     break;
                 } else {
                     tries--;
-                    testedLetters.add(letter);
                 }
             }
         } else {

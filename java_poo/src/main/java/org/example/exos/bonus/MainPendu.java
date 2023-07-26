@@ -33,6 +33,7 @@ public class MainPendu {
             System.out.println("Lettre à tester : ");
             test.setLetter(scanner.next().toUpperCase().charAt(0));
             test.testLetter();
+            System.out.println("Lettres testées : " + test.getTestedLetters());
             System.out.println(test.getMask());
         }
     }
