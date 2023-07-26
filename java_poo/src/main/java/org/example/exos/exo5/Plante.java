@@ -2,9 +2,9 @@ package org.example.exos.exo5;
 
 public class Plante {
 
-    private String nom;
-    private double hauteur;
-    private String couleurFeuilles;
+    protected String nom;
+    protected double hauteur;
+    protected String couleurFeuilles;
 
     public Plante() {}
 
