@@ -17,7 +17,7 @@ public class MainPendu {
 
         Scanner scanner = new Scanner(System.in);
 
-        // Boucle du jeu ?
+        // Boucle du jeu
         char play = 'y';
         do {
             System.out.println("Bienvenue au jeu du Pendu !");
@@ -27,24 +27,6 @@ public class MainPendu {
             play = scanner.next().toLowerCase().charAt(0);
         } while (RandomWord.testList() && play == 'y');
         System.out.println("Merci d'avoir joué !");
-
-//        Scanner scanner = new Scanner(System.in);
-//
-//        Pendu test = new Pendu(RandomWord.chooseWord(), 10);
-//        System.out.println(test.getTries());
-//        System.out.println(test.getWord());
-//        System.out.println(test.getMask());
-//        System.out.println(test.displayMask());
-
-//        while (true) {
-//            System.out.println("Lettre à tester : ");
-//            test.setLetter(scanner.next().toUpperCase().charAt(0));
-//            test.testLetter();
-//            System.out.println("Lettres testées : " + test.getTestedLetters());
-//            System.out.println(test.getMask());
-//        }
-
-
 
     }
 }
