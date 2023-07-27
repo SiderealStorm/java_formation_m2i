@@ -1,6 +1,6 @@
 package org.example.demos.heritage;
 
-public class HeritageMain {
+public class MainHeritage {
     public static void main(String[] args) {
 
         Animal animal = new Animal("Titi", 2, "bleu");
