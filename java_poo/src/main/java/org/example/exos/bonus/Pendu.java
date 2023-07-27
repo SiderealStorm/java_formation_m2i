@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class Pendu {
 
     // Le mot et le masque sont deux tableaux de char, pour qu'on puisse les comparer lors du déroulement du jeu
-    private char[] word;
+    private String word;
+    private char[] wordArray;
     private char[] mask;
     private char letter;
     private ArrayList<Character> testedLetters;
@@ -19,7 +20,8 @@ public class Pendu {
     public Pendu() {}
 
     public Pendu(String word, int tries) {
-        this.word = word.toCharArray();
+        this.word = word;
+        this.wordArray = word.toCharArray();
         this.mask = new char[word.length()];
         this.tries = tries;
         this.testedLetters = new ArrayList<>();
@@ -28,8 +30,8 @@ public class Pendu {
     }
 
     // Getters et setters
-    public char[] getWord() {
-        return this.word;
+    public char[] getWordArray() {
+        return this.wordArray;
     }
 
     public char[] getMask() {
@@ -55,15 +57,14 @@ public class Pendu {
     // Méthodes
 
     public void play() {
-        System.out.println("Bienvenue au jeu du Pendu !");
         System.out.println("Devinez le mot caché :");
         do {
-            displayMask();
+            System.out.println(mask);
             inputLetter();
             testLetter();
-            // TODO
-        } while (tries > 0 && mask != word);
-
+        } while (tries > 0 && !Arrays.equals(mask, wordArray));
+        testWin();
+        System.out.println("Le mot à trouver était : " + word);
     }
 
     public void inputLetter() {
@@ -72,30 +73,39 @@ public class Pendu {
     }
 
     public void testLetter() {
+        boolean isFound = false;
         if (!testedLetters.contains(letter)) {
             testedLetters.add(letter);
-            for (char element : word) {
+            for (char element : wordArray) {
                 if (element == letter) {
+                    System.out.println("Bien joué !");
+                    isFound = true;
                     changeMask();
                     break;
-                } else {
-                    tries--;
                 }
             }
         } else {
             System.out.println("Cette lettre a déjà été testée");
+            isFound = true;
+        }
+
+        if (!isFound) {
+            tries--;
+            System.out.println("Pas de chance... Il vous reste " + tries + " essais");
         }
     }
 
-
-    public boolean testWin() {
-        // TODO
-        return false;
+    public void testWin() {
+        if (Arrays.equals(mask, wordArray)) {
+            System.out.println("Félicitations, vous avez gagné !");
+        } else {
+            System.out.println("Vous n'avez plus de vies... game over !");
+        }
     }
 
     public void changeMask() {
-        for (int i = 0; i < word.length; i++) {
-            if (word[i] == letter) {
+        for (int i = 0; i < wordArray.length; i++) {
+            if (wordArray[i] == letter) {
                 mask[i] = letter;
             }
         }

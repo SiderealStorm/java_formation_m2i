@@ -33,27 +33,27 @@ public class MainExo {
         System.out.println();
 
         // Emprunt de deux livres :
-        biblio.emprunterLivre(0);
-        biblio.emprunterLivre(1);
+        biblio.emprunterLivreParIndice(0);
+        biblio.emprunterLivreParIndice(1);
 
         biblio.afficherLivres();
         System.out.println();
 
         // Retour d'un livre
-        biblio.retournerLivre(1);
+        biblio.retournerLivreParIndice(1);
 
         biblio.afficherLivres();
         System.out.println();
 
         // Test des messages d'erreur emprunt/retour
-        biblio.emprunterLivre(0);
-        biblio.retournerLivre(1);
+        biblio.emprunterLivreParIndice(0);
+        biblio.retournerLivreParIndice(1);
 
         biblio.afficherLivres();
         System.out.println();
 
         // Suppression d'un livre
-        biblio.supprimerLivre(2);
+        biblio.supprimerLivreParIndice(2);
 
         biblio.afficherLivres();
         System.out.println();

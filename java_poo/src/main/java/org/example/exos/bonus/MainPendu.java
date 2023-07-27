@@ -1,5 +1,6 @@
 package org.example.exos.bonus;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -14,27 +15,36 @@ Cette classe aura comme méthodes : TestChar(), TestWin() et GenerateMask().
 public class MainPendu {
     public static void main(String[] args) {
 
-//        // Boucle du jeu ?
-//        int compteur = 1;
-//        while (RandomWord.testList()) {
-//            System.out.println(compteur + ". " + RandomWord.chooseWord());
-//            compteur++;
-//        }
-
         Scanner scanner = new Scanner(System.in);
 
-        Pendu test = new Pendu(RandomWord.chooseWord(), 10);
-        System.out.println(test.getTries());
-        System.out.println(test.getWord());
-        System.out.println(test.getMask());
-        System.out.println(test.displayMask());
+        // Boucle du jeu ?
+        char play = 'y';
+        do {
+            System.out.println("Bienvenue au jeu du Pendu !");
+            Pendu pendu = new Pendu(RandomWord.chooseWord(), 10);
+            pendu.play();
+            System.out.println("Voulez-vous rejouer ? (y)");
+            play = scanner.next().toLowerCase().charAt(0);
+        } while (RandomWord.testList() && play == 'y');
+        System.out.println("Merci d'avoir joué !");
 
-        while (true) {
-            System.out.println("Lettre à tester : ");
-            test.setLetter(scanner.next().toUpperCase().charAt(0));
-            test.testLetter();
-            System.out.println("Lettres testées : " + test.getTestedLetters());
-            System.out.println(test.getMask());
-        }
+//        Scanner scanner = new Scanner(System.in);
+//
+//        Pendu test = new Pendu(RandomWord.chooseWord(), 10);
+//        System.out.println(test.getTries());
+//        System.out.println(test.getWord());
+//        System.out.println(test.getMask());
+//        System.out.println(test.displayMask());
+
+//        while (true) {
+//            System.out.println("Lettre à tester : ");
+//            test.setLetter(scanner.next().toUpperCase().charAt(0));
+//            test.testLetter();
+//            System.out.println("Lettres testées : " + test.getTestedLetters());
+//            System.out.println(test.getMask());
+//        }
+
+
+
     }
 }

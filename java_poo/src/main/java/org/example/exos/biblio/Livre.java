@@ -13,7 +13,7 @@ public class Livre {
         this.titre = titre;
         this.auteur = auteur;
         this.nbPages = nbPages;
-        this.estEmprunte =false;
+        this.estEmprunte = false;
     }
 
     public String getTitre() {
@@ -44,9 +44,14 @@ public class Livre {
         return estEmprunte;
     }
 
-    @Override
-    public String toString() {
-        return "\'" + titre + "\' de " + auteur + " ; " + nbPages + " pages ; emprunté : " + estEmprunte;
+    public String details() {
+        String dispo = "";
+        if (estEmprunte) {
+            dispo = "disponible";
+        } else {
+            dispo = "emprunté";
+        }
+        return "\'" + titre + "\' de " + auteur + " ; " + nbPages + " pages ; " + dispo;
     }
 
     public void empruntRetour() {
