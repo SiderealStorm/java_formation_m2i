@@ -18,7 +18,7 @@ public class MainPendu {
         Scanner scanner = new Scanner(System.in);
 
         // Boucle du jeu
-        char play = 'y';
+        char play;
         do {
             System.out.println("Bienvenue au jeu du Pendu !");
             Pendu pendu = new Pendu(RandomWord.chooseWord(), 10);

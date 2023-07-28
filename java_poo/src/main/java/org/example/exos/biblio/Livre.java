@@ -44,9 +44,17 @@ public class Livre {
         return estEmprunte;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Livre) {
+            return this.titre.equals(((Livre) obj).getTitre()) && this.auteur.equals(((Livre) obj).getAuteur());
+        }
+        return false;
+    }
+
     public String details() {
         String dispo = "";
-        if (estEmprunte) {
+        if (!estEmprunte) {
             dispo = "disponible";
         } else {
             dispo = "emprunté";

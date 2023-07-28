@@ -27,36 +27,41 @@ public class MainExo {
         biblio.ajouterLivre(hobbit);
         biblio.ajouterLivre(tintin);
         biblio.ajouterLivre(hp1);
+        biblio.ajouterLivre(new Livre("Toto va à l'école", "Marie Dupont", 12));
 
         // Affichage
         biblio.afficherLivres();
         System.out.println();
 
-        // Emprunt de deux livres :
+        System.out.println("Emprunt de trois livres :");
         biblio.emprunterLivreParIndice(0);
         biblio.emprunterLivreParIndice(1);
+        biblio.emprunterLivreParTitreAuteur("Toto va à l'école", "Marie Dupont");
 
         biblio.afficherLivres();
         System.out.println();
 
-        // Retour d'un livre
+        System.out.println("Retour de deux livres :");
         biblio.retournerLivreParIndice(1);
+        biblio.retournerLivreParTitreAuteur("Toto va à l'école", "Marie Dupont");
 
         biblio.afficherLivres();
         System.out.println();
 
-        // Test des messages d'erreur emprunt/retour
+        System.out.println("Suppression de deux livres :");
+        biblio.supprimerLivreParIndice(2);
+        biblio.supprimerLivreParTitreAuteur("Toto va à l'école", "Marie Dupont");
+
+        biblio.afficherLivres();
+        System.out.println();
+
+        System.out.println("Test des messages d'erreur :");
         biblio.emprunterLivreParIndice(0);
         biblio.retournerLivreParIndice(1);
+        biblio.emprunterLivreParTitreAuteur("Un Livre à emprunter", "Auteur Inconnu");
+        biblio.supprimerLivreParTitreAuteur("Un Livre à supprimer", "Auteur Inconnu");
 
         biblio.afficherLivres();
-        System.out.println();
-
-        // Suppression d'un livre
-        biblio.supprimerLivreParIndice(2);
-
-        biblio.afficherLivres();
-        System.out.println();
 
     }
 }
