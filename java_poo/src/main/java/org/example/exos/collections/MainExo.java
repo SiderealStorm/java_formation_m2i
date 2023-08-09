@@ -1,4 +1,4 @@
-package org.example.exos.biblio;
+package org.example.exos.collections;
 
 /*
 Exercice Listes 1 : bibliothèque

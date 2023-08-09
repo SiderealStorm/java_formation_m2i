@@ -1,18 +1,30 @@
 package org.example.exos.tp;
 
+import java.util.random.RandomGenerator;
+
 public class Room {
 
-    private int roomNumber;
-    private boolean occupied;
-    private int beds;
-    private double price;
+    public int roomNumber;
+    public boolean occupied;
+    public int beds;
+    public double price;
 
-    public Room (int roomNumber, int beds, double price) {
+    public Room (int roomNumber, double price) {
         this.roomNumber = roomNumber;
-        // TODO remplacer par un nombre de lits aléatoire ?
-        this.beds = beds;
+        this.beds = RandomGenerator.getDefault().nextInt(1, 4);
         this.price = price;
         this.occupied = false;
+    }
+
+    @Override
+    public String toString() {
+        String status;
+        if (occupied) {
+            status = "occupée";
+        } else {
+            status = "libre";
+        }
+        return "Chambre n°" + roomNumber + " : " + beds + " lit(s), " + price + " € la nuit, " + status;
     }
 
 }
