@@ -4,21 +4,35 @@ import java.util.ArrayList;
 
 public class Hotel {
 
-    public String name;
-    public ArrayList<Guest> guestsList;
-    public ArrayList<Room> roomsList;
-    public ArrayList<Booking> bookingList;
+    private String name;
+    private ArrayList<Guest> guestsList;
+    private ArrayList<Room> roomsList;
+    private ArrayList<Booking> bookingList;
 
-    public Hotel(String name) {
+    public Hotel(String name, int numberOfRooms, double bedPrice) {
         this.name = name;
         this.guestsList = new ArrayList<>();
-        // TODO remplacer par une création de chambres aléatoire
         this.roomsList = new ArrayList<>();
-        this.roomsList.add(new Room(101, 39.99));
-        this.roomsList.add(new Room(102, 44.99));
-        this.roomsList.add(new Room(103, 49.99));
-
+        for (int i = 1 ; i <= numberOfRooms ; i++) {
+            this.roomsList.add(new Room(i, bedPrice));
+        }
         this.bookingList = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Guest> getGuestsList() {
+        return guestsList;
+    }
+
+    public ArrayList<Room> getRoomsList() {
+        return roomsList;
+    }
+
+    public ArrayList<Booking> getBookingList() {
+        return bookingList;
     }
 
     @Override
@@ -41,18 +55,27 @@ public class Hotel {
         }
     }
 
-    public void displayRooms() {
-        System.out.println("=== Chambres de l'hôtel " + name + " ===");
+    public void displayAllRooms() {
         for (Room room : roomsList) {
             System.out.println(room);
         }
+    }
+
+    public ArrayList<Room> getFreeRooms() {
+        ArrayList<Room> freeRooms = new ArrayList<>();
+        for (Room room : roomsList) {
+            if (!room.isOccupied()) {
+                freeRooms.add(room);
+            }
+        }
+        return freeRooms;
     }
 
     public void displayAllBookings() {
         if (bookingList.size() > 0) {
             System.out.println("=== Réservations de l'hôtel " + name + " ===");
             for (Booking booking : bookingList) {
-                booking.printBooking();
+                booking.displayBooking();
             }
         } else {
             System.out.println("Il n'y a aucune réservation pour le moment");
@@ -64,8 +87,8 @@ public class Hotel {
         if (bookingList.size() > 0) {
             System.out.println("=== Réservations en cours de l'hôtel " + name + " ===");
             for (Booking booking : bookingList) {
-                if (booking.ongoing) {
-                    booking.printBooking();
+                if (booking.isOngoing()) {
+                    booking.displayBooking();
                     hasBooking = true;
                 }
             }
@@ -79,11 +102,11 @@ public class Hotel {
 
     public void displayBookingsByGuest(Guest guest) {
         boolean hasBooking = false;
-        System.out.println("=== Réservations du client " + guest.firstName + " " + guest.lastName + " ===");
+        System.out.println("=== Réservations du client " + guest.getFirstName() + " " + guest.getLastName() + " ===");
         for (Booking booking : this.bookingList) {
             // Utilisation de la méthode .equals() surchargée de Guest
-            if (booking.occupant.equals(guest)) {
-                booking.printBooking();
+            if (booking.getGuest().equals(guest)) {
+                booking.displayBooking();
                 hasBooking = true;
             }
 

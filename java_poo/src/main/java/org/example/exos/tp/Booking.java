@@ -4,34 +4,36 @@ import java.util.ArrayList;
 
 public class Booking {
 
-    public int id;
-    //TODO remplacer par une énum : en cours (true) ou terminée (false)
-    public boolean ongoing;
-    public ArrayList<Room> roomsList;
-    public Guest occupant;
-    public static int bookingCount;
+    private final int id;
+    private boolean ongoing;
+    private ArrayList<Room> roomsList;
+    private Guest guest;
+    private static int bookingCount;
 
-    public Booking(ArrayList<Room> roomsList, Guest occupant) {
+    public Booking(ArrayList<Room> roomsList, Guest guest) {
         this.id = ++bookingCount;
         this.ongoing = true;
         this.roomsList = roomsList;
-        this.occupant = occupant;
+        this.guest = guest;
     }
 
-    @Override
-    public String toString() {
-        String status;
-        if (ongoing) {
-            status = "en cours";
-        } else {
-            status = "terminée";
-        }
-        return "Réservation n°" + id + " - " + status +
-                "\n\tClient : " + occupant.firstName + " " + occupant.lastName + ", téléphone : " + occupant.phone +
-                "\n\tChambres : " + roomsList;
+    public int getId() {
+        return id;
     }
 
-    public void printBooking() {
+    public boolean isOngoing() {
+        return ongoing;
+    }
+
+    public ArrayList<Room> getRoomsList() {
+        return roomsList;
+    }
+
+    public Guest getGuest() {
+        return guest;
+    }
+
+    public void displayBooking() {
         String status;
         if (ongoing) {
             status = "en cours";
@@ -39,18 +41,17 @@ public class Booking {
             status = "terminée";
         }
         System.out.println("Réservation n°" + id + " - " + status +
-                "\n\tClient : " + occupant.firstName + " " + occupant.lastName + ", téléphone : " + occupant.phone +
+                "\n\tClient : " + guest.getFirstName() + " " + guest.getLastName() + " - téléphone : " + guest.getPhone() +
                 "\n\tChambres :");
         for (Room room : roomsList) {
             System.out.println("\t\t- " + room);
         }
     }
 
-
     public void cancelBooking() {
         this.ongoing = false;
         for (Room room : this.roomsList) {
-            room.occupied = false;
+            room.setOccupied(false);
         }
     }
 

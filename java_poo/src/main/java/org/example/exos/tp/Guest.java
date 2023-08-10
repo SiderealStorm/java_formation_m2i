@@ -1,25 +1,50 @@
 package org.example.exos.tp;
 
-import java.util.Objects;
-
 public class Guest {
 
-    public int id;
-    public String firstName;
-    public String lastName;
-    public String phone;
-    public static int guestCount;
+    private final int id;
+    // Utilisation d'une énum pour la civilité
+    private Title title;
+    private String firstName;
+    private String lastName;
+    private String phone;
+    private static int guestCount;
 
-    public Guest(String firstName, String lastName, String phone) {
+    public Guest(Title title, String firstName, String lastName, String phone) {
         this.id = ++guestCount;
+        this.title = title;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public Title getTitle() {
+        return title;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public static int getGuestCount() {
+        return guestCount;
+    }
+
     @Override
     public String toString() {
-        return "Client n°" + id  + " : " + firstName + " " + lastName + " - téléphone : " + phone;
+        return "Client n°" + id  + " : " + title.getValue() + " " + firstName + " " + lastName + " - téléphone : " + phone;
     }
 
     // Surcharge de la méthode .equals() de Object
@@ -41,6 +66,7 @@ public class Guest {
 
         // On compare ce qu'on a besoin de comparer pour que deux objets soient égaux
         return this.id == guest.id
+                && this.title == guest.title
                 && this.firstName.equals(guest.firstName)
                 && this.lastName.equals(guest.lastName)
                 && this.phone.equals(guest.phone);

@@ -38,7 +38,7 @@ public class AppMain {
                 case 4 -> UserInput.makeBooking(hotel);
                 case 5 -> UserInput.cancelBooking(hotel);
                 case 6 -> hotel.displayAllBookings();
-                case 7 -> hotel.displayRooms();
+                case 7 -> hotel.displayAllRooms();
                 default -> System.out.println("Erreur de saisie, recommencez");
             }
 
