@@ -54,7 +54,7 @@ public class UserInput {
 
         do {
             System.out.println("Civilité :");
-            System.out.println("\t1 : Madame - 2 : Mademoiselle - 3 : Monsieur - 4 : Neutre");
+            System.out.println("\t1 : Madame - 2 : Mademoiselle - 3 : Monsieur - 4 : Autre");
             choice = inputChoice();
             switch (choice) {
                 case 1 -> title = Title.MRS;
@@ -116,13 +116,14 @@ public class UserInput {
             }
             id = inputChoice();
 
-            for (Room room : hotel.getRoomsList()) {
+            for (Room room : rooms) {
                 if (room.getRoomNumber() == id) {
                     return room;
                 }
             }
 
             System.out.println("Cette chambre n'existe pas.");
+            return null;
         }
         System.out.println("Il n'y a aucune chambre libre !");
         return null;

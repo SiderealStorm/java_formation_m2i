@@ -102,7 +102,7 @@ public class Hotel {
 
     public void displayBookingsByGuest(Guest guest) {
         boolean hasBooking = false;
-        System.out.println("=== Réservations du client " + guest.getFirstName() + " " + guest.getLastName() + " ===");
+        System.out.println("=== Réservations de " + guest.getTitle().getValue() + " " + guest.getFirstName() + " " + guest.getLastName() + " ===");
         for (Booking booking : this.bookingList) {
             // Utilisation de la méthode .equals() surchargée de Guest
             if (booking.getGuest().equals(guest)) {
