@@ -11,20 +11,6 @@ public class ConsoleHCI {
 
     private static Hotel hotel;
 
-    public static int inputChoice() {
-        System.out.println();
-        System.out.print("Votre choix : ");
-        String input = scanner.nextLine();
-        int choice;
-        try {
-            choice = Integer.parseInt(input);
-        } catch (Exception e) {
-            System.out.println("Veuillez saisir un nombre !");
-            choice = -1;
-        }
-        return choice;
-    }
-
     public static void menu() {
         int choice;
 
@@ -57,9 +43,26 @@ public class ConsoleHCI {
             }
 
         } while (choice !=0);
+
+        scanner.close();
+
     }
 
-    public static void createHotel() {
+    private static int inputChoice() {
+        System.out.println();
+        System.out.print("Votre choix : ");
+        String input = scanner.nextLine();
+        int choice;
+        try {
+            choice = Integer.parseInt(input);
+        } catch (Exception e) {
+            System.out.println("Veuillez saisir un nombre !");
+            choice = -1;
+        }
+        return choice;
+    }
+
+    private static void createHotel() {
         String name;
         int numberOfRooms;
         double bedPrice;
@@ -81,7 +84,7 @@ public class ConsoleHCI {
         System.out.println("Hôtel " + hotel.getName() + " créé");
     }
 
-    public static void inputGuest() {
+    private static void inputGuest() {
         String firstName;
         String lastName;
         String phone;
@@ -116,7 +119,7 @@ public class ConsoleHCI {
         hotel.addGuest(new Guest(title, firstName, lastName, phone));
     }
 
-    public static Guest chooseGuest() {
+    private static Guest chooseGuest() {
         System.out.println();
         System.out.println("Choisissez un client :");
         hotel.displayGuests();
@@ -135,14 +138,14 @@ public class ConsoleHCI {
         return null;
     }
 
-    public static void displayBookingsByGuest() {
+    private static void displayBookingsByGuest() {
         Guest guest = chooseGuest();
         if (guest != null) {
             hotel.displayBookingsByGuest(guest);
         }
     }
 
-    public static Room chooseRoom() {
+    private static Room chooseRoom() {
         int id;
         ArrayList<Room> rooms = hotel.getFreeRooms();
 
@@ -168,7 +171,7 @@ public class ConsoleHCI {
         return null;
     }
 
-    public static Booking chooseBooking() {
+    private static Booking chooseBooking() {
         int id;
         System.out.println();
         System.out.println("Choisissez une réservation :");
@@ -188,7 +191,7 @@ public class ConsoleHCI {
         return null;
     }
 
-    public static void makeBooking() {
+    private static void makeBooking() {
         ArrayList<Room> roomsList = new ArrayList<>();
         char choice;
         Guest guest = chooseGuest();
@@ -219,7 +222,7 @@ public class ConsoleHCI {
         }
     }
 
-    public static void cancelBooking() {
+    private static void cancelBooking() {
         Booking booking = chooseBooking();
         if (booking != null) {
             booking.cancelBooking();
