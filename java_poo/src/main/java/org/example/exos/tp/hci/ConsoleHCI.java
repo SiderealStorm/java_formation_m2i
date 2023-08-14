@@ -1,9 +1,11 @@
-package org.example.exos.tp;
+package org.example.exos.tp.hci;
+
+import org.example.exos.tp.classes.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Ihm {
+public class ConsoleHCI {
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -26,7 +28,7 @@ public class Ihm {
     public static void menu() {
         int choice;
 
-        Ihm.createHotel();
+        ConsoleHCI.createHotel();
 
         do {
             System.out.println();
@@ -40,7 +42,7 @@ public class Ihm {
             System.out.println("7. Afficher toutes les chambres");
             System.out.println("0. Quitter");
 
-            choice = Ihm.inputChoice();
+            choice = ConsoleHCI.inputChoice();
 
             switch (choice) {
                 case 0 -> System.out.println("Au revoir");

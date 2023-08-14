@@ -1,4 +1,4 @@
-package org.example.exos.tp;
+package org.example.exos.tp.classes;
 
 public class Guest {
 
