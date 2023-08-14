@@ -56,6 +56,7 @@ public class Hotel {
     }
 
     public void displayAllRooms() {
+        System.out.println("=== Chambres de l'hôtel " + name + " ===");
         for (Room room : roomsList) {
             System.out.println(room);
         }

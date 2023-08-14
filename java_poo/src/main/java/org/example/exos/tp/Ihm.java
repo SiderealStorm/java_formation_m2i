@@ -3,9 +3,11 @@ package org.example.exos.tp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class UserInput {
+public class Ihm {
 
     private static final Scanner scanner = new Scanner(System.in);
+
+    private static Hotel hotel;
 
     public static int inputChoice() {
         System.out.println();
@@ -21,7 +23,41 @@ public class UserInput {
         return choice;
     }
 
-    public static Hotel createHotel() {
+    public static void menu() {
+        int choice;
+
+        Ihm.createHotel();
+
+        do {
+            System.out.println();
+            System.out.println("=== Menu principal ===");
+            System.out.println("1. Ajouter un client");
+            System.out.println("2. Voir la liste des clients");
+            System.out.println("3. Voir les réservations d'un client");
+            System.out.println("4. Faire une réservation");
+            System.out.println("5. Annuler une réservation");
+            System.out.println("6. Afficher toutes les réservations");
+            System.out.println("7. Afficher toutes les chambres");
+            System.out.println("0. Quitter");
+
+            choice = Ihm.inputChoice();
+
+            switch (choice) {
+                case 0 -> System.out.println("Au revoir");
+                case 1 -> inputGuest();
+                case 2 -> hotel.displayGuests();
+                case 3 -> displayBookingsByGuest();
+                case 4 -> makeBooking();
+                case 5 -> cancelBooking();
+                case 6 -> hotel.displayAllBookings();
+                case 7 -> hotel.displayAllRooms();
+                default -> System.out.println("Erreur de saisie, recommencez");
+            }
+
+        } while (choice !=0);
+    }
+
+    public static void createHotel() {
         String name;
         int numberOfRooms;
         double bedPrice;
@@ -39,10 +75,11 @@ public class UserInput {
         bedPrice = scanner.nextDouble();
         scanner.nextLine();
 
-        return new Hotel(name, numberOfRooms, bedPrice);
+        hotel = new Hotel(name, numberOfRooms, bedPrice);
+        System.out.println("Hôtel " + hotel.getName() + " créé");
     }
 
-    public static void inputGuest(Hotel hotel) {
+    public static void inputGuest() {
         String firstName;
         String lastName;
         String phone;
@@ -77,7 +114,7 @@ public class UserInput {
         hotel.addGuest(new Guest(title, firstName, lastName, phone));
     }
 
-    public static Guest chooseGuest(Hotel hotel) {
+    public static Guest chooseGuest() {
         System.out.println();
         System.out.println("Choisissez un client :");
         hotel.displayGuests();
@@ -96,14 +133,14 @@ public class UserInput {
         return null;
     }
 
-    public static void displayBookingsByGuest(Hotel hotel) {
-        Guest guest = chooseGuest(hotel);
+    public static void displayBookingsByGuest() {
+        Guest guest = chooseGuest();
         if (guest != null) {
             hotel.displayBookingsByGuest(guest);
         }
     }
 
-    public static Room chooseRoom(Hotel hotel) {
+    public static Room chooseRoom() {
         int id;
         ArrayList<Room> rooms = hotel.getFreeRooms();
 
@@ -129,7 +166,7 @@ public class UserInput {
         return null;
     }
 
-    public static Booking chooseBooking(Hotel hotel) {
+    public static Booking chooseBooking() {
         int id;
         System.out.println();
         System.out.println("Choisissez une réservation :");
@@ -149,10 +186,10 @@ public class UserInput {
         return null;
     }
 
-    public static void makeBooking(Hotel hotel) {
+    public static void makeBooking() {
         ArrayList<Room> roomsList = new ArrayList<>();
         char choice;
-        Guest guest = chooseGuest(hotel);
+        Guest guest = chooseGuest();
         if (guest != null) {
             do {
                 if (hotel.getFreeRooms().size() == 0) {
@@ -160,7 +197,7 @@ public class UserInput {
                     break;
                 }
 
-                Room room = chooseRoom(hotel);
+                Room room = chooseRoom();
                 if (room != null) {
                     roomsList.add(room);
                     room.setOccupied(true);
@@ -180,8 +217,8 @@ public class UserInput {
         }
     }
 
-    public static void cancelBooking(Hotel hotel) {
-        Booking booking = chooseBooking(hotel);
+    public static void cancelBooking() {
+        Booking booking = chooseBooking();
         if (booking != null) {
             booking.cancelBooking();
             System.out.println("Réservation n°" + booking.getId() + " annulée");
