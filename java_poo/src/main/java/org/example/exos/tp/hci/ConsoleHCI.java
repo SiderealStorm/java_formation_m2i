@@ -78,6 +78,7 @@ public class ConsoleHCI {
 
         System.out.print("Quel prix pour un couchage ? ");
         bedPrice = scanner.nextDouble();
+        // Il faut vider le cache avant de réutiliser .nextLine()
         scanner.nextLine();
 
         hotel = new Hotel(name, numberOfRooms, bedPrice);

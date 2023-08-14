@@ -8,6 +8,7 @@ public class Booking {
     private boolean ongoing;
     private ArrayList<Room> roomsList;
     private Guest guest;
+    private double totalCost;
     private static int bookingCount;
 
     public Booking(ArrayList<Room> roomsList, Guest guest) {
@@ -15,6 +16,8 @@ public class Booking {
         this.ongoing = true;
         this.roomsList = roomsList;
         this.guest = guest;
+        // Calcul du prix total de la réservation :
+        calculateTotalCost();
     }
 
     public int getId() {
@@ -33,6 +36,12 @@ public class Booking {
         return guest;
     }
 
+    private void calculateTotalCost() {
+        for (Room room : roomsList) {
+            this.totalCost += room.getPrice();
+        }
+    }
+
     public void displayBooking() {
         String status;
         if (ongoing) {
@@ -41,11 +50,12 @@ public class Booking {
             status = "terminée";
         }
         System.out.println("Réservation n°" + id + " - " + status +
-                "\n\tClient : " + guest.getFirstName() + " " + guest.getLastName() + " - téléphone : " + guest.getPhone() +
+                "\n\tClient : " + guest +
                 "\n\tChambres :");
         for (Room room : roomsList) {
             System.out.println("\t\t- " + room);
         }
+        System.out.println("\tCoût total : " + totalCost + " € par nuit");
     }
 
     public void cancelBooking() {
