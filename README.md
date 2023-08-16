@@ -18,3 +18,8 @@ L'énoncé des exercices se trouve dans le fichier contenant le main, au dessus 
 
 - [Démos](/java_poo/src/main/java/org/example/demos/)
 - [Exercices](/java_poo/src/main/java/org/example/exos/)
+
+## [JDBC/JPA/Hibernate](/java_jdbc/src/)
+
+- [Démos](/java_jdbc/src/main/java/org/example/demos/)
+- [Exercices](/java_jdbc/src/main/java/org/example/exos/)
