@@ -15,5 +15,12 @@ public class AppMain {
 
         ConsoleHCI.menu();
 
+        // TODO améliorations possibles :
+        /*
+        - Formatter le texte utilisateur (nom, prénom client, nom hôtel)
+        - Modifier un client
+        - Modifier une réservation (ajouter/supprimer chambres)
+        Pour cela, faire plusieurs menus et simplifier le menu principal pour pouvoir sélectionner "Gestion clients" et "gestion réservations" par exemple
+         */
     }
 }

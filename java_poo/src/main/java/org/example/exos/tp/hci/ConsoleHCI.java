@@ -31,6 +31,8 @@ public class ConsoleHCI {
             choice = ConsoleHCI.inputChoice();
 
             switch (choice) {
+                // TODO refactoriser pour avoir toutes les méthodes dans ConsoleHCI et plus dans Hotel
+                // TODO idem pour les autres classes : vérifier et déplacer tous les sout ici
                 case 0 -> System.out.println("Au revoir");
                 case 1 -> inputGuest();
                 case 2 -> hotel.displayGuests();
@@ -41,6 +43,7 @@ public class ConsoleHCI {
                 case 7 -> hotel.displayAllRooms();
                 default -> System.out.println("Erreur de saisie, recommencez");
             }
+            // TODO Faire en sorte qu'il faille faire entrée pour réafficher le menu
 
         } while (choice !=0);
 
@@ -209,6 +212,7 @@ public class ConsoleHCI {
                     room.setOccupied(true);
                 }
 
+                // TODO simplifier en remplaçant par une autre condition en int : si choix == 0
                 System.out.print("Tapez 'y' pour ajouter une autre chambre : ");
                 choice = scanner.next().toLowerCase().charAt(0);
                 scanner.nextLine();

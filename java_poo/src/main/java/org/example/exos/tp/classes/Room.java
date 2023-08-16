@@ -46,12 +46,18 @@ public class Room {
 
     @Override
     public String toString() {
-        String status;
-        if (occupied) {
-            status = "occupée";
-        } else {
-            status = "libre";
-        }
+
+//        // Condition classique :
+//        String status;
+//        if (occupied) {
+//            status = "occupée";
+//        } else {
+//            status = "libre";
+//        }
+
+        // Utilisation d'un ternaire pour simplifier l'écriture de la condition :
+        String status = occupied ? "occupée" : "libre";
+
         return "Chambre n°" + roomNumber + " : " + beds + " lit(s), " + price + " € la nuit - " + status;
     }
 

@@ -76,7 +76,7 @@ public class Hotel {
         if (bookingList.size() > 0) {
             System.out.println("=== Réservations de l'hôtel " + name + " ===");
             for (Booking booking : bookingList) {
-                booking.displayBooking();
+                System.out.println(booking);;
             }
         } else {
             System.out.println("Il n'y a aucune réservation pour le moment");
@@ -89,7 +89,7 @@ public class Hotel {
             System.out.println("=== Réservations en cours de l'hôtel " + name + " ===");
             for (Booking booking : bookingList) {
                 if (booking.isOngoing()) {
-                    booking.displayBooking();
+                    System.out.println(booking);
                     hasBooking = true;
                 }
             }
@@ -107,7 +107,7 @@ public class Hotel {
         for (Booking booking : this.bookingList) {
             // Utilisation de la méthode .equals() surchargée de Guest
             if (booking.getGuest().equals(guest)) {
-                booking.displayBooking();
+                System.out.println(booking);
                 hasBooking = true;
             }
 
