@@ -1,6 +1,6 @@
-package org.example.demos;
+package org.example.demos.jdbc;
 
-import org.example.demos.util.DatabaseManager;
+import org.example.demos.jdbc.util.DatabaseManager;
 
 import java.sql.*;
 import java.util.Scanner;
@@ -42,7 +42,7 @@ public class Main {
 
             // Exécution de la requête :
             statement.execute(request);     // execute() renvoie toujours false
-            System.out.println("Exécution d'une requête");
+            System.out.println("Exécution d'une requête avec Statement");
 
 
             // Faire une requête avec PreparedStatement
@@ -59,7 +59,7 @@ public class Main {
 
             // Exécution de la requête :
             int result = preparedStatement.executeUpdate();     // Pas de paramètre car le statement est préparé
-            System.out.println("Exécution d'une requête");
+            System.out.println("Exécution d'une requête avec PreparedStatement");
             System.out.println("Nombre de lignes affectées : " + result);    // executeUpdate() renvoie le nombre de lignes affectées
 
 
@@ -68,13 +68,13 @@ public class Main {
             preparedStatement = connection.prepareStatement(request, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, firstName);
             preparedStatement.setString(2, lastName);
-            result = preparedStatement.executeUpdate();     // Pas de changement ici
-            System.out.println("Exécution d'une requête");
+            preparedStatement.executeUpdate();     // Pas de changement ici
+            System.out.println("Exécution d'une requête PreparedStatement en récupérant l'ID");
 
             // Possibilité de récupérer un ResultSet :
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
-                System.out.println(resultSet.getInt(1));
+                System.out.println("Index de la ligne insérée : " + resultSet.getInt(1));
             }
 
 
@@ -88,7 +88,7 @@ public class Main {
 
             // Exécution de la requête :
             resultSet = statement.executeQuery(request);     // executeQuery() renvoie toujours un ResultSet
-            System.out.println("Exécution d'une requête");
+            System.out.println("Exécution d'une requête de lecture");
 
             // Récupération des données du ResultSet :
             while (resultSet.next()) {
