@@ -1,7 +1,7 @@
 package org.example.exos.jdbc1.hci;
 
 import org.example.exos.jdbc1.classes.Student;
-import org.example.exos.jdbc1.util.ConnectDB;
+import org.example.exos.util.ConnectDB;
 
 import java.sql.*;
 import java.text.ParseException;

@@ -1,0 +1,55 @@
+package org.example.exos.jdbc2.model;
+
+import java.util.List;
+
+public class BankAccount {
+
+    private int id;
+    private double balance;
+    private int customerId;
+    private List<Transaction> transactions;
+
+    public BankAccount() {}
+
+    public BankAccount(double balance, int customerId) {
+        this.balance = balance;
+        this.customerId = customerId;
+    }
+    public BankAccount(int id, double balance, int customerId) {
+        this.id = id;
+        this.balance = balance;
+        this.customerId = customerId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+}

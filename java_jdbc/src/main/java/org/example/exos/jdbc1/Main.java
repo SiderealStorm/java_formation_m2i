@@ -1,15 +1,6 @@
 package org.example.exos.jdbc1;
 
 import org.example.exos.jdbc1.hci.ConsoleHci;
-import org.example.exos.jdbc1.util.ConnectDB;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Scanner;
-import java.util.Date;
 
 /*
 Exercice JDBC 1 :
