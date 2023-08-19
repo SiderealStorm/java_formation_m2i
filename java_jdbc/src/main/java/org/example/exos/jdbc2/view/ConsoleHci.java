@@ -2,6 +2,7 @@ package org.example.exos.jdbc2.view;
 
 import org.example.exos.jdbc2.model.BankAccount;
 import org.example.exos.jdbc2.model.Customer;
+import org.example.exos.jdbc2.model.TransactionType;
 import org.example.exos.jdbc2.service.BankService;
 
 import java.util.ArrayList;
@@ -27,8 +28,9 @@ public class ConsoleHci {
                 case 0 -> System.out.println("Merci d'avoir utilisé nos services.");
                 case 1 -> addCustomer();
                 case 2 -> createAccount();
-                case 3 -> System.out.println("Crédit");
-                case 4 -> System.out.println("Débit");
+                case 3 -> creditAccount();
+                case 4 -> debitAccount();
+                case 5 -> debitAccount();
                 default -> System.out.println("Veuillez saisir un nombre valide");
             }
 
@@ -40,8 +42,9 @@ public class ConsoleHci {
         System.out.println("=== MENU PRINCIPAL ===");
         System.out.println("1. Ajouter un client");
         System.out.println("2. Ouvrir un compte");
-        System.out.println("3. Créditer un compte");
-        System.out.println("4. Débiter un compte");
+        System.out.println("3. Faire un dépôt");
+        System.out.println("4. Faire un retrait");
+        System.out.println("5. Afficher les détails d'un compte");
         System.out.println("0. Quitter le programme");
     }
 
@@ -124,7 +127,29 @@ public class ConsoleHci {
     private static void creditAccount() {
         System.out.println("=== Créditer un compte ===");
         BankAccount account = chooseAccount();
-        // TODO en cours
+        if (account != null) {
+            System.out.print("Montant à créditer : ");
+            double amount = scanner.nextDouble();
+            if (service.makeTransaction(account.getId(), amount, TransactionType.DEPOSIT)) {
+                System.out.println(amount + " € ont bien été crédités sur le compte n°" + account.getId());
+            }
+        } else {
+            System.out.println("Compte non trouvé");
+        }
+    }
+
+    private static void debitAccount() {
+        System.out.println("=== Débiter un compte ===");
+        BankAccount account = chooseAccount();
+        if (account != null) {
+            System.out.print("Montant à débiter : ");
+            double amount = scanner.nextDouble();
+            if (service.makeTransaction(account.getId(), -amount, TransactionType.WITHDRAWAL)) {
+                System.out.println(amount + " € ont bien été débités sur le compte n°" + account.getId());
+            }
+        } else {
+            System.out.println("Compte non trouvé");
+        }
     }
 
 }

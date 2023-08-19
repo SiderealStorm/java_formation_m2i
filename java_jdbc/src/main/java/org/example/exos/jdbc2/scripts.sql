@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS exos_jdbc;
+CREATE SCHEMA IF NOT EXISTS exo2;
+
 --DROP TABLE IF EXISTS exo2.bank_account, exo2.transaction, exo2.customer ;
 
 CREATE TABLE IF NOT EXISTS exo2.customer (

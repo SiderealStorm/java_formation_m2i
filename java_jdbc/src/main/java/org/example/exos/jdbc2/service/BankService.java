@@ -60,11 +60,10 @@ public class BankService {
         try {
             BankAccount account = bankAccountDAO.get(accountId);
             if (account != null && bankAccountDAO.update(account)) {
-                if (type.equals(TransactionType.WITHDRAWAL)) {
-                    amount = -amount;
-                }
                 Transaction transaction = new Transaction(amount, type, accountId);
                 if(transactionDAO.save(transaction)) {
+                    account.setBalance(account.getBalance() + amount);
+                    bankAccountDAO.update(account);
                     return true;
                 }
             }
