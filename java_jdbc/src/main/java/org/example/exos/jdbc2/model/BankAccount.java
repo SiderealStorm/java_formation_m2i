@@ -52,4 +52,9 @@ public class BankAccount {
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
+
+    @Override
+    public String toString() {
+        return "Compte n°" + id + " : - Solde : " + balance + " €";
+    }
 }

@@ -58,11 +58,6 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction{" +
-                "id=" + id +
-                ", amount=" + amount +
-                ", type=" + type +
-                ", accountId=" + accountId +
-                '}';
+        return id + " - " + type.getLabel() + " de " + amount + " € sur le compte n°" + accountId;
     }
 }

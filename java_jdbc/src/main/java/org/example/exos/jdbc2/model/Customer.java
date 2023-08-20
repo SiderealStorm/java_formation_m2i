@@ -63,4 +63,9 @@ public class Customer {
     public void setAccountsList(List<BankAccount> accountsList) {
         this.accountsList = accountsList;
     }
+
+    @Override
+    public String toString() {
+        return "Client n°" + id + " : " + firstName + " " + lastName + " - Téléphone : " + phone;
+    }
 }

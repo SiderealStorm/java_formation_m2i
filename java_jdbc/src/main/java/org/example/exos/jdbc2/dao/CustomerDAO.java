@@ -2,8 +2,6 @@ package org.example.exos.jdbc2.dao;
 
 import jdk.jshell.spi.ExecutionControl;
 import org.example.exos.jdbc2.model.Customer;
-import org.example.exos.jdbc2.model.Transaction;
-import org.example.exos.jdbc2.model.TransactionType;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -48,7 +46,7 @@ public class CustomerDAO extends BaseDAO<Customer> {
     public List<Customer> get() throws SQLException {
         ArrayList<Customer> customers = new ArrayList<>();
 
-        query = "SELECT * FROM exo2.transaction ORDER BY id";
+        query = "SELECT * FROM exo2.customer ORDER BY id";
         statement = _connection.prepareStatement(query);
         results = statement.executeQuery();
 

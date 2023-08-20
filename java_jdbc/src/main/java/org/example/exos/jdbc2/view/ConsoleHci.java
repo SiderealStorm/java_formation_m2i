@@ -2,6 +2,7 @@ package org.example.exos.jdbc2.view;
 
 import org.example.exos.jdbc2.model.BankAccount;
 import org.example.exos.jdbc2.model.Customer;
+import org.example.exos.jdbc2.model.Transaction;
 import org.example.exos.jdbc2.model.TransactionType;
 import org.example.exos.jdbc2.service.BankService;
 
@@ -30,7 +31,7 @@ public class ConsoleHci {
                 case 2 -> createAccount();
                 case 3 -> creditAccount();
                 case 4 -> debitAccount();
-                case 5 -> debitAccount();
+                case 5 -> displayAccountDetails();
                 default -> System.out.println("Veuillez saisir un nombre valide");
             }
 
@@ -131,7 +132,7 @@ public class ConsoleHci {
             System.out.print("Montant à créditer : ");
             double amount = scanner.nextDouble();
             if (service.makeTransaction(account.getId(), amount, TransactionType.DEPOSIT)) {
-                System.out.println(amount + " € ont bien été crédités sur le compte n°" + account.getId());
+                System.out.println("Le compte n°" + account.getId() + " a bien été crédité de " + amount + " €");
             }
         } else {
             System.out.println("Compte non trouvé");
@@ -144,8 +145,26 @@ public class ConsoleHci {
         if (account != null) {
             System.out.print("Montant à débiter : ");
             double amount = scanner.nextDouble();
-            if (service.makeTransaction(account.getId(), -amount, TransactionType.WITHDRAWAL)) {
-                System.out.println(amount + " € ont bien été débités sur le compte n°" + account.getId());
+            if (!service.checkWithdrawal(account, amount)) {
+                System.out.println("Il n'y a pas assez d'argent sur le compte");
+            } else {
+                if (service.makeTransaction(account.getId(), amount, TransactionType.WITHDRAWAL)) {
+                    System.out.println("Le compte n°" + account.getId() + " a bien été débité de " + amount + " €");
+                }
+            }
+        } else {
+            System.out.println("Compte non trouvé");
+        }
+    }
+
+    private static void displayAccountDetails() {
+        BankAccount account = chooseAccount();
+        if (account != null) {
+            account.setTransactions(service.getTransactions(account.getId()));
+            System.out.println(account);
+            System.out.println("Historique des transactions :");
+            for (Transaction transaction : account.getTransactions()) {
+                System.out.println(transaction);
             }
         } else {
             System.out.println("Compte non trouvé");

@@ -1,6 +1,7 @@
 package org.example.exos.jdbc2.dao;
 
 import jdk.jshell.spi.ExecutionControl;
+import org.example.exos.jdbc2.model.Transaction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,5 +25,4 @@ public abstract class BaseDAO<T> {
     public abstract boolean delete(T element) throws SQLException, ExecutionControl.NotImplementedException;
     public abstract List<T> get() throws SQLException;
     public abstract T get(int id) throws SQLException;
-
 }

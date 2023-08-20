@@ -27,12 +27,12 @@ public class TransactionDAO extends BaseDAO<Transaction> {
     }
 
     @Override
-    public boolean update(Transaction element) throws SQLException, ExecutionControl.NotImplementedException {
+    public boolean update(Transaction element) throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Erreur : la méthode n'est pas implémentée");
     }
 
     @Override
-    public boolean delete(Transaction element) throws SQLException, ExecutionControl.NotImplementedException {
+    public boolean delete(Transaction element) throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Erreur : la méthode n'est pas implémentée");
     }
 
@@ -48,8 +48,7 @@ public class TransactionDAO extends BaseDAO<Transaction> {
             Transaction transaction = new Transaction(
                     results.getInt("id"),
                     results.getDouble("amount"),
-                    // TODO gérer l'énum
-                    TransactionType.DEPOSIT,
+                    getTransactionType(results.getString("type")),
                     results.getInt("account_id")
             );
             transactions.add(transaction);
@@ -71,12 +70,40 @@ public class TransactionDAO extends BaseDAO<Transaction> {
             transaction = new Transaction(
                     results.getInt("id"),
                     results.getDouble("amount"),
-                    // TODO gérer l'énum
-                    TransactionType.DEPOSIT,
+                    getTransactionType(results.getString("type")),
                     results.getInt("account_id")
             );
         }
 
         return transaction;
+    }
+
+    public List<Transaction> getByAccount(int id) throws SQLException {
+        ArrayList<Transaction> transactions = new ArrayList<>();
+
+        query = "SELECT * FROM exo2.transaction WHERE account_id = ?";
+        statement = _connection.prepareStatement(query);
+        statement.setInt(1, id);
+        results = statement.executeQuery();
+
+        while (results.next()) {
+            Transaction transaction = new Transaction(
+                    results.getInt("id"),
+                    results.getDouble("amount"),
+                    getTransactionType(results.getString("type")),
+                    results.getInt("account_id")
+            );
+            transactions.add(transaction);
+        }
+
+        return transactions;
+    }
+
+    private TransactionType getTransactionType(String stringType) {
+        if (stringType.equals(TransactionType.DEPOSIT.name())) {
+            return TransactionType.DEPOSIT;
+        } else {
+            return TransactionType.WITHDRAWAL;
+        }
     }
 }

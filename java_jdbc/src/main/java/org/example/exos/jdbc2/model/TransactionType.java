@@ -4,9 +4,13 @@ public enum TransactionType {
     DEPOSIT("dépôt"),
     WITHDRAWAL("retrait");
 
-    final String text;
+    private final String label;
 
-    TransactionType(String text) {
-        this.text = text;
+    TransactionType(String label) {
+        this.label = label;
+    }
+
+    public String getLabel() {
+        return this.label;
     }
 }

@@ -1,6 +1,6 @@
 package org.example.exos.jdbc2.service;
 
-import org.example.demos.jdbcdao.util.DatabaseManager;
+import org.example.exos.util.ConnectDB;
 import org.example.exos.jdbc2.dao.BankAccountDAO;
 import org.example.exos.jdbc2.dao.CustomerDAO;
 import org.example.exos.jdbc2.dao.TransactionDAO;
@@ -11,7 +11,6 @@ import org.example.exos.jdbc2.model.TransactionType;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BankService {
@@ -22,7 +21,7 @@ public class BankService {
 
     public BankService() {
         try {
-            Connection connection = DatabaseManager.getPostgreConnection();
+            Connection connection = ConnectDB.getPostgreConnection();
             bankAccountDAO = new BankAccountDAO(connection);
             transactionDAO = new TransactionDAO(connection);
             customerDAO = new CustomerDAO(connection);
@@ -62,6 +61,9 @@ public class BankService {
             if (account != null && bankAccountDAO.update(account)) {
                 Transaction transaction = new Transaction(amount, type, accountId);
                 if(transactionDAO.save(transaction)) {
+                    if (type.equals(TransactionType.WITHDRAWAL)) {
+                        amount = -amount;
+                    }
                     account.setBalance(account.getBalance() + amount);
                     bankAccountDAO.update(account);
                     return true;
@@ -71,6 +73,10 @@ public class BankService {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public boolean checkWithdrawal(BankAccount account, Double amount) {
+        return account.getBalance() > amount;
     }
 
     public List<Customer> getAllCustomers() {
@@ -91,9 +97,9 @@ public class BankService {
         return null;
     }
 
-    public List<Transaction> getAllTransactions() {
+    public List<Transaction> getTransactions(int id) {
         try {
-            return transactionDAO.get();
+            return transactionDAO.getByAccount(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
