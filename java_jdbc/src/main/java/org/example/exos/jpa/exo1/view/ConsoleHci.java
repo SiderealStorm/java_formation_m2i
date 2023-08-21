@@ -44,21 +44,27 @@ public class ConsoleHci {
 
     private static int inputChoice() {
         int choice;
-        try {
-            System.out.print("Votre choix : ");
-            choice = scanner.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Erreur : vous devez saisir un nombre !");
-            choice = -1;
-        }
-        scanner.nextLine();
+        do {
+            try {
+                System.out.print("Votre choix : ");
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Erreur : vous devez saisir un nombre entier !");
+                choice = -1;
+            }
+            scanner.nextLine();
+        } while (choice == -1);
         return choice;
     }
 
     private static void displayTasks() {
         List<Task> taskList = service.getAllTasks();
-        for (Task task : taskList) {
-            System.out.println(task);
+        if (taskList.size() > 0) {
+            for (Task task : taskList) {
+                System.out.println(task);
+            }
+        } else {
+            System.out.println("Il n'y a aucune tâche enregistrée");
         }
     }
 

@@ -4,12 +4,11 @@ import org.example.exos.jpa.exo1.entity.Task;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.List;
 
 public class TaskDAO {
 
-    private EntityManagerFactory emf;
+    private final EntityManagerFactory emf;
 
     public TaskDAO(EntityManagerFactory entityManagerFactory) {
         emf = entityManagerFactory;
