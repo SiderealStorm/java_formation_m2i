@@ -29,6 +29,7 @@ public class ConsoleHci {
             }
         } while (choice !=0);
         scanner.close();
+        service.closeDAO();
     }
 
     private static void displayMenu() {

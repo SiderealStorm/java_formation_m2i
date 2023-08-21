@@ -53,7 +53,7 @@ public class Task {
         } else {
             status = "en cours";
         }
-        return id + " : " + title + "(" + status + ")";
+        return id + " : " + title + " (" + status + ")";
     }
 
 }

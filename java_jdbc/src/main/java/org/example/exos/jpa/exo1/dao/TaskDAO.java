@@ -9,7 +9,15 @@ import java.util.List;
 
 public class TaskDAO {
 
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_postgres");
+    private EntityManagerFactory emf;
+
+    public TaskDAO(EntityManagerFactory entityManagerFactory) {
+        emf = entityManagerFactory;
+    }
+
+    public void close() {
+        emf.close();
+    }
 
     public void add(Task task)  {
         EntityManager em = emf.createEntityManager();
@@ -21,14 +29,13 @@ public class TaskDAO {
         em.getTransaction().commit();
 
         em.close();
-        emf.close();
     }
 
     public List<Task> get() {
         List<Task> taskList;
 
         EntityManager em = emf.createEntityManager();
-        taskList = em.createQuery("select todo from ToDo todo", Task.class).getResultList();
+        taskList = em.createQuery("select task from Task task order by id", Task.class).getResultList();
 
         return taskList;
     }
@@ -37,7 +44,6 @@ public class TaskDAO {
         EntityManager em = emf.createEntityManager();
         Task task = em.find(Task.class, id);
         em.close();
-        emf.close();
 
         return task;
     }
@@ -54,7 +60,6 @@ public class TaskDAO {
         em.getTransaction().commit();
 
         em.close();
-        emf.close();
     }
 
     public void delete(int id) {
@@ -68,7 +73,6 @@ public class TaskDAO {
         em.getTransaction().commit();
 
         em.close();
-        emf.close();
     }
 
 }

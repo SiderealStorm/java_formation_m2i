@@ -3,12 +3,21 @@ package org.example.exos.jpa.exo1.service;
 import org.example.exos.jpa.exo1.dao.TaskDAO;
 import org.example.exos.jpa.exo1.entity.Task;
 
+import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TaskService {
 
-    private final TaskDAO taskDAO = new TaskDAO();
+    private TaskDAO taskDAO;
+
+    public TaskService() {
+        taskDAO = new TaskDAO(Persistence.createEntityManagerFactory("jpa_postgres"));
+    }
+
+    public void closeDAO() {
+        taskDAO.close();
+    }
 
     public void saveTask(String title) {
         Task task = new Task(title);
