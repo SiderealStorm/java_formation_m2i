@@ -1,4 +1,4 @@
-package org.example.exos.jdbc2.model;
+package org.example.exos.jdbc.jdbc2.model;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ public class BankAccount {
 
     private int id;
     private double balance;
+    // En JDBC, il est plus simple de référencer le client par son ID que par un objet client complet
     private int customerId;
     private List<Transaction> transactions;
 
@@ -15,6 +16,7 @@ public class BankAccount {
         this.balance = balance;
         this.customerId = customerId;
     }
+
     public BankAccount(int id, double balance, int customerId) {
         this.id = id;
         this.balance = balance;

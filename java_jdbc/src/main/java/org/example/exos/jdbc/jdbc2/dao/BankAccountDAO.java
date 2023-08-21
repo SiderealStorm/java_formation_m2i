@@ -1,8 +1,7 @@
-package org.example.exos.jdbc2.dao;
+package org.example.exos.jdbc.jdbc2.dao;
 
 import jdk.jshell.spi.ExecutionControl;
-import org.example.exos.jdbc2.model.BankAccount;
-import org.example.exos.jdbc2.model.Customer;
+import org.example.exos.jdbc.jdbc2.model.BankAccount;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -37,8 +36,8 @@ public class BankAccountDAO extends BaseDAO<BankAccount> {
     }
 
     @Override
-    public boolean delete(BankAccount element) throws SQLException, ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Erreur : la méthode n'est pas implémentée");
+    public boolean delete(BankAccount element) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Erreur : la méthode delete() n'est pas implémentée pour BanKAccountDAO");
     }
 
     @Override

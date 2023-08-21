@@ -1,6 +1,5 @@
-package org.example.exos.jdbc2.model;
+package org.example.exos.jdbc.jdbc2.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {

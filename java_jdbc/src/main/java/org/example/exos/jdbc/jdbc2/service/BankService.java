@@ -1,13 +1,13 @@
-package org.example.exos.jdbc2.service;
+package org.example.exos.jdbc.jdbc2.service;
 
-import org.example.exos.util.ConnectDB;
-import org.example.exos.jdbc2.dao.BankAccountDAO;
-import org.example.exos.jdbc2.dao.CustomerDAO;
-import org.example.exos.jdbc2.dao.TransactionDAO;
-import org.example.exos.jdbc2.model.BankAccount;
-import org.example.exos.jdbc2.model.Customer;
-import org.example.exos.jdbc2.model.Transaction;
-import org.example.exos.jdbc2.model.TransactionType;
+import org.example.exos.jdbc.jdbc2.model.BankAccount;
+import org.example.exos.jdbc.jdbc2.model.Customer;
+import org.example.exos.jdbc.jdbc2.model.Transaction;
+import org.example.exos.jdbc.jdbc2.model.TransactionType;
+import org.example.exos.jdbc.util.ConnectDB;
+import org.example.exos.jdbc.jdbc2.dao.BankAccountDAO;
+import org.example.exos.jdbc.jdbc2.dao.CustomerDAO;
+import org.example.exos.jdbc.jdbc2.dao.TransactionDAO;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -55,6 +55,7 @@ public class BankService {
         return false;
     }
 
+    // Une partie de cette méthode aurait pu être gérée par le modèle BankAccount
     public boolean makeTransaction(int accountId, double amount, TransactionType type) {
         try {
             BankAccount account = bankAccountDAO.get(accountId);

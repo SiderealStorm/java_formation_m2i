@@ -1,12 +1,11 @@
-package org.example.exos.jdbc2.view;
+package org.example.exos.jdbc.jdbc2.view;
 
-import org.example.exos.jdbc2.model.BankAccount;
-import org.example.exos.jdbc2.model.Customer;
-import org.example.exos.jdbc2.model.Transaction;
-import org.example.exos.jdbc2.model.TransactionType;
-import org.example.exos.jdbc2.service.BankService;
+import org.example.exos.jdbc.jdbc2.model.BankAccount;
+import org.example.exos.jdbc.jdbc2.model.Customer;
+import org.example.exos.jdbc.jdbc2.model.Transaction;
+import org.example.exos.jdbc.jdbc2.model.TransactionType;
+import org.example.exos.jdbc.jdbc2.service.BankService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,6 +35,8 @@ public class ConsoleHci {
             }
 
         } while (choice != 0);
+
+        scanner.close();
     }
 
     private static void displayMenu() {
@@ -126,11 +127,17 @@ public class ConsoleHci {
     }
 
     private static void creditAccount() {
+        double amount;
         System.out.println("=== Créditer un compte ===");
         BankAccount account = chooseAccount();
         if (account != null) {
-            System.out.print("Montant à créditer : ");
-            double amount = scanner.nextDouble();
+            do {
+                System.out.print("Montant à créditer : ");
+                amount = scanner.nextDouble();
+                if (amount <= 0) {
+                    System.out.println("Veuillez entrer un nombre positif !");
+                }
+            } while (amount <= 0);
             if (service.makeTransaction(account.getId(), amount, TransactionType.DEPOSIT)) {
                 System.out.println("Le compte n°" + account.getId() + " a bien été crédité de " + amount + " €");
             }
@@ -140,11 +147,17 @@ public class ConsoleHci {
     }
 
     private static void debitAccount() {
+        double amount;
         System.out.println("=== Débiter un compte ===");
         BankAccount account = chooseAccount();
         if (account != null) {
-            System.out.print("Montant à débiter : ");
-            double amount = scanner.nextDouble();
+            do {
+                System.out.print("Montant à débiter : ");
+                amount = scanner.nextDouble();
+                if (amount <= 0) {
+                    System.out.println("Veuillez entrer un nombre positif !");
+                }
+            } while (amount <= 0);
             if (!service.checkWithdrawal(account, amount)) {
                 System.out.println("Il n'y a pas assez d'argent sur le compte");
             } else {
@@ -160,8 +173,11 @@ public class ConsoleHci {
     private static void displayAccountDetails() {
         BankAccount account = chooseAccount();
         if (account != null) {
+            System.out.println();
             account.setTransactions(service.getTransactions(account.getId()));
+            Customer customer = service.getCustomer(account.getCustomerId());
             System.out.println(account);
+            System.out.println(customer);
             System.out.println("Historique des transactions :");
             for (Transaction transaction : account.getTransactions()) {
                 System.out.println(transaction);

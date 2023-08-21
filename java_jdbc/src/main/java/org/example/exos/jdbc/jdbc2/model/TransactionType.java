@@ -1,4 +1,4 @@
-package org.example.exos.jdbc2.model;
+package org.example.exos.jdbc.jdbc2.model;
 
 public enum TransactionType {
     DEPOSIT("dépôt"),

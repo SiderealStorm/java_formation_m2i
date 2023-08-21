@@ -1,4 +1,4 @@
-package org.example.exos.util;
+package org.example.exos.jdbc.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -4,7 +4,7 @@ Exercices et démonstrations Java, faits pendant la formation "Développeurs Jav
 
 Chaque exercice ou démo contient une fonction main pour qu'il puisse être exécuté individuellement.
 
-L'énoncé des exercices se trouve dans le fichier contenant le main, au dessus de la déclaration de classe.
+L'énoncé des exercices se trouve dans le fichier contenant le main, au dessus de la déclaration de classe, ou dans un fichier README au même niveau que le Main.
 
 ## [Bases](/java_base/src/)
 
@@ -23,3 +23,5 @@ L'énoncé des exercices se trouve dans le fichier contenant le main, au dessus 
 
 - [Démos](/java_jdbc/src/main/java/org/example/demos/)
 - [Exercices](/java_jdbc/src/main/java/org/example/exos/)
+    - [JDBC](/java_jdbc/src/main/java/org/example/exos/jdbc)
+    - [JPA](/java_jdbc/src/main/java/org/example/exos/jpa)

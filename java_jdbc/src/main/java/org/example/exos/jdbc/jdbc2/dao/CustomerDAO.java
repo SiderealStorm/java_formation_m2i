@@ -1,7 +1,7 @@
-package org.example.exos.jdbc2.dao;
+package org.example.exos.jdbc.jdbc2.dao;
 
 import jdk.jshell.spi.ExecutionControl;
-import org.example.exos.jdbc2.model.Customer;
+import org.example.exos.jdbc.jdbc2.model.Customer;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -38,8 +38,8 @@ public class CustomerDAO extends BaseDAO<Customer> {
     }
 
     @Override
-    public boolean delete(Customer element) throws SQLException, ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Erreur : la méthode n'est pas implémentée");
+    public boolean delete(Customer element) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Erreur : la méthode delete() n'est pas implémentée pour CustomerDAO");
     }
 
     @Override
