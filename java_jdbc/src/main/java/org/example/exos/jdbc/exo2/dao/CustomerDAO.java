@@ -1,7 +1,7 @@
-package org.example.exos.jdbc.jdbc2.dao;
+package org.example.exos.jdbc.exo2.dao;
 
 import jdk.jshell.spi.ExecutionControl;
-import org.example.exos.jdbc.jdbc2.model.Customer;
+import org.example.exos.jdbc.exo2.model.Customer;
 
 import java.sql.Connection;
 import java.sql.SQLException;

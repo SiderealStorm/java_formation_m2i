@@ -26,7 +26,7 @@
             <!-- Driver utilisé, en fonction du dialecte -->
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <!-- Nom de la BDD -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/demo_jpa" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/jpa" />
             <!-- Utilisateur et mot de passe de connexion à la BDD -->
             <property name="javax.persistence.jdbc.user" value="postgres" />
             <property name="javax.persistence.jdbc.password" value="Storm" />

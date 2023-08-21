@@ -1,10 +1,10 @@
-package org.example.exos.jdbc.jdbc2.view;
+package org.example.exos.jdbc.exo2.view;
 
-import org.example.exos.jdbc.jdbc2.model.BankAccount;
-import org.example.exos.jdbc.jdbc2.model.Customer;
-import org.example.exos.jdbc.jdbc2.model.Transaction;
-import org.example.exos.jdbc.jdbc2.model.TransactionType;
-import org.example.exos.jdbc.jdbc2.service.BankService;
+import org.example.exos.jdbc.exo2.model.BankAccount;
+import org.example.exos.jdbc.exo2.model.Customer;
+import org.example.exos.jdbc.exo2.model.Transaction;
+import org.example.exos.jdbc.exo2.model.TransactionType;
+import org.example.exos.jdbc.exo2.service.BankService;
 
 import java.util.List;
 import java.util.Scanner;

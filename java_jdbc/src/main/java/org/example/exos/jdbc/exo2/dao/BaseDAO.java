@@ -1,4 +1,4 @@
-package org.example.exos.jdbc.jdbc2.dao;
+package org.example.exos.jdbc.exo2.dao;
 
 import jdk.jshell.spi.ExecutionControl;
 

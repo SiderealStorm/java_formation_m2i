@@ -1,13 +1,13 @@
-package org.example.exos.jdbc.jdbc2.service;
+package org.example.exos.jdbc.exo2.service;
 
-import org.example.exos.jdbc.jdbc2.model.BankAccount;
-import org.example.exos.jdbc.jdbc2.model.Customer;
-import org.example.exos.jdbc.jdbc2.model.Transaction;
-import org.example.exos.jdbc.jdbc2.model.TransactionType;
+import org.example.exos.jdbc.exo2.model.BankAccount;
+import org.example.exos.jdbc.exo2.model.Customer;
+import org.example.exos.jdbc.exo2.model.Transaction;
+import org.example.exos.jdbc.exo2.model.TransactionType;
 import org.example.exos.jdbc.util.ConnectDB;
-import org.example.exos.jdbc.jdbc2.dao.BankAccountDAO;
-import org.example.exos.jdbc.jdbc2.dao.CustomerDAO;
-import org.example.exos.jdbc.jdbc2.dao.TransactionDAO;
+import org.example.exos.jdbc.exo2.dao.BankAccountDAO;
+import org.example.exos.jdbc.exo2.dao.CustomerDAO;
+import org.example.exos.jdbc.exo2.dao.TransactionDAO;
 
 import java.sql.Connection;
 import java.sql.SQLException;

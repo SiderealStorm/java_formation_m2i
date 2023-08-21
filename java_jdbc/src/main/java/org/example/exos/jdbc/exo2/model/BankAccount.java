@@ -1,4 +1,4 @@
-package org.example.exos.jdbc.jdbc2.model;
+package org.example.exos.jdbc.exo2.model;
 
 import java.util.List;
 

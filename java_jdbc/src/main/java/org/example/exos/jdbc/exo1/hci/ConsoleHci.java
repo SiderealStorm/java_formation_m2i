@@ -1,6 +1,6 @@
-package org.example.exos.jdbc.jdbc1.hci;
+package org.example.exos.jdbc.exo1.hci;
 
-import org.example.exos.jdbc.jdbc1.classes.Student;
+import org.example.exos.jdbc.exo1.classes.Student;
 import org.example.exos.jdbc.util.ConnectDB;
 
 import java.sql.*;

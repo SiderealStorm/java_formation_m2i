@@ -1,4 +1,4 @@
-package org.example.exos.jdbc.jdbc1.classes;
+package org.example.exos.jdbc.exo1.classes;
 
 import java.util.Date;
 
