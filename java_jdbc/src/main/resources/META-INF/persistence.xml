@@ -32,7 +32,10 @@
             <property name="javax.persistence.jdbc.password" value="Storm" />
 
             <!-- Dialecte = méthode de communication (par défaut MySQL) -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <!-- Valeur de base (dépréciée) -->
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>-->
+            <!-- Nouvelle valeur -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL82Dialect"/>
 
             <!-- Choix de génération (ou non) des tables -->
             <!-- Avec update, la BDD et les tables sont créées si elles n'existent pas, et des colonnes sont ajoutées si besoin -->

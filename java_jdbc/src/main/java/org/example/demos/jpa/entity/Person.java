@@ -10,11 +10,16 @@ public class Person {
 
     // Annotation pour la clé primaire
     @Id
-    // Annotation pour spécifier la génération automatique pour une clé primaire ou unique
+    // Annotation pour spécifier la génération automatique pour une clé primaire ou unique :
+    // GenerationType.TABLE : Utilisation d'une table de génération de clés
+    // GenerationType.SEQUENCE : Utilisation de séquences = un compteur pour chaque table (Oracle, PostgreSQL, etc.)
+    // GenerationType.IDENTITY : Génération par auto-incrémentation par JPA = un compteur pour TOUTES les tables (utilisé dans MySQL, PostgreSQL, etc.)
+    // GenerationType.AUTO : Sélection automatique de la meilleure stratégie entre SEQUENCE et IDENTITY (par défaut)
+    // GenerationType.NONE : Pas de génération automatique, valeurs fournies manuellement
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @Basic est facultatif
+    // @Basic est automatique, donc inutile de le mettre
     // Annotation optionnelle pour définir le nom de la colonne
     @Column(name = "first_name")
     private String firstName;
