@@ -4,7 +4,7 @@
 
 On souhaite créer un programme permettant de gérer une liste de tâches.
 
-Le menu proposera les fonctionnalités suivantes : 
+L'utilisateur pourra utiliser les fonctionnalités suivantes : 
 - Ajouter une toto à ma liste
 - Afficher toutes les todo
 - Marquer une todo comme terminée

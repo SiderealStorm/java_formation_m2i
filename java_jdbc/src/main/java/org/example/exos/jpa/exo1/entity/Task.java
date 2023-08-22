@@ -12,8 +12,12 @@ public class Task {
     private String title;
     private boolean completed;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "info_id")
+    // Attention : Il aurait été préférable d'ajouter la relation dans TaskInfo car Task existait auparavant
+    // En modifiant Task, la table aura une nouvelle colonne, qui sera nulle pour les données déjà présentes en BDD
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "info_id")
+    // orphanRemoval permet de supprimer toutes les valeurs orphelines = infos sans task
+    @OneToOne(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
     private TaskInfo info;
 
     public Task() {}

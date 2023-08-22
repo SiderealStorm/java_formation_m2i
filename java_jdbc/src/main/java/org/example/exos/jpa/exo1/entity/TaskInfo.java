@@ -1,6 +1,7 @@
 package org.example.exos.jpa.exo1.entity;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -18,7 +19,9 @@ public class TaskInfo {
 
     private int priority;
 
-    @OneToOne(mappedBy = "info")
+//    @OneToOne(mappedBy = "info")
+    @OneToOne
+    @JoinColumn(name = "task_id")
     private Task task;
 
     public TaskInfo() {}
@@ -71,6 +74,7 @@ public class TaskInfo {
 
     @Override
     public String toString() {
-        return "Date limite : " + deadline + " - priorité : " + priority + "\nDescription : " + description;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        return "Date limite : " + simpleDateFormat.format(deadline) + " - priorité : " + priority + "\nDescription : " + description;
     }
 }

@@ -20,7 +20,10 @@
 
         <!-- Liste des classes qui sont des entités : facultatif mais c'est une bonne pratique de les mettre -->
         <class>org.example.demos.jpa.entity.Person</class>
+        <class>org.example.demos.jpa.entity.Address</class>
+        <class>org.example.demos.jpa.entity.House</class>
         <class>org.example.exos.jpa.exo1.entity.Task</class>
+        <class>org.example.exos.jpa.exo1.entity.TaskInfo</class>
 
         <!-- Configurations -->
         <properties>
