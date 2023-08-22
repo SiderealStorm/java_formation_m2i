@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
-public class TaskDAO {
+public class TaskDAO implements BaseDAO<Task> {
 
     private final EntityManagerFactory emf;
 

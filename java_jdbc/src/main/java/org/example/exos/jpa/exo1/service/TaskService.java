@@ -2,9 +2,11 @@ package org.example.exos.jpa.exo1.service;
 
 import org.example.exos.jpa.exo1.dao.TaskDAO;
 import org.example.exos.jpa.exo1.entity.Task;
+import org.example.exos.jpa.exo1.entity.TaskInfo;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.Date;
 import java.util.List;
 
 public class TaskService {
@@ -20,8 +22,9 @@ public class TaskService {
         taskDAO.closeDAO();
     }
 
-    public boolean saveTask(String title) {
-        Task task = new Task(title);
+    public boolean saveTask(String title, String description, Date date, int priority) {
+        TaskInfo info = new TaskInfo(description, date, priority);
+        Task task = new Task(title, info);
         return taskDAO.add(task);
     }
 

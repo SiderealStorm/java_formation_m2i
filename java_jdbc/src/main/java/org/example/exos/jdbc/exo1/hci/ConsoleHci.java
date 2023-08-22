@@ -103,7 +103,7 @@ public class ConsoleHci {
         student.setDegreeDate(checkDate());
 
         // Ajout en BDD
-        String query = "INSERT INTO student (last_name, first_name, class_number, diploma_date) VALUES (?,?,?,?)";
+        String query = "INSERT INTO exo1.student (last_name, first_name, class_number, degree_date) VALUES (?,?,?,?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, student.getLastName());
         statement.setString(2, student.getFirstName());
@@ -121,7 +121,7 @@ public class ConsoleHci {
     private static ArrayList<Student> getAllStudents() throws SQLException {
         ArrayList<Student> studentsList = new ArrayList<>();
         System.out.println();
-        String query = "SELECT * FROM student";
+        String query = "SELECT * FROM exo1.student";
         Statement statement = connection.createStatement();
         ResultSet results = statement.executeQuery(query);
 
@@ -131,7 +131,7 @@ public class ConsoleHci {
                     results.getString("last_name"),
                     results.getString("first_name"),
                     results.getInt("class_number"),
-                    results.getDate("diploma_date")
+                    results.getDate("degree_date")
             );
             studentsList.add(student);
         }
@@ -146,7 +146,7 @@ public class ConsoleHci {
         classNb = scanner.nextInt();
         scanner.nextLine();
 
-        String query = "SELECT * FROM student WHERE class_number = ?";
+        String query = "SELECT * FROM exo1.student WHERE class_number = ?";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setInt(1, classNb);
         ResultSet results = statement.executeQuery();
@@ -157,7 +157,7 @@ public class ConsoleHci {
                     results.getString("last_name"),
                     results.getString("first_name"),
                     results.getInt("class_number"),
-                    results.getDate("diploma_date")
+                    results.getDate("degree_date")
             );
             studentsList.add(student);
         }
@@ -176,7 +176,7 @@ public class ConsoleHci {
         displayStudents(getAllStudents());
         int id = inputChoice();
         
-        String query = "DELETE FROM student WHERE id = ?";
+        String query = "DELETE FROM exo1.student WHERE id = ?";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setInt(1, id);
         int rows = statement.executeUpdate();

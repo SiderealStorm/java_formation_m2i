@@ -3,6 +3,9 @@ package org.example.exos.jpa.exo1.view;
 import org.example.exos.jpa.exo1.entity.Task;
 import org.example.exos.jpa.exo1.service.TaskService;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -30,6 +33,7 @@ public class ConsoleHci {
                 case 2 -> addTask();
                 case 3 -> markAsCompleted();
                 case 4 -> deleteTask();
+                case 5 -> displayInfo();
                 default -> System.out.println("Veuillez entrer un nombre valide !");
             }
         } while (choice !=0);
@@ -44,6 +48,7 @@ public class ConsoleHci {
         System.out.println("2. Ajouter une tâche à ma liste");
         System.out.println("3. Marquer une tâche comme terminée");
         System.out.println("4. Supprimer une tâche");
+        System.out.println("5. Afficher les détails d'une tâche");
         System.out.println("0. Quitter");
     }
 
@@ -74,10 +79,33 @@ public class ConsoleHci {
         }
     }
 
+    private static Date inputDate() {
+        String dateString;
+        Date date = null;
+        do {
+            dateString = scanner.nextLine();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            try {
+                date = simpleDateFormat.parse(dateString);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                System.out.println("Erreur de saisie de la date !");
+            }
+        } while (date == null);
+        return date;
+    }
+
     private static void addTask() {
-        System.out.print("Tâche : ");
+        System.out.print("Titre de la tâche : ");
         String title = scanner.nextLine();
-        if (service.saveTask(title)) {
+        System.out.print("Description de la tâche : ");
+        String description = scanner.nextLine();
+        System.out.print("Date d'échéance (jj-mm-aaaa) : ");
+        Date date = inputDate();
+        System.out.print("Priorité : ");
+        int priority = scanner.nextInt();
+        scanner.nextLine();
+        if (service.saveTask(title, description, date, priority)) {
             System.out.println("Nouvelle tâche enregistrée");
         } else {
             System.out.println("Une erreur est survenue, la tâche n'a pas pû être sauvegardée");
@@ -104,6 +132,16 @@ public class ConsoleHci {
             System.out.println("Tâche marquée comme terminée");
         } else {
             System.out.println("Une erreur est survenue, la tâche n'a pas pû être modifiée");
+        }
+    }
+
+    private static void displayInfo() {
+        Task task = chooseTask();
+        if (task != null) {
+            System.out.println(task);
+            System.out.println(task.getInfo());
+        } else {
+            System.out.println("Tâche non trouvée");
         }
     }
 
