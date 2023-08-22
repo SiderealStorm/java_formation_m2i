@@ -3,64 +3,42 @@ package org.example.exos.jpa.exo1.service;
 import org.example.exos.jpa.exo1.dao.TaskDAO;
 import org.example.exos.jpa.exo1.entity.Task;
 
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TaskService {
 
-    private TaskDAO taskDAO;
+    private final TaskDAO taskDAO;
 
     public TaskService() {
-        taskDAO = new TaskDAO(Persistence.createEntityManagerFactory("jpa_postgres"));
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_postgres");
+        taskDAO = new TaskDAO(emf);
     }
 
     public void closeDAO() {
-        taskDAO.close();
+        taskDAO.closeDAO();
     }
 
-    public void saveTask(String title) {
+    public boolean saveTask(String title) {
         Task task = new Task(title);
-        try {
-            taskDAO.add(task);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        return taskDAO.add(task);
     }
 
     public List<Task> getAllTasks() {
-        List<Task> taskList = new ArrayList<>();
-        try {
-            taskList = taskDAO.get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return taskList;
+        return taskDAO.get();
     }
 
-    public void updateTask(Task task) {
-        try {
-            taskDAO.update(task);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public boolean updateTask(Task task) {
+        return taskDAO.update(task);
     }
 
-    public void deleteTask(int id) {
-        try {
-            taskDAO.delete(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public boolean deleteTask(int id) {
+        return taskDAO.delete(id);
     }
 
     public Task getById(int id) {
-        Task task = null;
-        try {
-            task = taskDAO.get(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return task;
+        return taskDAO.get(id);
     }
 }

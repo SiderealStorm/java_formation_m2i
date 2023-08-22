@@ -9,12 +9,17 @@ import java.util.Scanner;
 
 public class ConsoleHci {
 
-    private static final Scanner scanner = new Scanner(System.in);
-    private static final TaskService service = new TaskService();
+    private static Scanner scanner;
+    private static TaskService service;
 
     public static void start() {
+        // Il vaut mieux instancier les attributs dans la méthode
+        scanner = new Scanner(System.in);
+        service = new TaskService();
+
         int choice;
         System.out.println("*** Bienvenue dans ToDoList ***");
+
         do {
             displayMenu();
             choice = inputChoice();
@@ -59,7 +64,8 @@ public class ConsoleHci {
 
     private static void displayTasks() {
         List<Task> taskList = service.getAllTasks();
-        if (taskList.size() > 0) {
+        // La méthode isEmpty renvoie true si size() > 0
+        if (!taskList.isEmpty()) {
             for (Task task : taskList) {
                 System.out.println(task);
             }
@@ -71,9 +77,19 @@ public class ConsoleHci {
     private static void addTask() {
         System.out.print("Tâche : ");
         String title = scanner.nextLine();
-        service.saveTask(title);
+        if (service.saveTask(title)) {
+            System.out.println("Nouvelle tâche enregistrée");
+        } else {
+            System.out.println("Une erreur est survenue, la tâche n'a pas pû être sauvegardée");
+        }
+
     }
 
+    /*
+    TODO Amélioration :
+    modifier pour que cette méthode n'utilise plus le service
+    et que la task soit récupérée dans un service
+     */
     private static Task chooseTask() {
         System.out.println("Quelle tâche ?");
         displayTasks();
@@ -84,11 +100,19 @@ public class ConsoleHci {
     private static void markAsCompleted() {
         Task task = chooseTask();
         task.setCompleted(true);
-        service.updateTask(task);
+        if (service.updateTask(task)) {
+            System.out.println("Tâche marquée comme terminée");
+        } else {
+            System.out.println("Une erreur est survenue, la tâche n'a pas pû être modifiée");
+        }
     }
 
     private static void deleteTask() {
         Task task = chooseTask();
-        service.deleteTask(task.getId());
+        if (service.deleteTask(task.getId())) {
+            System.out.println("Tâche supprimée");
+        } else {
+            System.out.println("Une erreur est survenue, la tâche n'a pas pû être supprimée");
+        }
     }
 }

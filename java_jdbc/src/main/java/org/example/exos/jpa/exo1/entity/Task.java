@@ -47,13 +47,8 @@ public class Task {
 
     @Override
     public String toString() {
-        String status;
-        if (completed) {
-            status = "terminée";
-        } else {
-            status = "en cours";
-        }
-        return id + " : " + title + " (" + status + ")";
+        // Utilisation d'un ternaire pour afficher si complété
+        return id + " : " + title + " (" + (completed ? "terminée" : "en cours") + ")";
     }
 
 }
