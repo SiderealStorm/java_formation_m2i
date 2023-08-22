@@ -19,7 +19,8 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!-- Liste des classes qui sont des entités : facultatif mais c'est une bonne pratique de les mettre -->
-        <class>org.example.entity.Person</class>
+        <class>org.example.demos.jpa.entity.Person</class>
+        <class>org.example.exos.jpa.exo1.entity.Task</class>
 
         <!-- Configurations -->
         <properties>
@@ -44,9 +45,9 @@
             <property name="hibernate.hbm2ddl.auto" value="update" />
 
             <!-- Optionnel : affichage des requêtes SQL dans la console -->
-            <property name="hibernate.show_sql" value="true" />
+<!--            <property name="hibernate.show_sql" value="true" />-->
             <!-- Optionnel : formattage des requêtes -->
-            <property name="hibernate.format_sql" value="true" />
+<!--            <property name="hibernate.format_sql" value="true" />-->
 
             <!-- Ignorer les classes non listées -->
             <!-- <property name="hibernate.archive.autodetection" value="none"/> -->

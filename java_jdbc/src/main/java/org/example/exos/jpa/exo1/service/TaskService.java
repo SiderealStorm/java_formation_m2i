@@ -5,7 +5,6 @@ import org.example.exos.jpa.exo1.entity.Task;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TaskService {

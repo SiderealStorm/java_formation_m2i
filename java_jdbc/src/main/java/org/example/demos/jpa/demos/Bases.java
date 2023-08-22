@@ -1,16 +1,16 @@
-package org.example.demos.jpa.entity;
+package org.example.demos.jpa.demos;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import org.example.demos.jpa.entity.Person;
+
+import javax.persistence.*;
 import java.util.List;
 
-public class Demo {
+public class Bases {
     // Pour pouvoir utiliser la BDD, on crée d'abord une EntityManagerFactory
     // Il faut passer en paramètre le nom de la persistenceUnit du fichier de configuration persistence.xml
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_postgres");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_postgres");
 
-    public static void insertExemple() {
+    public static void insertExample() {
 
         // On utilise la Factory pour créer un EntityManager, qui permettra de communiquer avec la BDD
         EntityManager em = emf.createEntityManager();
@@ -26,7 +26,9 @@ public class Demo {
         em.persist(person);
         System.out.println("ID après avoir utilisé persist() : " + person.getId());
 
-        // commit() permet de valider définitivement la transaction
+        // flush() permet de valider les modifications (= mettre à jour la table) mais pas de terminer la transaction donc il ne suffit pas ici
+
+        // commit() permet de valider (comme flush) et terminer la transaction
         em.getTransaction().commit();
 
         // Une fois qu'on en a plus besoin, on peut fermer le Manager et la Factory
@@ -35,19 +37,26 @@ public class Demo {
     }
 
     // S'il n'y a pas de modification en BDD, pas besoin de faire une transaction
-    public static void findExemple() {
+    public static void findExample() {
         EntityManager em = emf.createEntityManager();
 
         // Pour utilider find, il faut passer le type de l'objet (.class) et l'ID
-        // Attention : levée d'une exception si la personne n'est pas trouvée !
+        // Renvoie null si l'entité n'est pas trouvée
+        System.out.println("Avec find :");
         Person person = em.find(Person.class, 1L);
+        System.out.println(person);
+
+        // Idem avec getReference()
+        // Lève une exception si l'entité n'est pas trouvée
+        System.out.println("Avec getReference :");
+        person = em.getReference(Person.class, 1L);
         System.out.println(person);
 
         em.close();
         emf.createEntityManager();
     }
 
-    public static void removeExemple() {
+    public static void removeExample() {
         EntityManager em = emf.createEntityManager();
 
         // Démarrage de la transaction
@@ -56,6 +65,7 @@ public class Demo {
         Person person = em.find(Person.class, 1L);
         // Attention : levée d'une exception si la personne n'est pas trouvée !
         em.remove(person);
+        System.out.println("Personne à l'ID 1 supprimée !");
 
         // Validation de la transaction
         em.getTransaction().commit();
@@ -64,18 +74,22 @@ public class Demo {
         emf.createEntityManager();
     }
 
-    public static void customQueryExample() {
+    public static void createQueryExample() {
         EntityManager em = emf.createEntityManager();
 
-        em.getTransaction().begin();
+        // On peut aussi stocker la transaction à part :
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
 
         Person person1 = new Person("Zachary", "Bannerman");
         Person person2 = new Person("Sun", "Graf");
 
-        List<Person> personList = null;
+        List<Person> personList;
 
         em.persist(person1);
         em.persist(person2);
+
+        System.out.println("Ajout de 2 personnes");
 
         // On pourrait valider (commiter) la transaction ici
 
@@ -85,7 +99,26 @@ public class Demo {
             System.out.println(person);
         }
 
-        em.getTransaction().commit();
+        transaction.commit();
+
+        em.close();
+        emf.createEntityManager();
+    }
+
+    public static void namedParameterExample() {
+        EntityManager em = emf.createEntityManager();
+
+        System.out.println("Avec un paramètre nommé");
+
+        // On crée la requête :
+        Query query = em.createQuery("SELECT p FROM Person p WHERE p.id = :id");
+        // On passe la valeur au paramètre :
+        query.setParameter("id", 1L);
+        // On utilise getSingleResult() car la requête ne renvoie qu'un seul résultat
+        // Il faut caster le résultat en objet Person
+        Person person = (Person) query.getSingleResult();
+
+        System.out.println(person);
 
         em.close();
         emf.createEntityManager();
