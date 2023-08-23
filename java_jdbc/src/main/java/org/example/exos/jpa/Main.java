@@ -1,6 +1,6 @@
-package org.example.exos.jpa.exo1;
+package org.example.exos.jpa;
 
-import org.example.exos.jpa.exo1.view.ConsoleHci;
+import org.example.exos.jpa.view.ConsoleHci;
 
 public class Main {
     public static void main(String[] args) {

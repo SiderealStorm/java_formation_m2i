@@ -24,8 +24,8 @@
         <class>org.example.demos.jpa.entity.onetoone.House</class>
         <class>org.example.demos.jpa.entity.onetomany.Employee</class>
         <class>org.example.demos.jpa.entity.onetomany.Department</class>
-        <class>org.example.exos.jpa.exo1.entity.Task</class>
-        <class>org.example.exos.jpa.exo1.entity.TaskInfo</class>
+        <class>org.example.exos.jpa.entity.Task</class>
+        <class>org.example.exos.jpa.entity.TaskInfo</class>
 
         <!-- Configurations -->
         <properties>

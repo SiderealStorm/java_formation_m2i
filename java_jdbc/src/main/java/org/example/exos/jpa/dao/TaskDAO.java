@@ -1,6 +1,6 @@
-package org.example.exos.jpa.exo1.dao;
+package org.example.exos.jpa.dao;
 
-import org.example.exos.jpa.exo1.entity.Task;
+import org.example.exos.jpa.entity.Task;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

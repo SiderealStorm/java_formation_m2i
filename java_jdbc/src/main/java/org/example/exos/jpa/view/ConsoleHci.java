@@ -1,7 +1,7 @@
-package org.example.exos.jpa.exo1.view;
+package org.example.exos.jpa.view;
 
-import org.example.exos.jpa.exo1.entity.Task;
-import org.example.exos.jpa.exo1.service.TaskService;
+import org.example.exos.jpa.entity.Task;
+import org.example.exos.jpa.service.TaskService;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package org.example.exos.jpa.exo1.entity;
+package org.example.exos.jpa.entity;
 
 import javax.persistence.*;
 

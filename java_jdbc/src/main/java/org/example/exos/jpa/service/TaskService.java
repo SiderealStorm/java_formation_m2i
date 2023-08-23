@@ -1,8 +1,8 @@
-package org.example.exos.jpa.exo1.service;
+package org.example.exos.jpa.service;
 
-import org.example.exos.jpa.exo1.dao.TaskDAO;
-import org.example.exos.jpa.exo1.entity.Task;
-import org.example.exos.jpa.exo1.entity.TaskInfo;
+import org.example.exos.jpa.dao.TaskDAO;
+import org.example.exos.jpa.entity.Task;
+import org.example.exos.jpa.entity.TaskInfo;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

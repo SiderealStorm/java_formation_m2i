@@ -1,4 +1,4 @@
-package org.example.exos.jpa.exo1.dao;
+package org.example.exos.jpa.dao;
 
 import java.util.List;
 
