@@ -1,5 +1,8 @@
 package org.example.demos.jpa.demos;
 
+import org.example.demos.jpa.entity.Person;
+import org.example.demos.jpa.entity.manytomany.Post;
+import org.example.demos.jpa.entity.manytomany.Tag;
 import org.example.demos.jpa.entity.onetomany.Department;
 import org.example.demos.jpa.entity.onetomany.Employee;
 import org.example.demos.jpa.entity.onetoone.Address;
@@ -10,9 +13,14 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class RelationsJPA {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_postgres");
+
+    public static void closeEmf() {
+        emf.close();
+    }
 
     public static void oneToOneExample() {
         EntityManager em = emf.createEntityManager();
@@ -93,6 +101,48 @@ public class RelationsJPA {
     }
 
     public static void manyToManyExample() {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
 
+        // Création de posts
+        Post post = new Post("Les dates en Java");
+        Post post1 = new Post("Tuto : commencer un projet Java");
+
+        // Création de tags
+        Tag tag = new Tag();
+        Tag tag1 = new Tag();
+        Tag tag2 = new Tag();
+        Tag tag3 = new Tag();
+
+        tag.setName("Java");
+        tag1.setName("Tutoriel");
+        tag2.setName("Documentation");
+        tag3.setName("Spring");
+
+        // Mise en relation
+        // La méthode addTag s'occupe de faire la relation dans les deux sens
+        post.addTag(tag);
+        post.addTag(tag2);
+        post1.addTag(tag);
+        post1.addTag(tag1);
+
+        // Mise en BDD
+        // On peut n'enregistrer que les Posts car le paramètre cascade est activé pour la persistance
+        em.persist(post);
+        em.persist(post1);
+
+        em.getTransaction().commit();
+
+        // Récupération et affichage des entités
+        List<Post> postSearch = em.createQuery("select p from Post p", Post.class).getResultList();
+        for (Post p : postSearch) {
+            System.out.println("===================");
+            System.out.println(p);
+            for (Tag t : p.getTags()) {
+                System.out.println(t);
+            }
+        }
+
+        em.close();
     }
 }

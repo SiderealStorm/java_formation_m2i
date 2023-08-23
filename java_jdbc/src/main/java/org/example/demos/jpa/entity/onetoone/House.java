@@ -18,13 +18,14 @@ public class House {
     // Pas d'annotation donc @Basic par défaut
     private Integer size;
 
-    // Annotation pour décrire la relation one-to-one
+    // Annotation pour définir la relation one-to-one
     // On précise la stratégie en cas de modification ou suppression
     @OneToOne(cascade = CascadeType.ALL)
     // Annotation pour joindre l'autre entité via sa clé étrangère
     // Si on voulait référencer une autre colonne, on utiliserait referencedColumnName en plus
     // On précise le nom de la colonne qui contiendra la clé étrangère
-    @JoinColumn(name = "address_id")
+    // On ajoute unique = true sinon la table pourraît cnotenir des données avec une relation one-to-many
+    @JoinColumn(name = "address_id", unique = true)
     private Address address;
 
     public House() {}

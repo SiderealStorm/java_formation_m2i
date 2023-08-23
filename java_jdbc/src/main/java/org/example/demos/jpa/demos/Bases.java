@@ -10,6 +10,10 @@ public class Bases {
     // Il faut passer en paramètre le nom de la persistenceUnit du fichier de configuration persistence.xml
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_postgres");
 
+    public static void closeEmf() {
+        emf.close();
+    }
+
     public static void insertExample() {
 
         // On utilise la Factory pour créer un EntityManager, qui permettra de communiquer avec la BDD
@@ -33,7 +37,6 @@ public class Bases {
 
         // Une fois qu'on en a plus besoin, on peut fermer le Manager et la Factory
         em.close();
-        emf.createEntityManager();
     }
 
     // S'il n'y a pas de modification en BDD, pas besoin de faire une transaction
@@ -53,7 +56,6 @@ public class Bases {
         System.out.println(person);
 
         em.close();
-        emf.createEntityManager();
     }
 
     public static void removeExample() {
@@ -71,7 +73,6 @@ public class Bases {
         em.getTransaction().commit();
 
         em.close();
-        emf.createEntityManager();
     }
 
     public static void createQueryExample() {
@@ -102,7 +103,6 @@ public class Bases {
         transaction.commit();
 
         em.close();
-        emf.createEntityManager();
     }
 
     public static void namedParameterExample() {
@@ -121,7 +121,6 @@ public class Bases {
         System.out.println(person);
 
         em.close();
-        emf.createEntityManager();
     }
 
 }

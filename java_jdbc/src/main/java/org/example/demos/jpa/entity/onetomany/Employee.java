@@ -15,8 +15,10 @@ public class Employee {
     @Id
     private int id;
 
+    // Annotation pour définir la relation many-to-one
     // C'est obligatoirement l'entité plurielle qui est maître de la relation
     @ManyToOne
+    // Annotation pour joindre l'autre entité via sa clé étrangère
     @JoinColumn(name = "dept_id")
     private Department dept;
 

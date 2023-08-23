@@ -16,7 +16,7 @@ public class Department {
 
     private String deptName;
 
-    // Attribut facultatif
+    // Attribut facultatif pour relation bidirectionnelle
     // On précise le nom de l'attribut de la table maître à lier avec mappedBy
     @OneToMany(mappedBy = "dept")
     // L'attribut est obligatoirement une collection
