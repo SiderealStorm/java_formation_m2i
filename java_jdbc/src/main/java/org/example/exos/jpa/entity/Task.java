@@ -1,6 +1,7 @@
 package org.example.exos.jpa.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Task {
@@ -21,6 +22,9 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToMany(mappedBy = "tasks")
+    private List<Category> categories;
 
     public Task() {}
 
@@ -77,6 +81,14 @@ public class Task {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     @Override

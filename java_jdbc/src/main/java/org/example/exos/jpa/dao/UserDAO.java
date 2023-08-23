@@ -1,7 +1,6 @@
 package org.example.exos.jpa.dao;
 
 import jdk.jshell.spi.ExecutionControl;
-import org.example.exos.jpa.entity.Task;
 import org.example.exos.jpa.entity.User;
 
 import javax.persistence.EntityManager;
