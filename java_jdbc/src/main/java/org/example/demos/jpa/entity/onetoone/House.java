@@ -1,10 +1,11 @@
-package org.example.demos.jpa.entity;
+package org.example.demos.jpa.entity.onetoone;
 
 import javax.persistence.*;
 
 /**
  * Exemple d'entité avec relation one-to-one
- * Cette table est l'entité maître
+ * Cette entité est liée à Address
+ * Cette classe est l'entité maître
  */
 @Entity
 public class House {

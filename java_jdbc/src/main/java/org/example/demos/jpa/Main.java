@@ -13,7 +13,8 @@ public class Main {
 //        BasesJPA.namedParameterExample();
 
         // Relations :
-        RelationsJPA.oneToOneExample();
+//        RelationsJPA.oneToOneExample();
+//        RelationsJPA.oneToManyExample();
 
     }
 

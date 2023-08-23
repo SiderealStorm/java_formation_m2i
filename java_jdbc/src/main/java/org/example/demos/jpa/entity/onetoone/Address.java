@@ -1,4 +1,4 @@
-package org.example.demos.jpa.entity;
+package org.example.demos.jpa.entity.onetoone;
 
 import javax.persistence.*;
 

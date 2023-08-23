@@ -19,7 +19,6 @@ public class TaskInfo {
 
     private int priority;
 
-//    @OneToOne(mappedBy = "info")
     @OneToOne
     @JoinColumn(name = "task_id")
     private Task task;

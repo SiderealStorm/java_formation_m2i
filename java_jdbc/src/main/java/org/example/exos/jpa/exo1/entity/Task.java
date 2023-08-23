@@ -12,10 +12,8 @@ public class Task {
     private String title;
     private boolean completed;
 
-    // Attention : Il aurait été préférable d'ajouter la relation dans TaskInfo car Task existait auparavant
-    // En modifiant Task, la table aura une nouvelle colonne, qui sera nulle pour les données déjà présentes en BDD
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "info_id")
+    // Attention : Il est été préférable d'ajouter la relation dans TaskInfo car Task existait auparavant
+    // En modifiant Task, la table aurait une nouvelle colonne, qui sera nulle pour les données déjà présentes en BDD
     // orphanRemoval permet de supprimer toutes les valeurs orphelines = infos sans task
     @OneToOne(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
     private TaskInfo info;
@@ -27,6 +25,11 @@ public class Task {
         this.completed = false;
     }
 
+    /**
+     *
+     * @param title
+     * @param info
+     */
     public Task(String title, TaskInfo info) {
         this(title);
         this.info = info;
