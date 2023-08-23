@@ -1,7 +1,8 @@
 package org.example.exos.jpa.view;
 
 import org.example.exos.jpa.entity.Task;
-import org.example.exos.jpa.service.TaskService;
+import org.example.exos.jpa.entity.User;
+import org.example.exos.jpa.service.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,12 +14,12 @@ import java.util.Scanner;
 public class ConsoleHci {
 
     private static Scanner scanner;
-    private static TaskService service;
+    private static Service service;
 
     public static void start() {
         // Il vaut mieux instancier les attributs dans la méthode
         scanner = new Scanner(System.in);
-        service = new TaskService();
+        service = new Service();
 
         int choice;
         System.out.println("*** Bienvenue dans ToDoList ***");
@@ -29,11 +30,14 @@ public class ConsoleHci {
 
             switch (choice) {
                 case 0 -> System.out.println("Au revoir !");
-                case 1 -> displayTasks();
+                case 1 -> displayTasks(service.getAllTasks());
                 case 2 -> addTask();
                 case 3 -> markAsCompleted();
                 case 4 -> deleteTask();
                 case 5 -> displayInfo();
+                case 6 -> addUser();
+                case 7 -> displayUserTasks();
+                case 8 -> deleteUser();
                 default -> System.out.println("Veuillez entrer un nombre valide !");
             }
         } while (choice !=0);
@@ -49,6 +53,9 @@ public class ConsoleHci {
         System.out.println("3. Marquer une tâche comme terminée");
         System.out.println("4. Supprimer une tâche");
         System.out.println("5. Afficher les détails d'une tâche");
+        System.out.println("6. Ajouter un utilisateur");
+        System.out.println("7. Voir les tâches d'un utilisateur");
+        System.out.println("8. Supprimer un utilisateur et ses tâches");
         System.out.println("0. Quitter");
     }
 
@@ -67,9 +74,8 @@ public class ConsoleHci {
         return choice;
     }
 
-    private static void displayTasks() {
-        List<Task> taskList = service.getAllTasks();
-        // La méthode isEmpty renvoie true si size() > 0
+    private static void displayTasks(List<Task> taskList) {
+        // La méthode isEmpty() renvoie true si size() > 0
         if (!taskList.isEmpty()) {
             for (Task task : taskList) {
                 System.out.println(task);
@@ -120,9 +126,9 @@ public class ConsoleHci {
      */
     private static Task chooseTask() {
         System.out.println("Quelle tâche ?");
-        displayTasks();
+        displayTasks(service.getAllTasks());
         int choice = inputChoice();
-        return service.getById(choice);
+        return service.getTask(choice);
     }
 
     private static void markAsCompleted() {
@@ -151,6 +157,49 @@ public class ConsoleHci {
             System.out.println("Tâche supprimée");
         } else {
             System.out.println("Une erreur est survenue, la tâche n'a pas pû être supprimée");
+        }
+    }
+
+    private static void addUser() {
+        System.out.print("Nom de l'utilisateur : ");
+        String userName = scanner.nextLine();
+        if (service.saveUser(userName)) {
+            System.out.println("Nouvel utilisateur enregistré");
+        } else {
+            System.out.println("Une erreur est survenue, l'utilisateur n'a pas pû être créé");
+        }
+    }
+
+    private static void displayAllUsers() {
+        List<User> userList = service.getAllUsers();
+        if (!userList.isEmpty()) {
+            for (User user : userList) {
+                System.out.println(user);
+            }
+        } else {
+            System.out.println("Il n'y a aucun utilisateur d'enregistré");
+        }
+    }
+
+    private static int chooseUser() {
+        System.out.println("Quel utilisateur ?");
+        displayAllUsers();
+        return inputChoice();
+    }
+
+    private static void displayUserTasks() {
+        int id = chooseUser();
+        User user = service.getUser(id);
+        System.out.println(user);
+        displayTasks(user.getTasks());
+    }
+
+    private static void deleteUser() {
+        int id = chooseUser();
+        if (service.deleteUser(id)) {
+            System.out.println("L'utilisateur et ses tâches ont bien été supprimés");
+        } else {
+            System.out.println("Une erreur est survenue, l'utilisateur n'a pas pû être supprimé");
         }
     }
 }

@@ -19,7 +19,8 @@ public class House {
     private Integer size;
 
     // Annotation pour définir la relation one-to-one
-    // On précise la stratégie en cas de modification ou suppression
+    // On précise la stratégie en cas de modification ou suppression avec cascade
+    // L'option cascade s'applique à l'entité où elle est déclarée
     @OneToOne(cascade = CascadeType.ALL)
     // Annotation pour joindre l'autre entité via sa clé étrangère
     // Si on voulait référencer une autre colonne, on utiliserait referencedColumnName en plus
