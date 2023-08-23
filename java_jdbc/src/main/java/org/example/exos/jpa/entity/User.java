@@ -16,7 +16,7 @@ public class User {
 
     // L'option cascade s'applique à l'entité où elle est déclarée
     // exemple ici : quand on supprime un User, on supprime aussi ses Tasks
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.REMOVE}, fetch = FetchType.EAGER)
     private List<Task> tasks;
 
     public User() {}

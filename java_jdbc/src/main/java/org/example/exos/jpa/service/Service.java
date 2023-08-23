@@ -27,10 +27,10 @@ public class Service {
         userDAO.closeDAO();
     }
 
-    public boolean saveTask(String title, String description, Date date, int priority) {
+    public boolean saveTask(String title, String description, Date date, int priority, User user) {
         // Il faut mettre les objets en relation dans les DEUX sens
         TaskInfo info = new TaskInfo(description, date, priority);
-        Task task = new Task(title, info);
+        Task task = new Task(title, info, user);
         // C'est TaskInfo le maître de la relation, il faut donc que l'objet TaskInfo contienne l'objet Task
         info.setTask(task);
         return taskDAO.add(task);

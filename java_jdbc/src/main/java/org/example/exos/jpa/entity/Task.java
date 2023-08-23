@@ -34,6 +34,11 @@ public class Task {
         this.info = info;
     }
 
+    public Task(String title, TaskInfo info, User user) {
+        this(title, info);
+        this.user = user;
+    }
+
     public int getId() {
         return id;
     }
@@ -79,5 +84,4 @@ public class Task {
         // Utilisation d'un ternaire pour afficher si complété
         return id + " : " + title + " - " + (completed ? "terminée" : "en cours");
     }
-
 }
