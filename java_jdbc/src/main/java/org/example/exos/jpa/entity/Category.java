@@ -25,6 +25,17 @@ public class Category {
         this.name = name;
     }
 
+    // TODO vérifier si utile ou non
+    public void addTask(Task task) {
+        this.tasks.add(task);
+        task.getCategories().add(this);
+    }
+
+    public void removeTask(Task task) {
+        this.tasks.add(task);
+        task.getCategories().add(this);
+    }
+
     public int getId() {
         return id;
     }

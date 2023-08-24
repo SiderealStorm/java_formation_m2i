@@ -1,5 +1,6 @@
 package org.example.exos.jpa.view;
 
+import org.example.exos.jpa.entity.Category;
 import org.example.exos.jpa.entity.Task;
 import org.example.exos.jpa.entity.User;
 import org.example.exos.jpa.service.Service;
@@ -45,6 +46,9 @@ public class ConsoleHci {
                 case 6 -> addUser();
                 case 7 -> displayUserTasks();
                 case 8 -> deleteUser();
+                case 9 -> displayCategoryTasks();
+                case 10 -> addCategory();
+                case 11 -> deleteCategory();
                 default -> System.out.println("Veuillez entrer un nombre valide !");
             }
         } while (choice !=0);
@@ -64,11 +68,11 @@ public class ConsoleHci {
         System.out.println("6. Ajouter un utilisateur");
         System.out.println("7. Afficher les tâches d'un utilisateur");
         System.out.println("8. Supprimer un utilisateur et ses tâches associées");
-//        System.out.println("8. Afficher toutes les tâches d'une catégorie");
-//        System.out.println("9. Ajouter une catégorie");
-//        System.out.println("10. Supprimer une catégorie");
-//        System.out.println("11. Mettre une tâche dans une catégorie");
-//        System.out.println("12. Retirer une tâche d'une catégorie");
+        System.out.println("9. Afficher toutes les tâches d'une catégorie");
+        System.out.println("10. Ajouter une catégorie");
+        System.out.println("11. Supprimer une catégorie");
+//        System.out.println("12. Mettre une tâche dans une catégorie");
+//        System.out.println("13. Retirer une tâche d'une catégorie");
         System.out.println("0. Quitter");
     }
 
@@ -132,7 +136,7 @@ public class ConsoleHci {
         }
 
     }
-    
+
     private static Task chooseTask() {
         System.out.println("Quelle tâche ?");
         displayTasks(service.getAllTasks());
@@ -142,8 +146,7 @@ public class ConsoleHci {
 
     private static void markAsCompleted() {
         Task task = chooseTask();
-        task.setCompleted(true);
-        if (service.updateTask(task)) {
+        if (service.markTaskAsCompleted(task)) {
             System.out.println("Tâche marquée comme terminée");
         } else {
             System.out.println("Une erreur est survenue, la tâche n'a pas pû être modifiée");
@@ -212,6 +215,77 @@ public class ConsoleHci {
             } else {
                 System.out.println("Une erreur est survenue, l'utilisateur n'a pas pû être supprimé");
             }
+        }
+    }
+
+    private static Category chooseCategory(List<Category> categories) {
+        System.out.println("Quelle catégorie ?");
+        displayCategories(categories);
+        int id = inputChoice();
+        return service.getCategory(id);
+    }
+
+    private static void displayCategories(List<Category> categoryList) {
+        if (!categoryList.isEmpty()){
+            for (Category category : categoryList) {
+                System.out.println(category);
+            }
+        } else {
+            System.out.println("Il n'y a aucune catégorie enregistrée");
+        }
+    }
+
+    private static void displayCategoryTasks() {
+        Category category = chooseCategory(service.getAllCategories());
+        System.out.println(category);
+        displayTasks(category.getTasks());
+    }
+
+    private static void addCategory() {
+        System.out.print("Nom de la catégorie : ");
+        String name = scanner.nextLine();
+        if (service.saveCategory(name)) {
+            System.out.println("Nouvelle catégorie enregistrée");
+        } else {
+            System.out.println("Une erreur est survenue, la catégorie n'a pas pû être créée");
+        }
+    }
+
+    private static void deleteCategory() {
+        Category category = chooseCategory(service.getAllCategories());
+        if (service.deleteCategory(category.getId())) {
+            System.out.println("La catégorie a bien été supprimée");
+        } else {
+            System.out.println("Une erreur est survenue, la catégorie n'a pas pû être supprimée");
+        }
+    }
+
+    private static void putTaskInCategory() {
+        Task task = chooseTask();
+        Category category = chooseCategory(service.getAllCategories());
+        if (category == null) {
+            System.out.println("Veuillez créer une catégorie");
+            addCategory();
+            // TODO récupérer la catégorie !
+        }
+        if (service.addTaskToCategory(task, category)){
+            System.out.println("La tâche a bien été ajoutée à la catégorie \"" + category.getName() + "\"");
+        } else {
+            System.out.println("Une erreur est survenue, la tâche n'a pas pû être ajoutée à la catégorie");
+        }
+    }
+
+    private static void removeTaskFromCategory() {
+        Task task = chooseTask();
+        if (task.getCategories().isEmpty()) {
+            System.out.println("Cette tâche n'appartient à aucune catégorie");
+            return;
+        }
+        Category category = chooseCategory(task.getCategories());
+        if (service.removeTaskFromCategory(task, category)) {
+            System.out.println("La tâche a bien été retirée de la catégorie \"" + category.getName() + "\"");
+        } else {
+            System.out.println("Une erreur est survenue, la tâche n'a pas pû être retirée de la catégorie");
         }
     }
 }

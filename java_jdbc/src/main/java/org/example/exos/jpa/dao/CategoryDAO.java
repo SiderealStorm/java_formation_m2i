@@ -1,38 +1,112 @@
 package org.example.exos.jpa.dao;
 
-import jdk.jshell.spi.ExecutionControl;
 import org.example.exos.jpa.entity.Category;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class CategoryDAO implements BaseDAO<Category> {
-    @Override
-    public void closeDAO() {
 
+    private final EntityManagerFactory emf;
+
+    public CategoryDAO(EntityManagerFactory entityManagerFactory) {
+        emf = entityManagerFactory;
     }
 
     @Override
-    public boolean add(Category element) {
-        return false;
+    public void closeDAO() {
+        emf.close();
+    }
+
+    @Override
+    public boolean add(Category category) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+
+        try {
+            transaction.begin();
+
+            em.persist(category);
+
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction.isActive()) {
+                transaction.rollback();
+                return false;
+            }
+            return true;
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public List<Category> get() {
-        return null;
+        EntityManager em = emf.createEntityManager();
+        List<Category> categories = em.createQuery("SELECT c FROM Category c ORDER BY id", Category.class).getResultList();
+        em.close();
+        return categories;
     }
 
     @Override
     public Category get(int id) {
-        return null;
+        EntityManager em = emf.createEntityManager();
+        Category category = em.find(Category.class, id);
+        em.close();
+        return category;
     }
 
     @Override
-    public boolean update(Category element) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Erreur : la méthode update() n'est pas implémentée pour CategoryDAO");
+    public boolean update(Category category) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+
+        try {
+            transaction.begin();
+
+            Category categoryDB = em.find(Category.class, category.getId());
+            categoryDB.setTasks(category.getTasks());
+
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction.isActive()) {
+                transaction.rollback();
+                return false;
+            }
+            return true;
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+
+        try {
+            transaction.begin();
+
+            Category category = em.find(Category.class, id);
+            em.remove(category);
+
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction.isActive()) {
+                transaction.rollback();
+                return false;
+            }
+            return true;
+        } finally {
+            em.close();
+        }
     }
 }
