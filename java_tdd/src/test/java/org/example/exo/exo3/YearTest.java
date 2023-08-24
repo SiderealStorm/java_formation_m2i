@@ -48,7 +48,7 @@ public class YearTest {
         Assertions.assertFalse(result);
     }
 
-    // Test pour année non divisible par 4 ni 400 ni 4000 (= false)
+    // Test pour année non divisible par 4 (= false)
     @Test
     public void testIsLeapYearShoudBeFalseWhenYearIs2002() {
         year = new Year(1994);

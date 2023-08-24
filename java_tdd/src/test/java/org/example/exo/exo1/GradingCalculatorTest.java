@@ -5,9 +5,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class GradingCalculatorTest {
-    // Améliorations suite à la correction :
-    // On déclare un attribut GradingCalculator
-    // et une méthode pour lui donner les valeurs voulues
+    /*
+     Améliorations suite à la correction :
+     On déclare un attribut GradingCalculator
+     et une méthode pour lui donner les valeurs voulues
+    */
     private GradingCalculator gradingCalculator;
 
     private void initGradingCalculator(int score, int attendance) {
@@ -38,12 +40,9 @@ public class GradingCalculatorTest {
         Assertions.assertEquals('B', result);
     }
 
-    // Méthodes avant amélioration :
     @Test
     public void testGetGradeScore65Attend90ShouldBeC() {
-        GradingCalculator gradingCalculator = new GradingCalculator();
-        gradingCalculator.setScore(65);
-        gradingCalculator.setAttendancePercentage(90);
+        initGradingCalculator(65,90);
 
         char result = gradingCalculator.getGrade();
 
@@ -52,15 +51,14 @@ public class GradingCalculatorTest {
 
     @Test
     public void testGetGradeScore95Attend65ShouldBeB() {
-        GradingCalculator gradingCalculator = new GradingCalculator();
-        gradingCalculator.setScore(95);
-        gradingCalculator.setAttendancePercentage(65);
+        initGradingCalculator(95,65);
 
         char result = gradingCalculator.getGrade();
 
         Assertions.assertEquals('B', result);
     }
 
+    // Méthodes avant amélioration :
     @Test
     public void testGetGradeScore95Attend55ShouldBeF() {
         GradingCalculator gradingCalculator = new GradingCalculator();
