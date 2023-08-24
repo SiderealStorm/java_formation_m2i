@@ -85,7 +85,9 @@ public class FibTest {
 
         List<Integer> result = fib.getFibSeries();
 
-        // TODO
+        List<Integer> sorted = result.stream().sorted().toList();
+
+        Assertions.assertIterableEquals(sorted, result);
 
     }
 }
