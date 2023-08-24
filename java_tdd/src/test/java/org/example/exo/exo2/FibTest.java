@@ -4,8 +4,6 @@ import org.example.Fib;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FibTest {
@@ -16,8 +14,14 @@ public class FibTest {
         fib = new Fib(range);
     }
 
+    /*
+    Correction :
+    Un test ne doit pas contenir de logique !
+    Uniquement des vérifications (= asserts)
+     */
+
     @Test
-    public void testGetFibSeriesRange1ShouldBeNotNull() {
+    public void testGetFibSeriesShouldBeNotEmptyWhenRangeIs1() {
         // Arrange
         initFib(1);
 
@@ -25,22 +29,20 @@ public class FibTest {
         List<Integer> result = fib.getFibSeries();
 
         // Assert
-        Assertions.assertNotNull(result);
+        Assertions.assertFalse(result.isEmpty());
     }
 
     @Test
-    public void testGetFibSeriesRange1ShouldContain0() {
+    public void testGetFibSeriesShouldContainOnly0WhenRangeIs1() {
         initFib(1);
 
         List<Integer> result = fib.getFibSeries();
 
-        List<Integer> expected = List.of(0);
-
-        Assertions.assertIterableEquals(expected, result);
+        Assertions.assertEquals(List.of(0), result);
     }
 
     @Test
-    public void testGetFibSeriesRange6ShouldContain3() {
+    public void testGetFibSeriesShouldContain3WhenRangeIs6() {
         initFib(6);
 
         List<Integer> result = fib.getFibSeries();
@@ -49,7 +51,7 @@ public class FibTest {
     }
 
     @Test
-    public void testGetFibSeriesRange6SizeShouldBe6() {
+    public void testGetFibSeriesSizeShouldHave6ElementWhenRangeIs6() {
         initFib(6);
 
         List<Integer> result = fib.getFibSeries();
@@ -58,7 +60,7 @@ public class FibTest {
     }
 
     @Test
-    public void testGetFibSeriesRange6ShouldNotContain4() {
+    public void testGetFibSeriesShouldNotContain4WhenRangeIs6() {
         initFib(6);
 
         List<Integer> result = fib.getFibSeries();
@@ -67,27 +69,26 @@ public class FibTest {
     }
 
     @Test
-    public void testGetFibSeriesRange6ShouldContain011235() {
+    public void testGetFibSeriesShouldContainAllValuesSortedWhenRangeIs6() {
         initFib(6);
 
         List<Integer> result = fib.getFibSeries();
 
-        List<Integer> expected = List.of(0, 1, 1, 2, 3, 5);
-
-        Assertions.assertIterableEquals(expected, result);
-
+        // La consigne n'est pas claire : on ne sait pas si la liste doit contenir uniquement ces valeurs
+        // On part du principe qu'on veut une égalité, comme dans le 2e test
+        Assertions.assertIterableEquals(List.of(0, 1, 1, 2, 3, 5), result);
     }
 
-
-    @Test
-    public void testGetFibSeriesRange6ShouldBeSorted() {
-        initFib(6);
-
-        List<Integer> result = fib.getFibSeries();
-
-        List<Integer> sorted = result.stream().sorted().toList();
-
-        Assertions.assertIterableEquals(sorted, result);
-
-    }
+    // Méthode inutile car cette condition est vérifiée dans le test précédent
+//    @Test
+//    public void testGetFibSeriesRange6ShouldBeSorted() {
+//        initFib(6);
+//
+//        List<Integer> result = fib.getFibSeries();
+//
+//        List<Integer> sorted = result.stream().sorted().toList();
+//
+//        Assertions.assertIterableEquals(sorted, result);
+//
+//    }
 }
