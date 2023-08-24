@@ -19,13 +19,13 @@ L'énoncé des exercices se trouve dans le fichier contenant le main, au dessus 
 - [Démos](/java_poo/src/main/java/org/example/demos/)
 - [Exercices](/java_poo/src/main/java/org/example/exos/)
 
-## [JDBC/JPA/Hibernate](/java_jdbc/src/)
+## [JDBC/JPA/Hibernate](/java_jdbc/src/main/java/org/example/)
 
 - [Démos](/java_jdbc/src/main/java/org/example/demos/)
 - [Exercices](/java_jdbc/src/main/java/org/example/exos/)
     - [JDBC](/java_jdbc/src/main/java/org/example/exos/jdbc)
     - [JPA](/java_jdbc/src/main/java/org/example/exos/jpa) : 4 version accessibles via les tags git (jpa_exo_v...)
 
-## [Test Driven Development](/java_tdd/)
-- [Démos](/java_tdd/demo/)
-- [Exercices](/java_tdd/exo/)
+## [Test Driven Development](/java_tdd/src/test/java/org/example/)
+- [Démos](/java_tdd/src/test/java/org/example/demo/)
+- [Exercices](/java_tdd/src/test/java/org/example/exo/)
