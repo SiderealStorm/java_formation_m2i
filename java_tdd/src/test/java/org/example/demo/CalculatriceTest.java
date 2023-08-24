@@ -9,11 +9,11 @@ public class CalculatriceTest {
 
     /*
     Conventions d'écriture d'une méthode test :
-    - toujours public void
-    - nom de la méthode : test + nom de la méthode à tester + résultat
-    Exemple :
-    Given ... When ...
-    ShouldBe ... When
+        - toujours public void
+        - nom de la méthode : test + nom de la méthode à tester + résultat
+        Exemple :
+            * test ... Given ... When ...
+            * ShouldBe ... When ...
      */
 
     // Test de la méthode addition :
