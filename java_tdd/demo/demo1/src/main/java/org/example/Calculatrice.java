@@ -1,4 +1,4 @@
-package org.example.demo;
+package org.example;
 
 public class Calculatrice {
     public double addition(double a, double b) {

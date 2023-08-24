@@ -1,4 +1,4 @@
-package org.example.exo.exo1;
+package org.example;
 
 public class GradingCalculator {
     private int score;
