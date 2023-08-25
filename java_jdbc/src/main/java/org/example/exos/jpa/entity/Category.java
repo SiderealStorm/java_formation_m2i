@@ -1,8 +1,10 @@
 package org.example.exos.jpa.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Category {
 
     @Id
@@ -19,7 +21,10 @@ public class Category {
     )
     private List<Task> tasks;
 
-    public Category() {}
+    public Category() {
+        // Pour éviter la LazyInitializationException, il faut initialiser les listes vides !
+        this.tasks = new ArrayList<>();
+    }
 
     public Category(String name) {
         this.name = name;

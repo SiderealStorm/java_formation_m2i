@@ -1,6 +1,7 @@
 package org.example.exos.jpa.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,10 +17,12 @@ public class User {
 
     // L'option cascade s'applique à l'entité où elle est déclarée
     // exemple ici : quand on supprime un User, on supprime aussi ses Tasks
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.REMOVE})
     private List<Task> tasks;
 
-    public User() {}
+    public User() {
+        this.tasks = new ArrayList<>();
+    }
 
     public User(String userName) {
         this.userName = userName;

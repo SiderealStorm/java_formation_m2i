@@ -49,6 +49,8 @@ public class ConsoleHci {
                 case 9 -> displayCategoryTasks();
                 case 10 -> addCategory();
                 case 11 -> deleteCategory();
+                case 12 -> putTaskInCategory();
+                case 13 -> removeTaskFromCategory();
                 default -> System.out.println("Veuillez entrer un nombre valide !");
             }
         } while (choice !=0);
@@ -71,8 +73,8 @@ public class ConsoleHci {
         System.out.println("9. Afficher toutes les tâches d'une catégorie");
         System.out.println("10. Ajouter une catégorie");
         System.out.println("11. Supprimer une catégorie");
-//        System.out.println("12. Mettre une tâche dans une catégorie");
-//        System.out.println("13. Retirer une tâche d'une catégorie");
+        System.out.println("12. Mettre une tâche dans une catégorie");
+        System.out.println("13. Retirer une tâche d'une catégorie");
         System.out.println("0. Quitter");
     }
 
@@ -266,6 +268,7 @@ public class ConsoleHci {
         if (category == null) {
             System.out.println("Veuillez créer une catégorie");
             addCategory();
+            category = service.getAllCategories().get(0);
             // TODO récupérer la catégorie !
         }
         if (service.addTaskToCategory(task, category)){
