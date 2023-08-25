@@ -1,13 +1,13 @@
 package org.example.exo.exo5;
 
 import org.example.exo.exo5.exception.MaxQualityException;
+import org.example.exo.exo5.exception.NegativeQualityException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ShopTest {
 
     private Product product;
-    private Product result;
     private Shop shop;
 
     public void init(int sellIn, int quality, String name, String category) {
@@ -15,39 +15,52 @@ public class ShopTest {
         product = new Product(sellIn, quality, name, category);
     }
 
+    // Correction : on vérifie d'abord que les DEUX paramètres baissent
     @Test
-    public void testUpdateSellInShouldBe2AndQuality49WhenSellInIs3AndQualityIs50() {
+    public void testUpdateShouldDecreaseQuality() {
         // Arrange
         init(3, 50, "blanc de poulet", "viande");
 
         // Act
-        result = shop.update(product);
+        shop.update(product);
 
         // Assert
-        Assertions.assertEquals(49, result.getQuality());
+        Assertions.assertEquals(49, product.getQuality());
     }
 
     @Test
-    public void testUpdateQualityShouldBe48WhenSellInIs0AndQualityIs50() {
+    public void testUpdateShouldDecreaseSellIn() {
+        // Arrange
+        init(3, 50, "blanc de poulet", "viande");
+
+        // Act
+        shop.update(product);
+
+        // Assert
+        Assertions.assertEquals(2, product.getSellIn());
+    }
+
+
+    @Test
+    public void testUpdateShouldDecreaseQualityTwiceWhenSellInIs0() {
         init(0, 50, "blanc de poulet", "viande");
-        result = shop.update(product);
-        Assertions.assertEquals(48, result.getQuality());
+        shop.update(product);
+        Assertions.assertEquals(48, product.getQuality());
+    }
+
+    // Correction : ajout du cas où le produit est déjà négatif
+    @Test
+    public void testUpdateQualityShouldNotBeNegativeWhenNegative() {
+        init(5, -1, "blanc de poulet", "viande");
+        Assertions.assertThrowsExactly(NegativeQualityException.class, () -> shop.update(product));
     }
 
     @Test
-    public void testUpdateQualityShouldNotBeNegativeWhenQualityIs0() {
-        init(5, 0, "blanc de poulet", "viande");
-        result = shop.update(product);
-        Assertions.assertFalse(result.getQuality() < 0);
-    }
-
-    @Test
-    public void testUpdateQualityShouldNotBeNegativeWhenSellInIs0QualityIs0() {
+    public void testUpdateQualityShouldNotBecomeNegativeWhenDecreasing() {
         init(0, 0, "blanc de poulet", "viande");
-        result = shop.update(product);
-        Assertions.assertFalse(result.getQuality() < 0);
+        shop.update(product);
+        Assertions.assertEquals(0, product.getQuality());
     }
-
 
     @Test
     public void testUpdateShouldThrowExceptionWhenQualityIsAbove50() {
@@ -56,23 +69,30 @@ public class ShopTest {
     }
 
     @Test
-    public void testUpdateQualityShouldBe41WhenQualityIs40AndProductIsBrie() {
+    public void testUpdateShouldIncreaseQualityWhenProductIsBrie() {
         init(5, 40, "brie vieilli", "laitier");
-        result = shop.update(product);
-        Assertions.assertEquals(41, result.getQuality());
+        shop.update(product);
+        Assertions.assertEquals(41, product.getQuality());
     }
 
     @Test
-    public void testUpdateQualityShouldBe48WhenQualityIs50AndProductIsLaitier() {
+    public void testUpdateShouldNotIncreaseQualityWhenQualityIs50ProductIsBrie() {
+        init(5, 50, "brie vieilli", "laitier");
+        shop.update(product);
+        Assertions.assertEquals(50, product.getQuality());
+    }
+
+    @Test
+    public void testUpdateShouldDecreaseQualityTwiceWhenProductIsLaitier() {
         init(5, 50, "yaourt", "laitier");
-        result = shop.update(product);
-        Assertions.assertEquals(48, result.getQuality());
+        shop.update(product);
+        Assertions.assertEquals(48, product.getQuality());
     }
 
     @Test
-    public void testUpdateQualityShouldBe46WhenSellInIs0AndQualityIs50AndProductIsLaitier() {
+    public void testUpdateShouldDecreaseQualityBy4WhenSellInIs0AndProductIsLaitier() {
         init(0, 50, "yaourt", "laitier");
-        result = shop.update(product);
-        Assertions.assertEquals(46, result.getQuality());
+        shop.update(product);
+        Assertions.assertEquals(46, product.getQuality());
     }
 }
