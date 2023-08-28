@@ -34,7 +34,7 @@ public class Demo2 {
         System.out.println("=== Liste des personnes avec .iterate() ===");
         Iterator<Person> personIterator = personQuery.iterate();
         while(personIterator.hasNext()){
-            Person p = (Person) personIterator.next();
+            Person p = personIterator.next();
             System.out.println(p);
         }
 

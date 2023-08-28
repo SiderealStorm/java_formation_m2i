@@ -17,21 +17,21 @@ Dans une classe Test (ou le Main) :
 - Modifier les informations du produit dont id = 1,
 
 ## Partie 2 :
-Ajouter à notre application de l'exercice 1 les fonctionnalités suivantes :
+Ajouter à notre application les fonctionnalités suivantes :
 
 1. Afficher la totalité des produits 
 2. Afficher la liste des produits dont le prix est supérieur à 100 euros 
 3. Afficher la liste des produits achetés entre deux dates.
 
 ## Partie 3 :
-Modifier l'application de l'exercice 2 en ajoutant les fonctionnalités suivantes:
+Modifier l'application en ajoutant les fonctionnalités suivantes:
 
 1. Afficher la liste des produits commandés entre deux dates lus au clavier.
 2. Retourner les numéros et reference des articles dont le stock est inférieur à une valeur lue au clavier.
 
 ## Partie 4 :
 
-Modifier l'application de l'exercice 3 en ajoutant les fonctionnalités suivantes:
+Modifier l'application en ajoutant les fonctionnalités suivantes:
 
 1. Afficher la valeur du stock des produits d'une marque choisie.
 2. Calculer le prix moyen des produits.
