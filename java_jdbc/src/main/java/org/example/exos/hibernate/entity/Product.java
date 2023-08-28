@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(schema = "exo")
 public class Product {
 
     @Id

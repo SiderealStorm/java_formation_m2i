@@ -21,20 +21,20 @@ public class Main {
         // Création de 5 produits
         Product product1 = new Product();
         product1.setBrand("Test 1");
-        product1.setReference("Référence test 1");
+        product1.setReference("123456ABC");
         product1.setPurchaseDate(new Date());
         product1.setPrice(15.99);
         product1.setStock(12);
 
         Product product2 = new Product();
         product2.setBrand("Test 2");
-        product2.setReference("Référence test 2");
+        product2.setReference("234567AZE");
         product2.setPurchaseDate(new Date());
         product2.setPrice(159.99);
         product2.setStock(1);
 
         Product product3 = new Product();
-        product3.setBrand("Test 3");
+        product3.setBrand("345678QSD");
         product3.setReference("Référence test 3");
         product3.setPurchaseDate(new Date());
         product3.setPrice(5.99);
@@ -42,14 +42,14 @@ public class Main {
 
         Product product4 = new Product();
         product4.setBrand("Test 4");
-        product4.setReference("Référence test 4");
+        product4.setReference("456789REZ");
         product4.setPurchaseDate(new Date());
         product4.setPrice(165.99);
         product4.setStock(2);
 
         Product product5 = new Product();
         product5.setBrand("Test 5");
-        product5.setReference("Référence test 5");
+        product5.setReference("567890QWX");
         product5.setPurchaseDate(new Date());
         product5.setPrice(10.99);
         product5.setStock(25);
