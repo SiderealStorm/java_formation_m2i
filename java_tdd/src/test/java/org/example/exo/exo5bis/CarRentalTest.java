@@ -96,7 +96,7 @@ public class CarRentalTest {
 
     // Cas 4 : voiture de luxe dont l'état est à 100
     @Test
-    public void testDailyRoutineShouldNotIncreaseeConditionWhenTypeIsLuxeAndConditionIs100() {
+    public void testDailyRoutineShouldNotIncreaseConditionWhenTypeIsLuxeAndConditionIs100() {
         init(5, 100, "luxe");
 
         carRental.dailyRoutine(car);
