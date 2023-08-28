@@ -11,7 +11,11 @@
     <session-factory>
         <!-- Chaque entité doit être déclarée dans une balise <mapping/> -->
         <!-- La classe est définie par son chemin complet depuis la racine (dossier java) -->
+
+        <!-- Démo -->
         <mapping class="org.example.demos.hibernate.entity.Person"/>
         <mapping class="org.example.demos.hibernate.entity.Company"/>
+        <!-- Exo1 -->
+        <mapping class="org.example.exos.hibernate.entity.Product"/>
     </session-factory>
 </hibernate-configuration>
