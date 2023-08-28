@@ -56,21 +56,19 @@ public class Main {
         // Ajout des 5 produits en BDD
 
         ProductDAO dao = new ProductDAO();
-        dao.openSession();
+//
+//        dao.save(product1);
+//        dao.save(product2);
+//        dao.save(product3);
+//        dao.save(product4);
+//        dao.save(product5);
 
-        dao.save(product1);
-        dao.save(product2);
-        dao.save(product3);
-        dao.save(product4);
-        dao.save(product5);
+//        // Affichage du produit 2
+//
+//        Product product = dao.get(2);
+//        System.out.println("=== Affichage produit 2 ===");
+//        System.out.println(product);
 
-        // Affichage du produit 2
-
-        Product product = dao.get(2);
-        System.out.println("=== Affichage produit 2 ===");
-        System.out.println(product);
-
-        dao.closeSession();
         // Suppression du produit 3
 
         System.out.println("=== Suppression du produit 3 ===");

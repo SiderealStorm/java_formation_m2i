@@ -13,7 +13,6 @@ import java.util.List;
 
 public class ProductDAO {
     SessionFactory sessionFactory;
-    Session session;
     Query<Product> productQuery;
 
     public ProductDAO () {
@@ -21,30 +20,22 @@ public class ProductDAO {
         sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
     }
 
-    public void openSession() {
-        session = sessionFactory.openSession();
-    }
-
-    public void closeSession() {
-        session.close();
-    }
-
     public void close() {
         sessionFactory.close();
     }
 
     public void save(Product product) {
-//        session = sessionFactory.openSession();
+        Session  session = sessionFactory.openSession();
         session.getTransaction().begin();
 
         session.save(product);
 
         session.getTransaction().commit();
-//        session.close();
+        session.close();
     }
 
     public void delete(int id) {
-        session = sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
         session.getTransaction().begin();
 
         Product product = session.load(Product.class, id);
@@ -55,7 +46,7 @@ public class ProductDAO {
     }
 
     public void update(Product product) {
-        session = sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
         session.getTransaction().begin();
 
         Product productSearch = session.load(Product.class, product.getId());
@@ -73,7 +64,7 @@ public class ProductDAO {
     }
 
     public Product get(int id) {
-        session = sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
 
         Product product = session.load(Product.class, id);
 
@@ -83,17 +74,17 @@ public class ProductDAO {
     }
 
     public List<Product> get() {
-//        session = sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
 
         List<Product> products = session.createQuery("FROM Product ORDER BY id").list();
 
-//        session.close();
+        session.close();
 
         return products;
     }
 
     public List<Product> getByMinPrice(double price) {
-        session = sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
 
         productQuery = session.createQuery("FROM Product WHERE price > :price");
         productQuery.setParameter("price", price);
@@ -104,7 +95,7 @@ public class ProductDAO {
     }
 
     public List<Product> getByPurchasedDateRange(LocalDate minDate, LocalDate maxDate) {
-        session = sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
 
         productQuery = session.createQuery("FROM Product WHERE purchaseDate > :minDate AND purchaseDate < :maxDate");
         productQuery.setParameter("minDate", minDate);
