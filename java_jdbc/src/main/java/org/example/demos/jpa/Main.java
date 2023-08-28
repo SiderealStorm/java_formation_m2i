@@ -18,9 +18,9 @@ public class Main {
         // Relations :
 //        RelationsJPA.oneToOneExample();
 //        RelationsJPA.oneToManyExample();
-        RelationsJPA.manyToManyExample();
+//        RelationsJPA.manyToManyExample();
 
-        RelationsJPA.closeEmf();
+//        RelationsJPA.closeEmf();
     }
 
 }

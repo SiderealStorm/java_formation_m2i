@@ -24,7 +24,7 @@
             <version>42.6.0</version>
         </dependency>
 
-        <!-- Dépendance supplémentaire pour utiliser JPA avec Hibernate -->
+        <!-- Dépendance supplémentaire pour utiliser JPA et/ou Hibernate -->
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
         <dependency>
             <groupId>org.hibernate</groupId>
