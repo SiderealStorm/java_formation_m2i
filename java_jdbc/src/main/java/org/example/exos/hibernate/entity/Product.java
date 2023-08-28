@@ -20,6 +20,14 @@ public class Product {
 
     public Product() {}
 
+    public Product(String brand, String reference, LocalDate purchaseDate, double price, int stock) {
+        this.brand = brand;
+        this.reference = reference;
+        this.purchaseDate = purchaseDate;
+        this.price = price;
+        this.stock = stock;
+    }
+
     public int getId() {
         return id;
     }

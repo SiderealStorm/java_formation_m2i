@@ -1,5 +1,6 @@
 package org.example.exos.hibernate;
 
+import org.example.exos.hibernate.dao.ProductDAO;
 import org.example.exos.hibernate.entity.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,13 +15,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // Préparation de la session :
-        StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
-        SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-
-        // Ouverture de la session :
-        Session session = sessionFactory.openSession();
-
         // PARTIE 1 :
         
         // Création de 5 produits
@@ -61,74 +55,56 @@ public class Main {
 
         // Ajout des 5 produits en BDD
 
-        session.getTransaction().begin();
-        System.out.println("=== Ajout produits ===");
-        session.save(product1);
-        session.save(product2);
-        session.save(product3);
-        session.save(product4);
-        session.save(product5);
+        ProductDAO dao = new ProductDAO();
+        dao.openSession();
 
-        session.getTransaction().commit();
+        dao.save(product1);
+        dao.save(product2);
+        dao.save(product3);
+        dao.save(product4);
+        dao.save(product5);
 
         // Affichage du produit 2
 
-        Product product = session.load(Product.class, 2);
+        Product product = dao.get(2);
         System.out.println("=== Affichage produit 2 ===");
         System.out.println(product);
 
+        dao.closeSession();
         // Suppression du produit 3
 
-        session.getTransaction().begin();
-
-        product = session.load(Product.class, 3);
-        System.out.println("=== Suppression du produit " + product.getId() + " ===");
-
-        session.delete(product);
-
-        session.getTransaction().commit();
+        System.out.println("=== Suppression du produit 3 ===");
+        dao.delete(3);
 
         // Modification du produit 1
 
-        session.getTransaction().begin();
+        System.out.println("=== Modification du produit 1 ===");
+        product1.setBrand("Test 1 modifié");
 
-        product = session.load(Product.class, 1);
-        System.out.println("=== Modification du produit " + product.getId() + " ===");
-        product.setBrand("Test 1 modifié");
-
-        session.update(product);
-
-        session.getTransaction().commit();
+        dao.update(product1);
 
 
         // PARTIE 2 :
 
         // Affichage de tous les produits
 
-        Query<Product> productQuery = session.createQuery("FROM Product");
-        List<Product> products = productQuery.list();
+        List<Product> products = dao.get();
         System.out.println("=== Affichage des produits ===");
         products.forEach(System.out::println);
 
         // Affichage des produits à plus de 100€
 
-        productQuery = session.createQuery("FROM Product WHERE price > 100");
-        products = productQuery.list();
+        products = dao.getByMinPrice(100);
         System.out.println("=== Produits à plus de 100€ ===");
         products.forEach(System.out::println);
 
         // Affichage des produits achetés entre février et avril 2023
 
-        productQuery = session.createQuery("FROM Product WHERE purchaseDate > ?1 AND purchaseDate < ?2");
-        productQuery.setParameter(1, LocalDate.of(2023, 2, 28));
-        productQuery.setParameter(2, LocalDate.of(2023, 4, 30));
-        products = productQuery.list();
+        LocalDate minDate = LocalDate.of(2023, 2, 28);
+        LocalDate maxDate = LocalDate.of(2023, 4, 30);
+        products = dao.getByPurchasedDateRange(minDate, maxDate);
         System.out.println("=== Produits achetés entre février et avril 2023 ===");
         products.forEach(System.out::println);
 
-        
-        // Fermeture de Session et SessionFactory
-        session.close();
-        sessionFactory.close();
     }
 }
