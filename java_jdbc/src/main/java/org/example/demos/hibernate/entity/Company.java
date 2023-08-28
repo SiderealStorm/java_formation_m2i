@@ -40,4 +40,8 @@ public class Company {
     public void setPersons(List<Person> persons) {
         this.persons = persons;
     }
+
+    public void addPerson(Person person) {
+        persons.add(person);
+    }
 }

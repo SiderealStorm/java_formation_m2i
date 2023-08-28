@@ -9,7 +9,7 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    private String lastName;
 
     @Column(name = "first_name")
     private String firstName;
@@ -29,12 +29,12 @@ public class Person {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getFirstName() {
@@ -65,9 +65,10 @@ public class Person {
     public String toString() {
         return "Person{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", age=" + age +
                 '}';
     }
+
 }

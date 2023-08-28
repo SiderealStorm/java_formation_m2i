@@ -7,7 +7,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-public class Main {
+public class Demo1 {
     public static void main(String[] args) {
         // Création d'un registre pour charger la configuration à partir du fichier de configuration
         // Pour instancier le registre, on utilise le builder de la classe
@@ -19,20 +19,45 @@ public class Main {
         // Dès l'ouverture de la session, hibernate agit sur la BDD
         // L'action effectuée dépend de la propriété hibernate.hbm2ddl.auto du fichier de configuration
 
-        // Ajout d'une personne :
+        // Ajout de personnes :
 
         // Comme pour JPA, on passe par une transaction
         session.getTransaction().begin();
 
-        // Création de l'entité
-        Person person = new Person();
-        person.setName("Lbn");
-        person.setFirstName("Storm");
+        // Création des entités
+        Person person1 = new Person();
+        person1.setLastName("Lbn");
+        person1.setFirstName("Storm");
+        person1.setAge(30);
 
-        // Enregistrement de l'entité
-        session.save(person);
+        Person person2 = new Person();
+        person2.setLastName("Durand");
+        person2.setFirstName("Michèle");
+        person2.setAge(56);
+
+        Person person3 = new Person();
+        person3.setLastName("Doe");
+        person3.setFirstName("John");
+        person3.setAge(36);
+
+        Person person4 = new Person();
+        person4.setLastName("Doe");
+        person4.setFirstName("Jane");
+        person3.setAge(36);
+
+        Person person5 = new Person();
+        person5.setLastName("Dupont");
+        person5.setFirstName("Jacques");
+        person5.setAge(68);
+
+        // Enregistrement des entités
+        session.save(person1);
+        session.save(person2);
+        session.save(person3);
+        session.save(person4);
+        session.save(person5);
         // L'objet Java est mis à jour, on peut récupérer l'ID de la personne
-        System.out.println("ID de la personne enregistrée : " + person.getId());
+        System.out.println("ID de la 1e personne enregistrée : " + person1.getId());
 
         // Commit de la transaction = enregistrement définitif
         session.getTransaction().commit();
@@ -42,13 +67,13 @@ public class Main {
 
         session.getTransaction().begin();
 
-        Person person1 = session.load(Person.class, 1);
-        System.out.println(person1.getFirstName());
+        Person person = session.load(Person.class, 1);
+        System.out.println("Modification de " + person.getFirstName());
 
         // Attention : si on souhaite modifier ou supprimer une occurence en BDD,
         // il faut être dans la même transaction que lors de sa réscupération
-        person1.setAge(29);
-        session.update(person1);
+        person.setAge(29);
+        session.update(person);
 
         session.getTransaction().commit();
 
@@ -57,10 +82,10 @@ public class Main {
 
         session.getTransaction().begin();
 
-        Person person2 = session.load(Person.class, 1);
-        System.out.println(person2);
+        Person personSearch = session.load(Person.class, 2);
+        System.out.println("Suppression de " + personSearch.getFirstName());
 
-        session.delete(person2);
+        session.delete(personSearch);
 
         session.getTransaction().commit();
 
