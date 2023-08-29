@@ -15,7 +15,7 @@ public class JeuTestBis {
 
     // On précise quelle classe ou interface on veut simuler
     @Mock
-    private De de;
+    private DeImpl de;
     private Jeu jeu;
 
     @Test
