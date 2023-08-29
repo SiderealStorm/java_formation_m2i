@@ -1,6 +1,5 @@
-package org.example.demo;
+package org.example.demo.base;
 
-import org.example.Calculatrice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

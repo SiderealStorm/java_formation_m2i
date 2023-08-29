@@ -1,11 +1,9 @@
-package org.example.demo;
+package org.example.demo.base;
 
-import org.example.Calculatrice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-// Le nom d'une classe de test commence par le nom que la classe qu'elle teste
 public class CalculatriceTestBis {
 
     /*
