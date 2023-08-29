@@ -6,6 +6,8 @@ public class LePendu {
 
     private String masque;
 
+    private int vies;
+
     public LePendu(MotAleat motAleat) {
         this.mot = motAleat.genererMot();
     }
@@ -18,12 +20,19 @@ public class LePendu {
     }
 
     public boolean testChar(char lettre) {
+        boolean trouve = false;
         for (int i = 0; i < mot.length() ; i++) {
             if (mot.charAt(i) == lettre) {
-                return true;
+                StringBuilder string = new StringBuilder(masque);
+                string.setCharAt(i, lettre);
+                masque = String.valueOf(string);
+                trouve = true;
             }
         }
-        return false;
+        if (!trouve) {
+            vies--;
+        }
+        return trouve;
     }
 
     public boolean testVictoire() {
@@ -40,5 +49,13 @@ public class LePendu {
 
     public void setMasque(String masque) {
         this.masque = masque;
+    }
+
+    public int getVies() {
+        return vies;
+    }
+
+    public void setVies(int vies) {
+        this.vies = vies;
     }
 }
