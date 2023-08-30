@@ -1,0 +1,65 @@
+/* Bonne pratique : tout le CSS dans un fichier à part ! */
+
+/* Style sur une balise */
+h1 {
+    color: rgb(255, 0, 0);
+}
+
+/* Style sur balise enfant d'une autre */
+section h3 {
+    color: blue;
+}
+
+/* Style sur une classe */
+.en-vert {
+    color: green;
+}
+
+/* Style sur un id */
+#titre {
+    color: purple;
+}
+
+/* Style d'un bouton (ou lien) */
+
+/* Quand on change le style d'un bouton, on perd ses propriétés sépcifiques (au survol au clic...) */
+button {
+    font-size: 3rem;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+}
+
+/* Il faut les rajouter en utilisant les pseudo-sélecteurs */
+
+/* au survol */
+button:hover {
+    background-color: darkred;
+    cursor: pointer;
+}
+
+/* au survol si le bouton est desactivé */
+button:is([disabled]), button[disabled] {   /* identiques ; aussi disponible avec :not */
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+/* Paramètres d'image */
+#mon-chien {
+    height: 500px;
+    width: 400px;
+    /* cover = débordement ; contain = ajout de blanc */
+    object-fit: cover;
+    /* Filtres d'image */
+    filter: grayscale();
+    /* Propriétés de transitions */
+    transition: all 2s;
+}
+
+#mon-chien:hover {
+    filter: none;
+    /* Transformations */
+    transform: translate(50px) scale(0.95)
+}
