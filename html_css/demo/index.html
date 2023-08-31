@@ -79,8 +79,99 @@
     <!-- Donner un ID à une balise -->
     <h1 id="titre">Titre avec ID</h1>
 
-    <button>Cliquez ici !</button>
-    <button disabled>Pas ici !</button>
+    <div class="boutons">
+        <button>Cliquez ici !</button>
+        <button disabled>Pas ici !</button>
+    </div>
+    <hr>
+
+    <!-- Formulaires -->
+
+    <form action="mailto:abc@example.com">
+        <fieldset>
+            <legend>Infos de base</legend>
+            <div>
+                <label for="prenom">Prénom :</label>
+                <input type="text" name="prenom" id="prenom" required>
+            </div>
+            <div>
+                <label for="nom">Nom :</label>
+                <input type="text" name="nom" id="nom" required>
+            </div>
+            <div>
+                <label for="mail">Adresse email :</label>
+                <input type="email" name="mail" id="mail" required>
+            </div>
+            <div>
+                <label for="age">Âge :</label>
+                <input type="number" name="age" id="age" required min="0" max="150" value="18">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Sujet de votre question</legend>
+            <div>
+                <label for="questionType">Sujet :</label>
+                <select required name="questionType" id="questionType">
+                    <!-- Option sans valeur pour que l'option required fonctionne -->
+                    <option value="">--- Sélectionnez un sujet ---</option>
+                    <optgroup label="Compte">
+                        <option value="1">Problème de connexion</option>
+                        <option value="2">Question sur le site</option>
+                    </optgroup>
+                    <optgroup label="Paiement">
+                        <option value="3">Problème de paiement</option>
+                        <option value="4">Question sur le paiement</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div>
+                <!-- Formulaire à choix multiples -->
+                <label for="language">Langues connues :</label>
+                <select multiple required name="language" id="language" size="6">
+                    <optgroup label="Europe">
+                        <option value="enUK">Anglais britannique</option>
+                        <option value="frFR">Français</option>
+                    </optgroup>
+                    <optgroup label="Asie">
+                        <option value="krKR">Coréen</option>
+                        <option value="chMD">Mandarin</option>
+                    </optgroup>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Importance</legend>
+            <div>
+                <input type="checkbox" name="isUrgent" id="isUrgent">
+                <label for="isUrgent">Urgent</label>
+            </div>
+            <div>
+                <label for="whereSend">Où voulez-vous envoyer votre message :</label>
+                <input type="radio" name="whereSend" id="local" value="local">
+                <label for="local">Site local</label>
+                <input type="radio" name="whereSend" id="head" value="head">
+                <label for="head">Siège social</label>
+            </div>
+            <div>
+                <label for="score">Importance :</label>
+                <input type="range" name="score" id="score" min="1" max="3" list="scores">
+                <datalist id="scores">
+                    <option value="3" label="Haute"></option>
+                    <option value="2" label="Moyenne"></option>
+                    <option value="1" label="Faible"></option>
+                </datalist>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Message</legend>
+            <label for="message">Votre message :</label>
+            <textarea name="message" id="message" cols="100" rows="5">Votre message ici</textarea>
+
+        </fieldset>
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <p><a href="/demo_flexbox.html">FLEXBOX</a></p>
 
 </body>
 </html>

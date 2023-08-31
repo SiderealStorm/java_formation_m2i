@@ -1,127 +1,177 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RAWR</title>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" href="assets/img/paw-grey.png">
 </head>
-
-<!-- consignes : intitulé / images / menu ancres / tableau / liste -->
-<!-- Thème : refuge pour animaux -->
-<!-- menu : liste avec horaires, pensionnaires -->
-<!-- section horaires : tableau -->
-<!-- section pensionnaires : liste d'images ? -->
 
 <body>
     <header>
-        <h1>
-            Refuge animalier de Roost
-        </h1>
         <nav>
             <ul>
-                <li><a href="#horaires">Horaires</a></li>
-                <li><a href="#chiens">Chiens</a></li>
-                <li><a href="#chats">Chats</a></li>
+                <li>
+                    <a href="/index.html">Accueil</a>
+                </li>
+                <li>
+                    <a href="/animals.html">Nos animaux</a>
+                </li>
+                <li>
+                    <a href="/contact.html">Contact</a>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <p id="intro">
-            Bienvenue au refuge animalier de Roost-Warendin
-        </p>
-        <section id="horaires">
-            <h2>Horaires d'ouverture</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <td></td>
-                        <th>Matin</th>
-                        <th>Après-midi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>Lundi</th>
-                        <td>Fermé</td>
-                        <td>Fermé</td>
-                    </tr>
-                    
-                    <tr>
-                        <th>Mardi</th>
-                        <td>Fermé</td>
-                        <td>15h - 19h</td>
-                    </tr>
-                    
-                    <tr>
-                        <th>Mercredi</th>
-                        <td>10h - 13h</td>
-                        <td>14h - 18h</td>
-                    </tr>
-                    
-                    <tr>
-                        <th>Jeudi</th>
-                        <td>Fermé</td>
-                        <td>15h - 19h</td>
-                    </tr>
-                    
-                    <tr>
-                        <th>Vendredi</th>
-                        <td>Fermé</td>
-                        <td>15h - 19h</td>
-                    </tr>
-                    
-                    <tr>
-                        <th>Samedi</th>
-                        <td>10h - 13h</td>
-                        <td>14h - 18h</td>
-                    </tr>
-                    
-                    <tr>
-                        <th>Dimanche</th>
-                        <td>10h - 13h</td>
-                        <td>14h - 18h</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="home-image">
+        <div id="intro">
+            <h2>
+                Bienvenue au Refuge Animalier de Roost-Warendin
+            </h2>
+        </div>
+    </div>
+    <main id="accueil">
+        <section>
+            <p>
+                Le RAWR (Refuge Animalier de Roost-Warendin) est un refuge communautaire pour animaux domestiques géré par la SAPAD (Société de Protection des Animaux du Douaisis), association de loi 1901 affiliée à la Confédération Nationale des sociétés de protection des animaux de France et des pays d'expression française. Le refuge accueille les chiens, chats et rongeurs issus de fourrière, saisis ou abandonnées par leurs anciens propriétaires, afin qu'ils puissent trouver une nouvelle famille.
+                <br>
+                Tous les animaux présentés sur le site sont disponibles à l'adoption. Attention : l'adoption d'un animal est un acte réfléchi, et toute demande d'adoption devra être validée suite à un questionnaire et une enquête sur votre mode de vie, afin de s'assurer que toutes les conditions soient remplies pour accueillir l'animal dans de bonnes conditions.
+                <br>
+                Tous les pensionnaires du refuge sont identifiés, vaccinés et stérilisés (sauf chiots et chatons) avant adoption. Un rappel de vaccin sera à effectuer un mois après l'adoption. Une participation financière obligatoire sera demandée pour toute adoption de chien ou chat (tarifs ci-dessous), comprenant les frais médicaux et l'identification de l'animal. Pour l'adoption d'un rongeur, le montant du don est libre.
+                <hr>
+                Nous proposons également un service de gardiennage pour chiens et chats, ouvert toute l'année : <a href="contact.html">contactez-vous</a> pour réserver. Votre animal doit être identifié (puce ou tatouage) et présenter un carnet de vaccination à jour pour être accepté.
+            </p>
         </section>
+        <h2>Informations et tarifs</h2>
+        <div id="infos">
+            <section id="horaires">
+                <h3>Horaires d'ouverture</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Lundi</th>
+                            <td>Fermé</td>
+                        </tr>
 
-        <section id="chiens">
-            <h2>Nos chiens à l'adoption</h2>
-            <div>
-                <img src="assets/img/chiens/heaven.jpg" alt="Heaven">
-                <h3>Heaven</h3>
-            </div>
-            <div>
-                <img src="assets/img/chiens/kaly.jpg" alt="Kaly">
-                <h3>Kaly</h3>
-            </div>
-            <div>
-                <img src="assets/img/chiens/rosco.jpg" alt="Rosco">
-                <h3>Rosco</h3>
-            </div>
-        </section>
-        
-        <section id="chats">
-            <h2>Nos chats à l'adoption</h2>
-            <div>
-                <img src="assets/img/chats/jerry.jpg" alt="Jerry">
-                <h3>Jerry</h3>
-            </div>
-            <div>
-                <img src="assets/img/chats/sakura.jpg" alt="Sakura">
-                <h3>Sakura</h3>
-            </div>
-            <div>
-                <img src="assets/img/chats/gribouille.jpg" alt="Gribouille">
-                <h3>Gribouille</h3>
-            </div>
-        </section>
+                        <tr>
+                            <th>Mardi</th>
+                            <td>15h-19h</td>
+                        </tr>
+
+                        <tr>
+                            <th>Mercredi</th>
+                            <td>10h-13h - 14h-18h</td>
+                        </tr>
+
+                        <tr>
+                            <th>Jeudi</th>
+                            <td>15h-19h</td>
+                        </tr>
+
+                        <tr>
+                            <th>Vendredi</th>
+                            <td>15h-19h</td>
+                        </tr>
+
+                        <tr>
+                            <th>Samedi</th>
+                            <td>10h-13h - 14h-18h</td>
+                        </tr>
+
+                        <tr>
+                            <th>Dimanche</th>
+                            <td>10h-13h - 14h-18h</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="adoption">
+                <h3>Tarifs d'adoption</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <th>Tarif</th>
+                            <th>Caution (stérilisation)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Chat</th>
+                            <td>110 €</td>
+                            <td>110 €</td>
+                        </tr>
+
+                        <tr>
+                            <th>Chien</th>
+                            <td>160 €</td>
+                            <td>Non</td>
+                        </tr>
+
+                        <tr>
+                            <th>Chiot</th>
+                            <td>200 €</td>
+                            <td>200 €</td>
+                        </tr>
+
+                        <tr>
+                            <th>Rongeur</th>
+                            <td>Don libre</td>
+                            <td>Non</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="gardiennage">
+                <h3>Tarifs du gardiennage</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <th>Chat</th>
+                            <th>Chien</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Vacances d'été</th>
+                            <td>10 €/jour</td>
+                            <td>15 €/jour</td>
+                        </tr>
+
+                        <tr>
+                            <th>Hors vacances</th>
+                            <td>8 €/jour</td>
+                            <td>12 €/jour</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+        </div>
     </main>
 
     <footer>
-
+        <div>
+            <p>
+                <img src="assets/img/paw-grey.png" alt="Logo patte de chien">
+            </p>
+            <p>
+                RAWR : Refuge Animalier de Roost-Warendin
+                <br>
+                123 chemin des chats
+                <br>
+                59286 Roost-Warendin
+            </p>
+        </div>
+        <p id="copyright">
+            Copyright (c) Storm
+        </p>
     </footer>
 </body>
+
 </html>

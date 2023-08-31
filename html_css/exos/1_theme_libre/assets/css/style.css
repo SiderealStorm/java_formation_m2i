@@ -1,12 +1,17 @@
 /* Général */
 
-body {
+body, html {
     margin: 0;
+}
+
+body {
     background-color: lightyellow;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
-header, main, footer {
+header,
+main,
+footer {
     padding: 0 5%;
 }
 
@@ -17,28 +22,24 @@ section {
 /* Header et navbar */
 
 header {
-    background-color:  rgb(230, 160, 91);
-}
-
-h1 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 1rem;
+    background-color: rgb(218, 117, 23);
+    color: white;
+    padding: 15px;
+    position: sticky;
+    top: 0;
 }
 
 nav ul {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-around;
-    padding: 0;
+    justify-content: space-evenly;
+    margin: 0;
 }
 
 nav li {
     min-width: 4rem;
-    list-style-type : none;
+    list-style-type: none;
     margin: 0;
-    padding: 0.5rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
 }
@@ -53,13 +54,76 @@ nav a:hover {
     text-decoration: underline;
 }
 
+/* footer */
+
+footer {
+    min-height: 50px;
+    background-color: rgb(218, 117, 23);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: end;
+}
+
+footer p {
+    font-size: smaller;
+    display: inline-block;
+}
+
+footer img {
+    height: 45px;
+}
+
+#copyright {
+    color: lightgoldenrodyellow;
+    font-size: x-small;
+}
+
+
 /* main */
 
+/* Accueil */
+
+.home-image {
+    background-image: url("/assets/img/accueil.jpg");
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #intro {
-    font-size: large;
-    font-style: italic;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#intro h2 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 5rem;
     text-align: center;
-    margin: 2rem;
+    color: white;
+    margin: 10%;
+}
+
+#accueil {
+    max-width: 70%;
+    margin: auto;
+    font-size: 1.2rem;
+    text-align: justify;
+}
+
+#accueil h2 {
+    text-align: center;
+}
+
+#infos {
+    display: flex;
+    flex-flow: row wrap;
 }
 
 /* section avec tableau */
@@ -68,7 +132,8 @@ table {
     border-collapse: collapse;
 }
 
-td, th {
+td,
+th {
     text-align: center;
     border: 1px solid black;
     min-width: 100px;
@@ -77,14 +142,13 @@ td, th {
 
 /* sections à images */
 
-img {
+#animaux img {
     height: 250px;
     width: 250px;
     object-fit: cover;
-    /* border-radius: 1rem 1rem 0 0; */
 }
 
-#chiens div, #chats div {
+#animaux div {
     display: inline-block;
     margin: 1rem;
     border-radius: 1.5rem;
@@ -93,10 +157,17 @@ img {
     transition: all 0.5s;
 }
 
-#chiens div:hover, #chats div:hover {
+#animaux div:hover {
     transform: scale(1.1);
 }
 
-div h3 {
+#animaux h3 {
     text-align: center;
 }
+
+/* Section formulaire */
+
+form {
+    display: flex;
+}
+

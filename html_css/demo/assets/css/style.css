@@ -23,7 +23,7 @@ section h3 {
 /* Style d'un bouton (ou lien) */
 
 /* Quand on change le style d'un bouton, on perd ses propriétés sépcifiques (au survol au clic...) */
-button {
+.boutons button {
     font-size: 3rem;
     background-color: red;
     color: white;
@@ -35,13 +35,13 @@ button {
 /* Il faut les rajouter en utilisant les pseudo-sélecteurs */
 
 /* au survol */
-button:hover {
+.boutons button:hover {
     background-color: darkred;
     cursor: pointer;
 }
 
 /* au survol si le bouton est desactivé */
-button:is([disabled]), button[disabled] {   /* identiques ; aussi disponible avec :not */
+.boutons button:is([disabled]), button[disabled] {   /* identiques ; aussi disponible avec :not */
     background-color: gray;
     cursor: not-allowed;
 }
@@ -62,4 +62,57 @@ button:is([disabled]), button[disabled] {   /* identiques ; aussi disponible ave
     filter: none;
     /* Transformations */
     transform: translate(50px) scale(0.95)
+}
+
+/* Flexbox */
+
+/* Paramètres du parent */
+.flexbox-container {
+    height: 500px;
+    background-color: aqua;
+    /* Définir en tant que conteneur flex*/
+    display: flex;
+    /* Définir le sens de l'axe principal */
+    flex-direction: row;
+    /* Définir si les éléments vont à la ligne */
+    flex-wrap: wrap;
+    /* Définir l'espace entre les éléments enfants */
+    gap : 5px;
+    /* Définir la répartition des éléments sur l'axe principal */
+    justify-content: space-evenly;
+    /* Définir l'alignement sur l'axe secondaire */
+    align-items: center;
+}
+
+/* Paramètre des enfants */
+.flexbox {
+    /* Permettre aux éléments de grandir prendre toute la place disponible */
+    flex-grow: 1;
+    /* Idem rétrécissement -> flex-shrink: 1; */
+}
+
+.flexbox:nth-child(3n) {
+    background-color: red;
+    /* flex-grow s'utilise en proportion des éléments les uns par rapport aux autres */
+    flex-grow: 2;
+}
+
+
+.flexbox:nth-child(3n+1) {
+    background-color: green;
+    /* Changer l'alignement d'un élément */
+    align-self: stretch;
+}
+
+.flexbox:nth-child(3n+2) {
+    background-color: gray;
+}
+
+/* Autres paramètres des enfants */
+.flexbox {
+    padding: 20px;
+    width: 100px;
+    /* On peut faire des calculs en CSS :*/
+    min-width: calc(15% - 5px);
+    text-align: center;
 }
