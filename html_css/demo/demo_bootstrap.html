@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Ajout de la balise style de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Ajout des fichiers de style personnels APRES Bootstrap -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Ajout de la balise JS de bootstrap ; le script sera exécuté quand la page est chargée -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+    </header>
+    
+    <main class="container-fluid">
+        <h1 class="text-danger text-center">Titre</h1>
+        <!-- Utilisation d'un CDN pour générer une image aléatoire -->
+        <div class="text-end">
+            <img src="https://random.imagecdn.app/500/250" alt="Random picture">
+        </div>
+        <hr>
+        <!-- Grille Bootstrap = flex (row wrap) -->
+        <!-- Espacement des lignes/colonnes avec g-X (de 1 à 5)-->
+        <!-- row-cols-X pour choisir le nombre de colonnes par ligne -->
+        <div class="row row-cols-3 g-3">
+            <div class="col">
+                <div class="bg-success">
+                    Item n°01
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°02
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°03
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°04
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°05
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°06
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°07
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°08
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°09
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°10
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°11
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°12
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°13
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°14
+                </div>
+            </div>
+            <div class="col">
+                <div class="bg-success">
+                    Item n°15
+                </div>
+            </div>
+        </div>
+        <hr>
+        <!-- Système des 12 colonnes Bootstrap -->
+        <div class="row">
+            <div class="col-6">
+                Colonne qui prend la moitié de la largeur
+            </div>
+            <div class="col-3">Colonne qui prend 1/4 de large</div>
+            <div class="col-3">Colonne qui prend 1/4 de large</div>
+            <div class="col">Colonne à la ligne suivante car plus de place, et qui prend tout l'espace disponible</div>
+            <div class="col-2">Autre colonne</div>
+        </div>
+    </main>
+    
+    <footer>
+    </footer>
+</body>
+
+</html>
