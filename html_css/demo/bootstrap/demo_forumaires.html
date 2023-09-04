@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    
+    <main class="container">
+        <form action="post">
+            <div class="mb-3">
+                <label class="form-label" for="firstname">Prénom :</label>
+                <input type="text" class="form-control" name="firstname" id="firstname">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description :</label>
+                <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="choice" class="form-label">Choix :</label>
+                <select class="form-select" name="choice" id="choice">
+                    <option value="">--- Sélectionnez ---</option>
+                    <option value="1">Option A</option>
+                    <option value="2">Option B</option>
+                    <option value="3">Option C</option>
+                </select>
+            </div>
+            <div class="mb-3 form-check">
+            <!-- Idem en slider : -->
+            <!-- <div class="mb-3 form-check form-switch"> -->
+                <input type="checkbox" name="isAdmin" id="isAdmin" class="form-check-input">
+                <label for="isAdmin" class="form-check-label">Administrateur</label>
+            </div>
+            <div class="mb-3">
+                <label for="finalScore" class="form-label">Score: </label>
+                <input type="range" name="finalScore" id="finalScore" class="form-range">
+            </div>
+        </form>
+    </main>
+
+</body>
