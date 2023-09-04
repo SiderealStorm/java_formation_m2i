@@ -15,50 +15,40 @@
 </head>
 
 <body>
-    <main>
-        <div class="container rounded w-75 m-auto p-3 bg-dark text-light">
-            <h2>- Inscription -</h2>
+    <main class="container">
+        <div class="row my-3">
+        <div class="col-6 offset-3 p-3 rounded bg-dark text-light">
+            <h2 class="display-4">- Inscription -</h2>
             <hr>
             <form class="" action="post">
-                <div class="mb-3 row row-cols-2">
-                    <label for="firstname" class="col-sm-2 col-form-label">Prénom :</label>
-                    <div class="col-fill">
-                        <input type="text" name="firstname" id="firstname" class="form-control">
-                    </div>
+                <div class="mb-3 d-flex">
+                    <label for="firstname" class="w-25 form-label">Prénom :</label>
+                    <input type="text" name="firstname" id="firstname" class="w-75 form-control">
                 </div>
-                <div class="mb-3 row row-cols-2">
-                    <label for="lastname" class="col-sm-2 col-form-label">Nom :</label>
-                    <div class="col-fill">
-                        <input type="text" name="lastname" id="lastname" class="form-control">
-                    </div>
+                <div class="mb-3 d-flex">
+                    <label for="lastname" class="w-25 form-label">Nom :</label>
+                    <input type="text" name="lastname" id="lastname" class="w-75 form-control">
                 </div>
-                <div class="mb-3 row row-cols-2">
-                    <label for="email" class="col-sm-2 col-form-label">Email :</label>
-                    <div class="col-fill">
-                        <input type="email" name="email" id="email" class="form-control">
-                    </div>
+                <div class="mb-3 d-flex">
+                    <label for="email" class="w-25 form-label">Email :</label>
+                    <input type="email" name="email" id="email" class="w-75 form-control">
                 </div>
-                <div class="mb-3 row row-cols-2">
-                    <label for="nickname" class="col-sm-2 col-form-label">Pseudo :</label>
-                    <div class="col-fill">
-                        <input type="text" name="nickname" id="nickname" class="form-control">
-                    </div>
+                <div class="mb-3 d-flex">
+                    <label for="nickname" class="w-25 form-label">Pseudo :</label>
+                    <input type="text" name="nickname" id="nickname" class="w-75 form-control">
                 </div>
-                <div class="mb-3 row row-cols-2">
-                    <label for="password" class="col-sm-2 col-form-label">Mot de passe :</label>
-                    <div class="col-fill">
-                        <input type="password" name="password" id="password" class="form-control">
-                    </div>
+                <div class="mb-3 d-flex">
+                    <label for="password" class="w-25 form-label">Mot de passe :</label>
+                    <input type="password" name="password" id="password" class="w-75 form-control">
                 </div>
-                <div class="mb-3 row row-cols-2">
-                    <label for="confirm-password" class="col-sm-2 col-form-label">Confirmation :</label>
-                    <div class="col-fill">
-                        <input type="password" name="confirm-password" id="confirm-password" class="form-control">
-                    </div>
+                <div class="mb-3 d-flex">
+                    <label for="confirm-password" class="w-25 form-label">Confirmation :</label>
+                    <input type="password" name="confirm-password" id="confirm-password" class="w-75 form-control">
                 </div>
                 <hr>
                 <button class="btn btn-outline-light d-block ms-auto"><span class="bi bi-send"></span> Envoyer</button>
             </form>
+        </div>
         </div>
     </main>
 </body>
