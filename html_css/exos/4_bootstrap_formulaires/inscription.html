@@ -42,11 +42,11 @@
     <main class="container">
         <div class="row my-3">
             <form class="col-10 offset-1 row">
-                <div class="col-7 m-1 p-3 rounded bg-dark text-light">
-                    <h2 class="display-5">- Inscription -</h2>
+                <div class="col-12 col-lg-7 m-1 p-3 rounded bg-dark text-light order-2 order-lg-1">
+                    <h2 class="display-6">- Inscription -</h2>
                     <hr>
 
-                    <div class="d-flex flex-column">
+                    <div class="row row-cols-1 row-cols-lg-2">
                         <div class="my-3 form-floating text-dark">
                             <input type="text" name="firstname" id="firstname" placeholder="" class="form-control">
                             <label for="firstname">Prénom</label>
@@ -76,14 +76,15 @@
                             <input type="password" name="confirm" id="confirm" placeholder="" class="form-control">
                             <label for="confirm">Confirmation</label>
                         </div>
-
-                        <hr>
-                        <button class="btn btn-outline-light d-block ms-auto"><span class="bi bi-send"></span>
-                            Ajouter</button>
                     </div>
+
+                    <hr>
+                    <button class="btn btn-outline-light d-block ms-auto"><span class="bi bi-send"></span>
+                        Envoyer</button>
                 </div>
-                <div class="col-4 m-1 p-3 rounded bg-dark text-light">
-                    <h2 class="display-5">- Vos langues -</h2>
+
+                <div class="col-12 col-lg-4 m-1 p-3 rounded bg-dark text-light order-1 order-lg-2">
+                    <h2 class="display-6">- Vos langues -</h2>
                     <hr>
                     <div class="mb-3">
                         <label for="language" class="form-label">Choix :</label>
