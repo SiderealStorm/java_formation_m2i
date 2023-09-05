@@ -17,7 +17,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-xl bg-body-tertiary">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
@@ -40,41 +40,55 @@
     </header>
 
     <main class="container">
-        <div class="row my-3">
+        <div class="row my-3 g-2">
             <form class="col-10 offset-1 row">
-                <div class="col-12 col-lg-7 m-1 p-3 rounded bg-dark text-light order-2 order-lg-1">
-                    <h2 class="display-6">- Inscription -</h2>
+                <div class="col-12 col-xl-7 m-1 p-3 rounded bg-dark text-light order-2 order-xl-1">
+                    <h2 class="d-none d-xl-block display-6">- Inscription -</h2>
+                    <h2 class="d-block d-xl-none display-6">- Infos de base -</h2>
                     <hr>
 
-                    <div class="row row-cols-1 row-cols-lg-2">
-                        <div class="my-3 form-floating text-dark">
-                            <input type="text" name="firstname" id="firstname" placeholder="" class="form-control">
-                            <label for="firstname">Prénom</label>
+                    <div class="row row-cols-1 row-cols-xl-2">
+                        <div>
+                            <div class="my-3 form-floating text-dark">
+                                <input type="text" name="firstname" id="firstname" placeholder="" class="form-control">
+                                <label for="firstname">Prénom</label>
+                            </div>
                         </div>
 
-                        <div class="my-3 form-floating text-dark">
-                            <input type="text" name="lastname" id="lastname" placeholder="" class="form-control">
-                            <label for="lastname">Nom</label>
+                        <div>
+                            <div class="my-3 form-floating text-dark">
+                                <input type="text" name="lastname" id="lastname" placeholder="" class="form-control">
+                                <label for="lastname">Nom</label>
+                            </div>
                         </div>
 
-                        <div class="my-3 form-floating text-dark">
-                            <input type="email" name="email" id="email" placeholder="" class="form-control">
-                            <label for="email">Adresse mail</label>
+                        <div>
+                            <div class="my-3 form-floating text-dark">
+                                <input type="email" name="email" id="email" placeholder="" class="form-control">
+                                <label for="email">Adresse mail</label>
+                            </div>
                         </div>
 
-                        <div class="my-3 form-floating text-dark">
-                            <input type="text" name="nickname" id="nickname" placeholder="" class="form-control">
-                            <label for="nickname">Pseudonyme</label>
+                        <div>
+                            <div class="my-3 form-floating text-dark">
+                                <input type="text" name="nickname" id="nickname" placeholder="" class="form-control">
+                                <label for="nickname">Pseudonyme</label>
+                            </div>
                         </div>
 
-                        <div class="my-3 form-floating text-dark">
-                            <input type="password" name="password" id="password" placeholder="" class="form-control">
-                            <label for="password">Mot de passe</label>
+                        <div>
+                            <div class="my-3 form-floating text-dark">
+                                <input type="password" name="password" id="password" placeholder=""
+                                    class="form-control">
+                                <label for="password">Mot de passe</label>
+                            </div>
                         </div>
 
-                        <div class="my-3 form-floating text-dark">
-                            <input type="password" name="confirm" id="confirm" placeholder="" class="form-control">
-                            <label for="confirm">Confirmation</label>
+                        <div>
+                            <div class="my-3 form-floating text-dark">
+                                <input type="password" name="confirm" id="confirm" placeholder="" class="form-control">
+                                <label for="confirm">Confirmation</label>
+                            </div>
                         </div>
                     </div>
 
@@ -83,12 +97,13 @@
                         Envoyer</button>
                 </div>
 
-                <div class="col-12 col-lg-4 m-1 p-3 rounded bg-dark text-light order-1 order-lg-2">
-                    <h2 class="display-6">- Vos langues -</h2>
+                <div class="col-12 col-xl-4 m-1 p-3 rounded bg-dark text-light order-1 order-xl-2">
+                    <h2 class="d-none d-xl-block display-6">- Vos langues -</h2>
+                    <h2 class="d-block d-xl-none display-6">- Inscription -</h2>
                     <hr>
                     <div class="mb-3">
                         <label for="language" class="form-label">Choix :</label>
-                        <select class="form-select" multiple size=10 name="language" id="language">
+                        <select class="form-select" multiple size="5" name="language" id="language">
                             <optgroup label="Europe">
                                 <option value="EU1">Europe A</option>
                                 <option value="EU2">Europe B</option>
