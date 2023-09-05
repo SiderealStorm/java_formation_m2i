@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ajout.html">Ajout d'un livre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="connexion.html">Connexion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="inscription.html">Inscription</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="row my-3">
+            <form class="col-10 offset-1 row">
+                <div class="col-7 m-1 p-3 rounded bg-dark text-light">
+                    <h2 class="display-5">- Inscription -</h2>
+                    <hr>
+
+                    <div class="d-flex flex-column">
+                        <div class="my-3 form-floating text-dark">
+                            <input type="text" name="firstname" id="firstname" placeholder="" class="form-control">
+                            <label for="firstname">Prénom</label>
+                        </div>
+
+                        <div class="my-3 form-floating text-dark">
+                            <input type="text" name="lastname" id="lastname" placeholder="" class="form-control">
+                            <label for="lastname">Nom</label>
+                        </div>
+
+                        <div class="my-3 form-floating text-dark">
+                            <input type="email" name="email" id="email" placeholder="" class="form-control">
+                            <label for="email">Adresse mail</label>
+                        </div>
+
+                        <div class="my-3 form-floating text-dark">
+                            <input type="text" name="nickname" id="nickname" placeholder="" class="form-control">
+                            <label for="nickname">Pseudonyme</label>
+                        </div>
+
+                        <div class="my-3 form-floating text-dark">
+                            <input type="password" name="password" id="password" placeholder="" class="form-control">
+                            <label for="password">Mot de passe</label>
+                        </div>
+
+                        <div class="my-3 form-floating text-dark">
+                            <input type="password" name="confirm" id="confirm" placeholder="" class="form-control">
+                            <label for="confirm">Confirmation</label>
+                        </div>
+
+                        <hr>
+                        <button class="btn btn-outline-light d-block ms-auto"><span class="bi bi-send"></span>
+                            Ajouter</button>
+                    </div>
+                </div>
+                <div class="col-4 m-1 p-3 rounded bg-dark text-light">
+                    <h2 class="display-5">- Vos langues -</h2>
+                    <hr>
+                    <div class="mb-3">
+                        <label for="language" class="form-label">Choix :</label>
+                        <select class="form-select" multiple size=10 name="language" id="language">
+                            <optgroup label="Europe">
+                                <option value="EU1">Europe A</option>
+                                <option value="EU2">Europe B</option>
+                                <option value="EU3">Europe C</option>
+                                <option value="EU4">Europe D</option>
+                                <option value="EU5">Europe E</option>
+                            </optgroup>
+                            <optgroup label="Asie">
+                                <option value="AS1">Asie A</option>
+                                <option value="AS2">Asie B</option>
+                                <option value="AS3">Asie C</option>
+                                <option value="AS4">Asie D</option>
+                                <option value="AS5">Asie E</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </form>
+    </main>
+</body>
