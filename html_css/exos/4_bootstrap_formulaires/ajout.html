@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inscription</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ajout.html">Ajout d'un livre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="row my-3">
+      <div class="col-10 offset-1 p-3 rounded bg-dark text-light">
+        <h2 class="display-4">- Ajouter un livre -</h2>
+        <hr>
+        
+        <form class="" action="post">
+          <div class="row row-cols-2">
+            <div class="col">
+              <div class="my-3">
+                <label for="title" class="pb-1">Titre :</label>
+                <input type="text" name="title" id="title" class="form-control">
+              </div>
+
+              <div class="my-3">
+                <label for="author" class="pb-1">Auteur :</label>
+                <select name="author" id="author" class="form-select">
+                  <option value="">--- Sélectionnez un auteur ---</option>
+                  <option value="1">Auteur 1</option>
+                  <option value="2">Auteur 2</option>
+                  <option value="3">Auteur 3</option>
+                  <option value="4">Auteur 4</option>
+                  <option value="5">Auteur 5</option>
+                  <option value="6">Auteur 6</option>
+                  <option value="7">Auteur 7</option>
+                </select>
+              </div>
+
+              <div class="my-3">
+                <label for="cover" class="pb-1">Couverture :</label>
+                <input type="file" name="cover" id="cover" class="form-control">
+              </div>
+
+              <div class="my-3">
+                <label for="score" class="pb-1">Note :</label>
+                <input type="range" name="score" id="score" min="1" max="5" class="form-range">
+                <label for="score" class="row">
+                  <div class="col pe-0">Nul</div>
+                  <div class="col text-center">Mauvais</div>
+                  <div class="col text-center">Moyen</div>
+                  <div class="col text-center">Bon</div>
+                  <div class="col">Bestseller</div>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <div class="my-3">
+                <label for="isbn" class="pb-1">ISBN :</label>
+                <input type="text" name="isbn" id="isbn" class="form-control">
+              </div>
+
+              <div class="my-3">
+                <label for="genre" class="pb-1">Genre :</label>
+                <select name="genre" id="genre" multiple class="form-select">
+                  <option value="1">Genre 1</option>
+                  <option value="2">Genre 2</option>
+                  <option value="3">Genre 3</option>
+                  <option value="4">Genre 4</option>
+                  <option value="5">Genre 5</option>
+                  <option value="6">Genre 6</option>
+                  <option value="7">Genre 7</option>
+                  <option value="8">Genre 8</option>
+                </select>
+              </div>
+
+              <div class="my-3">
+                <label for="price" class="pb-1">Prix :</label>
+                <input type="number" name="price" id="price" step="0.01" class="form-control">
+              </div>
+
+              <div class="my-3">
+                <label for="language" class="pb-1">Langue :</label>
+                <select name="language" id="language" class="form-select">
+                  <option value="">--- Sélectionnez une langue ---</option>
+                  <option value="1">Langue 1</option>
+                  <option value="2">Langue 2</option>
+                  <option value="3">Langue 3</option>
+                  <option value="4">Langue 4</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+
+          <div>
+            <label for="description" class="">Description :</label>
+            <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+          </div>
+          <hr>
+          <button class="btn btn-outline-light d-block ms-auto"><span class="bi bi-plus-circle"></span> Ajouter</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
