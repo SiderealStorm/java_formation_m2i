@@ -1,0 +1,14 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+  <%-- Import de Bootstrap --%>
+  <%@include file="bootstrap-links.html" %>
+  <title>Accueil</title>
+</head>
+<body>
+  <p>
+    Page d'accueil
+  </p>
+</body>
+</html>
