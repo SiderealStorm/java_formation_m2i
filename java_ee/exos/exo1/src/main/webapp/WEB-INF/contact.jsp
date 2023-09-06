@@ -15,12 +15,10 @@
     <nav>
         <ul>
             <li><a href="home">Accueil</a></li>
-            <li><a href="products">Nos produits</a></li>
+            <li><a href="persons">Nos collaborateurs</a></li>
             <li><a href="contact">Contact</a></li>
         </ul>
     </nav>
-    <p>
-        Page de contact
-    </p>
+    <h2>Contactez-nous</h2>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.example.exo1;
+package com.example.exo1.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

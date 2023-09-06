@@ -1,4 +1,4 @@
-package com.example.exo1;
+package com.example.exo1.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,12 +8,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "products", value = "/products")
-public class ProduitsServlet extends HttpServlet {
+@WebServlet(name = "index", value = "/home")
+public class IndexServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Envoi du JSP via le contexte des servlets
-        getServletContext().getRequestDispatcher("/WEB-INF/produits.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }
