@@ -11,14 +11,9 @@ import java.io.IOException;
 @WebServlet(name = "products", value = "/products")
 public class ProduitsServlet extends HttpServlet {
 
-
-    @Override
-    public void init() throws ServletException {
-    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Envoi du JSP via le contexte des servlets
-        getServletContext().getRequestDispatcher("/produits.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/produits.jsp").forward(req, resp);
     }
 }
