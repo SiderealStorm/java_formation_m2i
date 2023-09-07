@@ -17,6 +17,12 @@ public class Person {
         this.age = age;
     }
 
+    public Person(String firstName, String lastName, int age, String bio) {
+        this(firstName, lastName, age);
+        this.bio = bio;
+    }
+
+
     public String getFirstName() {
         return firstName;
     }
