@@ -22,5 +22,26 @@
         </div>
     </nav>
     <h2>Contactez-nous</h2>
+    <form action="contact" method="post">
+        <div>
+            <label for="firstname">Votre prénom :</label>
+            <input type="text" name="firstname" id="firstname">
+        </div>
+        <div>
+            <label for="lastname">Votre nom :</label>
+            <input type="text" name="lastname" id="lastname">
+        </div>
+        <div>
+            <label for="subject">Sujet de votre message :</label>
+            <input type="text" name="subject" id="subject">
+        </div>
+        <div>
+            <label for="message">Votre message :</label>
+            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <button>Envoyer</button>
+        </div>
+    </form>
 </body>
 </html>
