@@ -18,9 +18,9 @@
     <nav class="navbar navbar-expand bg-dark">
         <div class="container-fluid">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link text-light" href="home"><span class="bi bi-house"></span> Accueil</a></li>
-                <li class="nav-item"><a class="nav-link text-light" href="persons"><span class="bi bi-person"></span> Nos collaborateurs</a></li>
-                <li class="nav-item"><a class="nav-link text-light" href="contact"><span class="bi bi-chat-dots"></span> Contact</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="${pageContext.request.contextPath}/home"><span class="bi bi-house"></span> Accueil</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="${pageContext.request.contextPath}/persons"><span class="bi bi-person"></span> Nos collaborateurs</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="${pageContext.request.contextPath}/contact"><span class="bi bi-chat-dots"></span> Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -32,20 +32,24 @@
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Âge</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <% for (Person person : personsList) { %>
+                <% for (int i = 0 ; i < personsList.size() ; i++) { %>
+                <% Person person = personsList.get(i); %>
                     <tr>
                         <td><%=person.getLastName()%></td>
                         <td><%=person.getFirstName()%></td>
                         <td><%=person.getAge()%> ans</td>
+                        <td><a href="${pageContext.request.contextPath}/persons/details/<%= i %>" class="btn btn-dark"><span class="bi bi-eye"></span> Détails</a></td>
                     </tr>
                 <% } %>
             </tbody>
         </table>
         <div class="text-end">
-            <button class="btn btn-outline-success">Nouveau collaborateur</button>
+            <a href="${pageContext.request.contextPath}/persons/add" class="btn btn-outline-success"><span class="bi bi-plus-circle"></span>
+                 Nouveau collaborateur</a>
         </div>
     </main>
 </body>

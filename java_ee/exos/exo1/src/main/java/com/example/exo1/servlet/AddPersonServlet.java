@@ -1,5 +1,6 @@
 package com.example.exo1.servlet;
 
+import com.example.exo1.fakeDB.FakeDB;
 import com.example.exo1.model.Person;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -33,7 +34,11 @@ public class AddPersonServlet extends HttpServlet {
         System.out.println("\tBiographie :");
         System.out.println(person.getBio());
 
-        // Renvoi sur la page du formulaire (vide) :
-        getServletContext().getRequestDispatcher("/WEB-INF/persons/add.jsp").forward(req, resp);
+        // Ajout de la personne :
+        FakeDB.addPerson(person);
+
+        // Renvoi sur la page des personnes) :
+        req.setAttribute("personsList", FakeDB.getPersons());
+        getServletContext().getRequestDispatcher("/WEB-INF/persons/persons.jsp").forward(req, resp);
     }
 }

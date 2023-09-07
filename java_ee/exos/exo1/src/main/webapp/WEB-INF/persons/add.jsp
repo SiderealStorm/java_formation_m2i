@@ -15,14 +15,14 @@
 <nav class="navbar navbar-expand bg-dark">
     <div class="container-fluid">
         <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link text-light" href="home"><span class="bi bi-house"></span> Accueil</a></li>
-            <li class="nav-item"><a class="nav-link text-light" href="persons"><span class="bi bi-person"></span> Nos collaborateurs</a></li>
-            <li class="nav-item"><a class="nav-link text-light" href="contact"><span class="bi bi-chat-dots"></span> Contact</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="${pageContext.request.contextPath}/home"><span class="bi bi-house"></span> Accueil</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="${pageContext.request.contextPath}/persons"><span class="bi bi-person"></span> Nos collaborateurs</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="${pageContext.request.contextPath}/contact"><span class="bi bi-chat-dots"></span> Contact</a></li>
         </ul>
     </div>
 </nav>
 <main class="container my-3">
-    <div class="col-6 offset-3 text-bg-secondary rounded row">
+    <div class="col-10 offset-1 text-bg-secondary rounded row">
         <h2 class="display-6 text-center">Ajouter un collaborateur</h2>
         <hr>
         <form action="${pageContext.request.contextPath}/persons/add" method="post" class="px-4">
