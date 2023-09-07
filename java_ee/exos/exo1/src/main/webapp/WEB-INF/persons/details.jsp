@@ -27,7 +27,7 @@
 </nav>
 
 <main class="container my-3">
-    <h2 class="display-6">Détails de <%= person.getFirstName() %> <%= person.getLastName() %></h2>
+    <h2 class="display-6 mb-3">Détails de <%= person.getFirstName() %> <%= person.getLastName() %></h2>
 
     <div>
         <p>

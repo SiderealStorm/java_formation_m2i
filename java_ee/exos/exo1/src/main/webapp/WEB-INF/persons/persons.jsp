@@ -7,6 +7,7 @@
 
 <%-- Récupération de la liste des personnes via le servlet --%>
 <jsp:useBean id="personsList" type="java.util.ArrayList<com.example.exo1.model.Person>" scope="request" />
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -26,7 +27,7 @@
     </nav>
     <main class="container my-3">
         <h2 class="display-6">Nos collaborateurs</h2>
-        <table class="table text-center">
+        <table class="table text-center align-middle">
             <thead>
                 <tr>
                     <th>Nom</th>

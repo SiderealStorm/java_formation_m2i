@@ -37,7 +37,7 @@ public class AddPersonServlet extends HttpServlet {
         // Ajout de la personne :
         FakeDB.addPerson(person);
 
-        // Renvoi sur la page des personnes) :
+        // Renvoi sur la page des personnes :
         req.setAttribute("personsList", FakeDB.getPersons());
         getServletContext().getRequestDispatcher("/WEB-INF/persons/persons.jsp").forward(req, resp);
     }

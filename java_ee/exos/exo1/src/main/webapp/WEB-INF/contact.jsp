@@ -22,7 +22,7 @@
         </div>
     </nav>
     <main class="container my-3">
-        <div class="col-6 offset-3 text-bg-secondary rounded row">
+        <div class="col-10 offset-1 text-bg-secondary rounded row">
             <h2 class="display-6 text-center">Contactez-nous</h2>
             <hr>
             <form action="contact" method="post" class="px-4">
