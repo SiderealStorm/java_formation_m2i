@@ -12,7 +12,7 @@
   <%@include file="WEB-INF/bootstrap-links.html" %>
   <title>Accueil</title>
 </head>
-<body class="container">
+<body>
   <nav class="navbar navbar-expand bg-dark">
     <div class="container-fluid">
       <ul class="navbar-nav">
@@ -22,6 +22,8 @@
       </ul>
     </div>
   </nav>
-  <h2>Accueil</h2>
+  <main class="container my-3">
+    <h2 class="display-6">Accueil</h2>
+  </main>
 </body>
 </html>

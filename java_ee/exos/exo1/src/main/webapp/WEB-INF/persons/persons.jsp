@@ -11,10 +11,10 @@
 <html>
 <head>
     <%-- Import de Bootstrap --%>
-    <%@include file="bootstrap-links.html" %>
+    <%@include file="../bootstrap-links.html" %>
     <title>Nos collaborateurs</title>
 </head>
-<body class="container">
+<body>
     <nav class="navbar navbar-expand bg-dark">
         <div class="container-fluid">
             <ul class="navbar-nav">
@@ -24,25 +24,29 @@
             </ul>
         </div>
     </nav>
-
-    <h2>Nos collaborateurs</h2>
-    <table class="table text-center">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Âge</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for (Person person : personsList) { %>
+    <main class="container my-3">
+        <h2 class="display-6">Nos collaborateurs</h2>
+        <table class="table text-center">
+            <thead>
                 <tr>
-                    <td><%=person.getLastName()%></td>
-                    <td><%=person.getFirstName()%></td>
-                    <td><%=person.getAge()%> ans</td>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Âge</th>
                 </tr>
-            <% } %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <% for (Person person : personsList) { %>
+                    <tr>
+                        <td><%=person.getLastName()%></td>
+                        <td><%=person.getFirstName()%></td>
+                        <td><%=person.getAge()%> ans</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <div class="text-end">
+            <button class="btn btn-outline-success">Nouveau collaborateur</button>
+        </div>
+    </main>
 </body>
 </html>

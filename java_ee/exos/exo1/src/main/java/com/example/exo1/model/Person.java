@@ -7,6 +7,7 @@ public class Person {
     private String firstName;
     private String lastName;
     private int age;
+    private String bio;
 
     public Person() {}
 
@@ -38,5 +39,13 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

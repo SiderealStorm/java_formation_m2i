@@ -36,6 +36,6 @@ public class PersonsServlet extends HttpServlet {
         req.setAttribute("personsList", persons);
 
         // Envoi du JSP via le contexte des servlets
-        getServletContext().getRequestDispatcher("/WEB-INF/personnes.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/persons/persons.jsp").forward(req, resp);
     }
 }
