@@ -23,23 +23,28 @@
     </nav>
     <h2>Contactez-nous</h2>
     <form action="contact" method="post">
-        <div>
-            <label for="firstname">Votre prénom :</label>
-            <input type="text" name="firstname" id="firstname">
+        <div class="mb-3">
+            <label for="firstname" class="form-label">Votre prénom :</label>
+            <input type="text" name="firstname" id="firstname" class="form-contol">
         </div>
-        <div>
-            <label for="lastname">Votre nom :</label>
-            <input type="text" name="lastname" id="lastname">
+        <div class="mb-3">
+            <label for="lastname" class="form-label">Votre nom :</label>
+            <input type="text" name="lastname" id="lastname" class="form-contol">
         </div>
-        <div>
-            <label for="subject">Sujet de votre message :</label>
-            <input type="text" name="subject" id="subject">
+        <div class="mb-3">
+            <label for="subject" class="form-label">Sujet de votre message :</label>
+            <select name="subject" id="subject" class="">
+                <option value="">--- Sélectionnez ---</option>
+                <option value="Question sur l'entreprise">Question sur l'entreprise</option>
+                <option value="Candidature spontanée">Candidature spontanée</option>
+                <option value="Problème sur le site">Problème sur le site</option>
+            </select>
         </div>
-        <div>
-            <label for="message">Votre message :</label>
-            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        <div class="mb-3">
+            <label for="message" class="form-label">Votre message :</label>
+            <textarea name="message" id="message" cols="30" rows="10" class="form-contol"></textarea>
         </div>
-        <div>
+        <div class="mb-3">
             <button>Envoyer</button>
         </div>
     </form>
