@@ -40,7 +40,7 @@
             Âge : <%= person.getAge() %> ans
         </p>
     </div>
-    <% if (person.getBio() != null) { %>
+    <% if (person.getBio() != null && !person.getBio().isEmpty()) { %>
     <h3>Biographie :</h3>
     <p>
         <%= person.getBio() %>

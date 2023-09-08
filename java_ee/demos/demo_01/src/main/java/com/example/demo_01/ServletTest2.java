@@ -47,7 +47,7 @@ public class ServletTest2 extends HttpServlet {
         String firstName = req.getParameter("firstname");
         String lastName = req.getParameter("lastname");
 
-        // Tous les paramètres sont récupérés sous forme de String, il faut les parser :
+        // Tous les paramètres sont récupérés sous forme de String, il faut les parser :auth/
         double age = Double.parseDouble(req.getParameter("age"));
 
         System.out.println(firstName + " " + lastName + " " + age);

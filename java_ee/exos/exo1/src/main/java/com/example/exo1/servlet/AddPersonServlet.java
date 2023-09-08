@@ -72,8 +72,14 @@ public class AddPersonServlet extends HttpServlet {
             FakeDB.addPerson(person);
 
             // Renvoi sur la page des personnes :
-            req.setAttribute("personsList", FakeDB.getPersons());
-            getServletContext().getRequestDispatcher("/WEB-INF/persons/persons.jsp").forward(req, resp);
+//            req.setAttribute("personsList", FakeDB.getPersons());
+//            getServletContext().getRequestDispatcher("/WEB-INF/persons/persons.jsp").forward(req, resp);
+
+            // Plus simple : redirection vers l'URL, qui renvoie vers le doGet du servlet
+            // Ici on doit utiliser un URL absolu ou "remonter" sur le slash précédent
+            resp.sendRedirect( req.getContextPath() + "/persons");
+//            resp.sendRedirect("../persons");
+
         } else {
             req.setAttribute("person", person);
             req.setAttribute("errorsList", errors);

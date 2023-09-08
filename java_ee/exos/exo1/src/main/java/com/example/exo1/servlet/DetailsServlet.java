@@ -25,11 +25,19 @@ public class DetailsServlet extends HttpServlet {
         if(pathInfo != null && !pathInfo.isEmpty()) {
             // On retire le premier caractère du pathInfo (slash)
             int id = Integer.parseInt(pathInfo.substring(1));
-            person = FakeDB.getPersons().get(id);
+
+            // On vérifie que l'ID est correct
+            if (id <= FakeDB.getPersons().size()) {
+                person = FakeDB.getPersons().get(id);
+
+                req.setAttribute("person", person);
+
+                getServletContext().getRequestDispatcher("/WEB-INF/persons/details.jsp").forward(req, resp);
+            } else {
+                // Sinon on redirige vers la liste des personnes
+                resp.sendRedirect(req.getContextPath() + "/persons");
+            }
         }
 
-        req.setAttribute("person", person);
-
-        getServletContext().getRequestDispatcher("/WEB-INF/persons/details.jsp").forward(req, resp);
     }
 }

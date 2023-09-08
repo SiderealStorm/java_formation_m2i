@@ -43,7 +43,8 @@
                         <td><%=person.getLastName()%></td>
                         <td><%=person.getFirstName()%></td>
                         <td><%=person.getAge()%> ans</td>
-                        <td><a href="${pageContext.request.contextPath}/persons/details/<%= i %>" class="btn btn-dark"><span class="bi bi-eye"></span> Détails</a></td>
+                        <%-- On peut mettre le lien en relatif car les fichiers sont voisins --%>
+                        <td><a href="persons/details/<%= i %>" class="btn btn-dark"><span class="bi bi-eye"></span> Détails</a></td>
                     </tr>
                 <% } %>
             </tbody>
