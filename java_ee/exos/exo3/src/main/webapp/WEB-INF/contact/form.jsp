@@ -2,6 +2,7 @@
 <jsp:useBean id="contact" type="com.example.exo3.dto.ContactDTO" scope="request" />
 
 <%! String displayMode; %>
+<%-- Note : error if replacing by switch statement --%>
 <% if(mode.equals("add")) {
     displayMode = "Ajouter un contact";
 } else if (mode.equals("view")){
@@ -34,16 +35,15 @@
             <form action="<%= mode.equals("add") ? mode : "" %>" method="post">
                 <input type="number" name="id" class="d-none" readonly value="<%= contact.getId() %>">
                 <div class="mb-3">
-                    <label for="firstname" class="form-label">Prénom :</label>
+                    <label for="firstname" class="form-label">Prénom* :</label>
                     <input type="text" name="firstname" id="firstname" class="form-control" required <% if(mode.equals("view") || mode.equals("delete")) { %> readonly <% } %>
                            value="<%= contact.getFirstName() %>">
                 </div>
                 <div class="mb-3">
-                    <label for="lastname" class="form-label">Nom :</label>
+                    <label for="lastname" class="form-label">Nom* :</label>
                     <input type="text" name="lastname" id="lastname" class="form-control" required <% if(mode.equals("view") || mode.equals("delete")) { %> readonly <% } %>
                            value="<%= contact.getLastName() %>">
                 </div>
-                <%-- TODO improvement (add/edit) : checkbox to choose if adding birthdate or not --%>
                 <div class="mb-3">
                     <label for="birthdate" class="form-label">Date de naissance :</label>
                     <input type="date" name="birthdate" id="birthdate" class="form-control" <% if(mode.equals("view") || mode.equals("delete")) { %> readonly <% } %>
@@ -66,6 +66,7 @@
                 </div>
                 <hr>
                 <div class="text-center">
+                    <%-- Note : error if replacing by switch statement --%>
                     <% if(mode.equals("add")) { %>
                     <button class="btn btn-success"><span class="bi bi-plus-circle"></span> Ajouter</button>
                     <% } else if (mode.equals("edit")){ %>

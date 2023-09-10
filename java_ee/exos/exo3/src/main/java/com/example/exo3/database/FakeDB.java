@@ -7,7 +7,8 @@ import java.util.List;
 
 public class FakeDB {
 
-    private static final List<User> users = new ArrayList<>();
+    // TODO remove admin after testing app
+    private static final List<User> users = new ArrayList<>(List.of(new User("admin@mail.com", "admin")));
 
     public static List<User> getUsers() {
         return users;

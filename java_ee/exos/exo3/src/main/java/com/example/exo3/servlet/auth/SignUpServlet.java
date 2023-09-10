@@ -20,7 +20,7 @@ public class SignUpServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("mode", "signup");
         req.setAttribute("error", "");
-        req.setAttribute("user", new UserDTO("", "", null, "", ""));
+        req.setAttribute("user", new UserDTO("", "", null, ""));
 
         getServletContext().getRequestDispatcher("/WEB-INF/auth/form.jsp").forward(req, resp);
     }
@@ -35,28 +35,35 @@ public class SignUpServlet extends HttpServlet {
 
         if (foundUser.isEmpty()) {
 
-            User user = new User(
-                    req.getParameter("firstname"),
-                    req.getParameter("lastname"),
-                    LocalDate.parse(req.getParameter("birthdate")),
-                    req.getParameter("email"),
-                    req.getParameter("password")
-            );
+            if(req.getParameter("password").equals(req.getParameter("confirm"))) {
 
-            FakeDB.addUser(user);
+                User user = new User(
+                        req.getParameter("firstname"),
+                        req.getParameter("lastname"),
+                        LocalDate.parse(req.getParameter("birthdate")),
+                        req.getParameter("email"),
+                        req.getParameter("password")
+                );
 
-            req.getSession().setAttribute("user", user);
+                FakeDB.addUser(user);
 
-            resp.sendRedirect(req.getContextPath() + "/contacts");
+                req.getSession().setAttribute("user", user);
+
+                resp.sendRedirect(req.getContextPath() + "/contacts");
+            } else {
+                error = "Le mot de passe et la confirmation doivent être identiques";
+            }
+
         } else {
             error = "Cet email est déjà lié à un compte";
+        }
 
+        if(!error.isEmpty()) {
             UserDTO dto = new UserDTO(
                     req.getParameter("firstname"),
                     req.getParameter("lastname"),
                     LocalDate.parse(req.getParameter("birthdate")),
-                    req.getParameter("email"),
-                    req.getParameter("password")
+                    req.getParameter("email")
             );
 
             req.setAttribute("mode", "signup");

@@ -22,33 +22,32 @@
             <form action="" method="post">
             <% if (mode.equals("signup")) { %>
                 <div class="mb-3">
-                    <label for="firstname" class="form-label">Prénom :</label>
+                    <label for="firstname" class="form-label">Prénom* :</label>
                     <input type="text" name="firstname" id="firstname" class="form-control" required value="<%= user.getFirstName().isEmpty() ? "" : user.getFirstName() %>">
                 </div>
                 <div class="mb-3">
-                    <label for="lastname" class="form-label">Nom :</label>
+                    <label for="lastname" class="form-label">Nom* :</label>
                     <input type="text" name="lastname" id="lastname" class="form-control" required value="<%= user.getLastName().isEmpty() ? "" : user.getLastName() %>">
                 </div>
                 <div class="mb-3">
-                    <label for="birthdate" class="form-label">Date de naissance :</label>
+                    <label for="birthdate" class="form-label">Date de naissance* :</label>
                     <input type="date" name="birthdate" id="birthdate" class="form-control" required value="<%= user.getBirthDate() %>">
                 </div>
                 <% } %>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Adresse email :</label>
-                    <input type="email" name="email" id="email" class="form-control" required value="<%= user.getEmail().isEmpty() ? "" : user.getEmail() %>">
+                    <label for="email" class="form-label">Adresse email* :</label>
+                    <input type="email" name="email" id="email" class="form-control" required value="<%= user.getEmail() == null ? "" : user.getEmail() %>">
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Mot de passe :</label>
+                    <label for="password" class="form-label">Mot de passe* :</label>
                     <input type="password" name="password" id="password" class="form-control" required>
                 </div>
-                <%-- TODO improvement : add password confirmation --%>
-<%--                <% if (mode.equals("signup")) { %>--%>
-<%--                <div class="mb-3">--%>
-<%--                    <label for="confirm" class="form-label">Confirmez le mot de passe :</label>--%>
-<%--                    <input type="password" name="confirm" id="confirm" class="form-control" required>--%>
-<%--                </div>--%>
-<%--                <% } %>--%>
+                <% if (mode.equals("signup")) { %>
+                <div class="mb-3">
+                    <label for="confirm" class="form-label">Confirmez le mot de passe* :</label>
+                    <input type="password" name="confirm" id="confirm" class="form-control" required>
+                </div>
+                <% } %>
                 <hr>
                 <div class="text-center">
                     <button class="btn btn-light"><%= mode.equals("signup") ? "Inscription" : "Connexion" %></button>

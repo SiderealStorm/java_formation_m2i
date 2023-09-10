@@ -12,17 +12,15 @@ public class UserDTO {
 
     public UserDTO() {}
 
-    public UserDTO(String email, String password) {
-        this.email = email;
+    public UserDTO(String email) {
         this.password = password;
     }
 
-    public UserDTO(String firstName, String lastName, LocalDate birthDate, String email, String password) {
+    public UserDTO(String firstName, String lastName, LocalDate birthDate, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.email = email;
-        this.password = password;
     }
 
     public String getFirstName() {

@@ -45,6 +45,9 @@ public class AddContactServlet extends HttpServlet {
         String address = req.getParameter("address");
 
         // TODO improvement : check phone with a RegEx ? + return pre-filled form and error message if problem with phone
+//        String patterns = "^[+]{1}[1-9]{1}\\d{1,2}[(]{1}[1-9]{1}\\d{0,2}[)]{1}\\d{6,10}$"
+//                + "^[+]{1}[1-9]{1}\\d{9,12}$"
+//                + "^[0]{1}[1-9]{1}\\d{8}$";
 
         Contact contact = new Contact(
                 firstName,

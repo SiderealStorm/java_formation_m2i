@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 
 @WebServlet(name = "contactListServlet", value = "/contacts")
@@ -22,7 +23,9 @@ public class ContactListServlet extends HttpServlet {
         if (user != null) {
             List<Contact> contacts = user.getContacts();
 
-            // TODO improvement : sort list by contact names ??
+            // Tri de la liste par noms puis prénoms :
+            contacts.sort(Comparator.comparing(Contact::getFirstName));
+            contacts.sort(Comparator.comparing(Contact::getLastName));
 
             req.setAttribute("contacts", contacts);
 

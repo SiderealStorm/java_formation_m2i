@@ -14,6 +14,13 @@ public class User extends Person {
         this.contacts = new ArrayList<>();
     }
 
+    // TODO remove constructor after testing app
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+        this.contacts = new ArrayList<>();
+    }
+
     public User(String firstName, String lastName, LocalDate birthDate, String email, String password) {
         super(firstName, lastName, birthDate, email);
         this.password = password;

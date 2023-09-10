@@ -19,7 +19,7 @@ public class SignInServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("mode", "signin");
         req.setAttribute("error", "");
-        req.setAttribute("user", new UserDTO("", ""));
+        req.setAttribute("user", new UserDTO(""));
 
         getServletContext().getRequestDispatcher("/WEB-INF/auth/form.jsp").forward(req, resp);
     }
@@ -50,10 +50,7 @@ public class SignInServlet extends HttpServlet {
 
         if (!error.isEmpty()) {
 
-            UserDTO dto = new UserDTO(
-                    email,
-                    password
-            );
+            UserDTO dto = new UserDTO(email);
 
             req.setAttribute("mode", "signin");
             req.setAttribute("error", error);
