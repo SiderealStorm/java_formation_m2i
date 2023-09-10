@@ -23,20 +23,20 @@
             <% if (mode.equals("signup")) { %>
                 <div class="mb-3">
                     <label for="firstname" class="form-label">Prénom :</label>
-                    <input type="text" name="firstname" id="firstname" class="form-control" required>
+                    <input type="text" name="firstname" id="firstname" class="form-control" required value="<%= user.getFirstName().isEmpty() ? "" : user.getFirstName() %>">
                 </div>
                 <div class="mb-3">
                     <label for="lastname" class="form-label">Nom :</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control" required>
+                    <input type="text" name="lastname" id="lastname" class="form-control" required value="<%= user.getLastName().isEmpty() ? "" : user.getLastName() %>">
                 </div>
                 <div class="mb-3">
                     <label for="birthdate" class="form-label">Date de naissance :</label>
-                    <input type="date" name="birthdate" id="birthdate" class="form-control" required>
+                    <input type="date" name="birthdate" id="birthdate" class="form-control" required value="<%= user.getBirthDate() %>">
                 </div>
                 <% } %>
                 <div class="mb-3">
                     <label for="email" class="form-label">Adresse email :</label>
-                    <input type="email" name="email" id="email" class="form-control" required>
+                    <input type="email" name="email" id="email" class="form-control" required value="<%= user.getEmail().isEmpty() ? "" : user.getEmail() %>">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Mot de passe :</label>

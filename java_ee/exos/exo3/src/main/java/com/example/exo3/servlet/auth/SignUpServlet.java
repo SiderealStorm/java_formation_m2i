@@ -20,18 +20,21 @@ public class SignUpServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("mode", "signup");
         req.setAttribute("error", "");
-        req.setAttribute("user", new UserDTO("", ""));
+        req.setAttribute("user", new UserDTO("", "", null, "", ""));
 
         getServletContext().getRequestDispatcher("/WEB-INF/auth/form.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String error = "";
+
         String email = req.getParameter("email");
 
         Optional<User> foundUser = FakeDB.getUsers().stream().filter(user -> user.getEmail().equals(email)).findFirst();
 
         if (foundUser.isEmpty()) {
+
             User user = new User(
                     req.getParameter("firstname"),
                     req.getParameter("lastname"),
@@ -42,27 +45,25 @@ public class SignUpServlet extends HttpServlet {
 
             FakeDB.addUser(user);
 
-            // TODO remove contact after testing
-
-            Contact contact = new Contact(
-                    req.getParameter("firstname"),
-                    req.getParameter("lastname"),
-                    LocalDate.parse(req.getParameter("birthdate")),
-                    req.getParameter("email"),
-                    "0123456789",
-                    "123 rue Bidon"
-            );
-
-            user.addContact(contact);
-
             req.getSession().setAttribute("user", user);
 
             resp.sendRedirect(req.getContextPath() + "/contacts");
         } else {
-            // TODO generate error message
-            // TODO return pre-filled form
+            error = "Cet email est déjà lié à un compte";
 
-            doGet(req, resp);
+            UserDTO dto = new UserDTO(
+                    req.getParameter("firstname"),
+                    req.getParameter("lastname"),
+                    LocalDate.parse(req.getParameter("birthdate")),
+                    req.getParameter("email"),
+                    req.getParameter("password")
+            );
+
+            req.setAttribute("mode", "signup");
+            req.setAttribute("error", error);
+            req.setAttribute("user", dto);
+
+            getServletContext().getRequestDispatcher("/WEB-INF/auth/form.jsp").forward(req, resp);
         }
     }
 }
