@@ -1,13 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: darkw
-  Date: 09/09/2023
-  Time: 19:47
-  To change this template use File | Settings | File Templates.
---%>
-
 <jsp:useBean id="mode" type="java.lang.String" scope="request" />
 <jsp:useBean id="contact" type="com.example.exo3.dto.ContactDTO" scope="request" />
+
 <%! String displayMode; %>
 <% if(mode.equals("add")) {
     displayMode = "Ajouter un contact";
@@ -20,6 +13,7 @@
 } else {
     displayMode = "";
 }; %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -41,12 +35,12 @@
                 <input type="number" name="id" class="d-none" readonly value="<%= contact.getId() %>">
                 <div class="mb-3">
                     <label for="firstname" class="form-label">Prénom :</label>
-                    <input type="text" name="firstname" id="firstname" class="form-control" <% if(mode.equals("view") || mode.equals("delete")) { %> readonly <% } %>
+                    <input type="text" name="firstname" id="firstname" class="form-control" required <% if(mode.equals("view") || mode.equals("delete")) { %> readonly <% } %>
                            value="<%= contact.getFirstName() %>">
                 </div>
                 <div class="mb-3">
                     <label for="lastname" class="form-label">Nom :</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control" <% if(mode.equals("view") || mode.equals("delete")) { %> readonly <% } %>
+                    <input type="text" name="lastname" id="lastname" class="form-control" required <% if(mode.equals("view") || mode.equals("delete")) { %> readonly <% } %>
                            value="<%= contact.getLastName() %>">
                 </div>
                 <%-- TODO improvement (add/edit) : checkbox to choose if adding birthdate or not --%>

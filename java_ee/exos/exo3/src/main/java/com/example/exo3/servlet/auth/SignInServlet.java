@@ -1,6 +1,7 @@
 package com.example.exo3.servlet.auth;
 
 import com.example.exo3.database.FakeDB;
+import com.example.exo3.dto.UserDTO;
 import com.example.exo3.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,12 +18,16 @@ public class SignInServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("mode", "signin");
+        req.setAttribute("error", "");
+        req.setAttribute("user", new UserDTO("", ""));
 
         getServletContext().getRequestDispatcher("/WEB-INF/auth/form.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String error = "";
+
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
@@ -36,15 +41,25 @@ public class SignInServlet extends HttpServlet {
 
                 resp.sendRedirect(req.getContextPath() + "/contacts");
             } else {
-                // TODO generate error messages
-                // TODO return pre-filled form
-                doGet(req, resp);
+                error = "Mot de passe incorrect";
             }
 
         } else {
-            // TODO generate error messages
-            // TODO return pre-filled form
-            doGet(req, resp);
+            error = "Utilisateur inconnu";
+        }
+
+        if (!error.isEmpty()) {
+
+            UserDTO dto = new UserDTO(
+                    email,
+                    password
+            );
+
+            req.setAttribute("mode", "signin");
+            req.setAttribute("error", error);
+            req.setAttribute("user", dto);
+
+            getServletContext().getRequestDispatcher("/WEB-INF/auth/form.jsp").forward(req, resp);
         }
     }
 }

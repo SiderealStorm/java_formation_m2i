@@ -1,6 +1,7 @@
 package com.example.exo3.servlet.auth;
 
 import com.example.exo3.database.FakeDB;
+import com.example.exo3.dto.UserDTO;
 import com.example.exo3.model.Contact;
 import com.example.exo3.model.User;
 import jakarta.servlet.ServletException;
@@ -18,6 +19,8 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("mode", "signup");
+        req.setAttribute("error", "");
+        req.setAttribute("user", new UserDTO("", ""));
 
         getServletContext().getRequestDispatcher("/WEB-INF/auth/form.jsp").forward(req, resp);
     }
@@ -36,6 +39,10 @@ public class SignUpServlet extends HttpServlet {
                     req.getParameter("email"),
                     req.getParameter("password")
             );
+
+            FakeDB.addUser(user);
+
+            // TODO remove contact after testing
 
             Contact contact = new Contact(
                     req.getParameter("firstname"),

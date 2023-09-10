@@ -20,7 +20,7 @@ public class AddContactServlet extends HttpServlet {
         User user = (User) req.getSession().getAttribute("user");
 
         if (user != null) {
-            ContactDTO dto = new ContactDTO();
+            ContactDTO dto = new ContactDTO(0, "", "", null, "", "", "");
 
             req.setAttribute("contact", dto);
             req.setAttribute("mode", "add");
@@ -37,14 +37,14 @@ public class AddContactServlet extends HttpServlet {
 
         String firstName = req.getParameter("firstname");
         String lastName = req.getParameter("lastname");
-        LocalDate birthdate = LocalDate.parse(req.getParameter("birthdate"));
+        String dateString = req.getParameter("birthdate");
+        LocalDate birthdate = dateString.isEmpty() ? null : LocalDate.parse(dateString);
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
         // TODO improvement : change to Address object
         String address = req.getParameter("address");
 
-        // TODO improvement : check phone with a RegEx ?
-        // TODO return pre-filled form and error message if problem with phone
+        // TODO improvement : check phone with a RegEx ? + return pre-filled form and error message if problem with phone
 
         Contact contact = new Contact(
                 firstName,

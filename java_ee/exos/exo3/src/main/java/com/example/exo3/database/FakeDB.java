@@ -12,4 +12,8 @@ public class FakeDB {
     public static List<User> getUsers() {
         return users;
     }
+
+    public static void addUser(User user) {
+        users.add(user);
+    }
 }
