@@ -1,20 +1,24 @@
 package com.example.exo3.dto;
 
+import java.time.LocalDate;
+
 public class ContactDTO {
 
     private int id;
     private String firstName;
     private String lastName;
+    private LocalDate birthDate;
     private String email;
     private String phone;
     private String address;
 
     public ContactDTO() {}
 
-    public ContactDTO(int id, String firstName, String lastName, String email, String phone, String address) {
+    public ContactDTO(int id, String firstName, String lastName, LocalDate birthDate, String email, String phone, String address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.birthDate = birthDate;
         this.email = email;
         this.phone = phone;
         this.address = address;
@@ -42,6 +46,14 @@ public class ContactDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getEmail() {

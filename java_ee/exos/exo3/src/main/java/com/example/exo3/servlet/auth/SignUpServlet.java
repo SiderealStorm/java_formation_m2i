@@ -1,6 +1,7 @@
 package com.example.exo3.servlet.auth;
 
 import com.example.exo3.database.FakeDB;
+import com.example.exo3.model.Contact;
 import com.example.exo3.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @WebServlet(name = "signUpServlet", value = "/auth/signup")
@@ -30,9 +32,21 @@ public class SignUpServlet extends HttpServlet {
             User user = new User(
                     req.getParameter("firstname"),
                     req.getParameter("lastname"),
+                    LocalDate.parse(req.getParameter("birthdate")),
                     req.getParameter("email"),
                     req.getParameter("password")
             );
+
+            Contact contact = new Contact(
+                    req.getParameter("firstname"),
+                    req.getParameter("lastname"),
+                    LocalDate.parse(req.getParameter("birthdate")),
+                    req.getParameter("email"),
+                    "0123456789",
+                    "123 rue Bidon"
+            );
+
+            user.addContact(contact);
 
             req.getSession().setAttribute("user", user);
 

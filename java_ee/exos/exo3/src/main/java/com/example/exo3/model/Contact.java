@@ -1,5 +1,7 @@
 package com.example.exo3.model;
 
+import java.time.LocalDate;
+
 public class Contact extends Person {
 
     private static int count;
@@ -8,14 +10,14 @@ public class Contact extends Person {
     private String phone;
 
     private String address;
-    // TODO utiliser un objet Address à la place d'une String
+    // TODO improvement : use Address object instead of String
 //    private Address address;
 
 
     public Contact() {}
 
-    public Contact(String firstName, String lastName, String email, String phone, String address) {
-        super(firstName, lastName, email);
+    public Contact(String firstName, String lastName, LocalDate birthDate, String email, String phone, String address) {
+        super(firstName, lastName, birthDate, email);
         this.phone = phone;
         this.address = address;
         this.id = count++;

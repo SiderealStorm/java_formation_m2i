@@ -8,14 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(
-        name = "homeServlet",
-        value = {"", "/home"}
-)
+@WebServlet(name = "homeServlet", value = "/home")
 public class HomeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/home").forward(req,resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(req,resp);
     }
 }

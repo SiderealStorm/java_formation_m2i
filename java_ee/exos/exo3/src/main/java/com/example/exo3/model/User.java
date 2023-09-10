@@ -1,5 +1,6 @@
 package com.example.exo3.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,15 +8,16 @@ public class User extends Person {
 
     private String password;
 
-    private List<Contact> contacts;
+    private final List<Contact> contacts;
 
     public User() {
         this.contacts = new ArrayList<>();
     }
 
-    public User(String firstName, String lastName, String email, String password) {
-        super(firstName, lastName, email);
+    public User(String firstName, String lastName, LocalDate birthDate, String email, String password) {
+        super(firstName, lastName, birthDate, email);
         this.password = password;
+        this.contacts = new ArrayList<>();
     }
 
     public String getPassword() {
@@ -32,5 +34,9 @@ public class User extends Person {
 
     public void addContact(Contact contact) {
         this.contacts.add(contact);
+    }
+
+    public void removeContact(Contact contact) {
+        this.contacts.remove(contact);
     }
 }

@@ -1,21 +1,21 @@
-package com.example.exo3.model;
+package com.example.exo3.dto;
 
 import java.time.LocalDate;
 
-public abstract class Person {
+public class UserDTO {
 
-    protected String firstName;
-    protected String lastName;
-    protected LocalDate birthDate;
-    protected String email;
+    private String firstName;
+    private String lastName;
+    private LocalDate birthDate;
+    private String email;
+    private String password;
 
-    protected Person() {}
-
-    protected Person(String firstName, String lastName, LocalDate birthDate, String email) {
+    public UserDTO(String firstName, String lastName, LocalDate birthDate, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.email = email;
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -48,5 +48,13 @@ public abstract class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
