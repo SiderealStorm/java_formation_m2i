@@ -4,7 +4,10 @@ Exercices et démonstrations Java, faits pendant la formation "Développeurs Jav
 
 Chaque exercice ou démo contient une fonction main pour qu'il puisse être exécuté individuellement.
 
-L'énoncé des exercices se trouve dans le fichier contenant le main, au dessus de la déclaration de classe, ou dans un fichier README au même niveau que le Main.
+L'énoncé des exercices se trouve soit en commentaire dans le fichier contenant le main, au dessus de la déclaration de classe, soit dans un fichier README au même niveau que le Main.
+
+**A partir de Java EE**, chaque exercice ou démo est un projet individuel, contenant un fichier README pour l'énoncé.
+
 
 ## [Bases](/java_base/src/)
 
@@ -24,11 +27,21 @@ L'énoncé des exercices se trouve dans le fichier contenant le main, au dessus 
 - [Démos](/java_jdbc/src/main/java/org/example/demos/)
 - [Exercices](/java_jdbc/src/main/java/org/example/exos/)
     - [JDBC](/java_jdbc/src/main/java/org/example/exos/jdbc)
-    - [JPA](/java_jdbc/src/main/java/org/example/exos/jpa) : 4 versions accessibles via les tags git (jpa_exo_v...)
-    - [Hibernate](java_jdbc/src/main/java/org/example/exos/hibernate/) : 7 versions accessibles via les tags git (hib_exo_v...)
+    - [JPA](/java_jdbc/src/main/java/org/example/exos/jpa) : 4 versions accessibles via les tags git **jpa_exo_v...**
+    - [Hibernate](java_jdbc/src/main/java/org/example/exos/hibernate/) : 7 versions accessibles via les tags git **hib_exo_v...**
 
 ## [Test Driven Development](/java_tdd/src/test/java/org/example/)
 - [Démos](/java_tdd/src/test/java/org/example/demo/)
 - [Exercices](/java_tdd/src/test/java/org/example/exo/)
 
-## [HTML/CSS](html_css/)
+## [HTML/CSS](/html_css/)
+- [Démos](/html_css/demo/)
+- [Exercices](/html_css/exos/)
+
+## [Java EE](/java_ee/)
+- [Démo](/java_ee/demo/src/main/java/com/example/demo/)
+- [Exercices](/java_ee/exos/)
+
+## [Spring](/java_spring/)
+- [Démos](/java_spring/demos/)
+- [Exercices](/java_spring/exos/)

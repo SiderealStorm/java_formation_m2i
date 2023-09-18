@@ -1,4 +1,4 @@
-package com.example.demo_01;
+package com.example.demo;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "formServlet", value = "/form")
 public class ServletTest2 extends HttpServlet {
