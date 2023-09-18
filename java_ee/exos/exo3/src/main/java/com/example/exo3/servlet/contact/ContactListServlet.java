@@ -1,6 +1,5 @@
 package com.example.exo3.servlet.contact;
 
-import com.example.exo3.database.FakeDB;
 import com.example.exo3.model.Contact;
 import com.example.exo3.model.User;
 import jakarta.servlet.ServletException;
@@ -24,8 +23,8 @@ public class ContactListServlet extends HttpServlet {
             List<Contact> contacts = user.getContacts();
 
             // Tri de la liste par noms puis prénoms :
-            contacts.sort(Comparator.comparing(Contact::getFirstName));
-            contacts.sort(Comparator.comparing(Contact::getLastName));
+            contacts.sort(Comparator.comparing(contact -> contact.getFirstName().toUpperCase()));
+            contacts.sort(Comparator.comparing(contact -> contact.getLastName().toUpperCase()));
 
             req.setAttribute("contacts", contacts);
 
