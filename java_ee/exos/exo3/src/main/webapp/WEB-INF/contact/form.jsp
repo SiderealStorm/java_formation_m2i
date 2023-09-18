@@ -1,3 +1,4 @@
+<jsp:useBean id="error" type="java.lang.String" scope="request" />
 <jsp:useBean id="mode" type="java.lang.String" scope="request" />
 <jsp:useBean id="contact" type="com.example.exo3.dto.ContactDTO" scope="request" />
 
@@ -76,6 +77,13 @@
                     <% } %>
                     <a href="${pageContext.request.contextPath}/contacts" class="btn btn-secondary"><span class="bi bi-arrow-clockwise"></span> Retour</a>
                 </div>
+                <% if(!error.isEmpty()) { %>
+                <div class="m-3 rounded text-bg-danger">
+                    <p class="p-2">
+                        <%= error %>
+                    </p>
+                </div>
+                <% } %>
             </form>
         </div>
     </div>

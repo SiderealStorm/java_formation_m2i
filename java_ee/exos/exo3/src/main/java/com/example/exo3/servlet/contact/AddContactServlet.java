@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "addContactServlet", value = "/contacts/add")
 public class AddContactServlet extends HttpServlet {
@@ -22,6 +23,7 @@ public class AddContactServlet extends HttpServlet {
         if (user != null) {
             ContactDTO dto = new ContactDTO(0, "", "", null, "", "", "");
 
+            req.setAttribute("error", "");
             req.setAttribute("contact", dto);
             req.setAttribute("mode", "add");
 
@@ -40,27 +42,46 @@ public class AddContactServlet extends HttpServlet {
         String dateString = req.getParameter("birthdate");
         LocalDate birthdate = dateString.isEmpty() ? null : LocalDate.parse(dateString);
         String email = req.getParameter("email");
-        String phone = req.getParameter("phone");
+        String phone = req.getParameter("phone").replace(" ", "");
         // TODO improvement : change to Address object
         String address = req.getParameter("address");
 
         // TODO improvement : check phone with a RegEx ? + return pre-filled form and error message if problem with phone
-//        String patterns = "^[+]{1}[1-9]{1}\\d{1,2}[(]{1}[1-9]{1}\\d{0,2}[)]{1}\\d{6,10}$"
-//                + "^[+]{1}[1-9]{1}\\d{9,12}$"
-//                + "^[0]{1}[1-9]{1}\\d{8}$";
+        String patterns = "^[+]{1}[1-9]{1}\\d{1,2}[(]{1}[1-9]{1}\\d{0,2}[)]{1}\\d{6,10}$"
+                + "|^[+]{1}[1-9]{1}\\d{9,12}$"
+                + "|^[0]{1}[1-9]{1}\\d{8}$"
+                + "|^\\d*$";
 
-        Contact contact = new Contact(
-                firstName,
-                lastName,
-                birthdate,
-                email,
-                phone,
-                address
-        );
+        System.out.println(phone);
 
-        user.addContact(contact);
+        Pattern pattern = Pattern.compile(patterns);
+        System.out.println(pattern.matcher(phone).matches());
 
-        resp.sendRedirect(req.getContextPath() + "/contacts");
+        if (!pattern.matcher(phone).matches()) {
+            System.out.println("Phone doesn't match pattern !");
 
+            ContactDTO dto = new ContactDTO(0, firstName, lastName, birthdate, email, phone, address);
+
+            req.setAttribute("error", "Format de numéro de téléphone invalide");
+            req.setAttribute("contact", dto);
+            req.setAttribute("mode", "add");
+
+            getServletContext().getRequestDispatcher("/WEB-INF/contact/form.jsp").forward(req, resp);
+
+        } else {
+
+            Contact contact = new Contact(
+                    firstName,
+                    lastName,
+                    birthdate,
+                    email,
+                    phone,
+                    address
+            );
+
+            user.addContact(contact);
+
+            resp.sendRedirect(req.getContextPath() + "/contacts");
+        }
     }
 }

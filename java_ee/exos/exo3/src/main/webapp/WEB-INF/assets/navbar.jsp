@@ -24,9 +24,9 @@
         <span class="navbar-text mx-2 small">
             <%= user.getEmail() %>
         </span>
-        <a class="btn btn-danger" href="${pageContext.request.contextPath}/auth/signout">Déconnexion</a>
+        <a class="btn btn-outline-danger" href="${pageContext.request.contextPath}/auth/signout">Déconnexion</a>
         <% } else { %>
-        <a class="btn btn-success" href="${pageContext.request.contextPath}/auth/signin">Connexion</a>
+        <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/auth/signin">Connexion</a>
         <% } %>
       </div>
     </div>
