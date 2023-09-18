@@ -37,6 +37,7 @@ public class DeleteContactServlet extends HttpServlet {
                         contact.getAddress()
                 );
 
+                req.setAttribute("error", "");
                 req.setAttribute("mode", "delete");
                 req.setAttribute("contact", dto);
 

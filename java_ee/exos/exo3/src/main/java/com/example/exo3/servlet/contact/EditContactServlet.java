@@ -37,6 +37,7 @@ public class EditContactServlet extends HttpServlet {
                         contact.getAddress()
                 );
 
+                req.setAttribute("error", "");
                 req.setAttribute("mode", "edit");
                 req.setAttribute("contact", dto);
 

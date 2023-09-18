@@ -37,6 +37,7 @@ public class ViewContactServlet extends HttpServlet {
                         contact.getAddress()
                 );
 
+                req.setAttribute("error", "");
                 req.setAttribute("mode", "view");
                 req.setAttribute("contact", dto);
 
