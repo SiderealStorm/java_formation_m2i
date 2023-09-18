@@ -13,7 +13,7 @@ public class UserDTO {
     public UserDTO() {}
 
     public UserDTO(String email) {
-        this.password = password;
+        this.email = email;
     }
 
     public UserDTO(String firstName, String lastName, LocalDate birthDate, String email) {

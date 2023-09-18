@@ -61,8 +61,7 @@ public class EditContactServlet extends HttpServlet {
         if (foundContact.isPresent()) {
             Contact contact = foundContact.get();
 
-            // TODO improvement : check phone with a RegEx ?
-            // TODO return pre-filled form and error message if problem with phone
+            // TODO improvement : check phone with a RegEx ? + return pre-filled form and error message if problem with phone
 
             contact.setFirstName(req.getParameter("firstname"));
             contact.setLastName(req.getParameter("lastname"));
