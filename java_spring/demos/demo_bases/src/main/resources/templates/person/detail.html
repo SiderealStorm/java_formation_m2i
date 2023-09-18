@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- Ajout d'un XML namespace pour pouvoir utiliser thymeleaf -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil"</title>
+</head>
+<body>
+<!-- Utilisation d'un attribut sous forme de texte -->
+<h1>Profil de <span th:text="${firstName}"></span></h1>
+<hr>
+<h3>Langages connus : </h3>
+<!-- Structure conditionnelle -->
+<ul th:unless="${languages.isEmpty()}">
+<!-- Idem que : <ul th:if="${!languages.isEmpty()}"> -->
+    <!-- Boucle for each -->
+    <li th:each="lang: ${languages}">
+        <span th:text="${lang}"></span>
+    </li>
+</ul>
+<p th:if="${languages.isEmpty()}">
+    Aucun langage pour le moment
+</p>
+</body>
+</html>
