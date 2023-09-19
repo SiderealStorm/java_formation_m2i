@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Détails du chat</title>
+    <span th:replace="~{cats/listing :: bootstrapImports}"></span>
 </head>
 <body>
 <h1 th:text="${cat.getName()}"></h1>

@@ -4,7 +4,6 @@ import com.example.exo2.exceptions.ResourceNotFoundException;
 import com.example.exo2.models.Cat;
 import com.example.exo2.services.CatService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

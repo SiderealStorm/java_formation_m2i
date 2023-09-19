@@ -1,5 +1,6 @@
 package com.example.exo2.controllers;
 
+import com.example.exo2.exceptions.ResourceNotFoundException;
 import com.example.exo2.models.Cat;
 import com.example.exo2.services.CatService;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,7 @@ public class CatController {
             model.addAttribute("cat", foundCat.get());
             return "cats/details";
         } else {
-            return "error/404";
+            throw new ResourceNotFoundException();
         }
     }
 }
