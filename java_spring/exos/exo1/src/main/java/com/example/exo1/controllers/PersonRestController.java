@@ -1,6 +1,5 @@
 package com.example.exo1.controllers;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,17 +16,17 @@ public class PersonRestController {
     }
 
     @GetMapping("person/detail")
-    public String personDetails(Model model) {
+    public String personDetails() {
         return "Jacques DUPONT";
     }
 
     @GetMapping("persons/details")
-    public String[] personsDetails(Model model) {
+    public String[] personsDetails() {
         return new String[] {"John DOE", "Jack DOE"};
     }
 
     @GetMapping("persons")
-    public List<String> personsList(Model model) {
+    public List<String> personsList() {
         return List.of("Jacques DUPONT", "Julie DURAND", "John DOE", "Jack DOE", "Jane DOE");
     }
 }

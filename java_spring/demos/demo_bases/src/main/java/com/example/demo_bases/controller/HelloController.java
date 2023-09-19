@@ -27,11 +27,12 @@ public class HelloController {
 //    @Autowired
 //    public GreetingsService service;
 
-    // On définit une route par méthode de requête (value est facultatif)
+    // On définit une route pour chaque méthode de requête (value est facultatif)
     @RequestMapping(value = "/hello")
     public String Hello() {
         System.out.println(service.sayHello());
 
+        // On retourne le chemin de la vue correspondante
         return "index";
     }
 
