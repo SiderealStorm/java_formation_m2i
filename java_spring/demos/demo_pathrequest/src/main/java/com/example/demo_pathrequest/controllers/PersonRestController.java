@@ -1,5 +1,6 @@
 package com.example.demo_pathrequest.controllers;
 
+import com.example.demo_pathrequest.exceptions.ResourceNotFoundException;
 import com.example.demo_pathrequest.models.PersonDTO;
 import com.example.demo_pathrequest.services.PersonService;
 import lombok.RequiredArgsConstructor;
@@ -43,8 +44,8 @@ public class PersonRestController {
             // Si la personne existe, on la retourne avec le statut OK...
             return ResponseEntity.ok(foundPerson);
         } else {
-            // ... Sinon on envoie une erreur 404 - Not found
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            // ... Sinon on génère une exception de type erreur 404 - Not found
+            throw new ResourceNotFoundException();
         }
     }
 

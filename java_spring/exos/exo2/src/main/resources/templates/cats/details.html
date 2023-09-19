@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails du chat</title>
+</head>
+<body>
+<h1 th:text="${cat.getName()}"></h1>
+<hr>
+<ul>
+    <li>
+        <b>Âge : </b><span th:text="${cat.getAge()}"></span> ans
+    </li>
+    <li>
+        <b>Race : </b><span th:text="${cat.getBreed()}"></span>
+    </li>
+    <li>
+        <b>Robe : </b><span th:text="${cat.getCoat()}"></span>
+    </li>
+    <li>
+        <b>Sociable : </b><span th:text="${cat.isSociable()} ? 'Oui' : 'Non'"></span>
+    </li>
+</ul>
+</body>
+</html>

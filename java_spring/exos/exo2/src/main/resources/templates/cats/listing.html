@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des chats</title>
+</head>
+<body>
+<h1>Liste des chats</h1>
+<hr>
+<table th:unless="${cats.isEmpty()}">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Race</th>
+            <th>Âge</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="cat : ${cats}">
+            <td th:text="${cat.getName()}"></td>
+            <td th:text="${cat.getBreed()}"></td>
+            <td th:text="${cat.getAge()}"></td>
+        </tr>
+    </tbody>
+</table>
+<p th:if="${cats.isEmpty()}">
+    Il n'y a pas encore de chat dans la liste.
+</p>
+</body>
+</html>
