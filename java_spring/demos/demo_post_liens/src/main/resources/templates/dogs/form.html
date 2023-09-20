@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${(mode.equals('details') ? 'Détails' : 'Ajout')}"></title>
+    <span th:replace="~{home :: bootstrapImports}"></span>
+</head>
+<body>
+<header th:insert="~{home :: nav}">
+</header>
+<main class="container">
+    <h1 th:text="${(mode.equals('details') ? 'Détails' : 'Ajout')}"></h1>
+    <hr>
+    <!-- On utilise le th:action à la place du action du formulaire -->
+    <!-- th:object permet de préciser l'objet utilisé à l'intérieur du bloc -->
+    <form action="#" th:action="@{/dogs/add}" method="post" th:object="${dog}">
+        <!-- Pour utiliser les attributs de l'objet, on utilise la syntaxe avec l'astérisque -->
+        <input type="text" class="d-none" th:field="*{id}" readonly>
+        <div class="mb-3">
+            <label for="name" class="form-label">Nom :</label>
+            <input type="text" name="name" id="name" class="form-control" th:field="*{name}" th:readonly="${mode.equals('details')}" th:required="${mode.equals('add')}">
+        </div>
+        <div class="mb-3">
+            <label for="breed" class="form-label">Race :</label>
+            <input type="text" name="breed" id="breed" class="form-control" th:field="*{breed}" th:readonly="${mode.equals('details')}" th:required="${mode.equals('add')}">
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Âge :</label>
+            <input type="number" name="age" id="age" class="form-control" th:field="*{age}" th:readonly="${mode.equals('details')}" th:required="${mode.equals('add')}">
+        </div>
+        <div class="text-end">
+            <a th:if="${mode.equals('details')}" class="btn btn-secondary" th:href="@{/dogs}"><i class="bi bi-arrow-counterclockwise"></i> Retour</a>
+            <button th:unless="${mode.equals('details')}" class="btn btn-success"><i class="bi bi-plus-circle"></i> Ajouter</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>

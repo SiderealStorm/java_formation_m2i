@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <!-- Pour inclure ces balises dans d'autres pages, on les place dans une balise commune (ici th:block) -->
+    <!-- Pour pouvoir sélectionner le bloc, il faut le nommer avec th:fragment-->
+    <th:block th:fragment="bootstrapImports">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </th:block>
+</head>
+<body>
+<header>
+    <!-- Si les éléments voulus sont déjà dant une balise parent, on peut la sélectionner -->
+    <!-- avec son nom de balise ou les classes CSS ; la première correspondance est prise en compte -->
+    <nav th:fragment="navbar">
+        <ul class="navbar-nav">
+            <!-- th:href permet de faire des liens relatifs au contexte -->
+            <li class="nav-item"><a class="nav-link" th:href="@{/home}">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/page}">Page</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/dogs}">Liste des chiens</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <h1>
+        Accueil
+    </h1>
+    <hr>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cupiditate in iste molestiae quasi! Cum eveniet incidunt necessitatibus nesciunt nostrum reiciendis similique. Deleniti explicabo ipsam non perspiciatis rem suscipit tempore.
+    </p>
+</main>
+</body>
+</html>

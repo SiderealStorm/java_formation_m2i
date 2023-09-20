@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Autre page</title>
+    <!-- On inclut les liens Bootstrap en utilisant le lien vers la page contenant le fragment -->
+    <!-- On ajoute le nom du fragment sinon TOUTE la page est importée -->
+    <!-- On utilise 'replace' pour que la balise ici soit remplacée par celle importée-->
+    <span th:replace="~{home :: bootstrapImports}"></span>
+
+</head>
+<body>
+<!-- Ici on insère le fragment dans la balise header -->
+<header th:insert="~{home :: nav}">
+</header>
+<main class="container">
+    <h1>
+        Autre page
+    </h1>
+    <hr>
+    <p>
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis dolorum, ipsam ipsum nemo neque porro quidem. A aspernatur deserunt ea illum impedit in incidunt iure nostrum quia, reprehenderit ullam voluptas!</span><span>At blanditiis consectetur, debitis eveniet, explicabo illo itaque iure labore maxime mollitia non officia reprehenderit rerum similique sint tempora voluptate. Accusamus aut ea id molestias natus nisi repellat sequi sit.</span><span>A dolore eligendi ex facere ipsam iure, minus neque, nisi perspiciatis ratione reiciendis voluptate voluptates voluptatum? Ab, architecto consequuntur, eligendi illum magnam maxime, perferendis praesentium quibusdam sed tenetur velit veniam?</span>
+    </p>
+</main>
+</body>
+</html>

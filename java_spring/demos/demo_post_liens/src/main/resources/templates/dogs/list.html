@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des chiens</title>
+    <span th:replace="~{home :: bootstrapImports}"></span>
+</head>
+<body>
+<header th:insert="~{home :: nav}">
+</header>
+<main class="container">
+    <h1>
+        Liste des chiens
+    </h1>
+    <hr>
+    <table th:unless="${dogs.isEmpty()}" class="table table-dark table-striped text-center align-middle">
+        <thead>
+            <tr>
+                <td>Nom</td>
+                <td>Race</td>
+                <td>Âge</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="d : ${dogs}">
+                <td th:text="${d.getName()}"></td>
+                <td th:text="${d.getBreed()}"></td>
+                <td th:text="${d.getAge()}"></td>
+                <td>
+                    <!-- Utilisation d'un placeholder pour ajouter l'id dans l'URL -->
+                    <a th:href="@{/dogs/{dogId}(dogId = ${d.getId()})}" class="btn btn-outline-info"><span class="bi bi-eye"></span> Infos</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p th:if="${dogs.isEmpty()}">
+        Il n'y a pas encore de chien dans la liste
+    </p>
+    <div class="text-end">
+        <a th:href="@{/dogs/add}" class="btn btn-success"><i class="bi bi-plus-circle"></i> Ajouter un chien</a>
+    </div>
+</main>
+</body>
+</html>
