@@ -77,4 +77,12 @@ public class DogController {
         // Pour faire une redirection :
         return "redirect:/dogs";
     }
+
+    // Pour supprimer, on utilise un POST
+    @PostMapping("delete/{dogId}")
+    public String deleteDogById(@PathVariable("dogId") UUID id) {
+        // TODO faire la méthode de suppression
+
+        return "redirect:/dogs";
+    }
 }

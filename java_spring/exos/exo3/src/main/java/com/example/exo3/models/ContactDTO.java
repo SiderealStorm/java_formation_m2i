@@ -3,6 +3,7 @@ package com.example.exo3.models;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
@@ -16,4 +17,5 @@ public class ContactDTO {
     private String phone;
 
     // TODO si le temps ajouter date de naissance
+//    private LocalDate birthDate;
 }

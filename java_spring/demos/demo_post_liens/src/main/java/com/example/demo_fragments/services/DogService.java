@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 @Primary
@@ -57,5 +58,46 @@ public class DogService {
         dogs.put(dogData.getId(), dogData);
 
         return dogData;
+    }
+
+    public boolean deleteDogById(UUID id) {
+        Optional<DogDTO> foundDog = getDogById(id);
+
+        if (foundDog.isPresent()) {
+            dogs.remove(foundDog.get().getId());
+
+            return true;
+        }
+
+        return false;
+    }
+
+    // Par sécurité, on passe l'ID indépendamment du chien au cas où il n'existe pas
+    public DogDTO editDog(UUID id, DogDTO newDog) {
+        // Création d'une référence pour pouvoir utiliser ifPresentOrElse (fonctions lambda)
+        AtomicReference<DogDTO> atomicReference = new AtomicReference<>();
+
+        Optional<DogDTO> foundDog = getDogById(id);
+
+        foundDog.ifPresentOrElse(found -> {
+            if (newDog.getName() != null) {
+                found.setName(newDog.getName());
+            }
+
+            if (newDog.getBreed() != null) {
+                found.setBreed(newDog.getBreed());
+            }
+
+            if (newDog.getAge() != 0) {
+                found.setAge(newDog.getAge());
+            }
+
+            // On utilise l'AtomicReference car on ne peut pas faire un return dans une lambda
+            atomicReference.set(found);
+        }, () -> {
+            atomicReference.set(null);
+        });
+
+        return atomicReference.get();
     }
 }

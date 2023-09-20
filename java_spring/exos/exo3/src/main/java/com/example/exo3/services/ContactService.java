@@ -3,6 +3,7 @@ package com.example.exo3.services;
 import com.example.exo3.models.ContactDTO;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -19,6 +20,7 @@ public class ContactService {
                 .lastName("Dupont")
                 .email("jdupont@mail.com")
                 .phone("0320557784")
+//                .birthDate(LocalDate.of(1996, 10, 21))
                 .build();
 
         ContactDTO contact2 = ContactDTO.builder()
@@ -27,6 +29,7 @@ public class ContactService {
                 .lastName("Durand")
                 .email("jdurand@mail.com")
                 .phone("0321667845")
+//                .birthDate(LocalDate.of(1989,2, 15))
                 .build();
 
         ContactDTO contact3 = ContactDTO.builder()
@@ -35,6 +38,7 @@ public class ContactService {
                 .lastName("Doe")
                 .email("johndoe@mail.com")
                 .phone("0645315874")
+//                .birthDate(LocalDate.of(1994, 12, 5))
                 .build();
 
         contacts.put(contact1.getId(), contact1);

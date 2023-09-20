@@ -29,6 +29,10 @@
                 <label for="phone" class="form-label">Téléphone :</label>
                 <input type="text" id="phone" class="form-control" th:field="*{phone}" th:readonly="${mode.equals('view')}" th:required="${mode.equals('add')}">
             </div>
+<!--            <div class="mb-3">-->
+<!--                <label for="birthdate" class="form-label">Date de naissance :</label>-->
+<!--                <input type="date" id="birthdate" class="form-control" th:field="*{birthDate}" th:required="${mode.equals('add')}">-->
+<!--            </div>-->
             <div class="text-end">
                 <a th:if="${mode.equals('view')}" class="btn btn-secondary" th:href="@{/contacts}"><span class="bi bi-arrow-counterclockwise"></span> Retour à la liste</a>
                 <button th:unless="${mode.equals('view')}" class="btn btn-success"><span class="bi bi-plus-circle"></span> Ajouter le contact</button>
