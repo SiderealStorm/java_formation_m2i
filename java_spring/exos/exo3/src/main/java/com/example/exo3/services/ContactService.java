@@ -67,4 +67,44 @@ public class ContactService {
 
         return contact;
     }
+
+    public boolean deleteContactById(UUID id) {
+        Optional<ContactDTO> foundContact = getContactById(id);
+
+        if (foundContact.isPresent()) {
+            contacts.remove(foundContact.get().getId());
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public ContactDTO editContact(UUID id, ContactDTO contact) {
+        Optional<ContactDTO> foundContact = getContactById(id);
+
+        if (foundContact.isPresent()) {
+            ContactDTO newContact = foundContact.get();
+            if (contact.getFirstName() != null) {
+                newContact.setFirstName(contact.getFirstName());
+            }
+
+            if (contact.getLastName() != null) {
+                newContact.setLastName(contact.getLastName());
+            }
+
+            if (contact.getEmail() != null) {
+                newContact.setEmail(contact.getEmail());
+            }
+
+            if (contact.getPhone() != null) {
+                newContact.setPhone(contact.getPhone());
+            }
+
+            return contact;
+        }
+
+        return null;
+    }
+
 }

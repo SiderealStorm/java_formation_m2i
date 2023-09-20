@@ -62,4 +62,34 @@ public class ContactController {
 
         return "redirect:/contacts";
     }
+
+    @GetMapping("delete/{contactId}")
+    public String getDeleteContactForm(Model model) {
+        model.addAttribute("mode", DisplayMode.DELETE.getValue());
+        model.addAttribute("contact", ContactDTO.builder().build());
+
+        return "contacts/form";
+    }
+
+    @PostMapping("delete/{contactId}")
+    public String deleteContact(@PathVariable("contactId") UUID id) {
+        contactService.deleteContactById(id);
+
+        return "redirect:/contacts";
+    }
+
+    @GetMapping("edit/{contactId}")
+    public String getEditContactForm(Model model) {
+        model.addAttribute("mode", DisplayMode.EDIT.getValue());
+        model.addAttribute("contact", ContactDTO.builder().build());
+
+        return "contacts/form";
+    }
+
+    @PostMapping("edit/{contactId}")
+    public String editContact(@PathVariable("contactId") UUID id, ContactDTO contact) {
+        contactService.editContact(id, contact);
+
+        return "redirect:/contacts";
+    }
 }

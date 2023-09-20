@@ -1,5 +1,7 @@
 # Exercice Spring C
 
+## Partie A :
+
 Réaliser une application Spring MVC offrant la visualisation d'une collection d'objets Java de classe Contact (avec au moins 3 champs) et ayant les routes suivantes :
 - /: Page d'accueil
 - /contacts: Le listing des contacts
@@ -9,3 +11,7 @@ Réaliser une application Spring MVC offrant la visualisation d'une collection d
 Le visuel devra également être travaillé, idéalement via l'utilisation de la librairie Bootstrap incluse dans les différentes pages via l'utilisations des fragments Thymeleaf.
 
 Les couches de l'application seront découpées en packages, et les erreurs devront aussi être gérées via des pages dédiés.
+
+## Partie B :
+
+Etendre l'application pour permettre de réaliser un CRUD complet, soit avec une API *ou* une interface web.
