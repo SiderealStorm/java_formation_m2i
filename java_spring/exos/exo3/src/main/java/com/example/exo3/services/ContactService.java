@@ -43,7 +43,11 @@ public class ContactService {
     }
 
     public List<ContactDTO> getAllContacts() {
-        return contacts.values().stream().toList();
+        List<ContactDTO> list = new ArrayList<>(contacts.values().stream().toList());
+        // Tri de la liste
+        list.sort(Comparator.comparing(o -> o.getFirstName().toUpperCase()));
+        list.sort(Comparator.comparing(o -> o.getLastName().toUpperCase()));
+        return list;
     }
 
     public Optional<ContactDTO> getContactById(UUID id) {

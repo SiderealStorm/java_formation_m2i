@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @RequestMapping("/contacts")
@@ -30,8 +27,6 @@ public class ContactController {
     public String getContactsList(Model model) {
         List<ContactDTO> contacts = contactService.getAllContacts();
 
-        // TODO trier la liste par nom/prénom
-
         model.addAttribute("contacts", contacts);
 
         return "contacts/list";
@@ -46,10 +41,7 @@ public class ContactController {
 
         if (contact.isPresent()) {
             model.addAttribute("contact", contact.get());
-            model.addAttribute("mode", "view");
-            // TODO essayer l'enum
-//            model.addAttribute("mode", DisplayMode.VIEW);
-
+            model.addAttribute("mode", DisplayMode.VIEW.getValue());
             return "contacts/form";
         } else {
             throw new ElementNotFoundException();
@@ -58,7 +50,7 @@ public class ContactController {
 
     @GetMapping("add")
     public String getNewContactForm(Model model) {
-        model.addAttribute("mode", "add");
+        model.addAttribute("mode", DisplayMode.ADD.getValue());
         model.addAttribute("contact", ContactDTO.builder().build());
 
         return "contacts/form";
