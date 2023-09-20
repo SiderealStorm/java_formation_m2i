@@ -1,7 +1,6 @@
 package com.example.demo_fragments.services;
 
 import com.example.demo_fragments.models.DogDTO;
-import lombok.val;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 

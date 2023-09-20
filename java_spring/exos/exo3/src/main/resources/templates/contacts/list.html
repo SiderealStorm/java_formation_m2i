@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des contacts</title>
+    <span th:replace="~{home :: BootstrapImports}"></span>
+</head>
+<body>
+<header th:insert="~{home :: nav}"></header>
+<main class="container">
+    <div>
+        <h1 class="display-5">
+            Liste des contacts
+        </h1>
+        <hr>
+        <p th:if="${contacts.isEmpty()}">
+            Aucun contact à afficher
+        </p>
+        <table class="rounded overflow-hidden table table-light table-striped text-center align-middle" th:unless="${contacts.isEmpty()}">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="contact : ${contacts}" th:object="${contact}">
+                    <td th:text="*{firstName}"></td>
+                    <td th:text="*{lastName}"></td>
+                    <td>
+                        <a th:href="@{/contacts/{contactId}(contactId = ${contact.getId()})}" class="btn btn-info"><span class="bi bi-eye"></span> Détails</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <div class="text-end">
+            <a th:href="@{/contacts/add}" class="btn btn-success"><span class="bi bi-plus-circle"></span> Ajouter un contact</a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

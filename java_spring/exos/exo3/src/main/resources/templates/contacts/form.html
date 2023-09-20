@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${(mode.equals('view') ? 'Détails du' : 'Ajouter un') + ' contact'}"></title>
+    <span th:replace="~{home :: BootstrapImports}"></span>
+</head>
+<body>
+<header th:insert="~{home :: nav}"></header>
+<main class="container">
+    <div>
+        <h1 class="display-5" th:text="${(mode.equals('view') ? 'Détails du' : 'Ajouter un') + ' contact'}"></h1>
+        <hr>
+        <form action="#" th:action="@{/contacts/add}" method="post" th:object="${contact}">
+            <input type="text" class="d-none" th:field="*{id}" readonly>
+            <div class="mb-3">
+                <label for="firstname" class="form-label">Nom :</label>
+                <input type="text" id="firstname" class="form-control" th:field="*{firstName}" th:readonly="${mode.equals('view')}" th:required="${mode.equals('add')}">
+            </div>
+            <div class="mb-3">
+                <label for="lastname" class="form-label">Prénom :</label>
+                <input type="text" id="lastname" class="form-control" th:field="*{lastName}" th:readonly="${mode.equals('view')}" th:required="${mode.equals('add')}">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Adresse email :</label>
+                <input type="email" id="email" class="form-control" th:field="*{email}" th:readonly="${mode.equals('view')}" th:required="${mode.equals('add')}">
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Téléphone :</label>
+                <input type="text" id="phone" class="form-control" th:field="*{phone}" th:readonly="${mode.equals('view')}" th:required="${mode.equals('add')}">
+            </div>
+            <div class="text-end">
+                <a th:if="${mode.equals('view')}" class="btn btn-secondary" th:href="@{/contacts}"><span class="bi bi-arrow-counterclockwise"></span> Retour à la liste</a>
+                <button th:unless="${mode.equals('view')}" class="btn btn-success"><span class="bi bi-plus-circle"></span> Ajouter le contact</button>
+            </div>
+        </form>
+    </div>
+</main>
+</body>
+</html>
