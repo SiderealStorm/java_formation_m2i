@@ -3,6 +3,7 @@ package com.example.exo3.controllers;
 import com.example.exo3.exceptions.ElementNotFoundException;
 import com.example.exo3.models.ContactDTO;
 import com.example.exo3.services.ContactService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/contacts")
+@AllArgsConstructor
 public class ContactRestController {
 
     private final ContactService contactService;
-
-    public ContactRestController() {
-        contactService = new ContactService();
-    }
 
     @GetMapping
     public List<ContactDTO> getContactsList() {
@@ -28,10 +26,10 @@ public class ContactRestController {
 
     @GetMapping("{contactId}")
     public ContactDTO getContactDetails(@PathVariable("contactId") UUID id) {
-        Optional<ContactDTO> contact = contactService.getContactById(id);
+        ContactDTO contact = contactService.getContactById(id);
 
-        if (contact.isPresent()) {
-            return contact.get();
+        if (contact != null) {
+            return contact;
         } else {
             throw new ElementNotFoundException();
         }

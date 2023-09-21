@@ -15,7 +15,6 @@ public class ContactDTO {
     private String lastName;
     private String email;
     private String phone;
-
-    // TODO si le temps ajouter date de naissance
-//    private LocalDate birthDate;
+    private LocalDate birthDate;
+    private Integer age;
 }

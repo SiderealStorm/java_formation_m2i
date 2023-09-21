@@ -4,6 +4,7 @@ import com.example.exo3.exceptions.ElementNotFoundException;
 import com.example.exo3.models.ContactDTO;
 import com.example.exo3.models.DisplayMode;
 import com.example.exo3.services.ContactService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +16,10 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/contacts")
+@AllArgsConstructor
 public class ContactController {
 
     private final ContactService contactService;
-
-    public ContactController() {
-        contactService = new ContactService();
-    }
 
     @GetMapping
     public String getContactsList(Model model) {
@@ -37,10 +35,10 @@ public class ContactController {
             Model model,
             @PathVariable("contactId") UUID id
             ) {
-        Optional<ContactDTO> contact = contactService.getContactById(id);
+        ContactDTO contact = contactService.getContactById(id);
 
-        if (contact.isPresent()) {
-            model.addAttribute("contact", contact.get());
+        if (contact != null) {
+            model.addAttribute("contact", contact);
             model.addAttribute("mode", DisplayMode.VIEW.getValue());
             return "contacts/form";
         } else {
@@ -65,10 +63,10 @@ public class ContactController {
 
     @GetMapping("delete/{contactId}")
     public String getDeleteContactForm(@PathVariable("contactId") UUID id, Model model) {
-        Optional<ContactDTO> contact = contactService.getContactById(id);
+        ContactDTO contact = contactService.getContactById(id);
 
-        if (contact.isPresent()) {
-            model.addAttribute("contact", contact.get());
+        if (contact != null) {
+            model.addAttribute("contact", contact);
             model.addAttribute("mode", DisplayMode.DELETE.getValue());
             return "contacts/form";
         } else {
@@ -88,10 +86,10 @@ public class ContactController {
 
     @GetMapping("edit/{contactId}")
     public String getEditContactForm(@PathVariable("contactId") UUID id, Model model) {
-        Optional<ContactDTO> contact = contactService.getContactById(id);
+        ContactDTO contact = contactService.getContactById(id);
 
-        if (contact.isPresent()) {
-            model.addAttribute("contact", contact.get());
+        if (contact != null) {
+            model.addAttribute("contact", contact);
             model.addAttribute("mode", DisplayMode.EDIT.getValue());
             return "contacts/form";
         } else {
