@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste de personnes</title>
+</head>
+<body>
+<main>
+    <h1>Liste des personnes</h1>
+    <hr>
+    <p th:if="${persons.isEmpty()}">
+        Il n'y a aucune personne à afficher
+    </p>
+    <table th:unless="${persons.isEmpty()}">
+        <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Date de naissance (âge)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="person : ${persons}">
+                <td th:text="${person.getName()}"></td>
+                <td th:text="${person.getLastName()}"></td>
+                <!-- Pour formatter une date, on utilise temporals -->
+                <td th:text="${#temporals.format(person.birthDate, 'dd MMM yyyy') + ' (' + person.getAge() + ' ans)'}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <!-- Utiliser une variable d'environnement (= déclarée dans application.properties) -->
+    <p th:text="#{varEnv}"></p>
+</main>
+</body>
+</html>
