@@ -54,6 +54,12 @@ public class ContactService {
         return list;
     }
 
+    // Dans une vraie BDD, on commence par vérifier que l'ID existe
+    // avant d'appeler une méthode qui recquiert un objet entier
+    public boolean isIdInDb(UUID id) {
+        return contacts.containsKey(id);
+    }
+
     public Optional<ContactDTO> getContactById(UUID id) {
         return contacts.values().stream().filter(c -> c.getId().equals(id)).findFirst();
     }
@@ -84,24 +90,24 @@ public class ContactService {
         Optional<ContactDTO> foundContact = getContactById(id);
 
         if (foundContact.isPresent()) {
-            ContactDTO newContact = foundContact.get();
+            ContactDTO editedContact = foundContact.get();
             if (contact.getFirstName() != null) {
-                newContact.setFirstName(contact.getFirstName());
+                editedContact.setFirstName(contact.getFirstName());
             }
 
             if (contact.getLastName() != null) {
-                newContact.setLastName(contact.getLastName());
+                editedContact.setLastName(contact.getLastName());
             }
 
             if (contact.getEmail() != null) {
-                newContact.setEmail(contact.getEmail());
+                editedContact.setEmail(contact.getEmail());
             }
 
             if (contact.getPhone() != null) {
-                newContact.setPhone(contact.getPhone());
+                editedContact.setPhone(contact.getPhone());
             }
 
-            return contact;
+            return editedContact;
         }
 
         return null;

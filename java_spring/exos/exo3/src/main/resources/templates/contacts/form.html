@@ -2,16 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${(mode.equals('view') ? 'Détails du' : 'Ajouter un') + ' contact'}"></title>
+    <th:block th:switch="${mode}">
+        <title th:case="'add'">Ajouter un contact</title>
+        <title th:case="'delete'">Supprimer le contact</title>
+        <title th:case="'edit'">Modifier le contact</title>
+        <title th:case="*">Détails du contact</title>
+    </th:block>
     <span th:replace="~{home :: BootstrapImports}"></span>
 </head>
 <body>
 <header th:insert="~{home :: nav}"></header>
 <main class="container">
     <div>
-        <h1 class="display-5" th:text="${(mode.equals('view') ? 'Détails du' : 'Ajouter un') + ' contact'}"></h1>
+        <th:block th:switch="${mode}">
+            <h1 th:case="'add'">Ajouter un contact</h1>
+            <h1 th:case="'delete'">Supprimer le contact</h1>
+            <h1 th:case="'edit'">Modifier le contact</h1>
+            <h1 th:case="*">Détails du contact</h1>
+        </th:block>
         <hr>
-        <form action="#" th:action="@{/contacts/add}" method="post" th:object="${contact}">
+        <form action="#" th:action="@{/contacts/{url}(url = ${mode.equals('add') ? 'add' : mode + '/' + contact.getId()})}" method="post" th:object="${contact}">
             <input type="text" class="d-none" th:field="*{id}" readonly>
             <div class="mb-3">
                 <label for="lastname" class="form-label">Nom :</label>
@@ -34,8 +44,12 @@
 <!--                <input type="date" id="birthdate" class="form-control" th:field="*{birthDate}" th:required="${mode.equals('add')}">-->
 <!--            </div>-->
             <div class="text-end">
-                <a th:if="${mode.equals('view')}" class="btn btn-secondary" th:href="@{/contacts}"><span class="bi bi-arrow-counterclockwise"></span> Retour à la liste</a>
-                <button th:unless="${mode.equals('view')}" class="btn btn-success"><span class="bi bi-plus-circle"></span> Ajouter le contact</button>
+                <th:block th:switch="${mode}">
+                    <button th:case="'add'" class="btn btn-success"><span class="bi bi-plus-circle"></span> Ajouter le contact</button>
+                    <button th:case="'edit'" class="btn btn-warning"><span class="bi bi-pencil-square"></span> Modifier le contact</button>
+                    <button th:case="'delete'" class="btn btn-danger"><span class="bi bi-trash"></span> Supprimer le contact</button>
+                </th:block>
+                <a class="btn btn-secondary" th:href="@{/contacts}"><span class="bi bi-arrow-counterclockwise"></span> Retour à la liste</a>
             </div>
         </form>
     </div>

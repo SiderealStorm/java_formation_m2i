@@ -16,7 +16,7 @@
         <p th:if="${contacts.isEmpty()}">
             Aucun contact à afficher
         </p>
-        <table class="rounded overflow-hidden table table-light table-striped text-center align-middle" th:unless="${contacts.isEmpty()}">
+        <table class="table table-light table-striped text-center" th:unless="${contacts.isEmpty()}">
             <thead>
                 <tr>
                     <th>Nom</th>
@@ -26,10 +26,12 @@
             </thead>
             <tbody>
                 <tr th:each="contact : ${contacts}" th:object="${contact}">
-                    <td th:text="*{firstName}"></td>
                     <td th:text="*{lastName}"></td>
+                    <td th:text="*{firstName}"></td>
                     <td>
                         <a th:href="@{/contacts/{contactId}(contactId = ${contact.getId()})}" class="btn btn-info"><span class="bi bi-eye"></span> Détails</a>
+                        <a th:href="@{/contacts/edit/{contactId}(contactId = ${contact.getId()})}" class="btn btn-warning"><span class="bi bi-pencil-square"></span> Modifier</a>
+                        <a th:href="@{/contacts/delete/{contactId}(contactId = ${contact.getId()})}" class="btn btn-danger"><span class="bi bi-trash"></span> Supprimer</a>
                     </td>
                 </tr>
             </tbody>

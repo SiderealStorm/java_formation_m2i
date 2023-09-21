@@ -69,8 +69,10 @@ public class DogRestController {
     }
 
     // PUT vs. PATCH :
-    // PATCH modifie un élément OU la propriété d'un élément déjà présent en BDD --> plus rapide
+    // PATCH modifie les propriétés d'un élément déjà présent en BDD
+    // --> plus rapide
     // PUT modifie TOUTES les propriétés de l'élément si il existe, sinon ajoute l'élément en BDD
+    // --> peut provoquer des modifications indésirables (propriétés passant à null)
 
     @PatchMapping("{dogId}")
     public DogDTO editDog(@PathVariable("dogId") UUID id, @RequestBody DogDTO dogData) {

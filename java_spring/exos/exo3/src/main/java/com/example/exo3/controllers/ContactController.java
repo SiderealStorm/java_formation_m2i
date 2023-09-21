@@ -64,32 +64,47 @@ public class ContactController {
     }
 
     @GetMapping("delete/{contactId}")
-    public String getDeleteContactForm(Model model) {
-        model.addAttribute("mode", DisplayMode.DELETE.getValue());
-        model.addAttribute("contact", ContactDTO.builder().build());
+    public String getDeleteContactForm(@PathVariable("contactId") UUID id, Model model) {
+        Optional<ContactDTO> contact = contactService.getContactById(id);
 
-        return "contacts/form";
+        if (contact.isPresent()) {
+            model.addAttribute("contact", contact.get());
+            model.addAttribute("mode", DisplayMode.DELETE.getValue());
+            return "contacts/form";
+        } else {
+            throw new ElementNotFoundException();
+        }
     }
 
     @PostMapping("delete/{contactId}")
     public String deleteContact(@PathVariable("contactId") UUID id) {
-        contactService.deleteContactById(id);
-
-        return "redirect:/contacts";
+        if(contactService.isIdInDb(id)) {
+            if(contactService.deleteContactById(id)) {
+                return "redirect:/contacts";
+            }
+        }
+        throw new ElementNotFoundException();
     }
 
     @GetMapping("edit/{contactId}")
-    public String getEditContactForm(Model model) {
-        model.addAttribute("mode", DisplayMode.EDIT.getValue());
-        model.addAttribute("contact", ContactDTO.builder().build());
+    public String getEditContactForm(@PathVariable("contactId") UUID id, Model model) {
+        Optional<ContactDTO> contact = contactService.getContactById(id);
 
-        return "contacts/form";
+        if (contact.isPresent()) {
+            model.addAttribute("contact", contact.get());
+            model.addAttribute("mode", DisplayMode.EDIT.getValue());
+            return "contacts/form";
+        } else {
+            throw new ElementNotFoundException();
+        }
     }
 
     @PostMapping("edit/{contactId}")
     public String editContact(@PathVariable("contactId") UUID id, ContactDTO contact) {
-        contactService.editContact(id, contact);
-
-        return "redirect:/contacts";
+        if(contactService.isIdInDb(id)) {
+            contactService.editContact(id, contact);
+            return "redirect:/contacts";
+        }
+        throw new ElementNotFoundException();
     }
 }
