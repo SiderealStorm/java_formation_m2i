@@ -7,10 +7,7 @@ import com.example.exo3.services.ContactService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -22,10 +19,20 @@ public class ContactController {
     private final ContactService contactService;
 
     @GetMapping
-    public String getContactsList(Model model) {
-        List<ContactDTO> contacts = contactService.getAllContacts();
+    public String getContactsList(
+            Model model,
+            @RequestParam(value = "filter", defaultValue = "") String filter
+    ) {
+        List<ContactDTO> contacts;
+
+        if (filter.isBlank() && filter.isEmpty()) {
+            contacts = contactService.getAllContacts();
+        } else {
+            contacts = contactService.getContactsFilterLastname(filter);
+        }
 
         model.addAttribute("contacts", contacts);
+//        model.addAttribute("filter", "");
 
         return "contacts/list";
     }

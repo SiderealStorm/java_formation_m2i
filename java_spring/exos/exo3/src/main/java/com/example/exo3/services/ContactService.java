@@ -7,7 +7,6 @@ import com.example.exo3.repositories.ContactRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -17,11 +16,22 @@ public class ContactService {
     private final ContactMapper contactMapper;
     private final ContactRepository contactRepository;
 
+    public void sortContactList(List<Contact> contactList) {
+        contactList.sort(Comparator.comparing(o -> o.getFirstName().toUpperCase()));
+        contactList.sort(Comparator.comparing(o -> o.getLastName().toUpperCase()));
+    }
+
     public List<ContactDTO> getAllContacts() {
         List<Contact> list = contactRepository.findAll();
         // Tri de la liste
-        list.sort(Comparator.comparing(o -> o.getFirstName().toUpperCase()));
-        list.sort(Comparator.comparing(o -> o.getLastName().toUpperCase()));
+        sortContactList(list);
+        return list.stream().map(contactMapper::contactToContactDto).toList();
+    }
+
+
+    public List<ContactDTO> getContactsFilterLastname(String filter) {
+        List<Contact> list = contactRepository.getAllByLastNameStartingWith(filter);
+        sortContactList(list);
         return list.stream().map(contactMapper::contactToContactDto).toList();
     }
 
