@@ -13,11 +13,25 @@
             Liste des contacts
         </h1>
 
-<!--        <form action="#" th:action="@{/contacts}">-->
+<!--        <div>-->
 <!--            <label for="filter" class="form-label">Nom :</label>-->
-<!--            <input type="text" id="filter" class="form-control" th:field="${filter}">-->
-<!--            <button class="btn btn-secondary">Filtrer</button>-->
-<!--        </form>-->
+<!--            <input type="text" id="filter" class="form-control" th:value="${filter}">-->
+<!--            <a th:href="@{/contacts(filter=${param.filter})}" class="btn btn-secondary">Filtrer</a>-->
+<!--        </div>-->
+
+        <hr>
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="">
+                <a th:href="@{/contacts/add}" class="btn btn-success"><span class="bi bi-plus-circle"></span> Ajouter un contact</a>
+            </div>
+            <form class="row" action="#" th:action="@{/contacts}" method="post">
+                <label for="filter" class="col-auto col-form-label">Filtrer par nom :</label>
+                <div class="col-auto">
+                    <input type="text" id="filter" class="form-control" th:name="filter">
+                </div>
+                <button class="btn btn-secondary col-auto">Filtrer</button>
+            </form>
+        </div>
         <hr>
         <p th:if="${contacts.isEmpty()}">
             Aucun contact à afficher
@@ -42,10 +56,6 @@
                 </tr>
             </tbody>
         </table>
-        <hr>
-        <div class="text-end">
-            <a th:href="@{/contacts/add}" class="btn btn-success"><span class="bi bi-plus-circle"></span> Ajouter un contact</a>
-        </div>
     </div>
 </main>
 </body>

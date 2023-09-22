@@ -25,16 +25,24 @@ public class ContactController {
     ) {
         List<ContactDTO> contacts;
 
-        if (filter.isBlank() && filter.isEmpty()) {
+        if (filter == null || (filter.isBlank() && filter.isEmpty())) {
             contacts = contactService.getAllContacts();
         } else {
             contacts = contactService.getContactsFilterLastname(filter);
         }
 
         model.addAttribute("contacts", contacts);
-//        model.addAttribute("filter", "");
+        model.addAttribute("filter", "");
 
         return "contacts/list";
+    }
+
+    @PostMapping
+    public String getFilteredContactsList(
+            String filter
+    ) {
+
+        return "redirect:/contacts?filter=" + filter;
     }
 
     @GetMapping("{contactId}")

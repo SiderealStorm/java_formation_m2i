@@ -35,9 +35,7 @@ public interface ContactMapper {
     @Named("convertStringToDate")
     static LocalDate convertStringToDate(String dateString) {
         if (dateString != null && !dateString.isBlank() && !dateString.isEmpty()) {
-            LocalDate date = LocalDate.parse(dateString);
-
-            return date;
+            return LocalDate.parse(dateString);
         }
         return null;
     }
