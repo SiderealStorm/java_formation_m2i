@@ -14,13 +14,14 @@ public interface ContactMapper {
     @Mapping(source = "birthDate", target = "age", qualifiedByName = "convertDateToAge")
     ContactDTO contactToContactDto(Contact contact);
 
+    @Mapping(source = "birthDate", target = "birthDate", qualifiedByName = "convertStringToDate")
     Contact contactDtoToContact(ContactDTO contactDTO);
 
     @Named("convertDateToAge")
     static Integer convertDateToAge(LocalDate date) {
         LocalDate now = LocalDate.now();
         if (date != null) {
-            Integer age = now.getYear() - date.getYear();
+            int age = now.getYear() - date.getYear();
 
             if (now.minusYears(age).isBefore(date)) {
                 age--;
@@ -28,5 +29,16 @@ public interface ContactMapper {
             return age;
         }
         return 0;
+    }
+
+
+    @Named("convertStringToDate")
+    static LocalDate convertStringToDate(String dateString) {
+        if (dateString != null && !dateString.isBlank() && !dateString.isEmpty()) {
+            LocalDate date = LocalDate.parse(dateString);
+
+            return date;
+        }
+        return null;
     }
 }

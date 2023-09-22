@@ -15,6 +15,6 @@ public class ContactDTO {
     private String lastName;
     private String email;
     private String phone;
-    private LocalDate birthDate;
+    private String birthDate;
     private Integer age;
 }
