@@ -44,8 +44,8 @@
                        th:required="${mode.equals('add') || mode.equals('edit')}">
             </div>
             <div class="mb-3">
-                <label for="birthdate" class="form-label">Date de naissance :</label>
-                <input type="date" id="birthdate" class="form-control" th:field="*{birthDate}"
+                <label for="birthDate" class="form-label">Date de naissance :</label>
+                <input type="date" name="birthDate" id="birthDate" class="form-control" th:value="${contact.birthDate}"
                        th:readonly="${mode.equals('view') || mode.equals('delete')}"
                        th:required="${mode.equals('add') || mode.equals('edit')}">
             </div>

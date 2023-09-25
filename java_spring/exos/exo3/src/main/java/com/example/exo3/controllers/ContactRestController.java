@@ -1,13 +1,17 @@
 package com.example.exo3.controllers;
 
 import com.example.exo3.exceptions.ElementNotFoundException;
+import com.example.exo3.exceptions.InvalidFormException;
 import com.example.exo3.models.ContactDTO;
 import com.example.exo3.services.ContactService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -36,7 +40,13 @@ public class ContactRestController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<String> addNewContact(@RequestBody ContactDTO newContact) {
+    public ResponseEntity<String> addNewContact(
+            @RequestBody @Valid ContactDTO newContact,
+            BindingResult result
+    ) {
+        if (result.hasErrors()) {
+            throw new InvalidFormException();
+        }
 
         ContactDTO contact = contactService.addContact(newContact);
 

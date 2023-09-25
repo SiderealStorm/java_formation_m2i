@@ -23,7 +23,7 @@ public class ContactDTO {
     private String email;
 
     // Possibilité de vérifier via un pattern RegEx
-//    @Pattern()
+//    @Pattern(regexp = "")
     @NotNull
     private String phone;
 

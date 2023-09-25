@@ -4,9 +4,11 @@ import com.example.exo3.exceptions.ElementNotFoundException;
 import com.example.exo3.models.ContactDTO;
 import com.example.exo3.models.DisplayMode;
 import com.example.exo3.services.ContactService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -70,7 +72,27 @@ public class ContactController {
     }
 
     @PostMapping("add")
-    public String addNewContact(ContactDTO contact) {
+    public String addNewContact(
+//            Model model,
+//            BindingResult results,
+            @Valid ContactDTO contact
+            ) {
+//        System.out.println("Add new contact");
+//
+//        if (results.hasErrors()) {
+//            System.out.println("Form has errors");
+//            List<String> errors = new ArrayList<>();
+//            results.getAllErrors().forEach(objectError -> errors.add(objectError.toString()));
+//
+//            errors.forEach(System.out::println);
+//
+//            model.addAttribute("mode", DisplayMode.ADD.getValue());
+//            model.addAttribute("contact", ContactDTO.builder().build());
+//            model.addAttribute("errors", errors);
+//
+//            return "contacts/form";
+//        }
+
         contactService.addContact(contact);
 
         return "redirect:/contacts";

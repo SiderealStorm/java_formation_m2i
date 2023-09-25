@@ -14,7 +14,6 @@ public interface ContactMapper {
     @Mapping(source = "birthDate", target = "age", qualifiedByName = "convertDateToAge")
     ContactDTO contactToContactDto(Contact contact);
 
-    @Mapping(source = "birthDate", target = "birthDate", qualifiedByName = "convertStringToDate")
     Contact contactDtoToContact(ContactDTO contactDTO);
 
     @Named("convertDateToAge")
@@ -29,14 +28,5 @@ public interface ContactMapper {
             return age;
         }
         return 0;
-    }
-
-
-    @Named("convertStringToDate")
-    static LocalDate convertStringToDate(String dateString) {
-        if (dateString != null && !dateString.isBlank() && !dateString.isEmpty()) {
-            return LocalDate.parse(dateString);
-        }
-        return null;
     }
 }
