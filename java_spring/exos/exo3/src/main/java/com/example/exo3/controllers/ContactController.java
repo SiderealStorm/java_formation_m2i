@@ -73,27 +73,24 @@ public class ContactController {
 
     @PostMapping("add")
     public String addNewContact(
-//            Model model,
-//            BindingResult results,
-            @Valid ContactDTO contact
+            // L'ordre est important !
+            @Valid ContactDTO contact,
+            BindingResult results,
+            Model model
             ) {
-//        System.out.println("Add new contact");
-//
-//        if (results.hasErrors()) {
-//            System.out.println("Form has errors");
-//            List<String> errors = new ArrayList<>();
-//            results.getAllErrors().forEach(objectError -> errors.add(objectError.toString()));
-//
-//            errors.forEach(System.out::println);
-//
-//            model.addAttribute("mode", DisplayMode.ADD.getValue());
-//            model.addAttribute("contact", ContactDTO.builder().build());
-//            model.addAttribute("errors", errors);
-//
-//            return "contacts/form";
-//        }
+        System.out.println("Add new contact");
+
+        if (results.hasErrors()) {
+            System.out.println("Form has errors");
+
+            model.addAttribute("mode", DisplayMode.ADD.getValue());
+            model.addAttribute("contact", contact);
+
+            return "contacts/form";
+        }
 
         contactService.addContact(contact);
+        System.out.println("New contact added");
 
         return "redirect:/contacts";
     }
