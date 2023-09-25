@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Pokémon - ' + ${pokemon.getName()}"></title>
+    <th:block th:fragment="BootstrapImports">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </th:block>
+</head>
+<body>
+<header class="text-bg-dark py-2">
+    <div class="d-flex align-items-center justify-content-center">
+        <form class="row" action="#" th:action="@{/pokemon/find}" method="post">
+            <label for="name" class="col-auto col-form-label">Enter a pokémon name :</label>
+            <div class="col-auto">
+                <input type="text" id="name" class="form-control" th:name="name">
+            </div>
+            <button class="btn btn-secondary col-auto">Find</button>
+        </form>
+    </div>
+</header>
+<main class="container my-2" th:object="${pokemon}">
+    <h1 th:text="'#' + *{order} + ' - ' + *{name.substring(0, 1).toUpperCase()} + *{name.substring(1)}"></h1>
+    <hr>
+    <div>
+        <img th:src="*{imageUrl}" th:alt="*{name}">
+    </div>
+    <h2>Base info :</h2>
+    <ul>
+        <li th:text="'Height : ' + *{height} + ' dm'"></li>
+        <li th:text="'Weight : ' + *{weight} + ' hg'"></li>
+    </ul>
+    <h2 th:text="*{types.size()} > 1 ? 'Types :' : 'Type :'"></h2>
+    <ul th:each="t : *{types}">
+        <li th:text="${t.substring(0, 1).toUpperCase()} + ${t.substring(1)}"></li>
+    </ul>
+    <h2 th:text="*{abilities.size()} > 1 ? 'Abilities :' : 'Ability :'"></h2>
+    <ul th:each="a : *{abilities}">
+        <li th:text="${a.substring(0, 1).toUpperCase()} + ${a.substring(1)}"></li>
+    </ul>
+    <hr>
+    <a th:href="@{/pokemon/id/{id}(id=${pokemon.id} - 1)}" th:class="${pokemon.id == 1} ? 'btn btn-secondary disabled' : 'btn btn-secondary'">
+        <span class="bi bi-caret-left-fill"></span> Previous Pokémon
+    </a>
+    <a th:href="@{/pokemon/id/{id}(id=${pokemon.id} + 1)}" class="btn btn-secondary">
+        Next Pokémon <span class="bi bi-caret-right-fill"></span>
+    </a>
+</main>
+</body>
+</html>
