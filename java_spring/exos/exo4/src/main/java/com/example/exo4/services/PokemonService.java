@@ -5,9 +5,9 @@ import com.example.exo4.models.PokemonDTO;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -18,25 +18,28 @@ public class PokemonService {
 
     private final RestTemplateBuilder builder;
 
-    public PokemonDTO getPokemonById(Long id) {
+    public PokemonDTO getPokemonByNameOrId(String value) {
         RestTemplate restTemplate = builder.build();
 
-        ResponseEntity<JsonNode> responseEntity = restTemplate.getForEntity("pokemon/" + id, JsonNode.class);
+        try {
+            ResponseEntity<JsonNode> responseEntity = restTemplate.getForEntity("pokemon/" + value, JsonNode.class);
 
-        if (responseEntity.getBody() != null) {
-
-            return convertJsonNodeToPokemon(responseEntity.getBody());
+            if (responseEntity.getBody() != null) {
+                return convertJsonNodeToPokemon(responseEntity.getBody());
+            }
+        } catch (RestClientException e) {
+            throw new ElementNotFoundException();
         }
         return null;
     }
 
-    public PokemonDTO getPokemonByName(String name) {
+    public Integer getPokemonCount() {
         RestTemplate restTemplate = builder.build();
 
-        ResponseEntity<JsonNode> responseEntity = restTemplate.getForEntity("pokemon/" + name, JsonNode.class);
+        ResponseEntity<JsonNode> responseEntity = restTemplate.getForEntity("pokedex/1", JsonNode.class);
 
         if (responseEntity.getBody() != null) {
-            return convertJsonNodeToPokemon(responseEntity.getBody());
+            return responseEntity.getBody().get("pokemon_entries").size();
         }
         return null;
     }
@@ -45,7 +48,6 @@ public class PokemonService {
         PokemonDTO pokemonDTO = PokemonDTO.builder()
                 .id(jsonNode.get("id").asLong())
                 .name(jsonNode.get("name").asText())
-                .order(jsonNode.get("order").asLong())
                 .types(new ArrayList<>())
                 .abilities(new ArrayList<>())
                 .height(jsonNode.get("height").asInt())

@@ -13,16 +13,16 @@
 <header class="text-bg-dark py-2">
     <div class="d-flex align-items-center justify-content-center">
         <form class="row" action="#" th:action="@{/pokemon/find}" method="post">
-            <label for="name" class="col-auto col-form-label">Enter a pokémon name :</label>
+            <label for="value" class="col-auto col-form-label">Enter a pokémon name or number :</label>
             <div class="col-auto">
-                <input type="text" id="name" class="form-control" th:name="name">
+                <input type="text" id="value" class="form-control" th:name="value">
             </div>
             <button class="btn btn-secondary col-auto">Find</button>
         </form>
     </div>
 </header>
 <main class="container my-2" th:object="${pokemon}">
-    <h1 th:text="'#' + *{order} + ' - ' + *{name.substring(0, 1).toUpperCase()} + *{name.substring(1)}"></h1>
+    <h1 th:text="'#' + *{id} + ' - ' + *{name.substring(0, 1).toUpperCase()} + *{name.substring(1)}"></h1>
     <hr>
     <div>
         <img th:src="*{imageUrl}" th:alt="*{name}">
@@ -41,10 +41,10 @@
         <li th:text="${a.substring(0, 1).toUpperCase()} + ${a.substring(1)}"></li>
     </ul>
     <hr>
-    <a th:href="@{/pokemon/id/{id}(id=${pokemon.id} - 1)}" th:class="${pokemon.id == 1} ? 'btn btn-secondary disabled' : 'btn btn-secondary'">
+    <a th:href="@{/pokemon/{id}(id=${pokemon.id} - 1)}" th:class="${pokemon.id == 1} ? 'btn btn-secondary disabled' : 'btn btn-secondary'">
         <span class="bi bi-caret-left-fill"></span> Previous Pokémon
     </a>
-    <a th:href="@{/pokemon/id/{id}(id=${pokemon.id} + 1)}" class="btn btn-secondary">
+    <a th:href="@{/pokemon/{id}(id=${pokemon.id} + 1)}"  th:class="${pokemon.id == count} ? 'btn btn-secondary disabled' : 'btn btn-secondary'">
         Next Pokémon <span class="bi bi-caret-right-fill"></span>
     </a>
 </main>

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Random;
+
 @Controller
 @RequestMapping("/pokemon")
 @RequiredArgsConstructor
@@ -20,33 +22,21 @@ public class PokemonController {
 
     @GetMapping()
     public String getDefaultPokemon() {
-        return "redirect:/pokemon/1";
+        int maxId = service.getPokemonCount();
+        return "redirect:/pokemon/" + new Random().nextInt(maxId);
     }
 
-    @GetMapping("id/{id}")
+    @GetMapping("{value}")
     public String getPokemon(
-            @PathVariable Long id,
+            @PathVariable String value,
             Model model
             ) {
-        PokemonDTO pokemonDTO = service.getPokemonById(id);
+        PokemonDTO pokemonDTO = service.getPokemonByNameOrId(value);
+        int pokemonCount = service.getPokemonCount();
 
         if (pokemonDTO != null) {
             model.addAttribute("pokemon", pokemonDTO);
-
-            return "pokemon/details";
-        }
-        throw new ElementNotFoundException();
-    }
-
-    @GetMapping("name/{name}")
-    public String getPokemon(
-            @PathVariable String name,
-            Model model
-    ) {
-        PokemonDTO pokemonDTO = service.getPokemonByName(name);
-
-        if (pokemonDTO != null) {
-            model.addAttribute("pokemon", pokemonDTO);
+            model.addAttribute("count", pokemonCount);
 
             return "pokemon/details";
         }
@@ -54,8 +44,11 @@ public class PokemonController {
     }
 
     @PostMapping("find")
-    public String findPokemon(String name) {
-        return "redirect:/pokemon/name/" + name;
+    public String findPokemon(String value) {
+        if (value.isBlank()) {
+            return "redirect:/pokemon";
+        }
+        return "redirect:/pokemon/" + value;
     }
 
 }

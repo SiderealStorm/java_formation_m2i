@@ -12,7 +12,6 @@ public class PokemonDTO {
 
     private String name;
     private Long id;
-    private Long order;
     private List<String> types;
     private List<String> abilities;
     private String imageUrl;
