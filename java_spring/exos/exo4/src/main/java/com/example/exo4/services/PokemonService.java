@@ -19,16 +19,22 @@ public class PokemonService {
     private final RestTemplateBuilder builder;
 
     public PokemonDTO getPokemonByNameOrId(String value) {
+        String finalValue;
+
+        // Pour les cas où l'utilisateur tape "002" :
+        try {
+            finalValue = String.valueOf(Integer.parseInt(value));
+        } catch (NumberFormatException ex) {
+            finalValue = value;
+        }
+
         RestTemplate restTemplate = builder.build();
 
-        try {
-            ResponseEntity<JsonNode> responseEntity = restTemplate.getForEntity("pokemon/" + value, JsonNode.class);
+        // On devrait passer par le modèle PokeApiResponse, qui reprend exactement le JsonNode via Jackson
+        ResponseEntity<JsonNode> responseEntity = restTemplate.getForEntity("pokemon/" + finalValue, JsonNode.class);
 
-            if (responseEntity.getBody() != null) {
-                return convertJsonNodeToPokemon(responseEntity.getBody());
-            }
-        } catch (RestClientException e) {
-            throw new ElementNotFoundException();
+        if (responseEntity.getBody() != null) {
+            return convertJsonNodeToPokemon(responseEntity.getBody());
         }
         return null;
     }
@@ -44,6 +50,7 @@ public class PokemonService {
         return null;
     }
 
+    // En passant par un JsonNode, la conversion est plus gourmande en ressources
     public PokemonDTO convertJsonNodeToPokemon(JsonNode jsonNode) {
         PokemonDTO pokemonDTO = PokemonDTO.builder()
                 .id(jsonNode.get("id").asLong())

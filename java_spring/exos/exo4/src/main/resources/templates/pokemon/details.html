@@ -21,32 +21,34 @@
         </form>
     </div>
 </header>
-<main class="container my-2" th:object="${pokemon}">
-    <h1 th:text="'#' + *{id} + ' - ' + *{name.substring(0, 1).toUpperCase()} + *{name.substring(1)}"></h1>
-    <hr>
+<main class="container my-2 d-flex justify-content-center" th:object="${pokemon}">
     <div>
-        <img th:src="*{imageUrl}" th:alt="*{name}">
+        <h1 th:text="'#' + *{id} + ' - ' + *{name.substring(0, 1).toUpperCase()} + *{name.substring(1)}"></h1>
+        <hr>
+        <div>
+            <img th:src="*{imageUrl}" th:alt="*{name}">
+        </div>
+        <h2>Base info :</h2>
+        <ul>
+            <li th:text="'Height : ' + *{height} + ' dm'"></li>
+            <li th:text="'Weight : ' + *{weight} + ' hg'"></li>
+        </ul>
+        <h2 th:text="*{types.size()} > 1 ? 'Types :' : 'Type :'"></h2>
+        <ul th:each="t : *{types}">
+            <li th:text="${t.substring(0, 1).toUpperCase()} + ${t.substring(1)}"></li>
+        </ul>
+        <h2 th:text="*{abilities.size()} > 1 ? 'Abilities :' : 'Ability :'"></h2>
+        <ul th:each="a : *{abilities}">
+            <li th:text="${a.substring(0, 1).toUpperCase()} + ${a.substring(1)}"></li>
+        </ul>
+        <hr>
+        <a th:href="@{/pokemon/{id}(id=${pokemon.id} - 1)}" th:class="${pokemon.id == 1} ? 'btn btn-secondary disabled' : 'btn btn-secondary'">
+            <span class="bi bi-caret-left-fill"></span> Previous Pokémon
+        </a>
+        <a th:href="@{/pokemon/{id}(id=${pokemon.id} + 1)}"  th:class="${pokemon.id == count} ? 'btn btn-secondary disabled' : 'btn btn-secondary'">
+            Next Pokémon <span class="bi bi-caret-right-fill"></span>
+        </a>
     </div>
-    <h2>Base info :</h2>
-    <ul>
-        <li th:text="'Height : ' + *{height} + ' dm'"></li>
-        <li th:text="'Weight : ' + *{weight} + ' hg'"></li>
-    </ul>
-    <h2 th:text="*{types.size()} > 1 ? 'Types :' : 'Type :'"></h2>
-    <ul th:each="t : *{types}">
-        <li th:text="${t.substring(0, 1).toUpperCase()} + ${t.substring(1)}"></li>
-    </ul>
-    <h2 th:text="*{abilities.size()} > 1 ? 'Abilities :' : 'Ability :'"></h2>
-    <ul th:each="a : *{abilities}">
-        <li th:text="${a.substring(0, 1).toUpperCase()} + ${a.substring(1)}"></li>
-    </ul>
-    <hr>
-    <a th:href="@{/pokemon/{id}(id=${pokemon.id} - 1)}" th:class="${pokemon.id == 1} ? 'btn btn-secondary disabled' : 'btn btn-secondary'">
-        <span class="bi bi-caret-left-fill"></span> Previous Pokémon
-    </a>
-    <a th:href="@{/pokemon/{id}(id=${pokemon.id} + 1)}"  th:class="${pokemon.id == count} ? 'btn btn-secondary disabled' : 'btn btn-secondary'">
-        Next Pokémon <span class="bi bi-caret-right-fill"></span>
-    </a>
 </main>
 </body>
 </html>

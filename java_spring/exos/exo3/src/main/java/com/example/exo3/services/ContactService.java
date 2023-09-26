@@ -4,13 +4,13 @@ import com.example.exo3.entities.Contact;
 import com.example.exo3.mappers.ContactMapper;
 import com.example.exo3.models.ContactDTO;
 import com.example.exo3.repositories.ContactRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ContactService {
 
     private final ContactMapper contactMapper;

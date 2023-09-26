@@ -5,7 +5,7 @@ import com.example.exo3.models.ContactDTO;
 import com.example.exo3.models.DisplayMode;
 import com.example.exo3.services.ContactService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +15,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/contacts")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ContactController {
 
     private final ContactService contactService;
@@ -27,7 +27,7 @@ public class ContactController {
     ) {
         List<ContactDTO> contacts;
 
-        if (filter == null || (filter.isBlank() && filter.isEmpty())) {
+        if (filter == null || filter.isBlank()) {
             contacts = contactService.getAllContacts();
         } else {
             contacts = contactService.getContactsFilterLastname(filter);
@@ -85,6 +85,7 @@ public class ContactController {
 
             model.addAttribute("mode", DisplayMode.ADD.getValue());
             model.addAttribute("contact", contact);
+            model.addAttribute(results.getAllErrors());
 
             return "contacts/form";
         }

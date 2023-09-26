@@ -5,7 +5,7 @@ import com.example.exo3.exceptions.InvalidFormException;
 import com.example.exo3.models.ContactDTO;
 import com.example.exo3.services.ContactService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -18,7 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/contacts")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ContactRestController {
 
     private final ContactService contactService;
