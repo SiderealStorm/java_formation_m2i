@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+</head>
+<body>
+<main>
+    <h1 th:text="'Bienvenue, ' + ${username}"></h1>
+    <ul>
+        <li><a th:href="@{/private/profile}">Votre profil</a></li>
+        <li><a th:href="@{/private/favs}">Vos favoris</a></li>
+    </ul>
+</main>
+</body>
+</html>
