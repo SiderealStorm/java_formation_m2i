@@ -47,12 +47,14 @@
         </div>
         </div>
             <hr>
-            <a th:href="@{/pokeapi/{id}(id=${pokemon.id} - 1)}" th:class="${pokemon.id == 1} ? 'btn btn-secondary disabled' : 'btn btn-secondary'">
-                <span class="bi bi-caret-left-fill"></span> Previous Pokémon
-            </a>
-            <a th:href="@{/pokeapi/{id}(id=${pokemon.id} + 1)}"  th:class="${pokemon.id == count} ? 'btn btn-secondary disabled' : 'btn btn-secondary'">
-                Next Pokémon <span class="bi bi-caret-right-fill"></span>
-            </a>
+            <div class="text-center">
+                <a th:href="@{/pokeapi/{id}(id=${pokemon.id} - 1)}" class="btn btn-secondary" th:classappend="${pokemon.id == 1} ? 'disabled'">
+                    <span class="bi bi-caret-left-fill"></span> Previous pokémon
+                </a>
+                <a th:href="@{/pokeapi/{id}(id=${pokemon.id} + 1)}" class="btn btn-secondary" th:classappend="${pokemon.id == count} ? 'disabled'">
+                    Next pokémon <span class="bi bi-caret-right-fill"></span>
+                </a>
+            </div>
         </div>
     </div>
 </main>
