@@ -1,6 +1,7 @@
 package com.example.exo4.services;
 
 import com.example.exo4.exceptions.ElementNotFoundException;
+import com.example.exo4.models.PokeApiResponse;
 import com.example.exo4.models.PokemonDTO;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,32 @@ public class PokemonService {
 
         if (responseEntity.getBody() != null) {
             return convertJsonNodeToPokemon(responseEntity.getBody());
+        }
+        return null;
+    }
+
+    // En utilisant PokeApiResponse et Jackson
+    public PokeApiResponse getPokeApiResponseByNameOrId(String value) {
+        String finalValue;
+
+        // Pour les cas où l'utilisateur tape "002" :
+        try {
+            finalValue = String.valueOf(Integer.parseInt(value));
+        } catch (NumberFormatException ex) {
+            finalValue = value;
+        }
+
+        RestTemplate restTemplate = builder.build();
+
+        ResponseEntity<PokeApiResponse> responseEntity = restTemplate.getForEntity("pokemon/" + finalValue, PokeApiResponse.class);
+
+        PokeApiResponse pokemon = responseEntity.getBody();
+        if (pokemon != null) {
+            pokemon.setImageUrl(String.format(
+                    "https://assets.pokemon.com/assets/cms2/img/pokedex/full/%03d.png",
+                    pokemon.getId()
+            ));
+            return pokemon;
         }
         return null;
     }

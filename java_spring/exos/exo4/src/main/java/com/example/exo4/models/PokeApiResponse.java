@@ -16,39 +16,40 @@ public class PokeApiResponse {
 
     @Data
     @Builder
-    public static class AbilitySummary
-    {
-        private String name;
-        private String url;
+    public static class AbilitySummary {
+        private Integer slot;
+        private Boolean is_hidden;
+        private Ability ability;
     }
 
     @Data
     @Builder
-    public static class Ability
-    {
-        private Ability ability;
-        private boolean is_hidden;
-        private int slot;
+    public static class Ability {
+        private String name;
+        private String url;
     }
 
     @Data
     @Builder
     public static class TypeSummary {
-        private String name;
-        private String url;
+        private Integer slot;
+        private Type type;
     }
 
     @Data
     @Builder
     public static class Type {
-        private int slot;
-        private Type type;
+        private String name;
+        private String url;
     }
 
-    private int id;
+
+
+    private Integer id;
+    private String imageUrl;
     private String name;
-    private int height;
-    private int weight;
+    private Integer height;
+    private Integer weight;
     private List<AbilitySummary> abilities;
     private List<TypeSummary> types;
 
