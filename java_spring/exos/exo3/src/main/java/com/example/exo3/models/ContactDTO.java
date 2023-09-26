@@ -13,28 +13,29 @@ public class ContactDTO {
 
     private UUID id;
 
-    @NotNull(message = "First name must not be null")
-    @Size(min = 2, max = 100, message = "First name must be between 2 and 100 characters long")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "First name must contain only letters")
+    // Remarque : les apostrophes ne sont pas affichées dans l'HTML
+    @NotNull(message = "Ne peut pas être vide")
+    @Size(min = 2, max = 100, message = "Doit comporter entre 2 et 100 caractères")
+    @Pattern(regexp = "^[A-Za-zÀ-ÿ '-]+$", message = "Ne doit comporter que des lettres, apostrophes, tirets et espaces")
     private String firstName;
 
-    @NotNull(message = "Last name must not be null")
-    @Size(min = 2, max = 100, message = "Last name must be between 2 and 100 characters long")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Last name must contain only letters")
+    @NotNull(message = "Ne peut pas être vide")
+    @Size(min = 2, max = 100, message = "Doit comporter entre 2 et 100 caractères")
+    @Pattern(regexp = "^[A-Za-zÀ-ÿ '-]+$", message = "Ne doit comporter que des lettres, apostrophes, tirets et espaces")
     private String lastName;
 
-    @NotNull(message = "Email must not be null")
-    @Size(max = 100, message = "Email must be less than 100 characters long")
-    @Email(message = "Invalid email")
+    @NotNull(message = "Ne peut pas être vide")
+    @Size(max = 100, message = "Ne doit pas comporter plus de 100 caractères")
+    @Email(message = "Format de mail invalide")
     private String email;
 
-    @NotNull(message = "Phone must not be null")
-    @Size(min = 6,max = 20, message = "Phone must be between 6 and 20 characters long")
-    @Pattern(regexp = "^[+]?\\d+$", message = "Invalid phone pattern")
+    @NotNull(message = "Ne peut pas être vide")
+    @Size(min = 6,max = 20, message = "Doit comporter entre 2 et 100 chiffres")
+    @Pattern(regexp = "^[+]?\\d+$", message = "Format de téléphone invalide")
     private String phone;
 
-    @NotNull(message = "Birth date must not be null")
-    @Past(message = "Birth date must be a past date")
+    @NotNull(message = "Ne peut pas être vide")
+    @Past(message = "Date invalide (future)")
     private LocalDate birthDate;
 
     private Integer age;

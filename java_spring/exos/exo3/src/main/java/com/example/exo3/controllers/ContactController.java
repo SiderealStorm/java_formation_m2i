@@ -67,32 +67,27 @@ public class ContactController {
     public String getNewContactForm(Model model) {
         model.addAttribute("mode", DisplayMode.ADD.getValue());
         model.addAttribute("contact", ContactDTO.builder().build());
+        model.addAttribute("errors", new ArrayList<>());
 
         return "contacts/form";
     }
 
     @PostMapping("add")
     public String addNewContact(
-            // L'ordre est important !
-            @Valid ContactDTO contact,
+            // L'ordre des attributs est important !
+            // Les erreurs ne s'affichent pas sur la page sans @ModelAttribute
+            @Valid @ModelAttribute("contact") ContactDTO contact,
             BindingResult results,
             Model model
             ) {
-        System.out.println("Add new contact");
-
         if (results.hasErrors()) {
-            System.out.println("Form has errors");
 
             model.addAttribute("mode", DisplayMode.ADD.getValue());
             model.addAttribute("contact", contact);
-            model.addAttribute(results.getAllErrors());
 
             return "contacts/form";
         }
-
         contactService.addContact(contact);
-        System.out.println("New contact added");
-
         return "redirect:/contacts";
     }
 
@@ -133,8 +128,19 @@ public class ContactController {
     }
 
     @PostMapping("edit/{contactId}")
-    public String editContact(@PathVariable("contactId") UUID id, ContactDTO contact) {
+    public String editContact(
+            @PathVariable("contactId") UUID id,
+            @Valid @ModelAttribute("contact") ContactDTO contact,
+            BindingResult results,
+            Model model) {
         if(contactService.isIdInDb(id)) {
+            if (results.hasErrors()) {
+
+                model.addAttribute("mode", DisplayMode.EDIT.getValue());
+                model.addAttribute("contact", contact);
+
+                return "contacts/form";
+            }
             contactService.editContact(id, contact);
             return "redirect:/contacts";
         }
