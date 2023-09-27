@@ -8,10 +8,10 @@
 <main>
     <h1 th:text="${mode.equals('signin') ? 'Connexion' : 'Créer un compte'}"></h1>
     <hr>
-    <form th:action="@{/auth/{url}(url = ${mode})}" th:object="${authRequest}" method="post">
+    <form th:action="@{/auth/signup}" th:object="${authRequest}" method="post">
         <div>
             <label for="email">Email :</label>
-            <input type="text" name="email" id="email" th:field="*{login}">
+            <input type="email" name="email" id="email" th:field="*{login}">
         </div>
         <div>
             <label for="password">Mot de passe :</label>

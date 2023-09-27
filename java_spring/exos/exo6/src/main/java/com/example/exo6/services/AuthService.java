@@ -22,7 +22,7 @@ public class AuthService {
     public void register(AuthenticationRequest authRequest) {
         if (!repository.existsByEmail(authRequest.getLogin())) {
             UserEntity newUser = new UserEntity();
-            newUser.setEmail(newUser.getUsername());
+            newUser.setEmail(authRequest.getLogin());
             newUser.setPassword(
                     passwordEncoder.encode(authRequest.getPassword())
             );

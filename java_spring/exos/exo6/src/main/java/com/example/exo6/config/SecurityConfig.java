@@ -27,8 +27,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .requestMatchers("/contacts/add", "/contacts/edit/**", "/contacts/delete/**").authenticated()
-                .requestMatchers("/auth/**", "/contacts/**").permitAll();
-//                .anyRequest().permitAll();
+                .anyRequest().permitAll();
 
         return http.build();
     }

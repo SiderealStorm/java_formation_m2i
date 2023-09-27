@@ -32,7 +32,7 @@ public class AuthController {
     public String signin(AuthenticationRequest authRequest, HttpServletRequest request) {
         authService.authenticate(authRequest);
         updateContext(request);
-        return "contacts/list";
+        return "redirect:/contacts";
     }
 
 
@@ -48,7 +48,7 @@ public class AuthController {
     public String signup(AuthenticationRequest authRequest, HttpServletRequest request) {
         authService.register(authRequest);
         updateContext(request);
-        return "contacts/list";
+        return "redirect:/contacts";
     }
 
     private void updateContext(HttpServletRequest request) {
