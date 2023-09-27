@@ -1,5 +1,6 @@
 package com.example.demo_security_httpbasic.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,7 +15,10 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 // Annotation pour préciser qu'il s'agit d'une config de sécurité
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
     // Configuration de l'accès aux pages :
     // Annotation signifiant à Spring qu'il faut utiliser cette méthode pour définir tous les éléments de ce type
@@ -27,8 +31,9 @@ public class SecurityConfig {
         http
                 // Desactivation du CSRF (évite les erreurs de type CORS)
                 .csrf().disable()
-                // Pour définir la page de login à utiliser
-                .formLogin().loginPage("/auth/authenticate")
+                // Pour gérer la levée d'exceptions
+                .exceptionHandling()
+                .authenticationEntryPoint(customAuthenticationEntryPoint)
                 .and()
                 // Pour choisir les pages autorisées : requestMatchers + autorisations par groupe de pages
                 .authorizeRequests()
@@ -37,8 +42,13 @@ public class SecurityConfig {
                 // Toute les pages commençant par /private sont autorisées aux personnes connectées
                 .requestMatchers("/private", "/private/**").authenticated()
                 .and()
-                // Type d'authentification
-                .httpBasic();
+//                .and()
+//                // Pour définir la page de login à utiliser avec HttpBasic
+//                .formLogin().loginPage("/auth/authenticate")
+//                .and()
+//                // Type d'authentification : seulement si on veut la connexion gérée par Spring
+//                .httpBasic()
+                ;
 
         // On retourne le HttpSecurity qu'on a configuré
         return http.build();
