@@ -1,6 +1,4 @@
-# Exercice Spring Security
-
-## Partie A
+# Exercice 5 (Spring Security)
 
 Réaliser une application Web sécurisée disposant de plusieurs pages.
 

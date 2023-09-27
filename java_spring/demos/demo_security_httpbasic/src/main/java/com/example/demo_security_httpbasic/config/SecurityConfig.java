@@ -2,8 +2,12 @@ package com.example.demo_security_httpbasic.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 // Annotation pour configuration
@@ -12,6 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    // Configuration de l'accès aux pages :
     // Annotation signifiant à Spring qu'il faut utiliser cette méthode pour définir tous les éléments de ce type
     @Bean
     // FilterChain ~ suite de tests d'autorisation
@@ -22,6 +27,9 @@ public class SecurityConfig {
         http
                 // Desactivation du CSRF (évite les erreurs de type CORS)
                 .csrf().disable()
+                // Pour définir la page de login à utiliser
+                .formLogin().loginPage("/auth/authenticate")
+                .and()
                 // Pour choisir les pages autorisées : requestMatchers + autorisations par groupe de pages
                 .authorizeRequests()
                 // Toute les pages commençant par /public sont autorisées à tous
@@ -35,4 +43,19 @@ public class SecurityConfig {
         // On retourne le HttpSecurity qu'on a configuré
         return http.build();
     }
+
+    // Configuration pour gérer la connexion :
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        // Cette configuration nécessite une BDD (et donc un repo)
+        return configuration.getAuthenticationManager();
+    }
+
+    // Configuration de l'encodage des mots de passe :
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        // Fait un hashage par défaut ; hasher plus est plus sûr mais prend plus de temps
+        return new BCryptPasswordEncoder();
+    }
+
 }
