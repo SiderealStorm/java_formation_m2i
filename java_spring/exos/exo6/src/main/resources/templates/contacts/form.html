@@ -2,9 +2,83 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Contact</title>
+    <th:block th:switch="${mode}">
+        <title th:case="'add'">Ajouter un contact</title>
+        <title th:case="'delete'">Supprimer le contact</title>
+        <title th:case="'edit'">Modifier le contact</title>
+        <title th:case="*">Détails du contact</title>
+    </th:block>
+    <th:block th:replace="~{home :: BootstrapImports}" />
 </head>
 <body>
+<header th:insert="~{home :: nav}"></header>
+<main class="container">
+    <div>
+        <th:block th:switch="${mode}">
+            <h1 th:case="'add'">Ajouter un contact</h1>
+            <h1 th:case="'delete'">Supprimer le contact</h1>
+            <h1 th:case="'edit'">Modifier le contact</h1>
+            <h1 th:case="*">Détails du contact</h1>
+        </th:block>
+        <hr>
 
+        <form action="#" th:action="@{/contacts/{url}(url = ${mode.equals('add') ? 'add' : mode + '/' + contact.getId()})}" method="post" th:object="${contact}">
+            <input type="text" class="d-none" th:field="*{id}" readonly>
+            <div class="mb-3">
+                <label for="lastname" class="form-label">Nom :</label>
+                <input type="text" id="lastname" class="form-control" th:field="*{lastName}"
+                       th:readonly="${mode.equals('view') || mode.equals('delete')}"
+                       th:required="${mode.equals('add') || mode.equals('edit')}">
+                <p class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+            </div>
+
+            <div class="mb-3">
+                <label for="firstname" class="form-label">Prénom :</label>
+                <input type="text" id="firstname" class="form-control" th:field="*{firstName}"
+                       th:readonly="${mode.equals('view') || mode.equals('delete')}"
+                       th:required="${mode.equals('add') || mode.equals('edit')}">
+                <p class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Adresse email :</label>
+                <input type="email" id="email" class="form-control" th:field="*{email}"
+                       th:readonly="${mode.equals('view') || mode.equals('delete')}"
+                       th:required="${mode.equals('add') || mode.equals('edit')}">
+                <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label">Téléphone :</label>
+                <input type="text" id="phone" class="form-control" th:field="*{phone}"
+                       th:readonly="${mode.equals('view') || mode.equals('delete')}"
+                       th:required="${mode.equals('add') || mode.equals('edit')}">
+                <p class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+            </div>
+
+            <div class="mb-3">
+                <label for="birthDate" class="form-label">Date de naissance :</label>
+                <input type="date" name="birthDate" id="birthDate" class="form-control" th:value="${contact.birthDate}"
+                       th:readonly="${mode.equals('view') || mode.equals('delete')}"
+                       th:required="${mode.equals('add') || mode.equals('edit')}">
+                <p class="text-danger" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></p>
+            </div>
+
+            <div th:if="${mode.equals('view') || mode.equals('delete')}" class="mb-3">
+                <label for="age" class="form-label">Âge :</label>
+                <input type="number" id="age" class="form-control" th:field="*{age}">
+            </div>
+
+            <div class="text-end">
+                <th:block th:switch="${mode}">
+                    <button th:case="'add'" class="btn btn-success"><span class="bi bi-plus-circle"></span> Ajouter le contact</button>
+                    <button th:case="'edit'" class="btn btn-warning"><span class="bi bi-pencil-square"></span> Modifier le contact</button>
+                    <button th:case="'delete'" class="btn btn-danger"><span class="bi bi-trash"></span> Supprimer le contact</button>
+                </th:block>
+                <a class="btn btn-secondary" th:href="@{/contacts}"><span class="bi bi-arrow-counterclockwise"></span> Retour à la liste</a>
+            </div>
+        </form>
+    </div>
+</main>
 </body>
 </html>

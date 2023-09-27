@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${mode.equals('signin') ? 'Connexion' : 'Créer un compte'}"></title>
+    <th:block th:replace="~{home :: BootstrapImports}" />
 </head>
 <body>
 <main>
     <h1 th:text="${mode.equals('signin') ? 'Connexion' : 'Créer un compte'}"></h1>
     <hr>
-    <form th:action="@{/auth/signup}" th:object="${authRequest}" method="post">
+    <form th:action="@{/auth/{url}(url = ${mode})}" th:object="${authRequest}" method="post">
         <div>
             <label for="email">Email :</label>
             <input type="email" name="email" id="email" th:field="*{login}">

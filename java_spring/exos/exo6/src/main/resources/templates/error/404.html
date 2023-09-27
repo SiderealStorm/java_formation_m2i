@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>404 - Not found</title>
+    <th:block th:replace="~{home :: BootstrapImports}" />
+</head>
+<body>
+<header th:insert="~{home :: nav}"></header>
+<main class="container">
+    <h1 class="display-5">Erreur 404</h1>
+    <hr>
+    <p>La page que vous cherchez n'existe pas</p>
+</main>
+</body>
+</html>
