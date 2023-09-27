@@ -41,7 +41,6 @@ public class SecurityConfig {
                 .requestMatchers("/pubic", "/public/**").permitAll()
                 // Toute les pages commençant par /private sont autorisées aux personnes connectées
                 .requestMatchers("/private", "/private/**").authenticated()
-                .and()
 //                .and()
 //                // Pour définir la page de login à utiliser avec HttpBasic
 //                .formLogin().loginPage("/auth/authenticate")

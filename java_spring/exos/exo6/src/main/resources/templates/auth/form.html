@@ -2,9 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${mode.equals('login') ? 'Connexion' : 'Créer un compte'}"></title>
+    <title th:text="${mode.equals('signin') ? 'Connexion' : 'Créer un compte'}"></title>
 </head>
 <body>
-
+<main>
+    <h1 th:text="${mode.equals('signin') ? 'Connexion' : 'Créer un compte'}"></h1>
+    <hr>
+    <form th:action="@{/auth/{url}(url = ${mode})}" th:object="${authRequest}" method="post">
+        <div>
+            <label for="email">Email :</label>
+            <input type="text" name="email" id="email" th:field="*{login}">
+        </div>
+        <div>
+            <label for="password">Mot de passe :</label>
+            <input type="password" name="password" id="password" th:field="*{password}">
+        </div>
+        <div>
+            <button>Envoyer</button>
+        </div>
+    </form>
+</main>
 </body>
 </html>

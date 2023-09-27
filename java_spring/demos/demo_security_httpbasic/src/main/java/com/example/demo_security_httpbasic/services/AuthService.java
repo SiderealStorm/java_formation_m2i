@@ -36,20 +36,7 @@ public class AuthService {
         }
 
         // Connexion de l'utilisateur créé :
-        // On crée un token de connexion
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-                // On passe les données de connexion (non encodées) :
-                // principal = username de connexion tel que défini dans le CustomUserDetailsService (ici email)
-                authRequest.getEmail(),
-                // credentials = password NON encodé
-                authRequest.getPassword()
-        );
-
-        // On authentifie l'utilisateur
-        Authentication authentication = authenticationManager.authenticate(token);
-
-        // On ajoute l'authentification au contexte de sécurité
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        authenticate(authRequest);
     }
 
     public void authenticate(AuthenticationRequest authRequest) {
