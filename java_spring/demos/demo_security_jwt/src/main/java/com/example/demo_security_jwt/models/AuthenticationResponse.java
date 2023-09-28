@@ -1,4 +1,4 @@
-package com.example.demo_security_httpbasic.models;
+package com.example.demo_security_jwt.models;
 
 import lombok.Builder;
 import lombok.Data;

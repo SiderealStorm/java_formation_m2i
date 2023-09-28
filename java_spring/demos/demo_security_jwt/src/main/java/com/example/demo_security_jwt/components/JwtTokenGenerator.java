@@ -1,4 +1,4 @@
-package com.example.demo_security_httpbasic.components;
+package com.example.demo_security_jwt.components;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

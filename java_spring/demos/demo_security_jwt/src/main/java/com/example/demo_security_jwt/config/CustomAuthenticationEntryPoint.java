@@ -1,4 +1,4 @@
-package com.example.demo_security_httpbasic.config;
+package com.example.demo_security_jwt.config;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

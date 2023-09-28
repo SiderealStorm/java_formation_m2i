@@ -1,4 +1,4 @@
-package com.example.demo_security_httpbasic.entities;
+package com.example.demo_security_jwt.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

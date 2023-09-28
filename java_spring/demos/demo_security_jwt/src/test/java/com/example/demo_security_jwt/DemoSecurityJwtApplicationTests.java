@@ -1,10 +1,10 @@
-package com.example.demo_security_httpbasic;
+package com.example.demo_security_jwt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoSecurityHttpbasicApplicationTests {
+class DemoSecurityJwtApplicationTests {
 
 	@Test
 	void contextLoads() {

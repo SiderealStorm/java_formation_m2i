@@ -1,7 +1,7 @@
-package com.example.demo_security_httpbasic.components;
+package com.example.demo_security_jwt.components;
 
-import com.example.demo_security_httpbasic.entities.UserEntity;
-import com.example.demo_security_httpbasic.services.CustomUserDetailsService;
+import com.example.demo_security_jwt.entities.UserEntity;
+import com.example.demo_security_jwt.services.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

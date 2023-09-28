@@ -1,6 +1,6 @@
-package com.example.demo_security_httpbasic.repository;
+package com.example.demo_security_jwt.repository;
 
-import com.example.demo_security_httpbasic.entities.UserEntity;
+import com.example.demo_security_jwt.entities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

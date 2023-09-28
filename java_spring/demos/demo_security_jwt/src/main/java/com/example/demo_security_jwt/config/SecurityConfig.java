@@ -1,8 +1,8 @@
-package com.example.demo_security_httpbasic.config;
+package com.example.demo_security_jwt.config;
 
-import com.example.demo_security_httpbasic.components.JwtAuthenticationFilter;
-import com.example.demo_security_httpbasic.components.JwtTokenGenerator;
-import com.example.demo_security_httpbasic.services.CustomUserDetailsService;
+import com.example.demo_security_jwt.components.JwtAuthenticationFilter;
+import com.example.demo_security_jwt.components.JwtTokenGenerator;
+import com.example.demo_security_jwt.services.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

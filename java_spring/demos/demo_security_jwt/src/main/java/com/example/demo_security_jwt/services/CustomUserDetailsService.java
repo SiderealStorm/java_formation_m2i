@@ -1,7 +1,7 @@
-package com.example.demo_security_httpbasic.services;
+package com.example.demo_security_jwt.services;
 
-import com.example.demo_security_httpbasic.entities.UserEntity;
-import com.example.demo_security_httpbasic.repository.UserEntityRepository;
+import com.example.demo_security_jwt.entities.UserEntity;
+import com.example.demo_security_jwt.repository.UserEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

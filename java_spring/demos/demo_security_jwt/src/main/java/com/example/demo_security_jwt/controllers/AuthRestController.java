@@ -1,15 +1,10 @@
-package com.example.demo_security_httpbasic.controllers;
+package com.example.demo_security_jwt.controllers;
 
-import com.example.demo_security_httpbasic.models.AuthenticationRequest;
-import com.example.demo_security_httpbasic.models.AuthenticationResponse;
-import com.example.demo_security_httpbasic.services.AuthService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+import com.example.demo_security_jwt.models.AuthenticationRequest;
+import com.example.demo_security_jwt.models.AuthenticationResponse;
+import com.example.demo_security_jwt.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 // Controller pour gérer la connexion
