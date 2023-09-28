@@ -51,6 +51,13 @@ public class AuthController {
         return "redirect:/contacts";
     }
 
+    @PostMapping("signout")
+    public String signout(AuthenticationRequest authRequest, HttpServletRequest request) {
+        authService.register(authRequest);
+        updateContext(request);
+        return "redirect:/contacts";
+    }
+
     private void updateContext(HttpServletRequest request) {
         HttpSession session = request.getSession();
         SecurityContext context = SecurityContextHolder.getContext();

@@ -44,7 +44,7 @@
                     <td th:text="*{lastName}"></td>
                     <td th:text="*{firstName}"></td>
                     <td>
-                        <a th:href="@{/contacts/{contactId}(contactId = ${contact.getId()})}" class="btn btn-info"><span class="bi bi-eye"></span> Détails</a>
+                        <a th:href="@{/contacts/details/{contactId}(contactId = ${contact.getId()})}" class="btn btn-info"><span class="bi bi-eye"></span> Détails</a>
                         <a th:href="@{/contacts/edit/{contactId}(contactId = ${contact.getId()})}" class="btn btn-warning"><span class="bi bi-pencil-square"></span> Modifier</a>
                         <a th:href="@{/contacts/delete/{contactId}(contactId = ${contact.getId()})}" class="btn btn-danger"><span class="bi bi-trash"></span> Supprimer</a>
                     </td>

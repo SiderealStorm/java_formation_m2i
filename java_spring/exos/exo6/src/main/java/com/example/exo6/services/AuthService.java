@@ -42,4 +42,5 @@ public class AuthService {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
+
 }

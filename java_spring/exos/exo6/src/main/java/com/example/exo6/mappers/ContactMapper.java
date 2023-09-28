@@ -11,10 +11,11 @@ import java.time.LocalDate;
 @Mapper
 public interface ContactMapper {
 
-    Contact contactDtoToContact(ContactDTO contactDTO);
 
     @Mapping(source = "birthDate", target = "age", qualifiedByName = "convertDateToAge")
     ContactDTO contactToContactDto(Contact contact);
+
+    Contact contactDtoToContact(ContactDTO contactDTO);
 
     @Named("convertDateToAge")
     static Integer convertDateToAge(LocalDate date) {

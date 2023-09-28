@@ -25,6 +25,9 @@ public class SecurityConfig {
                 .exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPoint)
                 .and()
+                .logout()
+                .logoutUrl("/auth/signout")
+                .and()
                 .authorizeRequests()
                 .requestMatchers("/contacts/add", "/contacts/edit/**", "/contacts/delete/**").authenticated()
                 .anyRequest().permitAll();
