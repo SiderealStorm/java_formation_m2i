@@ -20,17 +20,18 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // Nouvelle syntaxe du HttpSecurity (non déprécié) !
         http
-                .csrf().disable()
-                .exceptionHandling()
-                .authenticationEntryPoint(authenticationEntryPoint)
-                .and()
-                .logout()
-                .logoutUrl("/auth/signout")
-                .and()
-                .authorizeRequests()
-                .requestMatchers("/contacts/add", "/contacts/edit/**", "/contacts/delete/**").authenticated()
-                .anyRequest().permitAll();
+                .csrf(csrf -> csrf.disable())
+                .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
+                .logout(logout -> logout.logoutUrl("/auth/signout").logoutSuccessUrl("/"))
+                .authorizeHttpRequests(requests -> requests
+                        .requestMatchers(
+                                "/contacts/add",
+                                "/contacts/edit/**",
+                                "/contacts/delete/**"
+                        ).authenticated()
+                        .anyRequest().permitAll());
 
         return http.build();
     }

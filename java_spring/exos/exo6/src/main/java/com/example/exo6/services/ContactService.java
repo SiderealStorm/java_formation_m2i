@@ -1,6 +1,7 @@
 package com.example.exo6.services;
 
 import com.example.exo6.entities.Contact;
+import com.example.exo6.exceptions.ResourceNotFoundException;
 import com.example.exo6.mappers.ContactMapper;
 import com.example.exo6.models.ContactDTO;
 import com.example.exo6.repositories.ContactRepository;
@@ -34,7 +35,7 @@ public class ContactService {
     }
 
     public ContactDTO getContactById(UUID id) {
-        Contact foundContact = repository.findById(id).orElse(null);
+        Contact foundContact = repository.findById(id).orElseThrow(ResourceNotFoundException::new);
         return mapper.contactToContactDto(foundContact);
     }
 
@@ -48,6 +49,22 @@ public class ContactService {
         ContactDTO foundContact = getContactById(id);
 
         if (foundContact != null) {
+            if (contactDTO.getFirstName() != null) {
+                foundContact.setFirstName(contactDTO.getFirstName());
+            }
+            if (contactDTO.getLastName() != null) {
+                foundContact.setLastName(contactDTO.getLastName());
+            }
+            if (contactDTO.getEmail() != null) {
+                foundContact.setEmail(contactDTO.getEmail());
+            }
+            if (contactDTO.getPhone() != null) {
+                foundContact.setPhone(contactDTO.getPhone());
+            }
+            if (contactDTO.getBirthDate() != null) {
+                foundContact.setBirthDate(contactDTO.getBirthDate());
+            }
+
             repository.save(mapper.contactDtoToContact(contactDTO));
 
             return foundContact;

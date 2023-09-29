@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -17,10 +19,17 @@ public class UserEntity extends Person implements UserDetails{
 
     private String password;
 
+    // Jointure avec les rôles :
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id",
+            referencedColumnName = "id"))
+    private Set<RoleEntity> roles;
+
     // Méthodes de UserDetails :
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("USER"));
+        return roles.stream().map(role ->
+                new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
     @Override

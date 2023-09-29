@@ -8,9 +8,11 @@ import org.mapstruct.Named;
 
 import java.time.LocalDate;
 
+// Si on veut créer soi-même le mapper,
+// il devra être annoté de @Component
+
 @Mapper
 public interface ContactMapper {
-
 
     @Mapping(source = "birthDate", target = "age", qualifiedByName = "convertDateToAge")
     ContactDTO contactToContactDto(Contact contact);

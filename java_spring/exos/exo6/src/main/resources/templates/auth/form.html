@@ -6,6 +6,7 @@
     <th:block th:replace="~{home :: BootstrapImports}" />
 </head>
 <body>
+<header th:insert="~{home :: nav}"></header>
 <main>
     <h1 th:text="${mode.equals('signin') ? 'Connexion' : 'Créer un compte'}"></h1>
     <hr>
@@ -22,6 +23,8 @@
             <button>Envoyer</button>
         </div>
     </form>
+    <p th:if="${mode.equals('signin')}">Pas encore de compte ? <a th:href="@{/auth/signup}">Inscrivez-vous</a></p>
+    <p th:unless="${mode.equals('signin')}">Déjà un compte ? <a th:href="@{/auth/signin}">Connectez-vous</a></p>
 </main>
 </body>
 </html>
