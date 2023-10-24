@@ -2,11 +2,11 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
-Exercice S84 : Nombres premiers
-1. Un nombre premier est un nombre divisible par 1 et par soit-même uniquement
-2. 1 n'est pas un nombre premier
-3. Écrire un programme qui permet de savoir si un nombre est premier
+/**
+ * Exercice S84 : Nombres premiers
+ * Un nombre premier est un nombre divisible par 1 et par soit-même uniquement
+ * 1 n'est pas un nombre premier
+ * Écrire un programme qui permet de savoir si un nombre est premier
  */
 public class ExoS84 {
     public static void main(String[] args) {

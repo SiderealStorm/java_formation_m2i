@@ -2,7 +2,7 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
+/**
 Exercice S69 : Pair ou impair
 1. Créer une variable nombre de type entier
 2. Affecter une valeur à la variable nombre

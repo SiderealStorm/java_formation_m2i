@@ -3,12 +3,12 @@ package exos.tableaux;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/*
-Exercice S95 : Tableau positif
-1. Déclarer deux tableaux de 10 éléments
-2. Le premier tableau contiendra des nombres négatifs et positifs
-3. Ajouter tous les éléments positifs du premier tableau dans le second tableau
-BONUS : saisie utilisateur
+/**
+ * Exercice S95 : Tableau positif
+ * Déclarer deux tableaux de 10 éléments
+ * Le premier tableau contiendra des nombres négatifs et positifs
+ * Ajouter tous les éléments positifs du premier tableau dans le second tableau
+ * BONUS : saisie utilisateur
  */
 public class ExoS95 {
     public static void main(String[] args) {

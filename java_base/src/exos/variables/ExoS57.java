@@ -2,10 +2,10 @@ package exos.variables;
 
 import java.util.Scanner;
 
-/*
-Exercice S57 : Périmètre et aire d'un carré
-1. Saisir la longueur du côté du carré et la stocker dans une variable
-2. Calculer l'aire et le périmètre du carré
+/**
+ * Exercice S57 : Périmètre et aire d'un carré
+ * 1. Saisir la longueur du côté du carré et la stocker dans une variable
+ * 2. Calculer l'aire et le périmètre du carré
  */
 public class ExoS57 {
     public static void main(String[] args) {

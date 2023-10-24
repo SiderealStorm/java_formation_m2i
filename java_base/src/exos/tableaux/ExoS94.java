@@ -1,6 +1,6 @@
 package exos.tableaux;
 
-/*
+/**
 Exercice S94 : 100 éléments
 1. Déclarer un tableau de 100 éléments et l'initialiser
 2. Afficher les éléments par dizaine séparés d'une virgule

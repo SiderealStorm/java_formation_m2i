@@ -1,8 +1,8 @@
 package exos.instructions;
 
-/*
-Exercice S80 : Tables de multiplications
-1. Créer un programme permettant d'afficher les tables de multiplications de 1 à 10
+/**
+ * Exercice S80 : Tables de multiplications
+ * Créer un programme permettant d'afficher les tables de multiplications de 1 à 10
  */
 public class ExoS80 {
     public static void main(String[] args) {

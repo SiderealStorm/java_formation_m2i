@@ -1,0 +1,38 @@
+
+S
+java:S1854A"8Remove this useless assignment to local variable "test".(¤ì†Þÿÿÿÿÿ
+T
+java:S18541"9Remove this useless assignment to local variable "texte".(ÁøÑ»øÿÿÿÿ
+P
+java:S1854+":Remove this useless assignment to local variable "lettre".(šô¤Þ
+Q
+java:S1854*";Remove this useless assignment to local variable "estVrai".(Ÿ“¶Ö
+R
+java:S1854("<Remove this useless assignment to local variable "distance".(–†ü‰
+P
+java:S1854'":Remove this useless assignment to local variable "indice".(¦’Ëë
+N
+java:S1854!"8Remove this useless assignment to local variable "jour".(´­Ç˜
+F
+java:S1481"+Remove this unused "indice" local variable.(°í¢¿úÿÿÿÿ
+H
+java:S1481"-Remove this unused "distance" local variable.(Å€Äúÿÿÿÿ
+B
+java:S1481",Remove this unused "estVrai" local variable.(†Ä–ò
+A
+java:S1481"+Remove this unused "lettre" local variable.(™Äïë
+?
+java:S1481!")Remove this unused "jour" local variable.(´­Ç˜
+E
+java:S14811"*Remove this unused "texte" local variable.(ÁøÑ»øÿÿÿÿ
+o	java:S1158"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ý£¸
+o	java:S1158"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ý£¸
+o	java:S1158"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ý£¸
+o	java:S1158"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ý£¸
+o	java:S1158"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ý£¸
+D
+java:S1481A")Remove this unused "test" local variable.(¤ì†Þÿÿÿÿÿ
+E	java:S106G"+Replace this use of System.out by a logger.(ëäÌõùÿÿÿÿ
+E	java:S106I"+Replace this use of System.out by a logger.(µ…µøÿÿÿÿ
+@	java:S106K"+Replace this use of System.out by a logger.(„úà”
+@	java:S106L"+Replace this use of System.out by a logger.(«¶…

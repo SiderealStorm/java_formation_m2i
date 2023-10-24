@@ -2,7 +2,7 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
+/**
 Exercice S73 : Jours dans le mois
 1. Créer une variable mois de type entier
 2. Affecter une valeur à la variable mois

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.exo.exo2;
 
 import java.util.ArrayList;
 import java.util.List;

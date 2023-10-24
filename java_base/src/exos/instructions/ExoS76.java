@@ -2,7 +2,7 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
+/**
 Exercice S76 : Etat de l'eau
 1. Définir une variable température
 2. Affecter une valeur à la variable temperature

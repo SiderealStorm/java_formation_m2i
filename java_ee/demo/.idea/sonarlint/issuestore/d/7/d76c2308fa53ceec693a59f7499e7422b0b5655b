@@ -1,0 +1,8 @@
+
+s
+java:S1450"XRemove the "initParam" field and declare it as a local variable in the relevant methods.(ß×‘úÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ô€„¦
+Q	java:S125#"<This block of commented-out lines of code should be removed.(áŸ¸¸
+E	java:S1064"+Replace this use of System.out by a logger.(Œ‰Ó…ÿÿÿÿÿ
+H
+java:S1068"-Remove this unused "initParam" private field.(ß×‘úÿÿÿÿ

@@ -2,7 +2,7 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
+/**
 Exercice S77 : Candidature
 1. Ecrire un programme qui permet de vérifier si un profil est valable pour une candidature
 2. Le profil contient trois critères :

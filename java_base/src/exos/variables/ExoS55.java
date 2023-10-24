@@ -2,10 +2,10 @@ package exos.variables;
 
 import java.util.Scanner;
 
-/*
-Exercice S55 : volume d'un cône
-1. Créer un programme qui permet de calculer le volume d'un cône
-2. La formule est la suivante : 1/3 × π × r² × h
+/**
+ * Exercice S55 : volume d'un cône
+ * Créer un programme qui permet de calculer le volume d'un cône
+ * La formule est la suivante : 1/3 × π × r² × h
  */
 public class ExoS55 {
     public static void main(String[] args) {

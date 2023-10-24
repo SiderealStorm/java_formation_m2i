@@ -2,15 +2,15 @@ package exos.variables;
 
 import java.util.Scanner;
 
-/*
-Exercice S56 : Mise en forme de chaînes
-1. Saisir une chaine et la stocker dans une variable
-2. Effectuer les traitements suivants :
-    - Afficher la chaîne en minuscule
-    - Afficher la chaîne en majuscule
-> Bonus
-1. Convertir la chaîne en tableau puis afficher les caractères séparés d'une virgule
-2. Afficher la première lettre de chaque mot en majuscule
+/**
+ * Exercice S56 : Mise en forme de chaînes
+ * 1. Saisir une chaine et la stocker dans une variable
+ * 2. Effectuer les traitements suivants :
+ * - Afficher la chaîne en minuscule
+ * - Afficher la chaîne en majuscule
+ * > Bonus
+ * 1. Convertir la chaîne en tableau puis afficher les caractères séparés d'une virgule
+ * 2. Afficher la première lettre de chaque mot en majuscule
  */
 public class ExoS56 {
     public static void main(String[] args) {

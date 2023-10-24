@@ -1,0 +1,13 @@
+
+o
+java:S1192"TDefine a constant instead of duplicating this literal "Toto va Ã  l'Ã©cole" 4 times.(«šœŠùÿÿÿÿ
+h
+java:S1192"MDefine a constant instead of duplicating this literal "Marie Dupont" 4 times.(«šœŠùÿÿÿÿ
+E	java:S106""+Replace this use of System.out by a logger.(ªÓ¼áþÿÿÿÿ
+E	java:S106$"+Replace this use of System.out by a logger.(¤ï‘³øÿÿÿÿ
+E	java:S106*"+Replace this use of System.out by a logger.(ªÓ¼áþÿÿÿÿ
+E	java:S106,"+Replace this use of System.out by a logger.(»Áƒ˜üÿÿÿÿ
+E	java:S1061"+Replace this use of System.out by a logger.(ªÓ¼áþÿÿÿÿ
+@	java:S1063"+Replace this use of System.out by a logger.(èÞ¯ü
+E	java:S1068"+Replace this use of System.out by a logger.(ªÓ¼áþÿÿÿÿ
+@	java:S106:"+Replace this use of System.out by a logger.(ïäê¢

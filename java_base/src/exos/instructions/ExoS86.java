@@ -2,11 +2,11 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
-Exercice S86 : Factorielle
-1. La factorielle d'un nombre positif est le quotient cumulatif des nombres allant de 1 à ce nombre
-2. Exemple : la factorielle de 3 est 1 x 2 x 3 = 6
-3. Réaliser un programme qui affiche la factorielle d'un nombre
+/**
+ * Exercice S86 : Factorielle
+ * La factorielle d'un nombre positif est le quotient cumulatif des nombres allant de 1 à ce nombre
+ * Exemple : la factorielle de 3 est 1 x 2 x 3 = 6
+ * Réaliser un programme qui affiche la factorielle d'un nombre
  */
 public class ExoS86 {
     public static void main(String[] args) {

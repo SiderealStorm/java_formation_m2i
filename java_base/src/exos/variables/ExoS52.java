@@ -3,9 +3,9 @@ package exos.variables;
 import java.util.Scanner;
 
 
-/*
-Exercice S52 : Permuter deux variables
-Écrire un programme qui permet de permuter les valeurs entre deux variables
+/**
+ * Exercice S52 : Permuter deux variables
+ * Écrire un programme qui permet de permuter les valeurs entre deux variables
  */
 public class ExoS52 {
     public static void main(String[] args) {

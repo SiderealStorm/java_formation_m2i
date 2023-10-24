@@ -2,7 +2,7 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
+/**
 Exercice S68 : majeur ou mineur
 1. Créer une variable age
 2. Affecter une valeur à la variable age

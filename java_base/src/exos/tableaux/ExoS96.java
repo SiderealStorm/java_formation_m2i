@@ -3,10 +3,10 @@ package exos.tableaux;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/*
-Exercice S96 : Valeur maximale
-1. Ecrire un programme qui permet de trouver la valeur maximale dans un tableau
-BONUS : saisie utilisateur
+/**
+ * Exercice S96 : Valeur maximale
+ * Ecrire un programme qui permet de trouver la valeur maximale dans un tableau
+ * BONUS : saisie utilisateur
  */
 public class ExoS96 {
     public static void main(String[] args) {

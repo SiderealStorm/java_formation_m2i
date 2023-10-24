@@ -2,7 +2,7 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
+/**
 Exercice S75 : Lettre, nombre ou caractère spécial
 1. Créer une variable caractere
 2. Affecter une valeur à la variable caractere

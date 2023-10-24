@@ -2,7 +2,7 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
+/**
 Exercice S74 : Année bissextile
 1. Créer une variable annee de type entier
 2. Affecter une valeur à la variable annee

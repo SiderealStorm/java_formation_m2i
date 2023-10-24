@@ -1,0 +1,16 @@
+
+S
+java:S1854"8Remove this useless assignment to local variable "ages".(ÎÎ×øÿÿÿÿ
+>
+java:S1481
+")Remove this unused "ages" local variable.(ËÌõ
+@
+java:S1197"*Move the array designators [] to the type.(òÇ¢š
+E	java:S106"+Replace this use of System.out by a logger.( ıÕüÿÿÿÿ
+@	java:S106"+Replace this use of System.out by a logger.(Š²½£
+@	java:S106 "+Replace this use of System.out by a logger.(¬ÛÑş
+@	java:S106%"+Replace this use of System.out by a logger.(üï¨Ú
+E	java:S1060"+Replace this use of System.out by a logger.(ÙÀÖêøÿÿÿÿ
+E	java:S1061"+Replace this use of System.out by a logger.(²ò—Äûÿÿÿÿ
+E	java:S1064"+Replace this use of System.out by a logger.(áÁ§üÿÿÿÿ
+@	java:S1065"+Replace this use of System.out by a logger.(ÍèŸÑ

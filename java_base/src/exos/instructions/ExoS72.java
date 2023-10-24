@@ -2,7 +2,7 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
+/**
 Exercice S72 : Jour de la semaine
 1. Créer une variable jour de type entier
 2. Affecter une valeur à la variable jour

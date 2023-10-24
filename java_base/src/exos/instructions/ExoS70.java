@@ -2,7 +2,7 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
+/**
 Exercice S70 : Maximum de 3 nombres
 1. Créer 3 variables : nombre1, nombre2, nombre3
 2. Affecter des valeurs aux variables

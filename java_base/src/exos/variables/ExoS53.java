@@ -2,10 +2,10 @@ package exos.variables;
 
 import java.util.Scanner;
 
-/*
-Exercice S53 : Somme des carrés
-1. Écrire un programme avec les variables suivantes : a, b
-2. Afficher la somme des carrés de ces deux nombres
+/**
+ * Exercice S53 : Somme des carrés
+ * 1. Écrire un programme avec les variables suivantes : a, b
+ * 2. Afficher la somme des carrés de ces deux nombres
  */
 public class ExoS53 {
     public static void main(String[] args) {

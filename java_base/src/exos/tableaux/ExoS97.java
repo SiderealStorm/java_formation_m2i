@@ -3,11 +3,11 @@ package exos.tableaux;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/*
-Exercice S97 : Tableaux égaux
-1. Ecrire un programme qui permet de vérifier si 2 tableaux sont égaux
-2. Vérifier la taille des tableaux et l'ordre des valeurs
-BONUS : saisie utilisateur
+/**
+ * Exercice S97 : Tableaux égaux
+ * 1. Ecrire un programme qui permet de vérifier si 2 tableaux sont égaux
+ * 2. Vérifier la taille des tableaux et l'ordre des valeurs
+ * BONUS : saisie utilisateur
  */
 public class ExoS97 {
     public static void main(String[] args) {

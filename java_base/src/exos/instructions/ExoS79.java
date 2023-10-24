@@ -2,10 +2,10 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
-Exercice S79 : Chapitres
-1. Créer un programme qui permet d'afficher un nombre de chapitres et de sous-parties
-2. Le programme demandera le nombre de chapitres ainsi que le nombre de sous-parties à afficher
+/**
+ * Exercice S79 : Chapitres
+ * Créer un programme qui permet d'afficher un nombre de chapitres et de sous-parties
+ * Le programme demandera le nombre de chapitres ainsi que le nombre de sous-parties à afficher
  */
 public class ExoS79 {
     public static void main(String[] args) {

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Exercice 3</title>
+    <script defer src="./main.mjs" type="module"></script>
+</head>
+<body>
+    <main>
+        <h1>Exercice 3 - To-do list</h1>
+        <hr>
+        <form id="add-todo" action="">
+            <div>
+                <label for="description">A faire :</label>
+                <input type="text" name="description" id="description" required>
+            </div>
+            <div>
+                <label for="deadline">Avant le :</label>
+                <input type="date" name="deadline" id="deadline" required>
+            </div>
+            <div>
+                <button>Ajouter</button>
+            </div>
+        </form>
+
+        <table id="todo-list">
+            <thead>
+                <th>Description</th>
+                <th>Date limite</th>
+                <th>Supprimer</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

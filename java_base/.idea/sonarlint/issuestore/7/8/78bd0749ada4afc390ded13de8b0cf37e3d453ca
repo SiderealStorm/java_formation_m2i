@@ -1,0 +1,15 @@
+
+h
+java:S1192 "RDefine a constant instead of duplicating this literal "Le compteur vaut " 4 times.(—æòñ
+s	java:S1353"YReduce the total number of break and continue statements in this loop to use at most one.(Å‚ÉÎúÿÿÿÿ
+@	java:S106"+Replace this use of System.out by a logger.(†Úâ¼
+E	java:S106"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+E	java:S106"+Replace this use of System.out by a logger.(•ÓìËÿÿÿÿÿ
+E	java:S106"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+@	java:S106 "+Replace this use of System.out by a logger.(—æòñ
+@	java:S106#"+Replace this use of System.out by a logger.(øà ¢
+E	java:S106%"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+@	java:S106+"+Replace this use of System.out by a logger.(Êàˆ
+@	java:S106."+Replace this use of System.out by a logger.(øà ¢
+E	java:S106<"+Replace this use of System.out by a logger.(Ğö¶üÿÿÿÿ
+@	java:S106E"+Replace this use of System.out by a logger.(¾­áØ

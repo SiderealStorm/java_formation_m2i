@@ -1,0 +1,17 @@
+
+K
+java:S1854"6Remove this useless assignment to local variable "v2".(¡¹Ñ
+L
+java:S1854"6Remove this useless assignment to local variable "v3".(¼–·Ê
+E	java:S106	"+Replace this use of System.out by a logger.(µ‰ÿüüÿÿÿÿ
+E	java:S106"+Replace this use of System.out by a logger.(ð„­Þùÿÿÿÿ
+E	java:S106"+Replace this use of System.out by a logger.(÷Ó—ˆþÿÿÿÿ
+E	java:S106"+Replace this use of System.out by a logger.(¯­ª»ùÿÿÿÿ
+=
+java:S1481"'Remove this unused "v3" local variable.(¼–·Ê
+E	java:S106"+Replace this use of System.out by a logger.(ÿ«òìûÿÿÿÿ
+<
+java:S1481"'Remove this unused "v2" local variable.(¡¹Ñ
+?	java:S106"+Replace this use of System.out by a logger.(Æ•¸i
+E	java:S106""+Replace this use of System.out by a logger.(ÐªÀëúÿÿÿÿ
+@	java:S106$"+Replace this use of System.out by a logger.(àîçõ

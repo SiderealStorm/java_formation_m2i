@@ -2,10 +2,10 @@ package exos.instructions;
 
 import java.util.Scanner;
 
-/*
-Exercice S82 : Sommes consécutives
-1. Déclarer une variable nombre
-2. À l'aide de boucles, afficher les suites de nombres qui permettent d'arriver au nombre inscrit précédemment
+/**
+ * Exercice S82 : Sommes consécutives
+ * 1. Déclarer une variable nombre
+ * 2. À l'aide de boucles, afficher les suites de nombres qui permettent d'arriver au nombre inscrit précédemment
  */
 public class ExoS82 {
     public static void main(String[] args) {
