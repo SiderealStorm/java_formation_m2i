@@ -41,12 +41,12 @@ public class SecurityConfig {
                 .requestMatchers("/pubic", "/public/**").permitAll()
                 // Toute les pages commençant par /private sont autorisées aux personnes connectées
                 .requestMatchers("/private", "/private/**").authenticated()
-//                .and()
-//                // Pour définir la page de login à utiliser avec HttpBasic
-//                .formLogin().loginPage("/auth/authenticate")
-//                .and()
-//                // Type d'authentification : seulement si on veut la connexion gérée par Spring
-//                .httpBasic()
+                .and()
+                // Pour définir la page de login à utiliser avec HttpBasic
+                .formLogin().loginPage("/auth/authenticate")
+                .and()
+                // Type d'authentification : seulement si on veut la connexion gérée par Spring
+                .httpBasic()
                 ;
 
         // On retourne le HttpSecurity qu'on a configuré

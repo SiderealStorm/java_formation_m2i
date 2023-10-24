@@ -56,6 +56,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         // On envoie la requête et la réponse pour vérification à la filterChain
+        // (= permet de poursuivre de la filterChain)
         filterChain.doFilter(request, response);
     }
 

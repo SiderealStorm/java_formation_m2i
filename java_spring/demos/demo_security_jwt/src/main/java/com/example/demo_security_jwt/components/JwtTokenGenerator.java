@@ -21,7 +21,7 @@ public class JwtTokenGenerator  {
 
     // Génération du token
     public String generateToken(Authentication authentication) {
-        // IL faut le nom d'utilisateur de la personne authentifiée
+        // Il faut le nom d'utilisateur de la personne authentifiée
         String username = authentication.getName();
         // Un JWT doit avoir une expiration pour des questions de sécurité
         // Ici le token sera valable une journée

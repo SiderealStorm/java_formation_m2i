@@ -23,7 +23,7 @@ public class AuthService {
     // Méthode pour créer un utilisateur et le connecter
     // On utilise on objet spécifique pour que le code soit plus maintenable
     public void register(AuthenticationRequest authRequest) {
-        // On commence par véfirier que l'utilisateur n'existe pas déjà
+        // On commence par vérifier que l'utilisateur n'existe pas déjà
         if (!userEntityRepository.existsByEmail(authRequest.getEmail())) {
             // Création de l'utilisateur :
             UserEntity newUser = new UserEntity();

@@ -58,9 +58,9 @@ public class SecurityConfig {
                 // Pour choisir les pages autorisées : requestMatchers + autorisations par groupe de pages
                 .authorizeRequests()
                 // Toute les pages commençant par /public sont autorisées à tous
-                .requestMatchers("/pubic", "/public/**", "/auth/**", "/api/v1/pubic", "/api/v1/public/**", "/api/v1/auth/**").permitAll()
+                .requestMatchers("/api/v1/pubic", "/api/v1/public/**", "/api/v1/auth/**").permitAll()
                 // Toute les pages commençant par /private sont autorisées aux personnes connectées
-                .requestMatchers("/private", "/private/**", "/api/v1/private", "/api/v1/private/**").authenticated();
+                .requestMatchers("/api/v1/private", "/api/v1/private/**").authenticated();
 
         // On retourne le HttpSecurity qu'on a configuré
         return http.build();
