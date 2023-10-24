@@ -38,7 +38,7 @@ Pour les exercices, l'énoncé est indiqué en commentaire au-dessus de la décl
 Tout le dossier est un projet IntelliJ.
 Chaque package est individuel et contient une classe possédant une fonction `main()` pour exécuter le code associé.
 
-Pour les exercices, l'énoncé est indiqué dans un fichier **Readme** présent dans le package. Certains exercices sont en plusieurs parties, chaque partie faisant l'objet d'un tag git.
+Pour les exercices, l'énoncé est indiqué dans un fichier *readme* présent dans le package. Certains exercices sont en plusieurs parties, chaque partie faisant l'objet d'un tag git.
 
 ### Contenu :
 - [Démos](/java_jdbc/src/main/java/org/example/demos/)
@@ -53,7 +53,7 @@ Pour les exercices, l'énoncé est indiqué dans un fichier **Readme** présent 
 Tout le dossier est un projet IntelliJ.
 Chaque package est individuel, et se compose d'une partie code et d'une partie test avec des noms correspondants.
 
-Pour les exercices, l'énoncé est indiqué dans un fichier **Readme** présent dans le package côté tests.
+Pour les exercices, l'énoncé est indiqué dans un fichier *readme* présent dans le package côté tests.
 
 ### Contenu :
 - Démos : [Main](/java_tdd/src/main/java/org/example/demo/) | [Test](/java_tdd/src/test/java/org/example/demo/)
@@ -63,7 +63,7 @@ Pour les exercices, l'énoncé est indiqué dans un fichier **Readme** présent 
 ### Bases de HTML, CSS et Bootstrap.
 
 Chaque démo ou exercice se trouve dans un dossier séparé.
-L'énoncé des exercices est indiqué dans un fichier **Readme**.
+L'énoncé des exercices est indiqué dans un fichier *readme*.
 
 ### Contenu :
 - [Démos](/html_css/demo/)
@@ -73,7 +73,7 @@ L'énoncé des exercices est indiqué dans un fichier **Readme**.
 ### Programmation Java pour le Web avec vues en JSP.
 
 Chaque exercice ou démo est un projet Intellij individuel.
-Chaque exercice contient un fichier README avec son énoncé.
+Chaque exercice contient un fichier *readme* avec son énoncé.
 
 ### Contenu :
 - [Démo](/java_ee/demo/src/main/java/com/example/demo/)
@@ -83,7 +83,7 @@ Chaque exercice contient un fichier README avec son énoncé.
 ### Utilisation de Spring pour le Web : thymeleaf, REST controllers, security...
 
 Chaque exercice ou démo est un projet Intellij individuel.
-Chaque exercice contient un fichier README avec son énoncé.
+Chaque exercice contient un fichier *readme* avec son énoncé.
 
 ### Contenu :
 - [Démos](/java_spring/demos/)
@@ -93,7 +93,7 @@ Chaque exercice contient un fichier README avec son énoncé.
 ### Bases de programmation en JavaScript
 
 Chaque dossier correspond à un "projet" (exercice ou démo) pouvant être exécuté en ouvrant le fichier `index.html` dans un navigateur.
-Chaque exercice contient un fichier README avec son énoncé.
+Chaque exercice contient un fichier *readme* avec son énoncé.
 
 ### Contenu :
 - [Démos](/js_javascript/demos/)
