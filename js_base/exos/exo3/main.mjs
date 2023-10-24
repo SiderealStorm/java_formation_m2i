@@ -1,5 +1,10 @@
 import Todo from "./Todo.js";
 
+// Ajout des attributs de date minimum et date par défaut
+const dateInput = document.querySelector("input#deadline")
+dateInput.min = (new Date()).toISOString().substring(0,10);
+dateInput.valueAsDate = new Date();
+
 const todoList = [];
 
 document.querySelector("form#add-todo").addEventListener("submit", (event) => {
@@ -7,12 +12,12 @@ document.querySelector("form#add-todo").addEventListener("submit", (event) => {
 
     const todo = new Todo(
         document.querySelector("input#description").value,
-        document.querySelector("input#deadline").value
+        new Date(dateInput.value)
     );
 
     todoList.push(todo);
     todoList.sort((a, b) => {
-        return new Date(a.deadline) - new Date(b.deadline);
+        return a.deadline - b.deadline;
     })
 
     const tableBody = document.querySelector("table#todo-list > tbody");
@@ -28,7 +33,7 @@ document.querySelector("form#add-todo").addEventListener("submit", (event) => {
         const button = document.createElement("button");
         
         c1.textContent = element.description;
-        c2.textContent = element.deadline;
+        c2.textContent = element.deadline.toLocaleDateString();
         button.textContent = "Supprimer";
         c3.appendChild(button);
 
