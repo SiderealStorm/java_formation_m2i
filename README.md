@@ -89,7 +89,7 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 - [Démos](/java_spring/demos/)
 - [Exercices](/java_spring/exos/)
 
-## [JavaScript](/js_javascript/)
+## [JavaScript](/js_bases/)
 ### Bases de programmation en JavaScript
 
 Chaque dossier correspond à un "projet" (exercice ou démo) pouvant être exécuté en ouvrant le fichier `index.html` dans un navigateur.
