@@ -80,7 +80,7 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 - [Exercices](/java_ee/exos/)
 
 ## [Spring](/java_spring/)
-### Utilisation de Spring pour le Web : thymeleaf, REST controllers, security...
+### Utilisation de Spring pour le Web : thymeleaf, validation, security...
 
 Chaque exercice ou démo est un projet Intellij individuel.
 Chaque exercice contient un fichier *readme* avec son énoncé.

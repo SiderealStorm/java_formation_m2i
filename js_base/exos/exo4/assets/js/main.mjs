@@ -19,9 +19,14 @@ document.querySelector("button#clear").addEventListener("click", () => {
 
 // Evènement pour afficher le résultat et effacer l'opération en cours
 document.querySelector("button#equal").addEventListener("click", () => {
-    resultDisplay.textContent = +eval(operationDisplay.textContent).toFixed(10);
-    operation = "";
-    dotButton.disabled = false;
+    try {
+        operation = "";
+        resultDisplay.textContent = +eval(operationDisplay.textContent).toFixed(10);
+        dotButton.disabled = false;
+    } catch (error) {
+        console.log(error);
+        resultDisplay.textContent = "ERR"
+    }
 });
 
 // Evènements pour ajouter le texte du bouton cliqué à l'opération en cours :
