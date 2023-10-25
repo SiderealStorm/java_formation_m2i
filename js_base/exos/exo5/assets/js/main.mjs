@@ -3,6 +3,8 @@ import Pokemon from "./Pokemon.js";
 const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 const maxPokeId = 1017;
 const maxImgId = 1011;
+let idOrName;
+let pokemon;
 
 // Méthode pour rechercher/récupérer le pokémon depuis l'API
 const getPokemon = async (search) => {
@@ -56,20 +58,21 @@ const displayPokemon = (pokemon) => {
     imgDisplay.setAttribute("alt", pokemon.name);
 }
 
-// Méthode pour un ID aléatoire
+// Méthode pour rechercher puis afficher un pokémon
+const updatePage = async (pokeIdOrName) => {
+    try {
+        const pokemon = await getPokemon(pokeIdOrName);
+        displayPokemon(pokemon);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Méthode pour générer un ID aléatoire
 const randomId = () => Math.floor(Math.random() * maxPokeId);
 
-let idOrName = randomId();
-// 1018;    // un des IDs qui posent problème...
-let pokemon;
-
 // Récupération des infos d'un pokémon aléatoire
-try {
-    pokemon = await getPokemon(idOrName);
-    displayPokemon(pokemon);
-} catch (error) {
-    console.error(error);
-}
+updatePage(randomId());
 
 // Recherche de pokémon
 document.querySelector("#search").addEventListener("submit", async (event) => {
@@ -79,27 +82,20 @@ document.querySelector("#search").addEventListener("submit", async (event) => {
 
     if (idOrName == "") {
         idOrName = randomId();
+    } else if (idOrName < 1) {
+        idOrName = 1;
+    } else if (idOrName > maxPokeId) {
+        idOrName = maxPokeId;
     }
 
-    try {
-        pokemon = await getPokemon(idOrName);
-        displayPokemon(pokemon);
-    } catch (error) {
-        console.error(error);
-    }
+    updatePage(idOrName);
 })
 
 // Pokémon précédent
 document.querySelector("#prev").addEventListener("click", async () => {
     if (pokemon.id > 1) {
         idOrName = pokemon.id - 1;
-        
-            try {
-                pokemon = await getPokemon(idOrName);
-                displayPokemon(pokemon);
-            } catch (error) {
-                console.error(error);
-            }
+        updatePage(idOrName);
     }
 })
 
@@ -107,12 +103,6 @@ document.querySelector("#prev").addEventListener("click", async () => {
 document.querySelector("#next").addEventListener("click", async () => {
     if (pokemon.id < maxPokeId) {
         idOrName = pokemon.id + 1;
-
-        try {
-            pokemon = await getPokemon(idOrName);
-            displayPokemon(pokemon);
-        } catch (error) {
-            console.error(error);
-        }
+        updatePage(idOrName);
     }
 })
