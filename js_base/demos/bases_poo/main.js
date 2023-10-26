@@ -1,5 +1,3 @@
-//// Objet
-
 // Déclaration/instanciation (simple) d'un objet :
 let monContact = {
     firstname : "Pierre",
@@ -16,12 +14,13 @@ let monAutreContact = {
 }
 
 // Affichage de l'objet :
+console.log("Mes contacts : ");
 console.log(monContact);
 console.log(monAutreContact);
 
 // Affichage d'un attribut de l'objet :
-console.log(monContact.firstname);
-console.log(monContact["firstname"]);
+console.log("Prénom du contact via l'attribut : " + monContact.firstname);
+console.log("Prénom du contact via la clé : " + monContact["firstname"]);
 
 // Création de classe :
 class Person {
@@ -35,7 +34,7 @@ class Person {
 
     // Méthode
     direBonjour() {
-        // string interpollée avec les backticks (= f-string python) :
+        // string interpollée avec les backticks (AltGr + 7) :
         console.log(`Bonjour, je m'appelle ${this.firstName} ${this.lastName}`);
     }
 }
@@ -48,6 +47,7 @@ let unePersonne = new Person("John");
 // On peut ajouter des attributs par la suite :
 unePersonne.age = 45;
 
+console.log("Affichage de la personne : ");
 console.log(unePersonne);
 
 unePersonne.direBonjour();

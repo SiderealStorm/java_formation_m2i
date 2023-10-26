@@ -20,20 +20,20 @@ console.log("Hello World");
 
 // Déclaration de variable
 
-// Ancienne syntaxe :
+// Ancienne syntaxe (à éviter) :
 var maVariable = 25;
 
-// Syntaxe à utiliser :
+// Nouvelle syntaxe (à utiliser) :
 let maVariable2 = 50;
 
-// Constante :
+// Constante (nom en majuscule par convention) :
 const MA_CONSTANTE = 33;
 
 // Les variables peuvent changer de type :
 maVariable = "Blabla";
 
-// Pour afficher le type d'une variable :
-console.log(typeof monPrenom);
+// Pour afficher le type (actuel) d'une variable :
+console.log("Type de maVariable : " + typeof maVariable);
 
 
 // Opérateurs
@@ -42,6 +42,7 @@ let nbA = 12;
 let nbB = 5;
 
 // Calculs :
+console.log("Calculs avec" + nbA + " et " + nbB);
 console.log(nbA + nbB);
 console.log(nbA - nbB);
 console.log(nbA * nbB);
@@ -49,7 +50,8 @@ console.log(nbA / nbB);
 console.log(nbA % nbB);
 console.log(nbA ** nbB);    // Puissance
 
-// Comparaisons (renvoie un booléen) :
+// Comparaisons (renvoient un booléen) :
+console.log("Comparaisons avec" + nbA + " et " + nbB);
 console.log(nbA < nbB);
 console.log(nbA > nbB);
 console.log(nbA <= nbB);
@@ -58,10 +60,12 @@ console.log(nbA == nbB);
 console.log(nbA != nbB);
 
 // Deux types d'égalités/différences :
+console.log("Egalités");
 console.log(25 == "25");    // Sans typage
 console.log(25 === "25");   // Avec typage
 
 // Logiques :
+console.log("Opérateurs logiques");
 console.log(nbA > nbB && "toto" == "titi");     // ET
 console.log(nbA > nbB || "toto" == "titi");     // OU
 console.log(!(nbA > nbB))      // NOT
@@ -76,12 +80,14 @@ console.log("Êtes-vous majeur ? " + texte);
 let variable = null;
 let resultat = variable ?? "La variable est nulle";
 
-console.log(resultat);
+console.log("Résultat ternaire avec variable nulle :" + resultat);
 
-// Pour éviter les erreurs en cas de valeur "undefined" :
+// Si une variable est déclarée mais pas instanciée, elle vaut "undefined" :
 let monTexte;
+console.log("Texte non instancié = " + monTexte);
 
-console.log(monTexte?.toUpperCase());
+// Syntaxe variable?.methode() --> évite la levée d'erreurs en cas de variable "undefined" :
+console.log("" + monTexte?.toUpperCase());
 
 
 // Structures de contrôle
@@ -136,10 +142,10 @@ for (let i = 1 ; i <= 5 ; i++) {
 // Boucles d'affichage : permettent uniquement la lecture des valeurs, pas leur modification !
 
 // Boucle for of sur un itérable (~ for each) :
-const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const CHRONO = "543210";
 
-for (const lettre of ALPHABET) {
-    console.log(lettre);
+for (const chiffre of CHRONO) {
+    console.log(chiffre);
 }
 
 
@@ -149,10 +155,10 @@ for (const lettre of ALPHABET) {
 let monTableau = [1, 2, "Test", true, ["A", "B"], 18];
 
 // Affichage :
-console.log(monTableau);
+console.log("Tableau = " + monTableau);
 
 for (const element of monTableau) {
-    console.log(element);
+    console.log("Elément du tableau : " + element);
 }
 
 // Ajout en fin d'array :
@@ -161,7 +167,7 @@ monTableau.push("ajout à la fin");
 // Ajout en début d'array :
 monTableau.unshift("ajout au début");
 
-console.log(monTableau);
+console.log("Tableau modifié = " + monTableau);
 
 // Suppression à la fin :
 monTableau.pop();
@@ -169,7 +175,7 @@ monTableau.pop();
 // Suppression au début :
 monTableau.shift();
 
-console.log(monTableau);
+console.log("Tableau modifié = " + monTableau);
 
 // Spread operator = récupère les éléments d'un tableau :
 let tabA = [1, 2, 3];
@@ -178,16 +184,16 @@ let tabB = [4, 5, 6];
 let tabAetB = [tabA, tabB];     // On obtient une matrice des deux tableaux
 let tabAplusB = [...tabA, ...tabB];     // On obtient un tableau des éléments des deux tableaux
 
-console.log(tabAetB);
-console.log(tabAplusB);
+console.log("Tableau A et B = " + tabAetB);
+console.log("Tableau A + B = " + tabAplusB);
 
 let tabSuite = [...tabAplusB, 7, 8, 9];
-console.log(tabSuite);
+console.log("Tableau avec la suite = " + tabSuite);
 
 let [elt1, elt2, ...reste] = tabSuite;
-console.log(elt1);
-console.log(elt2);
-console.log(reste);
+console.log("Elément 1 : " + elt1);
+console.log("Elément 2 : " + elt2);
+console.log("Reste du tableau : " + reste);
 
 // Inversion de variables via constructing / deconstructing
 let varA = 25;
@@ -211,12 +217,14 @@ function sansParam() {
 sansParam();
 
 function sansRetour(param) {
+    console.log("Appel de la fonction avec paramètres");
     console.log("param = " + param);
 }
 
 sansRetour("Test");
 
 function addition(nbA, nbB) {
+    console.log("Appel de la fonction addition");
     return nbA + nbB;
 }
 
@@ -231,6 +239,7 @@ console.log(maFonctionAddition(5, 8));
 
 // Fonction créée en tant que constante :
 const maFonctionMutliplier = function (a, b) {
+    console.log("Appel de la fonction multiplier");
     return a * b;
 }
 
@@ -247,17 +256,17 @@ console.log(maFonctionFlechee(2, 4));
 // Simplification si fonction simple (une ligne)
 const maFonctionOneline = (a, b) => a * b;
 
-console.log(maFonctionOneline(2, 4));
+console.log("Fonction fléchée OneLine : " + maFonctionOneline(2, 4));
 
 
 // Les fonctions fléchées sont très utilisées en JS :
 const prenoms = ["Chloé", "Bernard", "Danielle", "Albert"];
 
-console.log(prenoms.find((prenom) => prenom.startsWith("B")));
+console.log("Prénom commençant par B : " + prenoms.find((prenom) => prenom.startsWith("B")));
 
 // On peut passer une fonction en paramètre d'une fonction (= callback) :
 function monOperation(a, b, operation) {
-    console.log("Je vais une opération");
+    console.log("Je fais une opération");
     return operation(a, b);
 }
 
@@ -266,4 +275,4 @@ console.log(monOperation(2, 4, (a, b) => a + b));
 
 // Méthodes "statiques"
 
-console.log(Math.ceil(Math.random() * 10));
+console.log("Nomre aléatoire avec Math : " + Math.ceil(Math.random() * 10));

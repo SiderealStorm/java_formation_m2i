@@ -3,7 +3,6 @@ import Pokemon from "./Pokemon.js";
 const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 const maxPokeId = 1017;
 const maxImgId = 1011;
-let idOrName;
 let pokemon;
 
 // Méthode pour rechercher/récupérer le pokémon depuis l'API
@@ -30,14 +29,15 @@ const getPokemon = async (search) => {
 
 // Méthode pour afficher les données du pokémon
 const displayPokemon = (pokemon) => {
+    const typesDisplay = document.querySelector("#poke-types");
+    const abilitiesDisplay = document.querySelector("#poke-abilities");
+    const imgDisplay = document.querySelector("#poke-image");
+
     document.querySelector("title").textContent = `Pokémon - ${pokemon.name}`;
     document.querySelector("#poke-name").textContent = `# ${pokemon.id} - ${pokemon.name}`;
     document.querySelector("#poke-height").textContent = `Height : ${pokemon.height} units`;
     document.querySelector("#poke-weight").textContent = `Weight : ${pokemon.weight} units`;
-
-    const typesDisplay = document.querySelector("#poke-types");
-    const abilitiesDisplay = document.querySelector("#poke-abilities");
-
+    
     typesDisplay.textContent = "";
     abilitiesDisplay.textContent = "";
     
@@ -53,15 +53,14 @@ const displayPokemon = (pokemon) => {
         abilitiesDisplay.appendChild(newLi);
     });
     
-    const imgDisplay = document.querySelector("#poke-image");
     imgDisplay.setAttribute("src", pokemon.imageUrl);
     imgDisplay.setAttribute("alt", pokemon.name);
 }
 
 // Méthode pour rechercher puis afficher un pokémon
-const updatePage = async (pokeIdOrName) => {
+const updatePage = async (idOrName) => {
     try {
-        const pokemon = await getPokemon(pokeIdOrName);
+        const pokemon = await getPokemon(idOrName);
         displayPokemon(pokemon);
     } catch (error) {
         console.error(error);
@@ -78,7 +77,7 @@ updatePage(randomId());
 document.querySelector("#search").addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    idOrName = document.querySelector("form#search input").value;
+    let idOrName = document.querySelector("form#search input").value;
 
     if (idOrName == "") {
         idOrName = randomId();
@@ -89,20 +88,18 @@ document.querySelector("#search").addEventListener("submit", async (event) => {
     }
 
     updatePage(idOrName);
-})
+});
 
 // Pokémon précédent
 document.querySelector("#prev").addEventListener("click", async () => {
     if (pokemon.id > 1) {
-        idOrName = pokemon.id - 1;
-        updatePage(idOrName);
+        updatePage(pokemon.id - 1);
     }
-})
+});
 
 // Pokémon suivant
 document.querySelector("#next").addEventListener("click", async () => {
     if (pokemon.id < maxPokeId) {
-        idOrName = pokemon.id + 1;
-        updatePage(idOrName);
+        updatePage(pokemon.id + 1);
     }
-})
+});
