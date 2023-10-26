@@ -4,42 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f68388e9-932a-4cb4-99ac-e537e188153f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java_base.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java_base.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS68.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS68.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS69.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS69.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS70.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS70.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS71.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS71.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS72.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS72.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS73.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS73.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS74.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS74.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS75.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS75.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS76.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS76.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS77.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS77.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS78.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS78.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS79.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS79.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS80.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS80.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS81.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS81.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS82.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS82.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS83.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS83.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS84.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS84.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS85.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS85.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS86.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS86.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/instructions/ExoS87.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/instructions/ExoS87.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/tableaux/ExoS94.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/tableaux/ExoS94.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/tableaux/ExoS95.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/tableaux/ExoS95.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/tableaux/ExoS96.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/tableaux/ExoS96.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/tableaux/ExoS97.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/tableaux/ExoS97.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/variables/ExoS51.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/variables/ExoS51.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/variables/ExoS52.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/variables/ExoS52.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/variables/ExoS53.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/variables/ExoS53.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/variables/ExoS54.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/variables/ExoS54.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/variables/ExoS55.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/variables/ExoS55.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/variables/ExoS56.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/variables/ExoS56.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exos/variables/ExoS57.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exos/variables/ExoS57.java" afterDir="false" />
-    </list>
+    <list default="true" id="f68388e9-932a-4cb4-99ac-e537e188153f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,9 +23,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2SvwMTrpKfAknkU50dKsKaVCI4h" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -69,28 +34,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Administrateur/Desktop/java_formation_m2i/java_poo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrateur/Desktop/java_formation_m2i/java_poo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JAVA"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JAVA&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -100,6 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1690040315897</updated>
       <workItem from="1698128534027" duration="1129000" />
+      <workItem from="1698321862218" duration="27000" />
     </task>
     <servers />
   </component>

@@ -23,3 +23,9 @@ c
 3src/main/java/org/example/exos/bonus/MainPendu.java,8\f\8fa07e8af00ae181fc77de2c7989596883573373
 S
 #src/main/java/org/example/Main.java,0\b\0ba1b9c7a4878802f938e331cc2d8a042087ec6b
+_
+/src/main/java/org/example/exos/exo1/Chaise.java,6\5\652a2d7d4dd428c561ace731f5f539e5bcb29197
+b
+2src/main/java/org/example/exos/exo4/WaterTank.java,c\5\c56247093c6b1680729785033e706ec5ba782a5e
+X
+(src/main/java/org/example/exos/readme.md,6\5\65870eebb95e23081d38045df92a5aebeefbb87f

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2</title>
+    <script type="module" src="assets/js/main.mjs"></script>
+</head>
+<body>
+    <main>
+        <h1>Exercice 2</h1>
+        <hr>
+        <form action="">
+            <div>
+                <label for="lastname">Nom :</label>
+                <input type="text" name="lastname" id="lastname">
+                <span style="color: red;" id="lastname-error"></span>
+            </div>
+            <div>
+                <label for="firstname">Prénom :</label>
+                <input type="text" name="firstname" id="firstname">
+                <span style="color: red;" id="firstname-error"></span>
+            </div>
+            <!-- <div>
+                <label for="birthdate">Date de naissance :</label>
+                <input type="text" name="birthdate" id="birthdate">
+                <span style="color: red;" id="birthdate-error"></span>
+            </div> -->
+            <div>
+                <label for="mail">E-mail :</label>
+                <input type="text" name="mail" id="mail">
+                <span style="color: red;" id="mail-error"></span>
+            </div>
+            <div>
+                <label for="phone">Téléphone :</label>
+                <input type="text" name="phone" id="phone">
+                <span style="color: red;" id="phone-error"></span>
+            </div>
+            <button>Envoyer</button>
+        </form>
+        <h2>Contacts : <span id="count"></span></h2>
+    </main>
+</body>
+</html>

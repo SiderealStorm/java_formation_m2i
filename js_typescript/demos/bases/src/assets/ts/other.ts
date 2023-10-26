@@ -1,5 +1,5 @@
-function sayHi() {
-    console.log("Hello world !");
+class Dog {
+
 }
 
-export { sayHi };
+const monObjet = {}
