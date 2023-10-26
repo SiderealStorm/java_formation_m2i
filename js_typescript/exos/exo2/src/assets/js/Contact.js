@@ -1,8 +1,9 @@
 class Contact {
-    constructor(firstName, lastName, mail, phone) {
+    constructor(firstName, lastName, birthdate, mail, phone) {
         this._id = ++Contact.count;
         this._firstName = firstName;
-        this._lastName = lastName;
+        this._lastName = lastName,
+            this._birthdate = birthdate;
         this._mail = mail;
         this._phone = phone;
     }
@@ -15,6 +16,9 @@ class Contact {
     get lastName() {
         return this._lastName;
     }
+    get birthdate() {
+        return this._birthdate;
+    }
     get mail() {
         return this._mail;
     }
@@ -26,6 +30,9 @@ class Contact {
     }
     set lastName(lastName) {
         this._lastName = lastName;
+    }
+    set birthdate(birthdate) {
+        this._birthdate = birthdate;
     }
     set mail(mail) {
         this._mail = mail;

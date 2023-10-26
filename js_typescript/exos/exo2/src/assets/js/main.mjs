@@ -3,6 +3,7 @@ import Contact from "./Contact.js";
 // Variables du fichier
 const firstNameInput = document.querySelector("form input#firstname");
 const lastNameInput = document.querySelector("form input#lastname");
+const birthdateInput = document.querySelector("form input#birthdate");
 const mailInput = document.querySelector("form input#mail");
 const phoneInput = document.querySelector("form input#phone");
 const countDisplay = document.querySelector("span#count");
@@ -12,10 +13,11 @@ let contactList = [];
 const addContactToList = () => {
     const firstName = firstNameInput.value;
     const lastName = lastNameInput.value;
+    const birthdate = new Date(birthdateInput.value);
     const mail = mailInput.value;
     const phone = phoneInput.value;
     if (firstName && lastName && mail && phone) {
-        const newContact = new Contact(firstName, lastName, mail, phone);
+        const newContact = new Contact(firstName, lastName, birthdate, mail, phone);
         contactList.push(newContact);
     }
 };
@@ -28,6 +30,7 @@ const updateView = () => {
         const idData = document.createElement("td");
         const firstNameData = document.createElement("td");
         const lastNameData = document.createElement("td");
+        const birthdateData = document.createElement("td");
         const mailData = document.createElement("td");
         const phoneData = document.createElement("td");
         const buttonData = document.createElement("td");
@@ -44,11 +47,13 @@ const updateView = () => {
         idData.textContent = contact.id.toString();
         firstNameData.textContent = contact.firstName;
         lastNameData.textContent = contact.lastName;
+        birthdateData.textContent = contact.birthdate.toLocaleDateString();
         mailData.textContent = contact.mail;
         phoneData.textContent = contact.phone;
         newRow.appendChild(idData);
         newRow.appendChild(lastNameData);
         newRow.appendChild(firstNameData);
+        newRow.appendChild(birthdateData);
         newRow.appendChild(mailData);
         newRow.appendChild(phoneData);
         newRow.appendChild(buttonData);
