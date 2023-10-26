@@ -60,12 +60,12 @@ const updateView = () => {
         return newRow;
     }).forEach(element => tableBody.appendChild(element));
 };
-// Fonction pour trier la liste par attribut
-const sortList = (attributeName) => {
-    contactList.sort((a, b) => {
-        return a[attributeName] - b[attributeName];
-    });
-};
+// // Fonction pour trier la liste par attribut
+// const sortList = (attributeName : AttributeName) => {
+//     contactList.sort((a, b) => {
+//         return a[attributeName] - b[attributeName];
+//     })
+// }
 // Main
 (_a = document.querySelector("form")) === null || _a === void 0 ? void 0 : _a.addEventListener("submit", (event) => {
     event.preventDefault();

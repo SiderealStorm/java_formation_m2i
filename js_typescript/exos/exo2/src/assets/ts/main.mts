@@ -83,12 +83,12 @@ const updateView = () => {
     }).forEach(element => tableBody.appendChild(element));
 }
 
-// Fonction pour trier la liste par attribut
-const sortList = (attributeName : string) => {
-    contactList.sort((a, b) => {
-        return a[attributeName] - b[attributeName];
-    })
-}
+// // Fonction pour trier la liste par attribut
+// const sortList = (attributeName : AttributeName) => {
+//     contactList.sort((a, b) => {
+//         return a[attributeName] - b[attributeName];
+//     })
+// }
 
 // Main
 document.querySelector("form")?.addEventListener("submit", (event) => {
