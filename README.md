@@ -100,7 +100,14 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 - [Exercices](/js_javascript/exos/)
 
 ## [TypeScript](/js_typescript/)
-### A venir
+### Bases TypeScript
+
+Chaque dossier correspond à un "projet" (exercice ou démo) pouvant être exécuté en ouvrant le fichier `index.html` dans un navigateur.
+Chaque exercice contient un fichier *readme* avec son énoncé.
+
+### Contenu :
+- [Démos](/js_typescript/demos/)
+- [Exercices](/js_typescript/exos/)
 
 ## [Angular](/js_angular/)
 ### A venir
