@@ -9,7 +9,7 @@ const phoneInput = document.querySelector("form input#phone");
 const countDisplay = document.querySelector("span#count");
 const tableBody = document.querySelector("table#contacts tbody");
 let contactList = [];
-// Méthode d'ajout de contact
+// Fonction d'ajout de contact
 const addContactToList = () => {
     const firstName = firstNameInput.value;
     const lastName = lastNameInput.value;
@@ -21,7 +21,7 @@ const addContactToList = () => {
         contactList.push(newContact);
     }
 };
-// Méthode pour mettre à jour l'affichage
+// Fonction pour mettre à jour l'affichage
 const updateView = () => {
     tableBody.textContent = "";
     countDisplay.textContent = contactList.length.toString();
@@ -59,6 +59,12 @@ const updateView = () => {
         newRow.appendChild(buttonData);
         return newRow;
     }).forEach(element => tableBody.appendChild(element));
+};
+// Fonction pour trier la liste par attribut
+const sortList = (attributeName) => {
+    contactList.sort((a, b) => {
+        return a[attributeName] - b[attributeName];
+    });
 };
 // Main
 (_a = document.querySelector("form")) === null || _a === void 0 ? void 0 : _a.addEventListener("submit", (event) => {

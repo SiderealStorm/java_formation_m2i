@@ -10,8 +10,9 @@ const countDisplay = document.querySelector("span#count")!;
 const tableBody = document.querySelector("table#contacts tbody")!;
 
 let contactList : Contact[] = [];
+type AttributeName = ["id", "firstName", "lastName", "birthDate"];
 
-// Méthode d'ajout de contact
+// Fonction d'ajout de contact
 const addContactToList = () => {
     const firstName = firstNameInput.value;
     const lastName = lastNameInput.value;
@@ -33,7 +34,7 @@ const addContactToList = () => {
     }
 }
 
-// Méthode pour mettre à jour l'affichage
+// Fonction pour mettre à jour l'affichage
 const updateView = () => {
     tableBody.textContent = "";
 
@@ -80,6 +81,13 @@ const updateView = () => {
         
         return newRow;
     }).forEach(element => tableBody.appendChild(element));
+}
+
+// Fonction pour trier la liste par attribut
+const sortList = (attributeName : string) => {
+    contactList.sort((a, b) => {
+        return a[attributeName] - b[attributeName];
+    })
 }
 
 // Main
