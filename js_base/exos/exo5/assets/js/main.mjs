@@ -1,9 +1,16 @@
 import Pokemon from "./Pokemon.js";
 
+//// Variables du fichier
+
 const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 const maxPokeId = 1017;
 const maxImgId = 1011;
 let pokemon;
+
+//// Méthodes
+
+// Méthode pour mettre la première lettre d'une string en majuscule
+const capitalize = (string) => string.substring(0,1).toUpperCase() + string.substring(1);
 
 // Méthode pour rechercher/récupérer le pokémon depuis l'API
 const getPokemon = async (search) => {
@@ -12,11 +19,11 @@ const getPokemon = async (search) => {
         const data = await response.json();
         pokemon = new Pokemon(
             data.id,
-            data.name.substring(0, 1).toUpperCase() + data.name.substring(1),
+            capitalize(data.name),
             data.height,
             data.weight,
-            data.types.map(element => element.type.name.substring(0,1).toUpperCase() + element.type.name.substring(1)),
-            data.abilities.map(element => element.ability.name.substring(0,1).toUpperCase() + element.ability.name.substring(1)),
+            data.types.map(element => capitalize(element.type.name)),
+            data.abilities.map(element => capitalize(element.ability.name)),
             data.id < maxImgId
             ? `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${data.id.toString().padStart(3, "0")}.png`
             : "assets/images/Poke_Ball.webp"
@@ -70,11 +77,13 @@ const updatePage = async (idOrName) => {
 // Méthode pour générer un ID aléatoire
 const randomId = () => Math.floor(Math.random() * maxPokeId);
 
+//// Main
+
 // Récupération des infos d'un pokémon aléatoire
 updatePage(randomId());
 
 // Recherche de pokémon
-document.querySelector("#search").addEventListener("submit", async (event) => {
+document.querySelector("#search").addEventListener("submit", (event) => {
     event.preventDefault();
 
     let idOrName = document.querySelector("form#search input").value;
@@ -91,15 +100,15 @@ document.querySelector("#search").addEventListener("submit", async (event) => {
 });
 
 // Pokémon précédent
-document.querySelector("#prev").addEventListener("click", async () => {
+document.querySelector("#prev").addEventListener("click", () => {
     if (pokemon.id > 1) {
-        updatePage(pokemon.id - 1);
+        updatePage(--pokemon.id);
     }
 });
 
 // Pokémon suivant
-document.querySelector("#next").addEventListener("click", async () => {
+document.querySelector("#next").addEventListener("click", () => {
     if (pokemon.id < maxPokeId) {
-        updatePage(pokemon.id + 1);
+        updatePage(--pokemon.id);
     }
 });
