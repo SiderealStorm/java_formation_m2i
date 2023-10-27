@@ -6,28 +6,64 @@ const lastNameInput = document.querySelector("form input#lastname");
 const birthdateInput = document.querySelector("form input#birthdate");
 const mailInput = document.querySelector("form input#mail");
 const phoneInput = document.querySelector("form input#phone");
-const countDisplay = document.querySelector("span#count");
-const tableBody = document.querySelector("table#contacts tbody");
 let contactList = [];
 // Fonction pour mettre la première lettre en majuscule
 const capitalize = (text) => text.substring(0, 1).toUpperCase() + text.substring(1).toLocaleLowerCase();
+// Fonction de vérification du contact (bonus)
+const checkContact = (contact) => {
+    const firstnameError = document.querySelector("form span#firstname-error");
+    const lastnameError = document.querySelector("form span#lastname-error");
+    const formError = document.querySelector("form p#error");
+    let isValid = true;
+    firstnameError.textContent = "";
+    lastnameError.textContent = "";
+    formError.textContent = "";
+    if (!contact.firstName) {
+        firstnameError.textContent = "Champ obligatoire";
+        isValid = false;
+    }
+    if (!contact.lastName) {
+        lastnameError.textContent = "Champ obligatoire";
+        isValid = false;
+    }
+    if (!contact.birthdate.getDate() && !contact.mail && !contact.phone) {
+        formError.textContent = "Veuillez remplir au moins un des trois autres champs";
+        isValid = false;
+    }
+    return isValid;
+};
 // Fonction d'ajout de contact
 const addContactToList = () => {
-    const firstName = capitalize(firstNameInput.value);
-    const lastName = capitalize(lastNameInput.value);
+    const firstName = capitalize(firstNameInput.value).trim();
+    const lastName = capitalize(lastNameInput.value).trim();
     const birthdate = new Date(birthdateInput.value);
-    const mail = mailInput.value;
-    const phone = phoneInput.value;
-    if (firstName && lastName && mail && phone) {
-        const newContact = new Contact(firstName, lastName, birthdate, mail, phone);
+    const mail = mailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const newContact = new Contact(firstName, lastName, birthdate, mail, phone);
+    if (checkContact(newContact)) {
         contactList.push(newContact);
+        // firstNameInput.value = "";
+        lastNameInput.value = "";
+        // birthdateInput.value = "";
+        // mailInput.value = "";
+        // phoneInput.value = "";
+    }
+};
+// Fonction de suppression de contact
+const deleteContact = (contact) => {
+    const confirm = window.confirm(`Voulez-vous vraiment supprimer ${contact.firstName} ${contact.lastName} de la liste ?`);
+    if (confirm) {
+        contactList = contactList.filter(elt => elt !== contact);
+        updateView();
     }
 };
 // Fonction pour mettre à jour l'affichage
 const updateView = () => {
+    const tableBody = document.querySelector("table#contacts tbody");
     tableBody.textContent = "";
-    countDisplay.textContent = contactList.length.toString();
+    document.querySelector("span#count").textContent = contactList.length.toString();
     contactList.map(contact => {
+        const birthdateString = contact.birthdate.toLocaleDateString();
         const newRow = document.createElement("tr");
         const idData = document.createElement("td");
         const firstNameData = document.createElement("td");
@@ -39,17 +75,13 @@ const updateView = () => {
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Supprimer";
         deleteButton.addEventListener("click", () => {
-            const confirm = window.confirm(`Voulez-vous vraiment supprimer ${contact.firstName} ${contact.lastName} de la liste ?`);
-            if (confirm) {
-                contactList = contactList.filter(elt => elt !== contact);
-                updateView();
-            }
+            deleteContact(contact);
         });
         buttonData.appendChild(deleteButton);
         idData.textContent = contact.id.toString();
         firstNameData.textContent = contact.firstName;
         lastNameData.textContent = contact.lastName;
-        birthdateData.textContent = contact.birthdate.toLocaleDateString();
+        birthdateData.textContent = birthdateString === "Invalid Date" ? "" : birthdateString;
         mailData.textContent = contact.mail;
         phoneData.textContent = contact.phone;
         newRow.appendChild(idData);
