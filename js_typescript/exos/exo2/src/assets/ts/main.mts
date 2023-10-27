@@ -10,12 +10,14 @@ const countDisplay = document.querySelector("span#count")!;
 const tableBody = document.querySelector("table#contacts tbody")!;
 
 let contactList : Contact[] = [];
-type AttributeName = ["id", "firstName", "lastName", "birthDate"];
+
+// Fonction pour mettre la première lettre en majuscule
+const capitalize = (text : string) => text.substring(0, 1).toUpperCase() + text.substring(1).toLocaleLowerCase();
 
 // Fonction d'ajout de contact
 const addContactToList = () => {
-    const firstName = firstNameInput.value;
-    const lastName = lastNameInput.value;
+    const firstName = capitalize(firstNameInput.value);
+    const lastName = capitalize(lastNameInput.value);
     const birthdate = new Date(birthdateInput.value);
     const mail = mailInput.value;
     const phone = phoneInput.value;
@@ -83,17 +85,61 @@ const updateView = () => {
     }).forEach(element => tableBody.appendChild(element));
 }
 
-// // Fonction pour trier la liste par attribut
-// const sortList = (attributeName : AttributeName) => {
-//     contactList.sort((a, b) => {
-//         return a[attributeName] - b[attributeName];
-//     })
-// }
+// Fonction unique pour trier la liste par attribut
+function createCompareFn (attributeName : keyof Contact) {
+    const compareFn = (a : Contact, b : Contact) => {
+
+        const val1 = a[attributeName];
+        const val2 = b[attributeName];
+
+        if (val1 instanceof Date && val2 instanceof Date) {
+            return val1.getTime() - val2.getTime();
+        } else {
+            return val1.toString().localeCompare(val2.toString());
+        }
+    }
+    return compareFn;
+}
+
 
 // Main
+
+// Ajout de contact
 document.querySelector("form")?.addEventListener("submit", (event) => {
     event.preventDefault();
 
     addContactToList();
     updateView();
-})
+});
+
+// Tris de la liste
+document.querySelector("table button#sort-id")?.addEventListener("click", () => {
+    contactList.sort(createCompareFn("id"));
+    updateView();
+});
+
+document.querySelector("table button#sort-lastname")?.addEventListener("click", () => {
+    contactList.sort(createCompareFn("lastName"));
+    updateView();
+});
+
+document.querySelector("table button#sort-firstname")?.addEventListener("click", () => {
+    contactList.sort(createCompareFn("firstName"));
+    updateView();
+});
+
+document.querySelector("table button#sort-birthdate")?.addEventListener("click", () => {
+    contactList.sort(createCompareFn("birthdate"));
+    updateView();
+});
+
+document.querySelector("table button#sort-mail")?.addEventListener("click", () => {
+    contactList.sort(createCompareFn("mail"));
+    updateView();
+});
+
+document.querySelector("table button#sort-phone")?.addEventListener("click", () => {
+    contactList.sort(createCompareFn("phone"));
+    updateView();
+});
+

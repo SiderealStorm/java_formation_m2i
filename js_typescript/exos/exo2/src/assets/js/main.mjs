@@ -1,4 +1,4 @@
-var _a;
+var _a, _b, _c, _d, _e, _f, _g;
 import Contact from "./Contact.js";
 // Variables du fichier
 const firstNameInput = document.querySelector("form input#firstname");
@@ -9,10 +9,12 @@ const phoneInput = document.querySelector("form input#phone");
 const countDisplay = document.querySelector("span#count");
 const tableBody = document.querySelector("table#contacts tbody");
 let contactList = [];
+// Fonction pour mettre la première lettre en majuscule
+const capitalize = (text) => text.substring(0, 1).toUpperCase() + text.substring(1).toLocaleLowerCase();
 // Fonction d'ajout de contact
 const addContactToList = () => {
-    const firstName = firstNameInput.value;
-    const lastName = lastNameInput.value;
+    const firstName = capitalize(firstNameInput.value);
+    const lastName = capitalize(lastNameInput.value);
     const birthdate = new Date(birthdateInput.value);
     const mail = mailInput.value;
     const phone = phoneInput.value;
@@ -60,15 +62,49 @@ const updateView = () => {
         return newRow;
     }).forEach(element => tableBody.appendChild(element));
 };
-// // Fonction pour trier la liste par attribut
-// const sortList = (attributeName : AttributeName) => {
-//     contactList.sort((a, b) => {
-//         return a[attributeName] - b[attributeName];
-//     })
-// }
+// Fonction unique pour trier la liste par attribut
+function createCompareFn(attributeName) {
+    const compareFn = (a, b) => {
+        const val1 = a[attributeName];
+        const val2 = b[attributeName];
+        if (val1 instanceof Date && val2 instanceof Date) {
+            return val1.getTime() - val2.getTime();
+        }
+        else {
+            return val1.toString().localeCompare(val2.toString());
+        }
+    };
+    return compareFn;
+}
 // Main
+// Ajout de contact
 (_a = document.querySelector("form")) === null || _a === void 0 ? void 0 : _a.addEventListener("submit", (event) => {
     event.preventDefault();
     addContactToList();
+    updateView();
+});
+// Tris de la liste
+(_b = document.querySelector("table button#sort-id")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", () => {
+    contactList.sort(createCompareFn("id"));
+    updateView();
+});
+(_c = document.querySelector("table button#sort-lastname")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
+    contactList.sort(createCompareFn("lastName"));
+    updateView();
+});
+(_d = document.querySelector("table button#sort-firstname")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", () => {
+    contactList.sort(createCompareFn("firstName"));
+    updateView();
+});
+(_e = document.querySelector("table button#sort-birthdate")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", () => {
+    contactList.sort(createCompareFn("birthdate"));
+    updateView();
+});
+(_f = document.querySelector("table button#sort-mail")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", () => {
+    contactList.sort(createCompareFn("mail"));
+    updateView();
+});
+(_g = document.querySelector("table button#sort-phone")) === null || _g === void 0 ? void 0 : _g.addEventListener("click", () => {
+    contactList.sort(createCompareFn("phone"));
     updateView();
 });
