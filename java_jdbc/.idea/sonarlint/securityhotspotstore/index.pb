@@ -15,9 +15,5 @@ q
 Asrc/main/java/org/example/exos/jdbc/exo2/service/BankService.java,5\8\588b8e3e88d7ca90d2ab26305daff8d321f5a707
 g
 7src/main/java/org/example/exos/jpa/entity/Category.java,9\a\9afb415dbf8efc1c047c185c9b23f02963e35b8d
-b
-2src/main/java/org/example/exos/hibernate/readme.md,f\f\ff2a75f052f0b712903bd462db659e9a718af749
-l
-<src/main/java/org/example/exos/hibernate/entity/Product.java,e\c\eca279c5b1476fa02dc19ff878383acbb285fbf2
 X
 (src/main/java/org/example/exos/readme.md,6\5\65870eebb95e23081d38045df92a5aebeefbb87f

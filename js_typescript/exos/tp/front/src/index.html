@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP CRUD contacts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script type="module" src="assets/js/main.mjs"></script>
+</head>
+<body>
+    <main>
+        <h2>Ajouter un contact</h2>
+        <hr>
+        <form action="">
+            <div>
+                <label for="lastname">Nom :</label>
+                <input type="text" name="lastname" id="lastname">
+                <span style="color: red;" id="lastname-error"></span>
+            </div>
+            <div>
+                <label for="firstname">Prénom :</label>
+                <input type="text" name="firstname" id="firstname">
+                <span style="color: red;" id="firstname-error"></span>
+            </div>
+            <div>
+                <label for="birthdate">Date de naissance :</label>
+                <input type="date" name="birthdate" id="birthdate">
+            </div>
+            <div>
+                <label for="mail">E-mail :</label>
+                <input type="text" name="mail" id="mail">
+            </div>
+            <div>
+                <label for="phone">Téléphone :</label>
+                <input type="text" name="phone" id="phone">
+            </div>
+            <p style="color: red;" id="error"></p>
+            <button class="btn btn-primary">Envoyer</button>
+        </form>
+        <hr>
+        <h2>Liste des contacts</h2>
+        <hr>
+        <h4>Contacts : <span id="count">0</span></h4>
+        <table id="contacts">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de naissance</th>
+                    <th>Âge</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
