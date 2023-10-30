@@ -1,14 +1,14 @@
 class ContactDTO {
     public firstName : string;
     public lastName : string;
-    public birthDate : Date;
+    public birthDate : string;
     public email : string;
     public phone : string;
 
     constructor(
         firstName : string,
         lastName : string,
-        birthDate : Date,
+        birthDate : string,
         email : string,
         phone : string
     ) {

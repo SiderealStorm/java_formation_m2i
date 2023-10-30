@@ -14,37 +14,40 @@ type Contact = {
   styleUrls: ['./contact-form.component.css']
 })
 export class ContactFormComponent {
-  firstName = "";
-  lastName = "";
-  age = 0;
-  mail = "";
-  phone = "";
+  contact : Contact = {
+    firstName : "",
+    lastName : "",
+    age : 0,
+    mail : "",
+    phone : "",
+  }
   contactsList : Contact[] = [];
 
   onSubmitForm(event : Event) {
     event.preventDefault();
 
-    let newContact : Contact = {
-      firstName : this.firstName,
-      lastName : this.lastName,
-      age : this.age,
-      mail : this.mail,
-      phone : this.phone
-    };
+    this.contactsList.push(this.contact);
 
-    this.contactsList.push(newContact);
-
-    this.firstName = "";
-    this.lastName = "";
-    this.age = 0;
-    this.mail = "";
-    this.phone = "";
+    this.contact = {
+      firstName : "",
+      lastName : "",
+      age : 0,
+      mail : "",
+      phone : "",
+    }
   }
 
   onClickDelete(contact : Contact) {
-    const index = this.contactsList.indexOf(contact);
-    if (index != -1) {
-      this.contactsList.splice(index, 1);
-    }
+    this.contactsList = [... this.contactsList.filter(c => c !== contact)];
+  }
+
+  setRowStyle(contact: Contact) {
+    return {
+      'color': this.contactsList.indexOf(contact) % 2 !== 0 ? 'blue' : 'black'
+    };
+  }
+  
+  setAgeClass(contact: Contact) {
+    return contact.age < 18 ? 'mineur' : '';
   }
 }

@@ -78,7 +78,7 @@ const addContact = async () => {
     const newContact = new ContactDTO(
         capitalize(firstNameInput.value).trim(),
         capitalize(lastNameInput.value).trim(),
-        new Date(birthDateInput.value),
+        birthDateInput.value,
         emailInput.value.trim(),
         phoneInput.value.trim()
     );

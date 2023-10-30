@@ -71,7 +71,7 @@ const editContact = (contact) => __awaiter(void 0, void 0, void 0, function* () 
 });
 // Fonction pour ajouter un contact
 const addContact = () => __awaiter(void 0, void 0, void 0, function* () {
-    const newContact = new ContactDTO(capitalize(firstNameInput.value).trim(), capitalize(lastNameInput.value).trim(), new Date(birthDateInput.value), emailInput.value.trim(), phoneInput.value.trim());
+    const newContact = new ContactDTO(capitalize(firstNameInput.value).trim(), capitalize(lastNameInput.value).trim(), birthDateInput.value, emailInput.value.trim(), phoneInput.value.trim());
     try {
         const response = yield fetch(baseUrl + "add", {
             method: "POST",

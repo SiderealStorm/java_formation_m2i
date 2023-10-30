@@ -1,0 +1,10 @@
+<input type="text" [(ngModel)]="maValeur">
+
+<p [ngStyle]="getStyle()" [ngClass]="['une-classe', 'autre-classe']">
+  Ceci est un paragraphe
+</p>
+
+
+<p [ngClass]="{ 'ma-classe' : maValeur === 'toto'}">
+  Ceci est un autre paragraphe
+</p>
