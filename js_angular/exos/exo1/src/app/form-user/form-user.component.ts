@@ -22,8 +22,8 @@ export class FormUserComponent {
     this.age = parseInt((event.target as HTMLInputElement).value);
   }
 
-  // Remarque : n'est pas un formulaire
-  onSubmitForm() {
+  onSubmitForm(event: Event) {
+    event.preventDefault();
     const newUser = {
       firstName: this.firstName,
       lastName: this.lastName,

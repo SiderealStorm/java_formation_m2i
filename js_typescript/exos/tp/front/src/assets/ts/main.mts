@@ -1,13 +1,14 @@
 import Contact from "./Contact.js";
+import ContactDTO from "./ContactDTO.js";
 
 // Variables du fichier
 const baseUrl = "http://localhost:8080/api/v1/contacts/";
 
-const formElt = document.querySelector("form")!
+const formElt = document.querySelector("form#contact-form")!
 const firstNameInput = document.querySelector("form input#firstname") as HTMLInputElement;
 const lastNameInput = document.querySelector("form input#lastname") as HTMLInputElement;
 const birthDateInput = document.querySelector("form input#birthdate") as HTMLInputElement;
-const emailInput = document.querySelector("form input#email") as HTMLInputElement;
+const emailInput = document.querySelector("form input#mail") as HTMLInputElement;
 const phoneInput = document.querySelector("form input#phone") as HTMLInputElement;
 
 let contactList: Contact[];
@@ -26,8 +27,8 @@ const getContactList = async () => {
         data.forEach(element => {
             const newContact : Contact = new Contact(
                 element.id,
-                capitalize(element.firstName),
-                capitalize(element.lastName),
+                element.firstName,
+                element.lastName,
                 new Date(element.birthDate),
                 element.age,
                 element.email,
@@ -58,16 +59,48 @@ const deleteContact = async (contact : Contact) => {
     }
 }
 
-// Fonction pour supprimer un contact
-const editContact = (contact : Contact) => {
-    console.log("Modification du contact :");
+// Fonction pour modifier un contact
+const editContact = async (contact : Contact) => {
+    try {
+        const response = await fetch(baseUrl + "edit", {
+            method: "PATCH",
+            body: JSON.stringify(contact)
+        });
+        // En cours
+    } catch (error) {
+        console.error(error);
+    }
     console.log(contact);
 }
 
 // Fonction pour ajouter un contact
-const addContact = (contact : Contact) => {
-    console.log("Ajout contact :");
-    console.log(contact);
+const addContact = async () => {
+    const newContact = new ContactDTO(
+        capitalize(firstNameInput.value).trim(),
+        capitalize(lastNameInput.value).trim(),
+        new Date(birthDateInput.value),
+        emailInput.value.trim(),
+        phoneInput.value.trim()
+    );
+
+    try {
+        const response = await fetch(baseUrl + "add", {
+            method: "POST",
+            body: JSON.stringify(newContact)
+        });
+        const data = await response.json() as Contact;
+        console.log(data);
+        
+        if (data.id) {
+            console.log("OK");
+        } else {
+            console.log("KO");
+            
+        }
+    } catch (error) {
+        console.error(error);
+    }
+    console.log(newContact);
 }
 
 // Fonction pour actualiser l'affichage de la liste
@@ -122,3 +155,8 @@ const updateView = async () => {
 // Main
 
 updateView();
+
+formElt.addEventListener("submit", (event) => {
+    event.preventDefault();
+    addContact();
+});

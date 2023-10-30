@@ -1,0 +1,31 @@
+<p>Age : {{ age }}</p>
+
+<button (click)="onIncrementAge()">Augmenter l'âge</button>
+
+<!-- Affichage conditionnel avec la directive *ngIf -->
+<div *ngIf="age >= 18">Vous êtes majeur</div>
+<div *ngIf="age < 18">Vous êtes mineur</div>
+
+<div ></div>
+
+<!-- Autre façon de faire le if-else -->
+<div *ngIf="age >= 18; else elseElt">Vous êtes majeur</div>
+<ng-template #elseElt>
+    <div>
+        Vous êtes mineur
+    </div>
+</ng-template>
+
+<ul>
+    <li *ngFor="let prenom of prenoms">
+        {{ prenom }}
+    </li>
+</ul>
+
+<p>
+    Votre prénom : {{ unPrenom }}
+</p>
+<!-- Utilisation de FormsModule, importé dans app.module.ts -->
+<form action="">
+    <input type="text" name="firstname" id="firstname" [(ngModel)]="unPrenom">
+</form>

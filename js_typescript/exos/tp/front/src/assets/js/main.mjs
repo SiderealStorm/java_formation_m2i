@@ -8,13 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import Contact from "./Contact.js";
+import ContactDTO from "./ContactDTO.js";
 // Variables du fichier
 const baseUrl = "http://localhost:8080/api/v1/contacts/";
-const formElt = document.querySelector("form");
+const formElt = document.querySelector("form#contact-form");
 const firstNameInput = document.querySelector("form input#firstname");
 const lastNameInput = document.querySelector("form input#lastname");
 const birthDateInput = document.querySelector("form input#birthdate");
-const emailInput = document.querySelector("form input#email");
+const emailInput = document.querySelector("form input#mail");
 const phoneInput = document.querySelector("form input#phone");
 let contactList;
 // Fonction pour mettre la première lette d'une string en majuscule
@@ -28,7 +29,7 @@ const getContactList = () => __awaiter(void 0, void 0, void 0, function* () {
         const data = yield response.json();
         const contactList = [];
         data.forEach(element => {
-            const newContact = new Contact(element.id, capitalize(element.firstName), capitalize(element.lastName), new Date(element.birthDate), element.age, element.email, element.phone);
+            const newContact = new Contact(element.id, element.firstName, element.lastName, new Date(element.birthDate), element.age, element.email, element.phone);
             contactList.push(newContact);
         });
         return contactList;
@@ -54,16 +55,42 @@ const deleteContact = (contact) => __awaiter(void 0, void 0, void 0, function* (
         }
     }
 });
-// Fonction pour supprimer un contact
-const editContact = (contact) => {
-    console.log("Modification du contact :");
+// Fonction pour modifier un contact
+const editContact = (contact) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield fetch(baseUrl + "edit", {
+            method: "PATCH",
+            body: JSON.stringify(contact)
+        });
+        // En cours
+    }
+    catch (error) {
+        console.error(error);
+    }
     console.log(contact);
-};
+});
 // Fonction pour ajouter un contact
-const addContact = (contact) => {
-    console.log("Ajout contact :");
-    console.log(contact);
-};
+const addContact = () => __awaiter(void 0, void 0, void 0, function* () {
+    const newContact = new ContactDTO(capitalize(firstNameInput.value).trim(), capitalize(lastNameInput.value).trim(), new Date(birthDateInput.value), emailInput.value.trim(), phoneInput.value.trim());
+    try {
+        const response = yield fetch(baseUrl + "add", {
+            method: "POST",
+            body: JSON.stringify(newContact)
+        });
+        const data = yield response.json();
+        console.log(data);
+        if (data.id) {
+            console.log("OK");
+        }
+        else {
+            console.log("KO");
+        }
+    }
+    catch (error) {
+        console.error(error);
+    }
+    console.log(newContact);
+});
 // Fonction pour actualiser l'affichage de la liste
 const updateView = () => __awaiter(void 0, void 0, void 0, function* () {
     contactList = yield getContactList();
@@ -103,3 +130,7 @@ const updateView = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 // Main
 updateView();
+formElt.addEventListener("submit", (event) => {
+    event.preventDefault();
+    addContact();
+});

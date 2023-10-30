@@ -1,0 +1,76 @@
+<h2>Ajouter un contact :</h2>
+<form action="" (submit)="onSubmitForm($event)">
+    <div>
+        <label for="firstName">Prénom :</label>
+        <input type="text" name="firstName" id="firstName" [(ngModel)]="firstName">
+    </div>
+    <div>
+        <label for="lastName">Nom :</label>
+        <input type="text" name="lastName" id="lastName" [(ngModel)]="lastName">
+    </div>
+    <div>
+        <label for="age">Âge :</label>
+        <input type="number" min="0" name="age" id="age" [(ngModel)]="age">
+    </div>
+    <div>
+        <label for="mail">E-mail :</label>
+        <input type="email" name="mail" id="mail" [(ngModel)]="mail">
+    </div>
+    <div>
+        <label for="phone">Téléphone :</label>
+        <input type="text" name="phone" id="phone" [(ngModel)]="phone">
+    </div>
+    <div>
+        <button>Envoyer</button>
+    </div>
+</form>
+
+<div *ngIf="contactsList.length > 0">
+    <h2>Liste des contacts</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    Prénom
+                </th>
+                <th>
+                    Âge
+                </th>
+                <th>
+                    E-mail
+                </th>
+                <th>
+                    Téléphone
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contact of contactsList">
+                <td>
+                    {{ contact.lastName }}
+                </td>
+                <td>
+                    {{ contact.firstName }}
+                </td>
+                <td>
+                    {{ contact.age }} ans
+                </td>
+                <td>
+                    {{ contact.mail }}
+                </td>
+                <td>
+                    {{ contact.phone }}
+                </td>
+                <td>
+                    <button (click)="onClickDelete(contact)">Supprimer</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
