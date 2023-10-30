@@ -1,8 +1,7 @@
 package com.example.back.mappers;
 
 import com.example.back.entities.Contact;
-import com.example.back.models.ContactDetailsDTO;
-import com.example.back.models.ContactSummaryDTO;
+import com.example.back.models.ContactDTO;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -12,28 +11,7 @@ import java.util.List;
 @Component
 public class ContactMapper {
 
-    public ContactSummaryDTO contactToContactSummaryDto(Contact contact) {
-        if (contact == null) {
-            return null;
-        } else {
-            return ContactSummaryDTO.builder()
-                    .id(contact.getId())
-                    .firstName(contact.getFirstName())
-                    .lastName(contact.getLastName())
-                    .birthDate(contact.getBirthDate())
-                    .build();
-        }
-    }
-
-    public List<ContactSummaryDTO> contactListToContactSummaryDtoList(List<Contact> contacts) {
-        if (contacts == null) {
-            return null;
-        } else {
-            return contacts.stream().map(this::contactToContactSummaryDto).toList();
-        }
-    }
-
-    public Contact contactDetailsDtoToContact(ContactDetailsDTO dto) {
+    public Contact contactDtoToContact(ContactDTO dto) {
         if (dto == null) {
             return null;
         } else {
@@ -47,11 +25,11 @@ public class ContactMapper {
         }
     }
 
-    public ContactDetailsDTO contactToContactDetailsDto(Contact contact) {
+    public ContactDTO contactToContactDto(Contact contact) {
         if (contact == null) {
             return null;
         } else {
-            return ContactDetailsDTO.builder()
+            return ContactDTO.builder()
                     .id(contact.getId())
                     .firstName(contact.getFirstName())
                     .lastName(contact.getLastName())
@@ -63,11 +41,11 @@ public class ContactMapper {
         }
     }
 
-    public List<ContactDetailsDTO> contactListToContactDetailDtoList(List<Contact> contacts) {
+    public List<ContactDTO> contactListToContactDtoList(List<Contact> contacts) {
         if (contacts == null) {
             return null;
         } else {
-            return contacts.stream().map(this::contactToContactDetailsDto).toList();
+            return contacts.stream().map(this::contactToContactDto).toList();
         }
     }
 

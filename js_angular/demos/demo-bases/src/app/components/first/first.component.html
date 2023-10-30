@@ -1,0 +1,14 @@
+<!-- Envoyer une variable dans le texte du HTML -->
+<p>La valeur de ma variable est "{{ monTexte }}"</p>
+
+<!-- Lier une variable à une propriété -->
+<img [src]="monImageUrl" alt="Mon image">
+
+<!-- Appeler une méthode depuis le HTML -->
+<div>
+    <button (click)="sayHello()">Dire Bonjour</button>
+</div>
+
+<label for="texte">Mon texte :</label>
+<!-- Passer un évènement à une méthode -->
+<input type="text" name="texte" id="texte" (input)="logText($event)">

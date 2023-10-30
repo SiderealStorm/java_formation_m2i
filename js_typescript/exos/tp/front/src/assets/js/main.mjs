@@ -7,10 +7,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import Contact from "./Contact.js";
 // Variables du fichier
 const baseUrl = "http://localhost:8080/api/v1/contacts/";
 const formElt = document.querySelector("form");
 const firstNameInput = document.querySelector("form input#firstname");
+const lastNameInput = document.querySelector("form input#lastname");
+const birthDateInput = document.querySelector("form input#birthdate");
+const emailInput = document.querySelector("form input#email");
+const phoneInput = document.querySelector("form input#phone");
 let contactList;
 // Fonction pour mettre la première lette d'une string en majuscule
 const capitalize = (text) => {
@@ -23,7 +28,8 @@ const getContactList = () => __awaiter(void 0, void 0, void 0, function* () {
         const data = yield response.json();
         const contactList = [];
         data.forEach(element => {
-            contactList.push(element);
+            const newContact = new Contact(element.id, capitalize(element.firstName), capitalize(element.lastName), new Date(element.birthDate), element.age, element.email, element.phone);
+            contactList.push(newContact);
         });
         return contactList;
     }
@@ -33,16 +39,29 @@ const getContactList = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 // Fonction pour supprimer un contact
-const deleteContact = (contact) => {
+const deleteContact = (contact) => __awaiter(void 0, void 0, void 0, function* () {
     const confirm = window.confirm(`Voulez-vous vraiment supprimer ${contact.firstName} ${contact.lastName} de la liste ?`);
     if (confirm) {
-        console.log("Suppresion du contact :");
-        console.log(contact);
+        try {
+            const response = yield fetch(baseUrl + "delete", {
+                method: "DELETE",
+                body: JSON.stringify(contact.id)
+            });
+            // En cours
+        }
+        catch (error) {
+            console.error(error);
+        }
     }
-};
+});
 // Fonction pour supprimer un contact
 const editContact = (contact) => {
     console.log("Modification du contact :");
+    console.log(contact);
+};
+// Fonction pour ajouter un contact
+const addContact = (contact) => {
+    console.log("Ajout contact :");
     console.log(contact);
 };
 // Fonction pour actualiser l'affichage de la liste
@@ -56,7 +75,15 @@ const updateView = () => __awaiter(void 0, void 0, void 0, function* () {
         const row = document.createElement("tr");
         for (property in contact) {
             const tableCell = document.createElement("td");
-            tableCell.textContent = contact[property].toString();
+            if (property === "birthDate") {
+                tableCell.textContent = contact[property].toLocaleDateString();
+            }
+            else if (property === "age") {
+                tableCell.textContent = contact[property].toString() + " ans";
+            }
+            else {
+                tableCell.textContent = contact[property].toString();
+            }
             row.appendChild(tableCell);
         }
         const actionsCell = document.createElement("tr");
@@ -76,4 +103,3 @@ const updateView = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 // Main
 updateView();
-export {};

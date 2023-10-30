@@ -1,13 +1,13 @@
 package com.example.back.controllers;
 
-import com.example.back.models.ContactDetailsDTO;
-import com.example.back.models.ContactSummaryDTO;
+import com.example.back.models.ContactDTO;
 import com.example.back.services.ContactService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -17,29 +17,34 @@ public class ContactController {
 
     private final ContactService service;
 
-//    @GetMapping("list")
-//    public ResponseEntity<List<ContactSummaryDTO>> getContactSummaryList() {
-//        return ResponseEntity.ok(service.getAllContactsDtoList());
-//    }
-
     @GetMapping("list")
-    public ResponseEntity<List<ContactDetailsDTO>> getContactSummaryList() {
+    public ResponseEntity<List<ContactDTO>> getContactSummaryList() {
         return ResponseEntity.ok(service.getAllContactsDtoList());
     }
 
-    @GetMapping("details/{contactId}")
-    public ResponseEntity<ContactDetailsDTO> getContactDetailsById(@PathVariable("contactId") Long id) {
-        ContactDetailsDTO contact = service.getContactById(id);
-        if (contact != null) {
-            return ResponseEntity.ok(contact);
+    @PostMapping("add")
+    public ResponseEntity<ContactDTO> addNewContact(@RequestBody ContactDTO newContact) {
+        ContactDTO savedContact = service.saveNewContact(newContact);
+        return ResponseEntity.ok(savedContact);
+    }
+
+    @PatchMapping("edit")
+    public ResponseEntity<ContactDTO> editContact(@RequestBody ContactDTO contact) {
+        ContactDTO editedContact = service.editContact(contact);
+        if (editedContact != null) {
+            return ResponseEntity.ok(editedContact);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @PostMapping("add")
-    public ResponseEntity<ContactDetailsDTO> addNewContact(@RequestBody ContactDetailsDTO newContact) {
-        ContactDetailsDTO savedContact = service.saveNewContact(newContact);
-        return ResponseEntity.ok(savedContact);
+    @DeleteMapping("delete")
+    public ResponseEntity<String> deleteContactById(@RequestBody Long id) {
+        if (service.deleteContactById(id)) {
+            return ResponseEntity.ok("Contact n°" + id + " supprimé");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
+
 }

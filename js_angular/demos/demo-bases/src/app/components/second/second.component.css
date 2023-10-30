@@ -1,0 +1,4 @@
+/* Sélecteur pour le composant lui-même */
+:host {
+    display: flex;
+}

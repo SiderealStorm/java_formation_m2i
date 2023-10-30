@@ -2,8 +2,7 @@ package com.example.back.services;
 
 import com.example.back.entities.Contact;
 import com.example.back.mappers.ContactMapper;
-import com.example.back.models.ContactDetailsDTO;
-import com.example.back.models.ContactSummaryDTO;
+import com.example.back.models.ContactDTO;
 import com.example.back.repositories.ContactRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,20 +17,60 @@ public class ContactService {
     private final ContactRepo repository;
     private final ContactMapper mapper;
 
-    public List<ContactDetailsDTO> getAllContactsDtoList() {
-        return mapper.contactListToContactDetailDtoList(repository.findAll());
+    public List<ContactDTO> getAllContactsDtoList() {
+        return mapper.contactListToContactDtoList(repository.findAll());
     }
 
-    public ContactDetailsDTO getContactById(Long id) {
+    public Contact findContactById(Long id) {
         Optional<Contact> foundContact = repository.findById(id);
 
-        return foundContact.map(mapper::contactToContactDetailsDto).orElse(null);
+        return foundContact.orElse(null);
     }
 
-    public ContactDetailsDTO saveNewContact(ContactDetailsDTO contactDto) {
-        Contact newContact = mapper.contactDetailsDtoToContact(contactDto);
+    public ContactDTO saveNewContact(ContactDTO contactDto) {
+        Contact newContact = mapper.contactDtoToContact(contactDto);
         repository.save(newContact);
-        return mapper.contactToContactDetailsDto(newContact);
+        return mapper.contactToContactDto(newContact);
+    }
+
+    public ContactDTO editContact(ContactDTO contactDTO) {
+        Contact contact = findContactById(contactDTO.getId());
+        if (contact != null) {
+            if (contactDTO.getFirstName() != null) {
+                contact.setFirstName(contactDTO.getFirstName());
+            }
+
+            if (contactDTO.getLastName() != null) {
+                contact.setLastName(contactDTO.getLastName());
+            }
+
+            if (contactDTO.getBirthDate() != null) {
+                contact.setBirthDate(contactDTO.getBirthDate());
+            }
+
+            if (contactDTO.getEmail() != null) {
+                contact.setEmail(contactDTO.getEmail());
+            }
+
+            if (contactDTO.getPhone() != null) {
+                contact.setPhone(contactDTO.getPhone());
+            }
+
+            contact = repository.save(contact);
+
+            return mapper.contactToContactDto(contact);
+        } else {
+            return null;
+        }
+    }
+
+    public boolean deleteContactById(Long id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

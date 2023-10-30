@@ -22,8 +22,4 @@ public class Contact {
     private LocalDate birthDate;
     private String email;
     private String phone;
-//      // TODO ajouter plus tard
-//    @ManyToOne
-//    @JoinColumn(name = "address_id")
-//    private Address address;
 }

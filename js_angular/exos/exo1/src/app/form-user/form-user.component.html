@@ -1,0 +1,13 @@
+<div>
+    <label for="firstname">Prénom :</label>
+    <input type="text" name="firstname" id="firstname" [value]="firstName" (input)="onChangeFirstName($event)">
+</div>
+<div>
+    <label for="lastname">Nom :</label>
+    <input type="text" name="lastname" id="lastname" [value]="lastName" (input)="onChangeLastName($event)">
+</div>
+<div>
+    <label for="age">Âge :</label>
+    <input type="number" min="0" name="age" id="age" [value]="age" (input)="onChangeAge($event)">
+</div>
+<button (click)="onSubmitForm()">Envoyer</button>
