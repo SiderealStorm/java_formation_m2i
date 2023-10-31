@@ -1,0 +1,13 @@
+<p>
+    La valeur de ma variable dans ce composant est : {{ maVariable }}
+</p>
+
+<p>
+    La valeur de ma variable dans le composant parent est : {{ variableParent }}
+</p>
+
+<hr>
+
+<button (click)="faitQqchDansParent()">Changer la variable du parent</button>
+
+<input type="text" (input)="changerTexteParent($event)">

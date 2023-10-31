@@ -39,9 +39,9 @@ public class ContactController {
     }
 
     @DeleteMapping("delete")
-    public ResponseEntity<String> deleteContactById(@RequestBody Long id) {
-        if (service.deleteContactById(id)) {
-            return ResponseEntity.ok("Contact n°" + id + " supprimé");
+    public ResponseEntity<String> deleteContactById(@RequestBody ContactDTO contact) {
+        if (service.deleteContactById(contact.getId())) {
+            return ResponseEntity.ok("Contact n°" + contact.getId() + " supprimé");
         } else {
             return ResponseEntity.notFound().build();
         }

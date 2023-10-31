@@ -46,9 +46,10 @@ const deleteContact = (contact) => __awaiter(void 0, void 0, void 0, function* (
         try {
             const response = yield fetch(baseUrl + "delete", {
                 method: "DELETE",
-                body: JSON.stringify(contact.id)
+                body: JSON.stringify(contact)
             });
-            // En cours
+            const data = yield response.json();
+            console.log(data);
         }
         catch (error) {
             console.error(error);
@@ -57,12 +58,19 @@ const deleteContact = (contact) => __awaiter(void 0, void 0, void 0, function* (
 });
 // Fonction pour modifier un contact
 const editContact = (contact) => __awaiter(void 0, void 0, void 0, function* () {
+    firstNameInput.value = contact.firstName;
+    lastNameInput.value = contact.lastName;
+    birthDateInput.value = contact.birthDate.toLocaleDateString();
+    emailInput.value = contact.email;
+    phoneInput.value = contact.phone;
+    const editedContact = new ContactDTO(capitalize(firstNameInput.value).trim(), capitalize(lastNameInput.value).trim(), birthDateInput.value, emailInput.value.trim(), phoneInput.value.trim());
     try {
         const response = yield fetch(baseUrl + "edit", {
             method: "PATCH",
             body: JSON.stringify(contact)
         });
-        // En cours
+        const data = yield response.json();
+        console.log(data);
     }
     catch (error) {
         console.error(error);

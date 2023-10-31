@@ -46,13 +46,16 @@ const getContactList = async () => {
 // Fonction pour supprimer un contact
 const deleteContact = async (contact : Contact) => {
     const confirm = window.confirm(`Voulez-vous vraiment supprimer ${contact.firstName} ${contact.lastName} de la liste ?`);
+    
     if (confirm) {
         try {
             const response = await fetch(baseUrl + "delete", {
                 method: "DELETE",
-                body: JSON.stringify(contact.id)
+                body: JSON.stringify(contact)
             });
-            // En cours
+            const data = await response.json();
+            console.log(data);
+            
         } catch (error) {
             console.error(error);
         }
@@ -61,12 +64,26 @@ const deleteContact = async (contact : Contact) => {
 
 // Fonction pour modifier un contact
 const editContact = async (contact : Contact) => {
+    firstNameInput.value = contact.firstName;
+    lastNameInput.value = contact.lastName;
+    birthDateInput.value = contact.birthDate.toLocaleDateString();
+    emailInput.value = contact.email;
+    phoneInput.value = contact.phone;
+
+    const editedContact = new ContactDTO(
+        capitalize(firstNameInput.value).trim(),
+        capitalize(lastNameInput.value).trim(),
+        birthDateInput.value,
+        emailInput.value.trim(),
+        phoneInput.value.trim()
+        );
     try {
         const response = await fetch(baseUrl + "edit", {
             method: "PATCH",
             body: JSON.stringify(contact)
         });
-        // En cours
+        const data = await response.json();
+        console.log(data);
     } catch (error) {
         console.error(error);
     }

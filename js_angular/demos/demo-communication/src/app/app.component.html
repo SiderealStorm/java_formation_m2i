@@ -1,0 +1,5 @@
+<h1>Démo : communication entre composants</h1>
+<hr>
+<!-- Pour injecter la valeur dans l'enfant, on passe par le property binding -->
+<!-- Pour récupérer une variable de l'enfant, il faut passer par une méthode et un évènement -->
+<app-child [varA]="maVariable" (unEvenement)="changeMaVariable()" (unAutreEvenement)="customiserMaVariable($event)"></app-child>
