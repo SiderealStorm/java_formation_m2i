@@ -33,8 +33,8 @@ public class ContactService {
         return mapper.contactToContactDto(newContact);
     }
 
-    public ContactDTO editContact(ContactDTO contactDTO) {
-        Contact contact = findContactById(contactDTO.getId());
+    public ContactDTO editContact(Long id, ContactDTO contactDTO) {
+        Contact contact = findContactById(id);
         if (contact != null) {
             if (contactDTO.getFirstName() != null) {
                 contact.setFirstName(contactDTO.getFirstName());

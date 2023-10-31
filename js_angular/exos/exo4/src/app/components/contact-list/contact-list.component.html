@@ -1,0 +1,18 @@
+<h2>Liste des contacts :</h2>
+<div *ngIf="contactList.length !== 0 ; else elseBlock" class="d-flex flex-wrap justify-content-center">
+    <div class="card text-center m-3" style="min-width: 18rem;" *ngFor="let contact of contactList">
+        <div class="card-body">
+            <h5 class="card-title">{{ contact.firstName }} {{contact.lastName}}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{ contact.age }} ans</h6>
+            <hr>
+            <p class="card-text">E-mail : {{ contact.mail }}</p>
+            <p class="card-text">Téléphone : {{ contact.phone }}</p>
+            <app-contact-delete (deleteContactEvent)="deleteContact($event)" [contact]="contact"></app-contact-delete>
+        </div>
+    </div>
+</div>
+<ng-template #elseBlock>
+    <p>
+        Il n'y a aucun contact enregistré.
+    </p>
+</ng-template>

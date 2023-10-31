@@ -1,0 +1,26 @@
+<h2>Ajouter un contact :</h2>
+<form action="" (submit)="onSubmitForm($event)">
+    <div>
+        <label for="firstName">Prénom :</label>
+        <input type="text" name="firstName" id="firstName" [(ngModel)]="newContact.firstName">
+    </div>
+    <div>
+        <label for="lastName">Nom :</label>
+        <input type="text" name="lastName" id="lastName" [(ngModel)]="newContact.lastName">
+    </div>
+    <div>
+        <label for="age">Âge :</label>
+        <input type="number" min="0" name="age" id="age" [(ngModel)]="newContact.age">
+    </div>
+    <div>
+        <label for="mail">E-mail :</label>
+        <input type="email" name="mail" id="mail" [(ngModel)]="newContact.mail">
+    </div>
+    <div>
+        <label for="phone">Téléphone :</label>
+        <input type="text" name="phone" id="phone" [(ngModel)]="newContact.phone">
+    </div>
+    <div>
+        <button class="btn btn-primary">Envoyer</button>
+    </div>
+</form>

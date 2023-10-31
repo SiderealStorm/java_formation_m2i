@@ -16,6 +16,4 @@ export class AppComponent {
   customiserMaVariable(texte : string) {
     this.maVariable = texte;
   }
-
-
 }

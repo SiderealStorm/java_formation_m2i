@@ -46,6 +46,9 @@ const deleteContact = (contact) => __awaiter(void 0, void 0, void 0, function* (
         try {
             const response = yield fetch(baseUrl + "delete", {
                 method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify(contact)
             });
             const data = yield response.json();
@@ -54,6 +57,7 @@ const deleteContact = (contact) => __awaiter(void 0, void 0, void 0, function* (
         catch (error) {
             console.error(error);
         }
+        updateView();
     }
 });
 // Fonction pour modifier un contact
@@ -67,7 +71,10 @@ const editContact = (contact) => __awaiter(void 0, void 0, void 0, function* () 
     try {
         const response = yield fetch(baseUrl + "edit", {
             method: "PATCH",
-            body: JSON.stringify(contact)
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedContact)
         });
         const data = yield response.json();
         console.log(data);
@@ -83,30 +90,26 @@ const addContact = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield fetch(baseUrl + "add", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(newContact)
         });
-        const data = yield response.json();
-        console.log(data);
-        if (data.id) {
-            console.log("OK");
-        }
-        else {
-            console.log("KO");
-        }
+        console.log(response);
     }
     catch (error) {
         console.error(error);
     }
-    console.log(newContact);
+    updateView();
 });
 // Fonction pour actualiser l'affichage de la liste
 const updateView = () => __awaiter(void 0, void 0, void 0, function* () {
-    contactList = yield getContactList();
-    document.querySelector("h4 span#count").textContent = contactList.length.toString();
     const tableBody = document.querySelector("table#contacts tbody");
     let property;
+    contactList = yield getContactList();
+    document.querySelector("h4 span#count").textContent = contactList.length.toString();
+    tableBody.textContent = "";
     contactList.forEach(contact => {
-        console.log(contact);
         const row = document.createElement("tr");
         for (property in contact) {
             const tableCell = document.createElement("td");

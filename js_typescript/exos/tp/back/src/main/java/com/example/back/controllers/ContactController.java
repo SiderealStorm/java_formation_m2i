@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -28,9 +27,9 @@ public class ContactController {
         return ResponseEntity.ok(savedContact);
     }
 
-    @PatchMapping("edit")
-    public ResponseEntity<ContactDTO> editContact(@RequestBody ContactDTO contact) {
-        ContactDTO editedContact = service.editContact(contact);
+    @PatchMapping("{contactId}")
+    public ResponseEntity<ContactDTO> editContact(@PathVariable("contactId") Long id, @RequestBody ContactDTO contact) {
+        ContactDTO editedContact = service.editContact(id, contact);
         if (editedContact != null) {
             return ResponseEntity.ok(editedContact);
         } else {
@@ -38,10 +37,10 @@ public class ContactController {
         }
     }
 
-    @DeleteMapping("delete")
-    public ResponseEntity<String> deleteContactById(@RequestBody ContactDTO contact) {
-        if (service.deleteContactById(contact.getId())) {
-            return ResponseEntity.ok("Contact n°" + contact.getId() + " supprimé");
+    @DeleteMapping("{contactId}")
+    public ResponseEntity<String> deleteContactById(@PathVariable("contactId") Long id) {
+        if (service.deleteContactById(id)) {
+            return ResponseEntity.ok("Contact n°" +id + " supprimé");
         } else {
             return ResponseEntity.notFound().build();
         }

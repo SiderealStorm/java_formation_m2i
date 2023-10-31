@@ -1,4 +1,4 @@
-class ContactDTO {
+class Contact {
     public firstName : string;
     public lastName : string;
     public birthDate : string;
@@ -20,4 +20,4 @@ class ContactDTO {
     }
 }
 
-export default ContactDTO;
+export default Contact;

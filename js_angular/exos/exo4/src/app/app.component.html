@@ -1,0 +1,5 @@
+<h1>Exercice 4</h1>
+<hr>
+<app-contact-form (addContactEvent)="addNewContact($event)"></app-contact-form>
+<hr>
+<app-contact-list (deleteContactEvent)="deleteContact($event)" [contactList]="contactList"></app-contact-list>
