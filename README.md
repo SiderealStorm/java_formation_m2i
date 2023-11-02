@@ -4,6 +4,12 @@ Exercices et démonstrations Java, faits pendant la formation "*Développeurs Ja
 
 Chaque dossier correspond à un module étudié, dans l'ordre d'apprentissage.
 
+### Environnements :
+- Java : JDK 20
+- IDE Java : IntelliJ
+- TomCat (pour Java EE)
+- TypeScript : Node.js 20.9.0
+
 
 ## [Bases Java](/java_base/)
 ### Bases de programmation en Java.
@@ -100,15 +106,28 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 - [Exercices](/js_javascript/exos/)
 
 ## [TypeScript](/js_typescript/)
-### Bases TypeScript
+### Transition entre JS et Angular avec le typage
 
-Chaque dossier correspond à un "projet" (exercice ou démo) pouvant être exécuté en ouvrant le fichier `index.html` dans un navigateur.
+Chaque dossier correspond à un "projet" (exercice ou démo).
 Chaque exercice contient un fichier *readme* avec son énoncé.
+
+**L'exécution des projets nécessite à minima l'installation de Node.js.**
+Pour lancer la compilation, ouvrir un terminal à la racine du projet et exécuter la commande :
+```console
+$ npx -p typescript tsc --watch
+```
+Le projet est alors accessible en ouvrant le fichier `index.html` dans le navigateur.
 
 ### Contenu :
 - [Démos](/js_typescript/demos/)
 - [Exercices](/js_typescript/exos/)
 
 ## [Angular](/js_angular/)
-### A venir
+### Utilisation d'Angular pour créer de applications FrontEnd
 
+Chaque dossier correspond à un "projet" (exercice ou démo) pouvant être exécuté en ouvrant le fichier `index.html` dans un navigateur.
+Chaque exercice contient un fichier *readme* avec son énoncé.
+
+### Contenu :
+- [Démos](/js_angular/demos/)
+- [Exercices](/js_angular/exos/)
