@@ -1,20 +1,35 @@
 # java_formation_m2i
 
-Exercices et démonstrations Java, faits pendant la formation "*Développeurs Java JEE*" de Juillet à Novembre 2023 avec M2i formation Villeneuve d'Ascq.
-
-Chaque dossier correspond à un module étudié, dans l'ordre d'apprentissage.
+Exercices et démonstrations **Java** et **JavaScript/Angular**, faits pendant la formation "*Développeurs Java JEE*" de Juillet à Novembre 2023 avec M2i formation Villeneuve d'Ascq.
 
 ### Environnements :
 - Java : JDK 20
 - IDE Java : IntelliJ
 - TomCat (pour Java EE)
 - TypeScript : Node.js 20.9.0
+- IDE front : VS Code + plugin *Live Server*
+- BDD : PostgreSQL
+
+## Contenu de la formation
+Chaque partie correspond à un module étudié, dans l'ordre d'apprentissage :
+1. [Bases Java](#Bases-Java)
+1. [Programmation Orientée Objet](#Programmation-Orientée-Objet)
+1. [JDBC/JPA/Hibernate](#JDBC/JPA/Hibernate)
+1. [Test Driven Development](#Test-Driven-Development)
+1. [HTML/CSS](#HTML/CSS)
+1. [Java EE](#Java-EE)
+1. [Spring](#Spring)
+1. [JavaScript](#JavaScript)
+1. [TypeScript](#TypeScript)
+1. [Angular](#Angular)
+
+----
 
 
 ## [Bases Java](/java_base/)
 ### Bases de programmation en Java.
 
-Tout le dossier est un projet IntelliJ.
+Tout le dossier constitue un seul projet IntelliJ.
 Chaque fichier .java possède une fonction `main()` pour pouvoir être exécuté individuellement.
 
 Pour les exercices, l'énoncé est indiqué en commentaire au-dessus de la déclaration de classe.
@@ -29,7 +44,7 @@ Pour les exercices, l'énoncé est indiqué en commentaire au-dessus de la décl
 ## [Programmation Orientée Objet](/java_poo/src/main/java/org/example/)
 ### Utilisation de la POO et des collections en Java.
 
-Tout le dossier est un projet IntelliJ.
+Tout le dossier constitue un seul projet IntelliJ.
 Chaque package est individuel et contient (minimum) une classe possédant une fonction `main()` pour exécuter le code associé.
 
 Pour les exercices, l'énoncé est indiqué en commentaire au-dessus de la déclaration de la classe Main.
@@ -39,9 +54,9 @@ Pour les exercices, l'énoncé est indiqué en commentaire au-dessus de la décl
 - [Exercices](/java_poo/src/main/java/org/example/exos/)
 
 ## [JDBC/JPA/Hibernate](/java_jdbc/src/main/java/org/example/)
-### Utilisation de JDBC, JPA et Hibernate.
+### Utilisation de JDBC, JPA et Hibernate pour la gestion des données.
 
-Tout le dossier est un projet IntelliJ.
+Tout le dossier constitue un seul projet IntelliJ.
 Chaque package est individuel et contient une classe possédant une fonction `main()` pour exécuter le code associé.
 
 Pour les exercices, l'énoncé est indiqué dans un fichier *readme* présent dans le package. Certains exercices sont en plusieurs parties, chaque partie faisant l'objet d'un tag git.
@@ -76,9 +91,10 @@ L'énoncé des exercices est indiqué dans un fichier *readme*.
 - [Exercices](/html_css/exos/)
 
 ## [Java EE](/java_ee/)
-### Programmation Java pour le Web avec vues en JSP.
+### Programmation Java pour le Web, avec vues en JSP.
 
-Chaque exercice ou démo est un projet Intellij individuel.
+Chaque exercice ou démo est un projet Intellij individuel. Les projets peuvent être exécutés via un serveur type TomCat.
+
 Chaque exercice contient un fichier *readme* avec son énoncé.
 
 ### Contenu :
@@ -89,6 +105,8 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 ### Utilisation de Spring pour le Web : thymeleaf, validation, security...
 
 Chaque exercice ou démo est un projet Intellij individuel.
+Une fois exécuté, le projet est alors accessible via le navigateur à `localhost:8080`.
+
 Chaque exercice contient un fichier *readme* avec son énoncé.
 
 ### Contenu :
@@ -106,7 +124,7 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 - [Exercices](/js_javascript/exos/)
 
 ## [TypeScript](/js_typescript/)
-### Transition entre JS et Angular avec le typage
+### Intégration du typage en vue de l'utilisation d'Angular
 
 Chaque dossier correspond à un "projet" (exercice ou démo).
 Chaque exercice contient un fichier *readme* avec son énoncé.
@@ -123,10 +141,21 @@ Le projet est alors accessible en ouvrant le fichier `index.html` dans le naviga
 - [Exercices](/js_typescript/exos/)
 
 ## [Angular](/js_angular/)
-### Utilisation d'Angular pour créer de applications FrontEnd
+### Utilisation d'Angular pour créer des applications front-end
 
 Chaque dossier correspond à un "projet" (exercice ou démo) pouvant être exécuté en ouvrant le fichier `index.html` dans un navigateur.
 Chaque exercice contient un fichier *readme* avec son énoncé.
+
+**L'exécution des projets nécessite l'installation d'Angular**
+Via node :
+```console
+$ npm install -g @angular/cli
+```
+Pour exécuter le projet, ouvrir un terminal à sa racine et exécuter la commande :
+```console
+$ ng serve
+```
+Le projet est alors accessible via le navigateur à `localhost:4200`.
 
 ### Contenu :
 - [Démos](/js_angular/demos/)

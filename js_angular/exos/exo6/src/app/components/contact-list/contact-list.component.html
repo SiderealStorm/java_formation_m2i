@@ -19,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let contact of contactList | filter: filter">
+        <tr *ngFor="let contact of contactList | contactSort: filter">
             <td>{{ contact.id }}</td>
             <td>{{ contact.lastName }}</td>
             <td>{{ contact.firstName }}</td>

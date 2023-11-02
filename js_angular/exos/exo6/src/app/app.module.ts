@@ -7,7 +7,7 @@ import { ContactListComponent } from './components/contact-list/contact-list.com
 import { FormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { FilterPipe } from './pipes/filter.pipe';
+import { ContactSortPipe } from './pipes/filter.pipe';
 
 registerLocaleData(localeFr, 'fr')
 
@@ -16,7 +16,7 @@ registerLocaleData(localeFr, 'fr')
     AppComponent,
     ContactFormComponent,
     ContactListComponent,
-    FilterPipe
+    ContactSortPipe
   ],
   imports: [
     BrowserModule,
