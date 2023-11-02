@@ -17,15 +17,14 @@
         <h2>Ajouter un contact</h2>
         <hr>
         <form id="contact-form" action="">
+            <input type="hidden" name="id" id="id">
             <div>
                 <label for="lastname">Nom :</label>
                 <input type="text" name="lastname" id="lastname">
-                <span style="color: red;" id="lastname-error"></span>
             </div>
             <div>
                 <label for="firstname">Prénom :</label>
                 <input type="text" name="firstname" id="firstname">
-                <span style="color: red;" id="firstname-error"></span>
             </div>
             <div>
                 <label for="birthdate">Date de naissance :</label>
@@ -39,7 +38,6 @@
                 <label for="phone">Téléphone :</label>
                 <input type="text" name="phone" id="phone">
             </div>
-            <p style="color: red;" id="error"></p>
             <button class="btn btn-primary">Envoyer</button>
         </form>
         <hr>
@@ -50,8 +48,8 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Nom</th>
                     <th>Prénom</th>
+                    <th>Nom</th>
                     <th>Date de naissance</th>
                     <th>Âge</th>
                     <th>Email</th>

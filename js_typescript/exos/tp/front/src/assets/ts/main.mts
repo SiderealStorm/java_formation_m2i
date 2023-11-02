@@ -1,17 +1,20 @@
 import Contact from "./Contact.js";
-import ContactDTO from "./ContactDTO.js";
 
 // Variables du fichier
 const baseUrl = "http://localhost:8080/api/v1/contacts/";
 
 const formElt = document.querySelector("form#contact-form")!
+const idInput = document.querySelector("form input#id") as HTMLInputElement;
 const firstNameInput = document.querySelector("form input#firstname") as HTMLInputElement;
 const lastNameInput = document.querySelector("form input#lastname") as HTMLInputElement;
 const birthDateInput = document.querySelector("form input#birthdate") as HTMLInputElement;
 const emailInput = document.querySelector("form input#mail") as HTMLInputElement;
 const phoneInput = document.querySelector("form input#phone") as HTMLInputElement;
 
+type Mode = "add" | "edit";
+
 let contactList: Contact[];
+let mode: Mode = "add";
 
 // Fonction pour mettre la première lette d'une string en majuscule
 const capitalize = (text: string) => {
@@ -25,7 +28,7 @@ const getContactList = async () => {
         const data = await response.json() as Contact[];
         const contactList: Contact[] = [];
         data.forEach(element => {
-            const newContact : Contact = new Contact(
+            const newContact: Contact = new Contact(
                 element.id,
                 element.firstName,
                 element.lastName,
@@ -44,21 +47,14 @@ const getContactList = async () => {
 }
 
 // Fonction pour supprimer un contact
-const deleteContact = async (contact : Contact) => {
+const deleteContact = async (contact: Contact) => {
     const confirm = window.confirm(`Voulez-vous vraiment supprimer ${contact.firstName} ${contact.lastName} de la liste ?`);
-    
+
     if (confirm) {
         try {
-            const response = await fetch(baseUrl + "delete", {
-                method: "DELETE",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                body: JSON.stringify(contact)
+            await fetch(baseUrl + contact.id, {
+                method: "DELETE"
             });
-            const data = await response.json();
-            console.log(data);
-            
         } catch (error) {
             console.error(error);
         }
@@ -66,61 +62,43 @@ const deleteContact = async (contact : Contact) => {
     }
 }
 
-// Fonction pour modifier un contact
-const editContact = async (contact : Contact) => {
+// Fonction pour remplir le formulaire avec les données d'un contact
+const fillEditForm = (contact: Contact) => {
+    idInput.value = contact.id.toString();
     firstNameInput.value = contact.firstName;
     lastNameInput.value = contact.lastName;
-    birthDateInput.value = contact.birthDate.toLocaleDateString();
+    birthDateInput.value = contact.birthDate.toISOString().substring(0, "2000-01-01".length);
     emailInput.value = contact.email;
     phoneInput.value = contact.phone;
 
-    const editedContact = new ContactDTO(
-        capitalize(firstNameInput.value).trim(),
-        capitalize(lastNameInput.value).trim(),
-        birthDateInput.value,
-        emailInput.value.trim(),
-        phoneInput.value.trim()
-        );
-    try {
-        const response = await fetch(baseUrl + "edit", {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(editedContact)
-        });
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        console.error(error);
-    }
-    console.log(contact);
+    mode = "edit";
 }
 
-// Fonction pour ajouter un contact
-const addContact = async () => {
-    const newContact = new ContactDTO(
-        capitalize(firstNameInput.value).trim(),
-        capitalize(lastNameInput.value).trim(),
-        birthDateInput.value,
-        emailInput.value.trim(),
-        phoneInput.value.trim()
-    );
-
+// Fonction pour envoyer un contact pour ajout ou modification
+const sendContact = async (contact: Contact) => {
     try {
-        const response = await fetch(baseUrl + "add", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newContact)
-        });
-        console.log(response);
-        
+        if (mode === "add") {
+            await fetch(baseUrl + "add", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(contact)
+            });
+        } else {
+            await fetch(baseUrl + contact.id, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(contact)
+            });
+        }
     } catch (error) {
         console.error(error);
     }
     updateView();
+    mode = "add";
 }
 
 // Fonction pour actualiser l'affichage de la liste
@@ -147,7 +125,6 @@ const updateView = async () => {
             } else {
                 tableCell.textContent = contact[property].toString();
             }
-
             row.appendChild(tableCell);
         }
 
@@ -157,11 +134,11 @@ const updateView = async () => {
         deleteBtn.textContent = "Supprimer";
         deleteBtn.setAttribute("class", "btn btn-danger btn-sm");
         deleteBtn.addEventListener("click", () => deleteContact(contact));
-        
+
         const editBtn = document.createElement("button");
         editBtn.textContent = "Modifier";
         editBtn.setAttribute("class", "btn btn-warning btn-sm");
-        editBtn.addEventListener("click", () => editContact(contact));
+        editBtn.addEventListener("click", () => fillEditForm(contact));
 
         actionsCell.appendChild(deleteBtn);
         actionsCell.appendChild(editBtn);
@@ -178,5 +155,24 @@ updateView();
 
 formElt.addEventListener("submit", (event) => {
     event.preventDefault();
-    addContact();
+
+    const contact = new Contact(
+        parseInt(idInput.value),
+        capitalize(firstNameInput.value).trim(),
+        capitalize(lastNameInput.value).trim(),
+        new Date(birthDateInput.value),
+        0,
+        emailInput.value.trim(),
+        phoneInput.value.trim()
+    );
+    console.log(contact);
+    
+    sendContact(contact);
+
+    idInput.value = "";
+    firstNameInput.value = "";
+    lastNameInput.value = "";
+    birthDateInput.value = "";
+    emailInput.value = "";
+    phoneInput.value = "";
 });

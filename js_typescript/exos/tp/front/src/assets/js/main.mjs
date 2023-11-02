@@ -8,16 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import Contact from "./Contact.js";
-import ContactDTO from "./ContactDTO.js";
 // Variables du fichier
 const baseUrl = "http://localhost:8080/api/v1/contacts/";
 const formElt = document.querySelector("form#contact-form");
+const idInput = document.querySelector("form input#id");
 const firstNameInput = document.querySelector("form input#firstname");
 const lastNameInput = document.querySelector("form input#lastname");
 const birthDateInput = document.querySelector("form input#birthdate");
 const emailInput = document.querySelector("form input#mail");
 const phoneInput = document.querySelector("form input#phone");
 let contactList;
+let mode = "add";
 // Fonction pour mettre la première lette d'une string en majuscule
 const capitalize = (text) => {
     return text.substring(0, 1).toUpperCase() + text.substring(1).toLocaleLowerCase();
@@ -44,15 +45,9 @@ const deleteContact = (contact) => __awaiter(void 0, void 0, void 0, function* (
     const confirm = window.confirm(`Voulez-vous vraiment supprimer ${contact.firstName} ${contact.lastName} de la liste ?`);
     if (confirm) {
         try {
-            const response = yield fetch(baseUrl + "delete", {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(contact)
+            yield fetch(baseUrl + contact.id, {
+                method: "DELETE"
             });
-            const data = yield response.json();
-            console.log(data);
         }
         catch (error) {
             console.error(error);
@@ -60,47 +55,43 @@ const deleteContact = (contact) => __awaiter(void 0, void 0, void 0, function* (
         updateView();
     }
 });
-// Fonction pour modifier un contact
-const editContact = (contact) => __awaiter(void 0, void 0, void 0, function* () {
+// Fonction pour remplir le formulaire avec les données d'un contact
+const fillEditForm = (contact) => {
+    idInput.value = contact.id.toString();
     firstNameInput.value = contact.firstName;
     lastNameInput.value = contact.lastName;
-    birthDateInput.value = contact.birthDate.toLocaleDateString();
+    birthDateInput.value = contact.birthDate.toISOString().substring(0, "2000-01-01".length);
     emailInput.value = contact.email;
     phoneInput.value = contact.phone;
-    const editedContact = new ContactDTO(capitalize(firstNameInput.value).trim(), capitalize(lastNameInput.value).trim(), birthDateInput.value, emailInput.value.trim(), phoneInput.value.trim());
+    mode = "edit";
+};
+// Fonction pour envoyer un contact pour ajout ou modification
+const sendContact = (contact) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const response = yield fetch(baseUrl + "edit", {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(editedContact)
-        });
-        const data = yield response.json();
-        console.log(data);
-    }
-    catch (error) {
-        console.error(error);
-    }
-    console.log(contact);
-});
-// Fonction pour ajouter un contact
-const addContact = () => __awaiter(void 0, void 0, void 0, function* () {
-    const newContact = new ContactDTO(capitalize(firstNameInput.value).trim(), capitalize(lastNameInput.value).trim(), birthDateInput.value, emailInput.value.trim(), phoneInput.value.trim());
-    try {
-        const response = yield fetch(baseUrl + "add", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newContact)
-        });
-        console.log(response);
+        if (mode === "add") {
+            yield fetch(baseUrl + "add", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(contact)
+            });
+        }
+        else {
+            yield fetch(baseUrl + contact.id, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(contact)
+            });
+        }
     }
     catch (error) {
         console.error(error);
     }
     updateView();
+    mode = "add";
 });
 // Fonction pour actualiser l'affichage de la liste
 const updateView = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -132,7 +123,7 @@ const updateView = () => __awaiter(void 0, void 0, void 0, function* () {
         const editBtn = document.createElement("button");
         editBtn.textContent = "Modifier";
         editBtn.setAttribute("class", "btn btn-warning btn-sm");
-        editBtn.addEventListener("click", () => editContact(contact));
+        editBtn.addEventListener("click", () => fillEditForm(contact));
         actionsCell.appendChild(deleteBtn);
         actionsCell.appendChild(editBtn);
         row.appendChild(actionsCell);
@@ -143,5 +134,13 @@ const updateView = () => __awaiter(void 0, void 0, void 0, function* () {
 updateView();
 formElt.addEventListener("submit", (event) => {
     event.preventDefault();
-    addContact();
+    const contact = new Contact(parseInt(idInput.value), capitalize(firstNameInput.value).trim(), capitalize(lastNameInput.value).trim(), new Date(birthDateInput.value), 0, emailInput.value.trim(), phoneInput.value.trim());
+    console.log(contact);
+    sendContact(contact);
+    idInput.value = "";
+    firstNameInput.value = "";
+    lastNameInput.value = "";
+    birthDateInput.value = "";
+    emailInput.value = "";
+    phoneInput.value = "";
 });
