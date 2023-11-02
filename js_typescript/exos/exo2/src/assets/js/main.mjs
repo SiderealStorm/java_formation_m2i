@@ -42,11 +42,11 @@ const addContactToList = () => {
     const newContact = new Contact(firstName, lastName, birthdate, mail, phone);
     if (checkContact(newContact)) {
         contactList.push(newContact);
-        // firstNameInput.value = "";
+        firstNameInput.value = "";
         lastNameInput.value = "";
-        // birthdateInput.value = "";
-        // mailInput.value = "";
-        // phoneInput.value = "";
+        birthdateInput.value = "";
+        mailInput.value = "";
+        phoneInput.value = "";
     }
 };
 // Fonction de suppression de contact

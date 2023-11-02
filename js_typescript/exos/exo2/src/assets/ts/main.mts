@@ -60,11 +60,11 @@ const addContactToList = () => {
     if (checkContact(newContact)) {
         contactList.push(newContact);
 
-        // firstNameInput.value = "";
+        firstNameInput.value = "";
         lastNameInput.value = "";
-        // birthdateInput.value = "";
-        // mailInput.value = "";
-        // phoneInput.value = "";
+        birthdateInput.value = "";
+        mailInput.value = "";
+        phoneInput.value = "";
 
     }
 }
