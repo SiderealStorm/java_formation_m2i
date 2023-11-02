@@ -1,0 +1,13 @@
+<h2>Formatté avec un pipe</h2>
+<ul>
+    <!-- Utilisation du pipe avec la syntaxe | nomPipe -->
+    <!-- On peut utiliser le pipe dans n'importe quel fichier HTML -->
+    <!-- Il est possible d'enchaîner les pipes -->
+    <!-- Il existe également des pipes pré-définis -->
+    <li *ngFor="let firstName of firstNames">{{ firstName | toCapitalize }}</li>
+</ul>
+
+<p>Date tel quel : {{ today }}</p>
+<p>Date avec formattage de base : {{ today | date }}</p>
+<p>Date avec formattage et texte en majuscule : {{ today | date | uppercase }}</p>
+<p>Date avec formattage personnalisé : {{ today | date: 'dd/MM/yyyy' }}</p>
