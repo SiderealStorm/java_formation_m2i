@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class OtherComponent {
 
-  firstNames = ["zaCk", "eLliE", "BEN", "storm"];
+  firstNames = ["zaCk", "eLliE", "BEN", "storm", "henDrIK", "rOMie"];
 
   today = new Date();
 }
