@@ -1,0 +1,10 @@
+<div *ngIf="isModalVisible" class="background" (click)="onCloseModal()">
+    <div class="content">
+        <div class="close-btn">
+            <button (click)="onCloseModal()">&times;</button>
+        </div>
+        <div class="modal-content">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

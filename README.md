@@ -160,3 +160,22 @@ Le projet est alors accessible via le navigateur à `localhost:4200`.
 ### Contenu :
 - [Démos](/js_angular/demos/)
 - [Exercices](/js_angular/exos/)
+
+<!-- Bouton haut de page -->
+<a href="#top" style="
+    text-decoration:  none;
+    position:         fixed;
+    bottom:           0;
+    right:            0;
+    display:          inline-flex;
+    color:            #000000;
+    cursor:           pointer;
+    align-items:      center;
+    justify-content:  center;
+    margin:           0 2em 2em 0;
+    border-radius:    50%;
+    padding:          .25em;
+    width:            1em;
+    height:           1em;
+    background-color: #F8F8F8;
+">^</a>
