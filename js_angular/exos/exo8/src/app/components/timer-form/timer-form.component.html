@@ -1,0 +1,18 @@
+<h2>Programmation du minuteur</h2>
+<form (submit)="onSubmitForm($event)">
+    <div>
+        <label for="hours">Heures :</label>
+        <input type="number" name="hours" id="hours" value="0" #hours>
+    </div>
+    <div>
+        <label for="minutes">Minutes :</label>
+        <input type="number" name="minutes" id="minutes" value="0" #minutes>
+    </div>
+    <div>
+        <label for="seconds">Seconds :</label>
+        <input type="number" name="seconds" id="seconds" value="0" #seconds>
+    </div>
+    <div>
+        <button>Créer un minuteur</button>
+    </div>
+</form>

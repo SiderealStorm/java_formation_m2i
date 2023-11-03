@@ -1,0 +1,22 @@
+<h2>Minuteur</h2>
+<div id="clockdiv" *ngIf="currentTime; else elseblock">
+  <div>
+    <span id="hours">{{ hours }}</span>
+  </div>
+  <div>
+    <span>:</span>
+  </div>
+  <div>
+    <span id="minutes">{{ minutes }}</span>
+  </div>
+  <div>
+    <span>:</span>
+  </div>
+  <div>
+    <span id="seconds">{{ seconds }}</span>
+  </div>
+</div>
+
+<ng-template class="buttons" #elseblock>
+  <button (click)="onDeleteTimer()">Terminé</button>
+</ng-template>

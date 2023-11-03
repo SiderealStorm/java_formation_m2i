@@ -1,0 +1,13 @@
+<!-- On peut récupérer un élément de formulaire sans FormsModel grâce aux références -->
+<input type="text" #textInput>
+<!-- On envoie le nom de la référence à la méthode -->
+<button (click)="onChangeText(textInput)">Modifier le texte</button>
+
+<hr>
+
+<button (click)="onSwitchVisibility()">Affiche/masque composant</button>
+
+<app-first *ngIf="firstVisible" [text]="text">
+  <input type="number" #age>
+</app-first>
+

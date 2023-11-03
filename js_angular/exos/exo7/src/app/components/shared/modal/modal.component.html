@@ -1,6 +1,7 @@
-<div *ngIf="isModalVisible" class="background" (click)="onCloseModal()">
+<div *ngIf="isModalVisible" class="background" (click)="onCloseModal($event)">
     <div class="content">
         <div class="close-btn">
+            <!-- Ici pas besoin de passer l'évènement car le composant n'a pas d'enfant -->
             <button (click)="onCloseModal()">&times;</button>
         </div>
         <div class="modal-content">

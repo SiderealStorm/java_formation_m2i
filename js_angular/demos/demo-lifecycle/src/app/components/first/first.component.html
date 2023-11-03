@@ -1,0 +1,10 @@
+<h3>Composant "app-first"</h3>
+
+<p>{{ text }}</p>
+<ng-content></ng-content>
+
+<hr>
+<!-- Les références peuvent aussi être envoyées au TS -->
+<input type="text" #firstName>
+<input type="text" #lastName>
+<button (click)="onLogForm()">Inscription</button>

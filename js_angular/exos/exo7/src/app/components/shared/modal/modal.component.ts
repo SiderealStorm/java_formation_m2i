@@ -15,7 +15,16 @@ export class ModalComponent {
   @Output()
   closeModalEvent = new EventEmitter();
 
-  onCloseModal() {
-    this.closeModalEvent.emit();
+  // On met 'undefined' comme valeur par défaut pour ne pas avoir à passer un évènement si on a pas besoin
+  onCloseModal(event : Event | undefined = undefined) {
+    if (event) {
+      // Condition pour vérifier qu'on clique bien sur un élément qui déclanche l'évènement,
+      // mais pas un de ses enfants.
+      if (event.target === event.currentTarget) {
+        this.closeModalEvent.emit();
+      }
+    } else {
+      this.closeModalEvent.emit();
+    }
   }
 }
