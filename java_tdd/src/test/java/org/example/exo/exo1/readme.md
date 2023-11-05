@@ -1,5 +1,5 @@
 ## Exercice 1
-- Le but de l'exerice est de réaliser les tests de la méthode ***getGrade*** de la classe ***GradingCalculator***
+Le but de l'exerice est de réaliser les tests de la méthode ***getGrade()*** de la classe ***GradingCalculator***
 
 ```
 public class GradingCalculator {

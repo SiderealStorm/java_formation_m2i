@@ -25,7 +25,6 @@ Chaque partie correspond à un module étudié, dans l'ordre d'apprentissage :
 
 ----
 
-
 ## [Bases Java](/java_base/)
 ### Bases de programmation en Java.
 
@@ -41,6 +40,11 @@ Pour les exercices, l'énoncé est indiqué en commentaire au-dessus de la décl
     - [Instructions](/java_base/src/exos/instructions/)
     - [Tableaux](/java_base/src/exos/tableaux/)
 
+<div dir="rtl">
+    <a href="#top">Haut de page</a>
+</div>
+
+
 ## [Programmation Orientée Objet](/java_poo/src/main/java/org/example/)
 ### Utilisation de la POO et des collections en Java.
 
@@ -52,6 +56,11 @@ Pour les exercices, l'énoncé est indiqué en commentaire au-dessus de la décl
 ### Contenu :
 - [Démos](/java_poo/src/main/java/org/example/demos/)
 - [Exercices](/java_poo/src/main/java/org/example/exos/)
+
+<div dir="rtl">
+    <a href="#top">Haut de page</a>
+</div>
+
 
 ## [JDBC/JPA/Hibernate](/java_jdbc/src/main/java/org/example/)
 ### Utilisation de JDBC, JPA et Hibernate pour la gestion des données.
@@ -68,6 +77,13 @@ Pour les exercices, l'énoncé est indiqué dans un fichier *readme* présent da
     - [JPA](/java_jdbc/src/main/java/org/example/exos/jpa) : plusieurs versions accessibles via les tags git **jpa_exo_v...**
     - [Hibernate](java_jdbc/src/main/java/org/example/exos/hibernate/) : plusieurs versions accessibles via les tags git **hib_exo_v...**
 
+*Si les exercices ne sont pas accessibles sur la branche `main`, passer sur la branche `jpa_hibernate`.*
+
+<div dir="rtl">
+    <a href="#top">Haut de page</a>
+</div>
+
+
 ## [Test Driven Development](/java_tdd/src/test/java/org/example/)
 ### Initiation au TDD en Java.
 
@@ -80,6 +96,11 @@ Pour les exercices, l'énoncé est indiqué dans un fichier *readme* présent da
 - Démos : [Main](/java_tdd/src/main/java/org/example/demo/) | [Test](/java_tdd/src/test/java/org/example/demo/)
 - Exercices : [Main](/java_tdd/src/main/java/org/example/exo/) | [Test](/java_tdd/src/test/java/org/example/exo/)
 
+<div dir="rtl">
+    <a href="#top">Haut de page</a>
+</div>
+
+
 ## [HTML/CSS](/html_css/)
 ### Bases de HTML, CSS et Bootstrap.
 
@@ -89,6 +110,11 @@ L'énoncé des exercices est indiqué dans un fichier *readme*.
 ### Contenu :
 - [Démos](/html_css/demo/)
 - [Exercices](/html_css/exos/)
+
+<div dir="rtl">
+    <a href="#top">Haut de page</a>
+</div>
+
 
 ## [Java EE](/java_ee/)
 ### Programmation Java pour le Web, avec vues en JSP.
@@ -100,6 +126,11 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 ### Contenu :
 - [Démo](/java_ee/demo/src/main/java/com/example/demo/)
 - [Exercices](/java_ee/exos/)
+
+<div dir="rtl">
+    <a href="#top">Haut de page</a>
+</div>
+
 
 ## [Spring](/java_spring/)
 ### Utilisation de Spring pour le Web : thymeleaf, validation, security...
@@ -113,15 +144,25 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 - [Démos](/java_spring/demos/)
 - [Exercices](/java_spring/exos/)
 
-## [JavaScript](/js_bases/)
+<div dir="rtl">
+    <a href="#top">Haut de page</a>
+</div>
+
+
+## [JavaScript](/js_base/)
 ### Bases de programmation en JavaScript
 
 Chaque dossier correspond à un "projet" (exercice ou démo) pouvant être exécuté en ouvrant le fichier `index.html` dans un navigateur.
 Chaque exercice contient un fichier *readme* avec son énoncé.
 
 ### Contenu :
-- [Démos](/js_javascript/demos/)
-- [Exercices](/js_javascript/exos/)
+- [Démos](/js_base/demos/)
+- [Exercices](/js_base/exos)
+
+<div dir="rtl">
+    <a href="#top">Haut de page</a>
+</div>
+
 
 ## [TypeScript](/js_typescript/)
 ### Intégration du typage en vue de l'utilisation d'Angular
@@ -129,25 +170,33 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 Chaque dossier correspond à un "projet" (exercice ou démo).
 Chaque exercice contient un fichier *readme* avec son énoncé.
 
-**L'exécution des projets nécessite à minima l'installation de Node.js.**
-Pour lancer la compilation, ouvrir un terminal à la racine du projet et exécuter la commande :
+**L'exécution des projets nécessite à minima l'installation de Node.js pour la transpilation des fichiers TS.**
+Pour lancer la transpilation, ouvrir un terminal à la racine du projet et exécuter la commande :
+
 ```console
-$ npx -p typescript tsc --watch
+$ npx -p typescript tsc
 ```
-Le projet est alors accessible en ouvrant le fichier `index.html` dans le navigateur.
+
+Le projet est alors accessible en lançant *live server* de VS Code et en ouvrant le navigateur à `localhost:5500`.
 
 ### Contenu :
 - [Démos](/js_typescript/demos/)
 - [Exercices](/js_typescript/exos/)
 
+<div dir="rtl">
+    <a href="#top">Haut de page</a>
+</div>
+
+
 ## [Angular](/js_angular/)
 ### Utilisation d'Angular pour créer des applications front-end
 
-Chaque dossier correspond à un "projet" (exercice ou démo) pouvant être exécuté en ouvrant le fichier `index.html` dans un navigateur.
+Chaque dossier correspond à un "projet" (exercice ou démo).
 Chaque exercice contient un fichier *readme* avec son énoncé.
 
-**L'exécution des projets nécessite l'installation d'Angular**
-Via node :
+**L'exécution des projets nécessite l'installation de node.js et Angular.**
+
+Pour installer Angular via node :
 ```console
 $ npm install -g @angular/cli
 ```
@@ -161,6 +210,6 @@ Le projet est alors accessible via le navigateur à `localhost:4200`.
 - [Démos](/js_angular/demos/)
 - [Exercices](/js_angular/exos/)
 
-<!-- Bouton haut de page -->
-
-[Haut de page](#top)
+<div dir="rtl">
+    <a href="#top">Haut de page</a>
+</div>
