@@ -1,3 +1,6 @@
-<app-timer-form (getTimeEvent)="getTimer($event)"></app-timer-form>
+<h1>Minuteur en ligne</h1>
+<hr>
 
-<app-timer-display *ngFor="let timer of timerList; let i = index" [currentTime]="timer" (deleteTimerEvent)="deleteTimer(i)"></app-timer-display>
+<app-timer-form (submitTimeEvent)="addTimeToList($event)"></app-timer-form>
+<hr>
+<app-timer-display *ngFor="let time of timeList" [startValue]="time.time" [timerIndex]="time.index" (deleteTimerEvent)="removeTimeFromList(time.index)"></app-timer-display>

@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Timer } from 'src/app/models/Timer.model';
 
 @Component({
   selector: 'app-timer-display',
@@ -10,47 +11,63 @@ export class TimerDisplayComponent implements OnInit, OnDestroy {
   @Input({
     required: true
   })
-  currentTime !: number;
+  startValue !: number;
+
+  @Input({
+    required: true
+  })
+  timerIndex !: number;
 
   @Output()
-  deleteTimerEvent = new EventEmitter();
+  deleteTimerEvent = new EventEmitter<number>();
 
-  hours = 0;
-  minutes = 0;
-  seconds = 0;
+  actualValue = 0;
+  timer : Timer = {
+    hours: "",
+    minutes: "",
+    seconds: ""
+  };
+
 
   interval: number | undefined;
 
   ngOnInit(): void {
-    this.countdown();
-  }
-  
-  ngOnDestroy(): void {
-    if (this.interval) {
-      clearInterval(this.interval)
-    }
-  }
-
-  countdown() {
-    this.hours = Math.floor(this.currentTime / 3600);
-
-    this.minutes = Math.floor((this.currentTime - this.hours * 3600) / 60);
-
-    this.seconds = Math.floor(this.currentTime -this.hours * 3600 - this.minutes * 60);
+    this.actualValue = this.startValue;
+    console.log("Temps reçu dant timer-display : " + this.startValue);
+    this.timer = this.calculateTime(this.startValue);
 
     this.interval = window.setInterval(() => {
-      if (this.currentTime > 0) {
-        this.currentTime--;
-        this.hours = Math.floor(this.currentTime / 3600);
-
-        this.minutes = Math.floor((this.currentTime - this.hours * 3600) / 60);
-
-        this.seconds = Math.floor(this.currentTime -this.hours * 3600 - this.minutes * 60);
-      }
+      if (this.actualValue > 0) {
+        this.actualValue--;
+        this.timer = this.calculateTime(this.actualValue);
+      }  
     }, 1000);
   }
 
-  onDeleteTimer() {
-    this.deleteTimerEvent.emit()
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
+  }
+
+
+  onClickCancel() {
+    this.actualValue = 0;
+    this.timer = this.calculateTime(this.actualValue);
+  }
+
+  onClickDelete() {
+    this.deleteTimerEvent.emit();
+  }
+
+
+  calculateTime(value : number): Timer {
+    const hours = Math.floor(value / 3600);
+    const minutes = Math.floor((value - hours * 3600) / 60);
+    const seconds = Math.floor(value - hours * 3600 - minutes * 60);
+
+    return {
+      hours: hours.toString().padStart(2, "0"),
+      minutes: minutes.toString().padStart(2, "0"),
+      seconds: seconds.toString().padStart(2, "0"),
+    }
   }
 }

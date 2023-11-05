@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TimeObject } from './models/TimeObject.model';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'exo8';
+  
+  // Utilisation d'un objet car, si passe par un tableau de nombres, les éléments n'ont pas de référence propre ;
+  // de ce fait, si un nombre est présent plusieurs fois, c'est toujours la dernière occurence qui sera supprimée, et pas forcément l'élément voulu
+  timeList : TimeObject[] = [];
 
-  timerList : number[] = [];
-
-  getTimer(newTimer: number) {
-    this.timerList = [...this.timerList, newTimer]
+  addTimeToList(time : number) {
+    this.timeList = [...this.timeList, new TimeObject(time)];
   }
 
-  deleteTimer(index: number) {
-    // Pour déclarer des paramètres qu'on n'utilise pas, on le précède d'un Underscore
-    this.timerList = [...this.timerList.filter((_elt, i) => i !== index)]
+  removeTimeFromList(index : number) {
+    this.timeList = [...this.timeList.filter((time) => time.index !== index)];
   }
 }

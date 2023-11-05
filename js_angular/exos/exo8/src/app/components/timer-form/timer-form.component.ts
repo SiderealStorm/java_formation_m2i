@@ -1,4 +1,5 @@
-import { Component, ViewChild, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, ElementRef, EventEmitter, ViewChild, Output } from '@angular/core';
+import { Timer } from 'src/app/models/Timer.model';
 
 @Component({
   selector: 'app-timer-form',
@@ -6,24 +7,39 @@ import { Component, ViewChild, Output, EventEmitter, ElementRef } from '@angular
   styleUrls: ['./timer-form.component.css']
 })
 export class TimerFormComponent {
+  
+  @ViewChild('hours')
+  hoursRef!: ElementRef<HTMLInputElement>;
 
-  @ViewChild("hours") hoursInputRef!: ElementRef<HTMLInputElement>;
-  @ViewChild("minutes") minutesInputRef!: ElementRef<HTMLInputElement>;
-  @ViewChild("seconds") secondsInputRef!: ElementRef<HTMLInputElement>;
+  @ViewChild('minutes')
+  minutesRef!: ElementRef<HTMLInputElement>;
 
-  @Output() getTimeEvent = new EventEmitter<number>();
+  @ViewChild('seconds')
+  secondsRef!: ElementRef<HTMLInputElement>;
 
-  onSubmitForm(event: Event) {
+  @Output()
+  submitTimeEvent = new EventEmitter<number>();
+
+
+  onSubmitTimerForm(event : Event) {
     event.preventDefault();
 
-    const hours = parseInt(this.hoursInputRef.nativeElement.value);
-    const minutes = parseInt(this.minutesInputRef.nativeElement.value);
-    const seconds = parseInt(this.secondsInputRef.nativeElement.value);
+    const newTimer : Timer = {
+      hours: this.hoursRef.nativeElement.value,
+      minutes : this.minutesRef.nativeElement.value,
+      seconds : this.secondsRef.nativeElement.value
+    }
+        
+    const timeValue = this.convertTimerToSeconds(newTimer);
+    
+    this.submitTimeEvent.emit(timeValue);
+  }
 
-    this.getTimeEvent.emit(seconds + minutes * 60 + hours * 3600);
-
-    this.hoursInputRef.nativeElement.value = "0";
-    this.minutesInputRef.nativeElement.value = "0";
-    this.secondsInputRef.nativeElement.value = "0";
+  convertTimerToSeconds(timer : Timer) {
+    if (timer.hours || timer.minutes || timer.seconds) {
+      return +timer.hours * 3600 + +timer.minutes * 60 + +timer.seconds;
+    } else {
+      return 0;
+    }
   }
 }
