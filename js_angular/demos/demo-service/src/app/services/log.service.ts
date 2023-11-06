@@ -17,4 +17,10 @@ export class LogService {
         console.log("Hello World !");
         console.log(text);
     }
+
+    greetEveryone() {
+        for (let person of this.dataService.names) {
+            console.log("Hello " + person);
+        }
+    }
 }

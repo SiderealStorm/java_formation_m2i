@@ -2,7 +2,7 @@
 
 Créer un site web sur un thème libre en utilisant HTML et CSS.
 
-## partie 1 :
+## Partie 1 :
 
 Consignes : intitulé, images, menu avec ancres, tableau, liste
 
