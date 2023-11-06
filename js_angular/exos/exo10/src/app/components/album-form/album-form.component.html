@@ -1,0 +1,18 @@
+<h2>Nouvel album :</h2>
+<form action="" (submit)="onSubmitForm($event)">
+    <div>
+        <label for="title">Titre de l'album :</label>
+        <input type="text" name="title" id="title" [(ngModel)]="albumTitle">
+    </div>
+    <div>
+        <label for="artist">Artiste principal :</label>
+        <input type="text" name="artist" id="artist" [(ngModel)]="albumArtist">
+    </div>
+    <div>
+        <label for="releaseYear">Année de sortie :</label>
+        <input type="number" min="0" step="1" name="releaseYear" id="releaseYear" [(ngModel)]="albumYear">
+    </div>
+    <div>
+        <button class="btn btn-primary">Envoyer</button>
+    </div>
+</form>

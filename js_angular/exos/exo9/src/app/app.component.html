@@ -1,4 +1,4 @@
 <h1>Exercice 9</h1>
 <hr>
-
-<app-letter-display></app-letter-display>
+<button (click)="onClickToggleDisplay()">Afficher composant</button>
+<app-letter-display *ngIf="isVisible"></app-letter-display>

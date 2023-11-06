@@ -6,11 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'exo9';
-
-  isVisible = false;
-
-  onClickToggleDisplay() {
-    this.isVisible = !this.isVisible;
-  }
+  title = 'demo-subject';
 }

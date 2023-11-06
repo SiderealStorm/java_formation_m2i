@@ -4,15 +4,16 @@ import { Observable, map } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class GenerateLetterService {
+export class CounterService {
 
   constructor() { }
 
-  counter() {
+  // Ajout correction : généralisation de la méthode
+  count(maxValue: number = 100) {
     return new Observable<number>(sub => {
       let count = 1;
       setInterval(() => {
-        if (count > 26) {
+        if (count > maxValue) {
           sub.complete();
         }
         sub.next(count++);
@@ -21,6 +22,6 @@ export class GenerateLetterService {
   }
 
   getLetter() {
-    return this.counter().pipe(map(value => String.fromCharCode(64 + value)))
+    return this.count(26).pipe(map(value => String.fromCharCode(64 + value)))
   }
 }
