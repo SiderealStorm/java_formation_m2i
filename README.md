@@ -40,8 +40,8 @@ Pour les exercices, l'énoncé est indiqué en commentaire au-dessus de la décl
     - [Instructions](/java_base/src/exos/instructions/)
     - [Tableaux](/java_base/src/exos/tableaux/)
 
-<div dir="rtl">
-    <a href="#java_formation_m2i">Haut de page</a> :small_red_triangle:
+<div align="right">
+    <a href="#java_formation_m2i">Haut de page :small_red_triangle:</a>
 </div>
 
 
@@ -57,8 +57,8 @@ Pour les exercices, l'énoncé est indiqué en commentaire au-dessus de la décl
 - [Démos](/java_poo/src/main/java/org/example/demos/)
 - [Exercices](/java_poo/src/main/java/org/example/exos/)
 
-<div dir="rtl">
-    <a href="#java_formation_m2i">Haut de page</a> :small_red_triangle:
+<div align="right">
+    <a href="#java_formation_m2i">Haut de page :small_red_triangle:</a>
 </div>
 
 
@@ -79,8 +79,8 @@ Pour les exercices, l'énoncé est indiqué dans un fichier *readme* présent da
 
 *Si les exercices ne sont pas accessibles sur la branche `main`, passer sur la branche `jpa_hibernate`.*
 
-<div dir="rtl">
-    <a href="#java_formation_m2i">Haut de page</a> :small_red_triangle:
+<div align="right">
+    <a href="#java_formation_m2i">Haut de page :small_red_triangle:</a>
 </div>
 
 
@@ -96,8 +96,8 @@ Pour les exercices, l'énoncé est indiqué dans un fichier *readme* présent da
 - Démos : [Main](/java_tdd/src/main/java/org/example/demo/) | [Test](/java_tdd/src/test/java/org/example/demo/)
 - Exercices : [Main](/java_tdd/src/main/java/org/example/exo/) | [Test](/java_tdd/src/test/java/org/example/exo/)
 
-<div dir="rtl">
-    <a href="#java_formation_m2i">Haut de page</a> :small_red_triangle:
+<div align="right">
+    <a href="#java_formation_m2i">Haut de page :small_red_triangle:</a>
 </div>
 
 
@@ -111,8 +111,8 @@ L'énoncé des exercices est indiqué dans un fichier *readme*.
 - [Démos](/html_css/demo/)
 - [Exercices](/html_css/exos/)
 
-<div dir="rtl">
-    <a href="#java_formation_m2i">Haut de page</a> :small_red_triangle:
+<div align="right">
+    <a href="#java_formation_m2i">Haut de page :small_red_triangle:</a>
 </div>
 
 
@@ -127,8 +127,8 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 - [Démo](/java_ee/demo/src/main/java/com/example/demo/)
 - [Exercices](/java_ee/exos/)
 
-<div dir="rtl">
-    <a href="#java_formation_m2i">Haut de page</a> :small_red_triangle:
+<div align="right">
+    <a href="#java_formation_m2i">Haut de page :small_red_triangle:</a>
 </div>
 
 
@@ -144,8 +144,8 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 - [Démos](/java_spring/demos/)
 - [Exercices](/java_spring/exos/)
 
-<div dir="rtl">
-    <a href="#java_formation_m2i">Haut de page</a> :small_red_triangle:
+<div align="right">
+    <a href="#java_formation_m2i">Haut de page :small_red_triangle:</a>
 </div>
 
 
@@ -159,8 +159,8 @@ Chaque exercice contient un fichier *readme* avec son énoncé.
 - [Démos](/js_base/demos/)
 - [Exercices](/js_base/exos)
 
-<div dir="rtl">
-    <a href="#java_formation_m2i">Haut de page</a> :small_red_triangle:
+<div align="right">
+    <a href="#java_formation_m2i">Haut de page :small_red_triangle:</a>
 </div>
 
 
@@ -183,8 +183,8 @@ Le projet est alors accessible en lançant *live server* de VS Code et en ouvran
 - [Démos](/js_typescript/demos/)
 - [Exercices](/js_typescript/exos/)
 
-<div dir="rtl">
-    <a href="#java_formation_m2i">Haut de page</a> :small_red_triangle:
+<div align="right">
+    <a href="#java_formation_m2i">Haut de page :small_red_triangle:</a>
 </div>
 
 
@@ -210,6 +210,6 @@ Le projet est alors accessible via le navigateur à `localhost:4200`.
 - [Démos](/js_angular/demos/)
 - [Exercices](/js_angular/exos/)
 
-<div dir="rtl">
-    <a href="#java_formation_m2i">Haut de page</a> :small_red_triangle:
+<div align="right">
+    <a href="#java_formation_m2i">Haut de page :small_red_triangle:</a>
 </div>
