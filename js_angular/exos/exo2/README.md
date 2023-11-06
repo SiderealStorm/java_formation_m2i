@@ -1,4 +1,4 @@
-# Exercice Angular B
+# Exercice Angular B/C
 
 ## Partie 1 :
 

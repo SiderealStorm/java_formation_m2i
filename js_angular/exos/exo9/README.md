@@ -7,6 +7,6 @@ Pour ce faire, vous ferez usage de :
 - Un composannt qui, suite à l'abonnement à l'observable, transformera les valeurs à la volée via un opérateur RxJs (map) dans le but d'alimenter l'affichage de l'alphabet en temps réel au sein d'un paragraphe du style :
     ```HTML
     <p>
-    Lettre actuelle : <b>{{ maLettre }}</b>
+        Lettre actuelle : <b>{{ maLettre }}</b>
     </p>
     ```
