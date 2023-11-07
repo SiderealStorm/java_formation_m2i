@@ -25,6 +25,7 @@ export class AlbumCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.album = this.dbService.getAlbumById(this.albumId);
+    this.dbService.changeCurrentAlbum(this.album);
   }
 
   onClickEdit() {

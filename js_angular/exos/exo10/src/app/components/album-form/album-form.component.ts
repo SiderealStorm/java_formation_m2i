@@ -16,13 +16,17 @@ export class AlbumFormComponent implements OnInit {
   })
   mode !: string;
 
+  album: Album | undefined;
+
   albumTitle !: string;
   albumArtist !: string;
   albumYear !: number;
 
   constructor(private dbService: DatabaseService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dbService.changeCurrentAlbum(this.album);
+  }
 
   onSubmitForm(event: Event) {
     event.preventDefault();

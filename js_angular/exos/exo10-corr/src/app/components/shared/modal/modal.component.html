@@ -1,0 +1,11 @@
+<div class="background" (click)="onClickClose($event)">
+    <div class="content">
+        <div class="header">
+            <h3>Titre</h3>
+            <button (click)="onClickClose()">x</button>
+        </div>
+        <div class="body">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<form action="" (submit)="onSubmitForm($event)">
+    <div>
+        <label for="name">Nom :</label>
+        <!-- On rend required et readonly dynamiques avec des méthodes -->
+        <input type="text" name="name" id="name"
+        #name
+        [required]="getRequired()"
+        [readOnly]="getReadOnly()">
+    </div>
+    <div>
+        <label for="breed">Race :</label>
+        <input type="text" name="breed" id="breed"
+        #breed
+        [required]="getRequired()"
+        [readOnly]="getReadOnly()">
+    </div>
+    <div>
+        <label for="birthDate">Date de naissance</label>
+        <input type="date" name="birthDate" id="birthDate"
+        #birthDate
+        [required]="getRequired()"
+        [readOnly]="getReadOnly()">
+    </div>
+    <div>
+        <button>{{ getButtonText() }}</button>
+    </div>
+</form>

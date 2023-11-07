@@ -1,0 +1,15 @@
+<app-modal *ngIf="dogFormMode" (closeModalEvent)="closeModal()">
+  <app-dog-form></app-dog-form>
+</app-modal>
+
+<p *ngIf="dogs.length === 0; else elseblock">
+  Il n'y a pas encore de chien enregistré.
+</p>
+
+<ng-template #elseblock>
+  <div>
+    <app-dog-display *ngFor="let dog of dogs" [dogId]="dog.id"></app-dog-display>
+  </div>
+</ng-template>
+
+<button (click)="onClickAdd()">Ajouter un chien</button>

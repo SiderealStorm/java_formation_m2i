@@ -1,0 +1,9 @@
+<h3>{{ dog ? dog.name : "Inconnu" }}</h3>
+<ul>
+    <li><b>Race : </b>{{ dog ? dog.breed : "Inconnue" }}</li>
+    <li><b>Date de naissance : </b>{{ dog ? (dog.birthDate | date:'dd/MM/yyyy') : 'dd/MM/yyyy' }}</li>
+</ul>
+<div>
+    <button (click)="onClickButton('edit')">Modifier</button>
+    <button (click)="onClickButton('delete')">Supprimer</button>
+</div>

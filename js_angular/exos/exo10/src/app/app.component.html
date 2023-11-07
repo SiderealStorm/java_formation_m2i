@@ -34,7 +34,7 @@
   #deleteModal>
   <p>Voulez-vous vraiment supprimer cet album ?</p>
   <div>
-    <button class="btn btn-danger">Confirmer la suppression</button>
+    <button (click)="onClickDelete()" class="btn btn-danger">Confirmer la suppression</button>
     <button (click)="changeModalVisibility('')" class="btn btn-secondary">Annuler</button>
   </div>
 </app-modal>

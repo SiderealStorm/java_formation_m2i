@@ -17,6 +17,10 @@ export class DatabaseService {
     return this.$albums.getValue().find(album => album.id === id);
   }
 
+  changeCurrentAlbum(album: Album | undefined) {
+    this.$currentAlbum.next(album);
+  }
+
   addAlbum(newAlbum: Album) {
     this.$albums.next([...this.$albums.getValue(), newAlbum]);
   }
@@ -32,8 +36,14 @@ export class DatabaseService {
 
   deleteAlbum() {
     const album = this.$currentAlbum.getValue();
+    console.log(album);
+    console.log(this.$albums.getValue());
+    
+    
     if (album) {
-      this.$albums.next(this.$albums.getValue().filter(elt => elt.id === album.id));
+      this.$albums.next(this.$albums.getValue().filter(elt => elt.id !== album.id));
     }
+    console.log(this.$albums.getValue());
+    
   }
 }
