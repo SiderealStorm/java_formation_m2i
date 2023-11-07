@@ -1,46 +1,17 @@
+<app-modal *ngIf="formMode">
+  <app-form-album></app-form-album>
+</app-modal>
+
 <h1>Exercice 10</h1>
 <hr>
-<div>
-  <h2>Albums favoris :</h2>
-  <div *ngIf="albums.length > 0; else elseBlock" class="d-flex flex-wrap justify-content-center">
-    <app-album-card
-      *ngFor="let album of albums"
-      (editEvent)="changeModalVisibility('edit')"
-      (deleteEvent)="changeModalVisibility('delete')"
-      [albumId]="album.id"
-      class="card text-center m-3" style="min-width: 18rem;"
-    ></app-album-card>
+<h2>Vos albums favoris :</h2>
+<hr>
+<p *ngIf="albums.length === 0; else elseAlbums">Il n'y a aucun album dans votre liste ! Cliquez sur "Ajouter un album" pour commencer.</p>
+<hr>
+<button>Ajouter un album</button>
+
+<ng-template #elseAlbums>
+  <div *ngFor="let album of albums">
+    <app-display-album [album]="album"></app-display-album>
   </div>
-  <button (click)="onClickAddAlbum()">Ajouter</button>
-</div>
-
-<app-modal
-  (closeModalEvent)="changeModalVisibility('')"
-  *ngIf="modalVisibility === 'add'"
-  #addModal>
-  <app-album-form [mode]="'add'"></app-album-form>
-</app-modal>
-
-<app-modal
-  (closeModalEvent)="changeModalVisibility('')"
-  *ngIf="modalVisibility === 'edit'"
-  #editModal>
-  <app-album-form [mode]="'edit'"></app-album-form>
-</app-modal>
-
-<app-modal
-  (closeModalEvent)="changeModalVisibility('')"
-  *ngIf="modalVisibility === 'delete'"
-  #deleteModal>
-  <p>Voulez-vous vraiment supprimer cet album ?</p>
-  <div>
-    <button (click)="onClickDelete()" class="btn btn-danger">Confirmer la suppression</button>
-    <button (click)="changeModalVisibility('')" class="btn btn-secondary">Annuler</button>
-  </div>
-</app-modal>
-
-<ng-template #elseBlock>
-  <p>
-      Il n'y a aucun album dans les favoris.
-  </p>
 </ng-template>

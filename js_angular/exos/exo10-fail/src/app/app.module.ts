@@ -2,21 +2,21 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { FormAlbumComponent } from './components/album/form-album/form-album.component';
-import { DisplayAlbumComponent } from './components/album/display-album/display-album.component';
+import { AlbumFormComponent } from './components/album-form/album-form.component';
 import { ModalComponent } from './components/shared/modal/modal.component';
-import { SortByPipe } from './pipes/sort-by.pipe';
+import { AlbumCardComponent } from './components/album-card/album-card.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormAlbumComponent,
-    DisplayAlbumComponent,
+    AlbumFormComponent,
     ModalComponent,
-    SortByPipe
+    AlbumCardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

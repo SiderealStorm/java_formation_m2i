@@ -1,46 +1,34 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { AlbumFormMode, AlbumService } from './services/album.service';
 import { Album } from './models/Album.model';
-import { DatabaseService } from './services/database.service';
-import {Subscription } from "rxjs";
-import Mode from './models/Mode.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
-  
+export class AppComponent implements OnDestroy {
+
+  formMode: AlbumFormMode = null;
+
   albums: Album[] = [];
-  albumsSub: Subscription | undefined
-  modalVisibility: string = "";
+  albumsSub: Subscription | undefined;
 
-  constructor(private dbService : DatabaseService) {}
+  selectedAlbum: Album | null = null;
+  selectedAlbumSub: Subscription | undefined;
 
-  ngOnInit(): void {
-    this.albumsSub = this.dbService.$albums.subscribe({
-      next: (albums) => {
-        this.albums = albums;
-      }
-    });
+  constructor(private albumService: AlbumService) {
+    this.albumsSub = this.albumService.albums$.subscribe(data => this.albums = data);
+    this.selectedAlbumSub = this.albumService.selectedAlbum$.subscribe(data => this.selectedAlbum = data);
   }
 
   ngOnDestroy(): void {
-    if (this.albumsSub) {
-      this.albumsSub.unsubscribe();
-    }
+    this.albumsSub?.unsubscribe();
+    this.selectedAlbumSub?.unsubscribe();
   }
 
-  onClickAddAlbum() {
-    this.modalVisibility = Mode.ADD;
+  onClickAdd() {
+    this.albumService.changeFormMode("add");
   }
-
-  onClickDelete() {
-    this.dbService.deleteAlbum();
-  }
-
-  changeModalVisibility(value: string) {
-    this.modalVisibility = value;
-  }
-
 }

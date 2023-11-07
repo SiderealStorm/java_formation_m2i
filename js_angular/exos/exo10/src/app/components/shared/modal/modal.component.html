@@ -1,9 +1,9 @@
-<div class="background" (click)="onClickClose($event)">
+<div class="background">
     <div class="content">
-        <div class="close-btn">
-            <button (click)="onClickClose()">&times;</button>
-        </div>
-        <div class="modal-content">
+        <h2>Titre de la modale</h2>
+        <button>x</button>
+        <hr>
+        <div>
             <ng-content></ng-content>
         </div>
     </div>
