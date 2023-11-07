@@ -1,0 +1,11 @@
+<div class="text-bg-dark py-2">
+    <div class="d-flex align-items-center justify-content-center">
+        <form class="row" (submit)="onSubmitSearch($event)">
+            <label for="value" class="col-auto col-form-label">Enter a pokémon name or number :</label>
+            <div class="col-auto">
+                <input type="text" id="value" class="form-control" #searchValue>
+            </div>
+            <button class="btn btn-secondary col-auto">Find</button>
+        </form>
+    </div>
+</div>
