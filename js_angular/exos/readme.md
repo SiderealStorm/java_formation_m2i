@@ -9,3 +9,5 @@
 - [Exo7](./exo7/) - Modal : projection de contenu
 - [Exo8](./exo8/) - Minuteur : cycle de vie du composant
 - [Exo9](./exo9/) - Alphabet : services et observables
+- [Exo10](./exo10/) - Liste de favoris : TP avec toutes les notions vues jusqu'à présent + Subject
+- [Exo11](./exo11/) - FizzBuzz : retour sur la notion de Subject
