@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FizzBuzzService } from './services/fizz-buzz.service';
+import { Component, OnDestroy } from '@angular/core';
+import { CounterService } from './services/counter.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -7,13 +7,17 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy{
 
   countValue: number = 0;
   countSub: Subscription | undefined;
 
-  constructor(private service: FizzBuzzService) {
+  constructor(private service: CounterService) {
     this.countSub = this.service.count$.subscribe(value => this.countValue = value);
+  }
+
+  ngOnDestroy(): void {
+    this.countSub?.unsubscribe();
   }
 
   onClickChangeValue(value: number) {

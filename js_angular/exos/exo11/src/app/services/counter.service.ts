@@ -4,13 +4,13 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class FizzBuzzService {
+export class CounterService {
 
   count$ = new BehaviorSubject<number>(0);
 
   constructor() { }
 
   changeCountValue(value: number) {
-    this.count$.next(value);
+    this.count$.next(this.count$.getValue() + value);
   }
 }
