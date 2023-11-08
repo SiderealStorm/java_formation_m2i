@@ -12,3 +12,4 @@
 - [Exo10](./exo10/) - Liste de favoris : TP avec toutes les notions vues jusqu'à présent + Subject
 - [Exo11](./exo11/) - FizzBuzz : retour sur la notion de Subject
 - [Exo12](./exo12/) - Pokedex : requêtes API
+- [Exo13](./exo13/) - Routes : bases du routing
