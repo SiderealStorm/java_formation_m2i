@@ -22,7 +22,7 @@ export class AlbumService {
   ]);
   selectedAlbum$ = new BehaviorSubject<Album | null>(null);
 
-  currentMode$ = new BehaviorSubject<AlbumFormMode>(null);
+  currentMode$ = new BehaviorSubject<AlbumFormMode>("add");
 
   constructor() { }
 
@@ -31,14 +31,14 @@ export class AlbumService {
   }
 
   addAlbum(newAlbum: Album) {
-    newAlbum.id = ++this.albumCount;
+    newAlbum.id = this.albumCount++;
     this.albums$.next([...this.albums$.getValue(), newAlbum]);
   }
 
   editAlbum(albumValues: Album) {
     const foundAlbum = this.getAlbumById(albumValues.id);
     if (foundAlbum) {
-      const newAlbum = {...foundAlbum};
+      const newAlbum = {...albumValues};
       this.albums$.next([
         ...this.albums$.getValue().filter(album => album.id !== newAlbum.id),
         newAlbum

@@ -54,28 +54,24 @@ export class FormAlbumComponent implements AfterViewInit, OnDestroy {
   onSubmitForm(event : Event) {
     event.preventDefault();
 
-    console.log(this.album);
     const albumValues: Album = {
-      id: -1,
+      id: this.album ? this.album.id : -1,
       title: this.titleInputRef?.nativeElement.value ?? "N/A",
       artist: this.artistInputRef?.nativeElement.value ?? "N/A",
       releaseYear: +(this.releaseYearInputRef?.nativeElement.value ?? 0),
-      rate: +(this.artistInputRef?.nativeElement.value ?? 0)
+      rate: +(this.rateInputRef?.nativeElement.value ?? 0)
     }
     
-    
-    if (this.album) {
-      switch (this.formMode) {
-        case "add" :
-          this.service.addAlbum(this.album);
-          break;
-        case "edit" :
-          this.service.editAlbum(this.album);
-          break;
-        case "delete" :
-          this.service.deleteAlbum(this.album.id);
-          break;
-      }
+    switch (this.formMode) {
+      case "add" :
+        this.service.addAlbum(albumValues);
+        break;
+      case "edit" :
+        this.service.editAlbum(albumValues);
+        break;
+      case "delete" :
+        this.service.deleteAlbum(albumValues.id);
+        break;
     }
 
     this.service.changeFormMode(null);

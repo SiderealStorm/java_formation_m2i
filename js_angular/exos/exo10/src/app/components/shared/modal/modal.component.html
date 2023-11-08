@@ -1,7 +1,9 @@
 <div class="background">
     <div class="content">
-        <h2>{{ title }}</h2>
-        <button (click)="onClickClose()">x</button>
+        <div class="header">
+            <h2>{{ title }}</h2>
+            <button class="btn-close" (click)="onClickClose()"></button>
+        </div>
         <hr>
         <div>
             <ng-content></ng-content>
