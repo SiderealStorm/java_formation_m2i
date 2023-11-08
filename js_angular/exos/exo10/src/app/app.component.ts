@@ -10,22 +10,37 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnDestroy {
 
-  formMode: AlbumFormMode = null;
-
   albums: Album[] = [];
   albumsSub: Subscription | undefined;
-
-  selectedAlbum: Album | null = null;
-  selectedAlbumSub: Subscription | undefined;
+  
+  formMode: AlbumFormMode = null;
+  formModeSub: Subscription | undefined;
 
   constructor(private albumService: AlbumService) {
     this.albumsSub = this.albumService.albums$.subscribe(data => this.albums = data);
-    this.selectedAlbumSub = this.albumService.selectedAlbum$.subscribe(data => this.selectedAlbum = data);
+    this.formModeSub = this.albumService.currentMode$.subscribe(data => this.formMode = data);
   }
 
   ngOnDestroy(): void {
     this.albumsSub?.unsubscribe();
-    this.selectedAlbumSub?.unsubscribe();
+    this.formModeSub?.unsubscribe();
+  }
+
+  getModalTitle() {
+    switch (this.formMode) {
+      case "add" :
+        return "Ajouter un album";
+      case "edit" :
+        return "Modifier l'album";
+      case "delete" :
+        return "Supprimer l'album";
+      default :
+        return "";
+    }
+  }
+
+  closeModal(event : Event | undefined = undefined) {
+    this.albumService.changeFormMode(null);
   }
 
   onClickAdd() {

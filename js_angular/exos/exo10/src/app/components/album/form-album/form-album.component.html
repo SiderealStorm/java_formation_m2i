@@ -1,22 +1,27 @@
-<div>
+<div *ngIf="formMode !== 'delete'; else elseBlock">
     <div>
         <label for="title">Titre :</label>
-        <input type="text" name="title" id="title">
+        <input type="text" name="title" id="title" #albumTitle>
     </div>
     <div>
         <label for="artist">Artiste principal :</label>
-        <input type="text" name="artist" id="artist">
+        <input type="text" name="artist" id="artist" #albumArtist>
     </div>
     <div>
         <label for="releaseYear">Année de sortie :</label>
-        <input type="number" name="releaseYear" id="releaseYear">
+        <input type="number" name="releaseYear" id="releaseYear" #albumYear>
     </div>
     <div>
         <label for="rate">Note :</label>
-        <input type="number" name="rate" id="rate" min="1" max="5" step="1">
-    </div>
-    <div>
-        <button>Valider</button>
-        <button>Annuler</button>
+        <input type="number" name="rate" id="rate" min="1" max="5" step="1" #albumRate>
     </div>
 </div>
+
+<div>
+    <button (click)="onSubmitForm($event)">Valider</button>
+    <button (click)="onClickCancel()">Annuler</button>
+</div>
+
+<ng-template #elseBlock>
+    <p>Voulez-vous vraiment supprimer l'album "{{ album?.title }}" de {{ album?.artist }} ?</p>
+</ng-template>

@@ -1,5 +1,5 @@
-<app-modal *ngIf="formMode">
-  <app-form-album></app-form-album>
+<app-modal *ngIf="formMode" [title]="getModalTitle()" (closeEvent)="closeModal()">
+  <app-form-album (cancelEvent)="closeModal()"></app-form-album>
 </app-modal>
 
 <h1>Exercice 10</h1>
@@ -8,7 +8,7 @@
 <hr>
 <p *ngIf="albums.length === 0; else elseAlbums">Il n'y a aucun album dans votre liste ! Cliquez sur "Ajouter un album" pour commencer.</p>
 <hr>
-<button>Ajouter un album</button>
+<button (click)="onClickAdd()">Ajouter un album</button>
 
 <ng-template #elseAlbums>
   <div *ngFor="let album of albums">

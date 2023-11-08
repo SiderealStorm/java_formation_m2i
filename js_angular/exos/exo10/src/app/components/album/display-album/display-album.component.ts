@@ -18,9 +18,11 @@ export class DisplayAlbumComponent {
 
   onClickEdit() {
     this.service.changeFormMode("edit");
+    this.service.changeSelectedAlbum(this.album);
   }
 
   onClickDelete() {
-    
+    this.service.changeFormMode("delete");
+    this.service.changeSelectedAlbum(this.album);
   }
 }
