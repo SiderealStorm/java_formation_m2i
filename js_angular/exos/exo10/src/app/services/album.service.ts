@@ -22,7 +22,7 @@ export class AlbumService {
   ]);
   selectedAlbum$ = new BehaviorSubject<Album | null>(null);
 
-  currentMode$ = new BehaviorSubject<AlbumFormMode>("add");
+  currentMode$ = new BehaviorSubject<AlbumFormMode>(null);
 
   constructor() { }
 

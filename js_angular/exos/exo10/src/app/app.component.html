@@ -2,13 +2,21 @@
   <app-form-album (cancelEvent)="closeModal()"></app-form-album>
 </app-modal>
 
-<h1>Exercice 10</h1>
-<hr>
-<h2>Vos albums favoris :</h2>
-<hr>
-<p *ngIf="albums.length === 0; else elseAlbums">Il n'y a aucun album dans votre liste ! Cliquez sur "Ajouter un album" pour commencer.</p>
-<hr>
-<button (click)="onClickAdd()">Ajouter un album</button>
+<div class="mx-3 my-1">
+  <h1>Exercice 10</h1>
+  <hr>
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <h2>Vos albums favoris :</h2>
+      <hr>
+      <p *ngIf="albums.length === 0; else elseAlbums">Il n'y a aucun album dans votre liste ! Cliquez sur "Ajouter un album" pour commencer.</p>
+      <hr>
+      <div class="text-end">
+        <button (click)="onClickAdd()">Ajouter un album</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <ng-template #elseAlbums>
   <div *ngFor="let album of albums">
