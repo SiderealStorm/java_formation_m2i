@@ -11,6 +11,8 @@ import { ContactBodyComponent } from './contact/components/contact-body/contact-
 import { ContactListComponent } from './contact/components/contact-list/contact-list.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { Error404pageComponent } from './pages/error/error404page/error404page.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ContactListPageComponent } from './contact/pages/contact-list-page/contact-list-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { Error404pageComponent } from './pages/error/error404page/error404page.c
     ContactBodyComponent,
     ContactListComponent,
     HomePageComponent,
-    Error404pageComponent
+    Error404pageComponent,
+    NavbarComponent,
+    ContactListPageComponent
   ],
   imports: [
     BrowserModule,
