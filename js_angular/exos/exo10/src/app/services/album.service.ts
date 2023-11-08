@@ -9,7 +9,7 @@ type AlbumFormMode = "add" | "edit" | "delete" | null;
 })
 export class AlbumService {
 
-  albumCount = 1;
+  albumCount = 2;
 
   albums$ = new BehaviorSubject<Album[]>([
     {
@@ -18,6 +18,13 @@ export class AlbumService {
       artist: "Green Day",
       releaseYear: 2002,
       rate: 4
+    },
+    {
+      id: 1,
+      title: "The Sound of Madness",
+      artist: "Shinedown",
+      releaseYear: 2008,
+      rate: 5
     }
   ]);
   selectedAlbum$ = new BehaviorSubject<Album | null>(null);
