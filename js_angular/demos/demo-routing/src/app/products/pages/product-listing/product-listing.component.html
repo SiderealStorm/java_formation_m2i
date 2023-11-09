@@ -1,0 +1,29 @@
+<h3>Liste des produits</h3>
+<hr>
+<table *ngIf="products.length !== 0; else elseblock">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <!-- Pour passer des paramètres dans une route depuis l'HTML, on passe par la syntaxe sous forme de tableau -->
+            <td><a [routerLink]="['/products', product.id]"><button>Détails</button></a></td>
+            <!-- ATTENTION si on ne met pas de slash le lien est relatif ! -->
+            <td><a [routerLink]="[product.id]"><button>Détails</button></a></td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<button (click)="onClickAddProduct()">Ajouter un produit</button>
+
+<ng-template #elseblock>
+    <p>
+        Pas de produits !
+    </p>
+</ng-template>

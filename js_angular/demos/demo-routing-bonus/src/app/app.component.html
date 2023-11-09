@@ -1,0 +1,11 @@
+<div>
+    <div *ngIf="user;else elseUser">
+        <button (click)="signOut()">Déconnexion</button>
+        <span>Utilisateur : {{ user.name }}</span>
+    </div>
+    <ng-template #elseUser>
+        <button (click)="signIn()">Connexion</button>
+    </ng-template>
+</div>
+
+<router-outlet></router-outlet>

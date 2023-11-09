@@ -1,0 +1,22 @@
+<!-- Pour rappel les éléments affichés dans app-component sont communs à tout le site, -->
+<!-- même si on utilise router-outlet -->
+<p><a href="/about">Lien classique via un href</a> : l'application est relancée !</p>
+
+<p>
+  <a [routerLink]="'/about'">Il faut passer par routerLink !</a>
+</p>
+<p>
+  <a [routerLink]="['/about']">Autre syntaxe de routerLink sous forme de tableau</a>
+</p>
+<p>
+  <a [routerLink]="['/about']" [routerLinkActive]="'classe-si-actif'">
+    On peut mettre des classes à la page actuelle avec routerLinkActive
+  </a>, <a [routerLink]="['/']" [routerLinkActive]="'classe-si-actif'" [routerLinkActiveOptions]="{exact: true}">
+    et ajouter des options avec routerLinkActiveOptions
+  </a>
+</p>
+<!-- Si on ne veut pas mettre les guillemets internes de la route, on enlève les crochets de la directive -->
+<p><button routerLink="/products">Liste des produits</button></p>
+<hr>
+
+<router-outlet></router-outlet>

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, BehaviorSubject, catchError } from 'rxjs';
+import { map, BehaviorSubject, catchError, of } from 'rxjs';
 import { Pokemon } from '../models/Pokemon.model';
+
+const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +12,6 @@ export class PokemonService {
 
   maxPokeId = 1017;
   maxImgId = 1011;
-
-  baseUrl = "https://pokeapi.co/api/v2/pokemon/";
-
-  requestHasError = false;
 
   currentPokemon$ = new BehaviorSubject<Pokemon | null>(null);
 
@@ -24,24 +22,13 @@ export class PokemonService {
       idOrName = Math.floor(Math.random() * this.maxPokeId).toString();
     }
 
-    this.getPokemon(idOrName).subscribe({
-        next: (data) => {
-          this.currentPokemon$.next(data);
-        },
-        error: (error) => {
-          this.requestHasError = true;
-        }
-      });
-
-      if(this.requestHasError) {
-        this.getPokemon(idOrName).subscribe(data => this.currentPokemon$.next(data));
-      }
+    this.getPokemon(idOrName).subscribe(data => this.currentPokemon$.next(data));
   }
 
   getPokemon(idOrName : string) {
-    return this.http.get<any>(this.baseUrl + idOrName)
+    return this.http.get<any>(baseUrl + idOrName)
       .pipe(
-        // catchError(_error => this.getPokemon("")),
+        catchError(error => of(error)),
         map(data => {
           return {
             id: data.id,

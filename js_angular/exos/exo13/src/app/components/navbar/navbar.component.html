@@ -1,0 +1,25 @@
+<header>
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <!-- Pour une directive qui prend une chaîne de caractères en paramètre, -->
+                        <!-- on peut se passer des crochets pour la directive ET des guillemets intérieurs pour le paramètre -->
+                        <a class="nav-link" aria-current="page" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="about" routerLinkActive="active">A propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="contacts" routerLinkActive="active">Contacts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,33 @@
+<table *ngIf="productsList.length > 0; else elseBlock">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Nom</td>
+            <td>Prix</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of productsList">
+            <td>
+                {{ product.id }}
+            </td>
+            <td>
+                {{ product.name }}
+            </td>
+            <td>
+                {{ product.price }} €
+            </td>
+            <td>
+                <button (click)="onClickDetails(product.id)">Détails</button>
+                <button (click)="onClickEdit(product.id)">Modifier</button>
+                <button (click)="onClickDelete(product.id)">Supprimer</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<ng-template #elseBlock>
+    <p>Il n'y a aucun produit pour le moment</p>
+</ng-template>

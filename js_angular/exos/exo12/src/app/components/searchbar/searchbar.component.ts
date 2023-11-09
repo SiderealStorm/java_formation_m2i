@@ -16,7 +16,8 @@ export class SearchbarComponent {
     event.preventDefault();
     
     if (this.searchInputRef) {
-      this.service.changeCurrentPokemon(this.searchInputRef.nativeElement.value);
+      // Ne pas oublier d'ajouter un .trim() pour éviter d'envoyer des espaces qui génèrenaient un 404
+      this.service.changeCurrentPokemon(this.searchInputRef.nativeElement.value.trim());
     }
   }
 }
