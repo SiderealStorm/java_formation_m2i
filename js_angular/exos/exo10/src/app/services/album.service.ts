@@ -9,14 +9,14 @@ type AlbumFormMode = "add" | "edit" | "delete" | null;
 })
 export class AlbumService {
 
-  albumCount = 2;
+  albumCount = 3;
 
   albums$ = new BehaviorSubject<Album[]>([
     {
       id: 0,
-      title: "American Idiot",
+      title: "21st Century Breakdown",
       artist: "Green Day",
-      releaseYear: 2002,
+      releaseYear: 2008,
       rate: 4
     },
     {
@@ -24,6 +24,13 @@ export class AlbumService {
       title: "The Sound of Madness",
       artist: "Shinedown",
       releaseYear: 2008,
+      rate: 5
+    },
+    {
+      id: 2,
+      title: "City of Evil",
+      artist: "Avanged Sevenfold",
+      releaseYear: 2005,
       rate: 5
     }
   ]);

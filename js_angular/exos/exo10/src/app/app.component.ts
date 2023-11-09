@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { AlbumFormMode, AlbumService } from './services/album.service';
 import { Album } from './models/Album.model';
 import { Subscription } from 'rxjs';
@@ -15,6 +15,8 @@ export class AppComponent implements OnDestroy {
   
   formMode: AlbumFormMode = null;
   formModeSub: Subscription | undefined;
+
+  sort: keyof Album = "id";
 
   constructor(private albumService: AlbumService) {
     this.albumsSub = this.albumService.albums$.subscribe(data => this.albums = data);
@@ -39,7 +41,7 @@ export class AppComponent implements OnDestroy {
     }
   }
 
-  closeModal(event : Event | undefined = undefined) {
+  closeModal() {
     this.albumService.changeFormMode(null);
   }
 

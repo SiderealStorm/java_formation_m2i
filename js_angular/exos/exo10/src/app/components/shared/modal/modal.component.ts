@@ -15,8 +15,14 @@ export class ModalComponent {
   @Output()
   closeEvent = new EventEmitter();
 
-  onClickClose() {
-    this.closeEvent.emit();
+  onClickClose(event: Event | undefined = undefined) {
+    if (event) {
+      if (event.target === event.currentTarget) {
+        this.closeEvent.emit();
+      }
+    } else {
+      this.closeEvent.emit();
+    }
   }
 
 }

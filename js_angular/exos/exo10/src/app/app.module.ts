@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FormAlbumComponent } from './components/album/form-album/form-album.component';
@@ -16,7 +17,8 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     SortByPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
