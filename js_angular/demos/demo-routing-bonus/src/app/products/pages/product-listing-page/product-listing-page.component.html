@@ -1,0 +1,11 @@
+<div>
+    <h3>Liste des produits</h3>
+    <hr>
+    <ul>
+        <li *ngFor="let prod of products"><a [routerLink]="[prod.name]">{{ prod.name }}</a></li>
+    </ul>
+</div>
+
+<div>
+    <router-outlet></router-outlet>
+</div>
