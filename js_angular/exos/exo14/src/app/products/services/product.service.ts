@@ -11,8 +11,23 @@ export class ProductService {
 
   count = 0;
 
-  products$ = new BehaviorSubject<Product[]>([]);
-  selectedProduct$ = new BehaviorSubject<Product | null>(null);
+  products$ = new BehaviorSubject<Product[]>([
+    {
+      id: -1,
+      name: "Produit n°-1",
+      description: "Produit test",
+      price: 0.99,
+      stock: 1
+    },
+    {
+      id: -2,
+      name: "Produit n°-2",
+      description: "Produit test",
+      price: 10.99,
+      stock: 10
+    }
+  ]);
+  
   currentFormMode$ = new BehaviorSubject<FormMode>("details");
 
   constructor() { }
@@ -38,10 +53,6 @@ export class ProductService {
 
   deleteProductById(productId: number) {
     this.products$.next([...this.products$.getValue().filter(product => product.id !== productId)]);
-  }
-
-  changeSelectedProduct(product: Product) {
-    this.selectedProduct$.next(product);
   }
 
   changeFormMode(mode: FormMode) {

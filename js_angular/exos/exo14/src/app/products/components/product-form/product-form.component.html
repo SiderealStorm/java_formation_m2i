@@ -1,20 +1,22 @@
-<h1>Titre du formulaire</h1>
-<hr>
-<form>
+<form (submit)="onSubmitForm($event)">
     <div>
-        <label for="name">Nom du produit :</label>
+        <label for="name">Nom du produit : </label>
         <input type="text" name="name" id="name" #name>
     </div>
     <div>
-        <label for="description">Nom du produit :</label>
+        <label for="description">Description : </label>
         <textarea type="text" name="description" id="description" #description></textarea>
     </div>
     <div>
-        <label for="price">Nom du produit :</label>
+        <label for="price">Prix : </label>
         <input type="number" min="0" step="0.01" name="price" id="price" #price>
     </div>
     <div>
-        <label for="stock">Nom du produit :</label>
+        <label for="stock">Stock actuel : </label>
         <input type="number" min="0" step="1" name="stock" id="stock" #stock>
+    </div>
+    <div>
+        <button>Valider</button>
+        <button type="button" routerLink="/products">Retour</button>
     </div>
 </form>
