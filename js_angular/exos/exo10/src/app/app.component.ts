@@ -1,46 +1,51 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { AlbumFormMode, AlbumService } from './services/album.service';
 import { Album } from './models/Album.model';
-import { DatabaseService } from './services/database.service';
-import {Subscription } from "rxjs";
-import Mode from './models/Mode.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
-  
+export class AppComponent implements OnDestroy {
+
   albums: Album[] = [];
-  albumsSub: Subscription | undefined
-  modalVisibility: string = "";
+  albumsSub: Subscription | undefined;
+  
+  formMode: AlbumFormMode = null;
+  formModeSub: Subscription | undefined;
 
-  constructor(private dbService : DatabaseService) {}
+  sort: keyof Album = "id";
 
-  ngOnInit(): void {
-    this.albumsSub = this.dbService.$albums.subscribe({
-      next: (albums) => {
-        this.albums = albums;
-      }
-    });
+  constructor(private albumService: AlbumService) {
+    this.albumsSub = this.albumService.albums$.subscribe(data => this.albums = data);
+    this.formModeSub = this.albumService.currentMode$.subscribe(data => this.formMode = data);
   }
 
   ngOnDestroy(): void {
-    if (this.albumsSub) {
-      this.albumsSub.unsubscribe();
+    this.albumsSub?.unsubscribe();
+    this.formModeSub?.unsubscribe();
+  }
+
+  getModalTitle() {
+    switch (this.formMode) {
+      case "add" :
+        return "Ajouter un album";
+      case "edit" :
+        return "Modifier l'album";
+      case "delete" :
+        return "Supprimer l'album";
+      default :
+        return "";
     }
   }
 
-  onClickAddAlbum() {
-    this.modalVisibility = Mode.ADD;
+  closeModal() {
+    this.albumService.changeFormMode(null);
   }
 
-  onClickDelete() {
-    this.dbService.deleteAlbum();
+  onClickAdd() {
+    this.albumService.changeFormMode("add");
   }
-
-  changeModalVisibility(value: string) {
-    this.modalVisibility = value;
-  }
-
 }

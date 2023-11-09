@@ -1,0 +1,12 @@
+<div class="w-25 p-3 bg-dark text-light rounded text-center">
+    <h4>{{ album.title }}</h4>
+    <h5>{{ album.artist }}</h5>
+    <hr>
+    <p>Année de sortie : {{ album.releaseYear }}</p>
+    <p>Note : {{ album.rate }}/5</p>
+    <hr>
+    <div>
+        <button class="mx-2 btn btn-warning" (click)="onClickEdit()">Modifier</button>
+        <button class="mx-2 btn btn-danger" (click)="onClickDelete()">Supprimer</button>
+    </div>
+</div>

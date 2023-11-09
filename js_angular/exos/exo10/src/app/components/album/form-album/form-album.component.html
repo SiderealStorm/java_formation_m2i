@@ -1,0 +1,39 @@
+<form>
+    <div *ngIf="formMode !== 'delete'; else elseBlock">
+        <div class="row my-1">
+            <label class="col-sm-5 col-form-label text-end" for="title">Titre :</label>
+            <div class="col-sm-7">
+                <input class="form-control" type="text" name="title" id="title" #albumTitle>
+            </div>
+        </div>
+        <div class="row my-1">
+            <label class="col-sm-5 col-form-label text-end" for="artist">Artiste principal :</label>
+            <div class="col-sm-7">
+                <input class="form-control"  type="text" name="artist" id="artist" #albumArtist>
+            </div>
+        </div>
+        <div class="row my-1">
+            <label class="col-sm-5 col-form-label text-end" for="releaseYear">Année de sortie :</label>
+            <div class="col-sm-7">
+                <input class="form-control" type="number" name="releaseYear" id="releaseYear" min="1889" #albumYear>
+            </div>
+        </div>
+        <div class="row my-1">
+            <label class="col-sm-5 col-form-label text-end" for="rate">Note :</label>
+            <div class="col-sm-7">
+                <input class="form-control" type="number" name="rate" id="rate" min="1" max="5" step="1" #albumRate>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="text-center">
+        <button class="btn btn-success mx-2" (click)="onSubmitForm($event)">Valider</button>
+        <!-- On remet ce bouton dans sont type par défaut (passe à "submit" dans les formulaires) -->
+        <button class="btn btn-secondary mx-2" type="button" (click)="onClickCancel()">Annuler</button>
+    </div>
+</form>
+
+
+<ng-template #elseBlock>
+    <p>Voulez-vous vraiment supprimer <span class="fst-italic">{{ album?.title }}</span> de <span class="fw-semibold">{{ album?.artist }}</span> ?</p>
+</ng-template>

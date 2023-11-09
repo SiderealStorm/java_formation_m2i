@@ -1,0 +1,6 @@
+:host {
+    > div {
+        min-height: 100%;
+        min-width: 18rem;
+    }
+}

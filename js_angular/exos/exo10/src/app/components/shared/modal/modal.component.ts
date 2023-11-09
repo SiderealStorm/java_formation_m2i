@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -7,16 +7,21 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ModalComponent {
 
-  @Output()
-  closeModalEvent = new EventEmitter();
+  @Input({
+    required: true
+  })
+  title !: string;
 
-  onClickClose(event : Event | undefined = undefined) {
+  @Output()
+  closeEvent = new EventEmitter();
+
+  onClickClose(event: Event | undefined = undefined) {
     if (event) {
       if (event.target === event.currentTarget) {
-        this.closeModalEvent.emit();
+        this.closeEvent.emit();
       }
     } else {
-      this.closeModalEvent.emit();
+      this.closeEvent.emit();
     }
   }
 

@@ -7,15 +7,14 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.4);
 }
 
 .content {
-    background-color: white;
+    background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    border-radius: 10px;
     width: fit-content;
     max-width: 80%;
     display: block;
@@ -25,14 +24,13 @@
     margin: 10px 0;
 }
 
-.header {
+.close-btn {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-end;
 }
 
 button {
-    color: #8b8b8b;
+    color: #aaaaaa;
     font-size: 28px;
     font-weight: bold;
 }
