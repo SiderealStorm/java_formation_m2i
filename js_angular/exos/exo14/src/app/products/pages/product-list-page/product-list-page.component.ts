@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-list-page',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class ProductListPageComponent {
 
+  constructor(
+    private router: Router,
+    private service: ProductService
+  ) {}
+
+  onClickAdd() {
+    this.service.changeFormMode("add");
+    this.router.navigate(["products", "add"]);
+  }
 }

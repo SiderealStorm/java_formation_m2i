@@ -1,4 +1,4 @@
-<table>
+<table *ngIf="productsList.length > 0; else elseBlock">
     <thead>
         <tr>
             <td>#</td>
@@ -19,10 +19,15 @@
                 {{ product.price }} €
             </td>
             <td>
-                <button [routerLink]="['details', product.id]">Détails</button>
-                <button [routerLink]="['edit', product.id]">Modifier</button>
-                <button [routerLink]="['delete', product.id]">Supprimer</button>
+                <button (click)="onClickDetails(product.id)">Détails</button>
+                <button (click)="onClickEdit(product.id)">Modifier</button>
+                <button (click)="onClickDelete(product.id)">Supprimer</button>
             </td>
         </tr>
     </tbody>
 </table>
+
+
+<ng-template #elseBlock>
+    <p>Il n'y a aucun produit pour le moment</p>
+</ng-template>

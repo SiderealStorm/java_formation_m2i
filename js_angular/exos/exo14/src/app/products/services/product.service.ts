@@ -11,22 +11,7 @@ export class ProductService {
 
   count = 0;
 
-  products$ = new BehaviorSubject<Product[]>([
-    {
-      id: -1,
-      name: "Produit n°-1",
-      description: "Produit test",
-      price: 0.99,
-      stock: 1
-    },
-    {
-      id: -2,
-      name: "Produit n°-2",
-      description: "Produit test",
-      price: 10.99,
-      stock: 10
-    }
-  ]);
+  products$ = new BehaviorSubject<Product[]>([]);
   
   currentFormMode$ = new BehaviorSubject<FormMode>("details");
 

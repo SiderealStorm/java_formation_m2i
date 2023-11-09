@@ -2,8 +2,4 @@
 <hr>
 <app-product-display></app-product-display>
 <hr>
-<button routerLink="add">Ajouter</button>
-
-<ng-template #elseBlock>
-    <p>Il n'y a aucun produit pour le moment</p>
-</ng-template>
+<button (click)="onClickAdd()">Ajouter</button>

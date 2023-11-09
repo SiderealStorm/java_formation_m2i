@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../../services/product.service';
+import { FormMode, ProductService } from '../../services/product.service';
 import { Product } from 'src/app/models/Product.model';
 
 @Component({
@@ -13,10 +13,12 @@ export class ProductFormComponent implements AfterViewInit {
   productId: number;
   product: Product | null;
 
-  @ViewChild("name") productNameRef: ElementRef<HTMLInputElement> | undefined
-  @ViewChild("description") productDescrRef: ElementRef<HTMLInputElement> | undefined
-  @ViewChild("price") productPriceRef: ElementRef<HTMLInputElement> | undefined
-  @ViewChild("stock") productStockRef: ElementRef<HTMLInputElement> | undefined
+  formMode: FormMode;
+
+  @ViewChild("name") productNameRef!: ElementRef<HTMLInputElement>
+  @ViewChild("description") productDescrRef!: ElementRef<HTMLInputElement>
+  @ViewChild("price") productPriceRef!: ElementRef<HTMLInputElement>
+  @ViewChild("stock") productStockRef!: ElementRef<HTMLInputElement>
   
   constructor(
     private router: Router,
@@ -25,6 +27,7 @@ export class ProductFormComponent implements AfterViewInit {
   ) {
     this.productId = +(this.route.snapshot.paramMap.get("id") ?? 0);
     this.product = this.service.getProductById(this.productId);
+    this.formMode = this.service.currentFormMode$.getValue();
   }
 
   ngAfterViewInit(): void {
@@ -50,9 +53,40 @@ export class ProductFormComponent implements AfterViewInit {
   onSubmitForm(event: Event) {
     event.preventDefault();
 
-    console.log("Méthode non implémentée !");
+    const formValues: Product = {
+      id: this.productId,
+      name: this.productNameRef.nativeElement.value,
+      description: this.productDescrRef.nativeElement.value,
+      price: +this.productPriceRef.nativeElement.value,
+      stock: +this.productStockRef.nativeElement.value
+    }
+
+    switch (this.formMode) {
+      case "add" :
+        this.service.addProduct(formValues);
+        break;
+      case "edit" :
+        this.service.editProduct(formValues);
+        break;
+      case "delete" :
+        this.service.deleteProductById(this.productId);
+        break;
+    }
 
     this.router.navigate(['/products']);
+  }
+
+  getRequired() {
+    switch (this.formMode) {
+      case "add" :
+        return true;
+      case "edit" :
+        return true;
+      case "delete" :
+        return false;
+      case "details" :
+        return false;
+    }
   }
 
 }
