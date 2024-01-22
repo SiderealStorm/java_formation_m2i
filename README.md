@@ -2,11 +2,12 @@
 
 Exercices et démonstrations **Java** et **JavaScript/Angular**, faits pendant la formation "*Développeurs Java JEE*" de Juillet à Novembre 2023 avec M2i formation Villeneuve d'Ascq.
 
-### Environnements :
+### Environnement :
 - Java : JDK 20
 - IDE Java : IntelliJ
 - TomCat (pour Java EE)
 - TypeScript : Node.js 20.9.0
+- Angular 16.2.8
 - IDE front : VS Code + plugin *Live Server*
 - BDD : PostgreSQL
 
@@ -14,9 +15,9 @@ Exercices et démonstrations **Java** et **JavaScript/Angular**, faits pendant l
 Chaque partie correspond à un module étudié, dans l'ordre d'apprentissage :
 1. [Bases Java](#Bases-Java)
 1. [Programmation Orientée Objet](#Programmation-Orientée-Objet)
-1. [JDBC/JPA/Hibernate](#JDBC/JPA/Hibernate)
+1. [JDBC/JPA/Hibernate](#jdbcjpahibernate)
 1. [Test Driven Development](#Test-Driven-Development)
-1. [HTML/CSS](#HTML/CSS)
+1. [HTML/CSS](#htmlcss)
 1. [Java EE](#Java-EE)
 1. [Spring](#Spring)
 1. [JavaScript](#JavaScript)
