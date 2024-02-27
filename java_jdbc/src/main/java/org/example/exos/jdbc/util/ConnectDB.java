@@ -12,4 +12,14 @@ public class ConnectDB {
     public static Connection getPostgreConnection() throws SQLException {
         return DriverManager.getConnection(dbUrl, user, password);
     }
+
+    public static void closeConnection(Connection connection) {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
