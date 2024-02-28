@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+
+<!-- Fichier permettant de déclarer les classes mappées -->
+
+<!-- Balise de configuration hibernate -->
+<hibernate-configuration>
+    <session-factory>
+        <!-- Chaque entité doit être déclarée dans une balise <mapping/> -->
+        <!-- La classe est définie par son chemin complet depuis la racine (dossier java) -->
+
+        <mapping class="org.example.entity.Person"/>
+        <mapping class="org.example.entity.Company"/>
+    </session-factory>
+</hibernate-configuration>
