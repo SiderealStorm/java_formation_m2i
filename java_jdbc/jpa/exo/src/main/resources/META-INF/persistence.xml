@@ -21,13 +21,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!-- Liste des classes qui sont des entités : facultatif mais c'est une bonne pratique de les mettre -->
-        <class>org.example.demos.jpa.entity.Person</class>
-        <class>org.example.demos.jpa.entity.onetoone.Address</class>
-        <class>org.example.demos.jpa.entity.onetoone.House</class>
-        <class>org.example.demos.jpa.entity.onetomany.Employee</class>
-        <class>org.example.demos.jpa.entity.onetomany.Department</class>
-        <class>org.example.exos.jpa.entity.Task</class>
-        <class>org.example.exos.jpa.entity.TaskInfo</class>
+        <class>org.example.entity.Task</class>
 
         <!-- Configurations -->
         <properties>
