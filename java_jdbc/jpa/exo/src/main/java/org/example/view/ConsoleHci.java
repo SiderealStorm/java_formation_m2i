@@ -26,10 +26,10 @@ public class ConsoleHci {
 
         // On fait en sorte qu'il y ait au moins un utilisateur dans la BDD
         // en demandant sa création au premier lancement du programme
-        if (service.getAllUsers().isEmpty()) {
-            System.out.println("Veuillez créer un utilisateur :");
-            addUser();
-        }
+//        if (service.getAllUsers().isEmpty()) {
+//            System.out.println("Veuillez créer un utilisateur :");
+//            addUser();
+//        }
 
         do {
             displayMenu();
@@ -87,14 +87,16 @@ public class ConsoleHci {
         return choice;
     }
 
-    private static void displayTasks(List<Task> taskList) {
+    private static boolean displayTasks(List<Task> taskList) {
         // La méthode isEmpty() renvoie true si size() = 0
         if (!taskList.isEmpty()) {
             for (Task task : taskList) {
                 System.out.println(task);
             }
+            return true;
         } else {
             System.out.println("Il n'y a aucune tâche enregistrée");
+            return false;
         }
     }
 
@@ -116,37 +118,48 @@ public class ConsoleHci {
 
     private static void addTask() {
         User user = chooseUser();
-        System.out.print("Titre de la tâche : ");
-        String title = scanner.nextLine();
-        System.out.print("Description de la tâche : ");
-        String description = scanner.nextLine();
-        System.out.print("Date d'échéance (jj-mm-aaaa) : ");
-        Date date = inputDate();
-        System.out.print("Priorité : ");
-        int priority = scanner.nextInt();
-        scanner.nextLine();
-        if (service.saveTask(title, description, date, priority, user)) {
-            System.out.println("Nouvelle tâche enregistrée");
+        if (user == null) {
+            System.out.println("Utilisateur non trouvé");
         } else {
-            System.out.println("Une erreur est survenue, la tâche n'a pas pû être sauvegardée");
+            System.out.print("Titre de la tâche : ");
+            String title = scanner.nextLine();
+            System.out.print("Description de la tâche : ");
+            String description = scanner.nextLine();
+            System.out.print("Date d'échéance (jj-mm-aaaa) : ");
+            Date date = inputDate();
+            System.out.print("Priorité : ");
+            int priority = scanner.nextInt();
+            scanner.nextLine();
+
+            if (service.saveTask(title, description, date, priority, user)) {
+                System.out.println("Nouvelle tâche enregistrée");
+            } else {
+                System.out.println("Une erreur est survenue, la tâche n'a pas pû être sauvegardée");
+            }
         }
 
     }
 
     private static Task chooseTask() {
         System.out.println("Quelle tâche ?");
-        displayTasks(service.getAllTasks());
-        int choice = inputChoice();
-        return service.getTask(choice);
+        if (displayTasks(service.getAllTasks())) {
+            int choice = inputChoice();
+            return service.getTask(choice);
+        }
+        return null;
     }
 
     private static void markAsCompleted() {
         Task task = chooseTask();
-        task.setCompleted(true);
-        if (service.updateTask(task)) {
-            System.out.println("Tâche marquée comme terminée");
+        if (task != null) {
+            task.setCompleted(true);
+            if (service.updateTask(task)) {
+                System.out.println("Tâche marquée comme terminée");
+            } else {
+                System.out.println("Une erreur est survenue, la tâche n'a pas pû être modifiée");
+            }
         } else {
-            System.out.println("Une erreur est survenue, la tâche n'a pas pû être modifiée");
+            System.out.println("Tâche non trouvée");
         }
     }
 
@@ -163,7 +176,7 @@ public class ConsoleHci {
 
     private static void deleteTask() {
         Task task = chooseTask();
-        if (service.deleteTask(task.getId())) {
+        if (task != null && service.deleteTask(task.getId())) {
             System.out.println("Tâche supprimée");
         } else {
             System.out.println("Une erreur est survenue, la tâche n'a pas pû être supprimée");
@@ -180,28 +193,37 @@ public class ConsoleHci {
         }
     }
 
-    private static void displayAllUsers() {
+    private static boolean displayAllUsers() {
         List<User> userList = service.getAllUsers();
         if (!userList.isEmpty()) {
             for (User user : userList) {
                 System.out.println(user);
             }
+            return true;
         } else {
             System.out.println("Il n'y a aucun utilisateur d'enregistré");
+            return false;
         }
     }
 
     private static User chooseUser() {
         System.out.println("Quel utilisateur ?");
-        displayAllUsers();
-        int id = inputChoice();
-        return service.getUser(id);
+        if (displayAllUsers()) {
+            int id = inputChoice();
+            return service.getUser(id);
+        } else {
+            return null;
+        }
     }
 
     private static void displayUserTasks() {
         User user = chooseUser();
-        System.out.println(user);
-        displayTasks(user.getTasks());
+        if (user == null) {
+            System.out.println("Utilisateur non trouvé");
+        } else {
+            System.out.println(user);
+            displayTasks(user.getTasks());
+        }
     }
 
     private static void deleteUser() {
