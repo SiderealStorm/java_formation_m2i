@@ -1,6 +1,7 @@
 package org.example.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -14,7 +15,7 @@ public class Product {
     private String reference;
 
     @Column(name = "purchase_date")
-    private Date purchaseDate;
+    private LocalDate purchaseDate;
     private double price;
     private int stock;
 
@@ -44,11 +45,11 @@ public class Product {
         this.reference = reference;
     }
 
-    public Date getPurchaseDate() {
+    public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Date purchaseDate) {
+    public void setPurchaseDate(LocalDate purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
