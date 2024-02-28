@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
-public class TaskDAO {
+public class TaskDAO implements BaseDAO<Task> {
 
     private final EntityManagerFactory emf;
 
@@ -39,7 +39,7 @@ public class TaskDAO {
                 transaction.rollback();
                 return false;
             }
-            // Si le problème ne vient pas de la BDD, on renvoie true
+            // Si le problème ne vient pas de la BDD, on renvoie true car l'entité est sauvegardée
             return true;
         } finally {
             // Malgré le return, le programme passe par le finally donc on peut s'en servir pour fermer l'EntityManager

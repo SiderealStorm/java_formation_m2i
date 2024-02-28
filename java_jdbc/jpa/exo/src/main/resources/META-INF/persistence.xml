@@ -22,6 +22,7 @@
 
         <!-- Liste des classes qui sont des entités : facultatif mais c'est une bonne pratique de les mettre -->
         <class>org.example.entity.Task</class>
+        <class>org.example.entity.TaskInfo</class>
 
         <!-- Configurations -->
         <properties>

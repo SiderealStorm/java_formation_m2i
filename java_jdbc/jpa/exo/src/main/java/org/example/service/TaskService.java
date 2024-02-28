@@ -2,9 +2,11 @@ package org.example.service;
 
 import org.example.dao.TaskDAO;
 import org.example.entity.Task;
+import org.example.entity.TaskInfo;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.Date;
 import java.util.List;
 
 public class TaskService {
@@ -20,8 +22,11 @@ public class TaskService {
         taskDAO.closeDAO();
     }
 
-    public boolean saveTask(String title) {
-        Task task = new Task(title);
+    public boolean saveTask(String title, String description, Date date, int priority) {
+        TaskInfo info = new TaskInfo(description, date, priority);
+        Task task = new Task(title, info);
+        // C'est TaskInfo le maître de la relation, il faut donc que l'objet TaskInfo contienne l'objet Task
+        info.setTask(task);
         return taskDAO.add(task);
     }
 
