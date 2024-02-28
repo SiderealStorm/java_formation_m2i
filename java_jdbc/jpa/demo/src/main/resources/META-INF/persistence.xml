@@ -1,0 +1,65 @@
+<!-- Fichier de configuration pour JPA -->
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <!-- Déclaration d'une unité de configuration -->
+    <!-- Un même projet peut avoir plusieurs configurations (exemple pour plusieurs dialectes SQL) -->
+    <persistence-unit name="jpa_postgres">
+
+
+        <!-- Balise description, optionnelle mais utile -->
+        <description>
+            Ici je peux mettre la description de mon fichier persistence.xml
+            Exemple : Persistence unit for connexion to database xxx
+        </description>
+
+        <!-- le provider spécifie le fournisseur de persistance JPA à utiliser. Il est  facultatif -->
+        <!-- Si cet élément est omis, le fournisseur par défaut configuré dans l'environnement sera utilisé.-->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Liste des classes qui sont des entités : facultatif mais c'est une bonne pratique de les mettre -->
+        <class>org.example.entity.Person</class>
+        <class>org.example.entity.onetoone.Address</class>
+        <class>org.example.entity.onetoone.House</class>
+        <class>org.example.entity.onetomany.Employee</class>
+        <class>org.example.entity.onetomany.Department</class>
+
+        <!-- Configurations -->
+        <properties>
+            <!-- Driver utilisé, en fonction du dialecte -->
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <!-- Nom de la BDD -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/jpa" />
+            <!-- Utilisateur et mot de passe de connexion à la BDD -->
+            <property name="javax.persistence.jdbc.user" value="postgres" />
+            <property name="javax.persistence.jdbc.password" value="Storm" />
+
+            <!-- Dialecte = méthode de communication (par défaut MySQL) -->
+            <!-- Valeur de base (dépréciée) -->
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>-->
+            <!-- Nouvelle valeur -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL82Dialect"/>
+
+            <!-- Choix de génération (ou non) des tables -->
+            <!-- Avec update, la BDD et les tables sont créées si elles n'existent pas, et des colonnes sont ajoutées si besoin -->
+            <!-- Autres choix : create / create-drop / validate / none -->
+            <!-- En production, on utilise généralement validate (vérifie la correspondance) ou none -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+
+            <!-- Optionnel : affichage des requêtes SQL dans la console -->
+<!--            <property name="hibernate.show_sql" value="true" />-->
+            <!-- Optionnel : formattage des requêtes -->
+<!--            <property name="hibernate.format_sql" value="true" />-->
+
+            <!-- Ignorer les classes non listées -->
+            <!-- <property name="hibernate.archive.autodetection" value="none"/> -->
+        </properties>
+
+    </persistence-unit>
+
+
+</persistence>
+
