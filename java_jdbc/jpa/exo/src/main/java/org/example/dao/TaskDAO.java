@@ -51,6 +51,7 @@ public class TaskDAO implements BaseDAO<Task> {
         List<Task> taskList;
         EntityManager em = emf.createEntityManager();
         taskList = em.createQuery("SELECT t FROM Task t ORDER BY id", Task.class).getResultList();
+        em.close();
 
         return taskList;
     }

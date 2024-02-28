@@ -41,15 +41,16 @@ Une catégorie peut contenir plusieurs tâches, et une tâche peut appartenir à
 
 ### En résumé, l'application doit implémenter les fonctionnalités suivantes :
 
-1. Ajouter une personne
-2. Afficher les tâches d'une personne
+1. Afficher toutes les tâches
+2. Afficher les détails d'une tâche
 3. Ajouter une tâche
-4. Afficher toutes les tâches
-5. Marquer une tâche comme terminée
-6. Supprimer une personne et ses tâches associées
-7. Supprimer une tâche
-8. Ajouter une catégorie
-9. Supprimer une catégorie
-10. Afficher les tâches d'une catégorie
-11. Ajouter une catégorie à une taches
-12. Supprimer une catégorie à une taches
+4. Marquer une tâche comme terminée
+5. Supprimer une tâche
+6. Ajouter une personne
+7. Afficher les tâches d'une personne
+8. Supprimer une personne et ses tâches associées
+9. Afficher les tâches d'une catégorie
+10. Ajouter une catégorie
+11. Supprimer une catégorie
+12. Mettre une tâche dans une catégorie
+13. Retirer une tâche d'une catégorie
